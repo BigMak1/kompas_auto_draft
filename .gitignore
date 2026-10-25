@@ -5,3 +5,10 @@ mcp/
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/

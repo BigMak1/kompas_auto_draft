@@ -165,15 +165,17 @@ def main():
         part.RebuildModel(True)
         mass = ksapi.IMassInertiaParam(part)
         mass.Calculate()
-        report.update({
-            "applied": True,
-            "sketch": sketch.GetName(),
-            "sketch_xy": sketch_xy,
-            "operation": extrusion.GetName(),
-            "mass_before_g": mass_before,
-            "mass_after_g": mass.GetMass(),
-            "saved": doc3d.Save(),
-        })
+        report.update(
+            {
+                "applied": True,
+                "sketch": sketch.GetName(),
+                "sketch_xy": sketch_xy,
+                "operation": extrusion.GetName(),
+                "mass_before_g": mass_before,
+                "mass_after_g": mass.GetMass(),
+                "saved": doc3d.Save(),
+            }
+        )
         print(json.dumps(report, ensure_ascii=False, indent=1))
         return 0
     finally:
