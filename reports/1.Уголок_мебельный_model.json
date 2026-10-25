@@ -1,0 +1,708 @@
+{
+ "name": "Уголок_мебельный.m3d",
+ "full_path": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный.m3d",
+ "doc_type": "part",
+ "read_only": false,
+ "changed": false,
+ "part": {
+  "name": "Уголок мебельный",
+  "marking": "УМО.001",
+  "material": "Сталь 10  ГОСТ 1050-2013",
+  "density": 7.855999999999996,
+  "mass": 26.734396327019343,
+  "is_detail": true
+ },
+ "mass_properties": {
+  "actual": true,
+  "mass": 26.734396327019343,
+  "volume": 3.4030545222784307,
+  "area": 28.351567690721232,
+  "density": 7.855999999999996,
+  "material": "Сталь 10  ГОСТ 1050-2013",
+  "mass_units": 0,
+  "length_units": 0
+ },
+ "gabarit": {
+  "min": [
+   -4.7427339833205985e-15,
+   -2.552125177857078e-14,
+   -1.2490009027033011e-15
+  ],
+  "max": [
+   24.000000000000018,
+   28.314086600135994,
+   28.500000000000004
+  ],
+  "size": [
+   24.00000000000002,
+   28.31408660013602,
+   28.500000000000004
+  ]
+ },
+ "tree": {
+  "name": "Уголок мебельный",
+  "type": "part",
+  "excluded": false,
+  "valid": true,
+  "variables": [],
+  "children": [
+   {
+    "name": "Начало координат",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v7",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "Плоскость XY",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     },
+     {
+      "name": "Плоскость ZX",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     },
+     {
+      "name": "Плоскость ZY",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     },
+     {
+      "name": "Ось X",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     },
+     {
+      "name": "Ось Y",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     },
+     {
+      "name": "Ось Z",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   },
+   {
+    "name": "Эскиз:4",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v105",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Операция выдавливания:3",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v106",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v109",
+      "value": 0.0,
+      "expression": "",
+      "note": "Расстояние 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v111",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v112",
+      "value": 3.0,
+      "expression": "",
+      "note": "Расстояние 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v114",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 2",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Эскиз:5",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v125",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Операция выдавливания:4",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v126",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v129",
+      "value": 0.0,
+      "expression": "",
+      "note": "Расстояние 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v131",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v132",
+      "value": 3.0,
+      "expression": "",
+      "note": "Расстояние 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v134",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 2",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Отверстие:1",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v144",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v173",
+      "value": 6.5,
+      "expression": "",
+      "note": "Диаметр отверстия",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v174",
+      "value": 1.0,
+      "expression": "",
+      "note": "Дно",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v176",
+      "value": -17.0,
+      "expression": "",
+      "note": "Расстояние 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v177",
+      "value": 12.0,
+      "expression": "",
+      "note": "Расстояние 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v178",
+      "value": 1.0,
+      "expression": "",
+      "note": "Перпендикулярно поверхности",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v181",
+      "value": 10.5,
+      "expression": "",
+      "note": "Диаметр зенковки",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v182",
+      "value": 1.154700538379252,
+      "expression": "",
+      "note": "Глубина зенковки",
+      "external": false,
+      "information": true
+     },
+     {
+      "name": "v183",
+      "value": 120.0,
+      "expression": "",
+      "note": "Угол зенковки",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Отверстие:2",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v184",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v196",
+      "value": 6.5,
+      "expression": "",
+      "note": "Диаметр отверстия",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v197",
+      "value": 1.0,
+      "expression": "",
+      "note": "Дно",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v199",
+      "value": 17.0,
+      "expression": "",
+      "note": "Расстояние 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v200",
+      "value": 12.0,
+      "expression": "",
+      "note": "Расстояние 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v201",
+      "value": 1.0,
+      "expression": "",
+      "note": "Перпендикулярно поверхности",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v204",
+      "value": 10.5,
+      "expression": "",
+      "note": "Диаметр зенковки",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v205",
+      "value": 1.154700538379252,
+      "expression": "",
+      "note": "Глубина зенковки",
+      "external": false,
+      "information": true
+     },
+     {
+      "name": "v206",
+      "value": 120.0,
+      "expression": "",
+      "note": "Угол зенковки",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Эскиз:6",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v230",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Вырезать элемент выдавливания:1",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v231",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v237",
+      "value": 10.0,
+      "expression": "",
+      "note": "Расстояние 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v239",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 2",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v234",
+      "value": 0.0,
+      "expression": "",
+      "note": "Расстояние 1",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v236",
+      "value": 0.0,
+      "expression": "",
+      "note": "Угол 1",
+      "external": false,
+      "information": false
+     }
+    ]
+   },
+   {
+    "name": "Изменение положения:1",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v256",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v260",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата X",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v261",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Y",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v262",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Z",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   },
+   {
+    "name": "Изменение положения:2",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v281",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v285",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата X",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v286",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Y",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v287",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Z",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   },
+   {
+    "name": "Изменение положения:3",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v299",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v303",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата X",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v304",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Y",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v305",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Z",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   },
+   {
+    "name": "Изменение положения:4",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v310",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v314",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата X",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v315",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Y",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v316",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Z",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   },
+   {
+    "name": "Изменение положения:5",
+    "type": "entity",
+    "excluded": false,
+    "valid": true,
+    "variables": [
+     {
+      "name": "v321",
+      "value": 0.0,
+      "expression": "",
+      "note": "Исключить из расчета ",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v325",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата X",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v326",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Y",
+      "external": false,
+      "information": false
+     },
+     {
+      "name": "v327",
+      "value": 0.0,
+      "expression": "",
+      "note": "Координата Z",
+      "external": false,
+      "information": false
+     }
+    ],
+    "children": [
+     {
+      "name": "",
+      "type": "entity",
+      "excluded": false,
+      "valid": true,
+      "variables": []
+     }
+    ]
+   }
+  ]
+ }
+}
