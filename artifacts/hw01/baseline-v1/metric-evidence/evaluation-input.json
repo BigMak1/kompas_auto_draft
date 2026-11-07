@@ -1,0 +1,69 @@
+{
+  "config": {
+    "surface_samples": 8192,
+    "registration_samples": 2048,
+    "edge_samples": 4096,
+    "seed": 20261107,
+    "tau_relative": 0.01,
+    "tau_mm": null,
+    "alignment": "rigid",
+    "icp_iterations": 40,
+    "icp_candidates": 8,
+    "symmetry_steps": 12,
+    "inertia_relative_gap": 0.01,
+    "edge_angle_degrees": 30.0,
+    "expected_bodies": 1,
+    "dimension_tolerance_mm": 0.01
+  },
+  "export": {
+    "chord_mm": 0.01,
+    "angle": 0.05,
+    "max_cells": 2000000
+  },
+  "cases": [
+    {
+      "id": "KF0017",
+      "family": "slotted_bushing_0108",
+      "tags": [],
+      "reference": {
+        "native": "inputs/KF0017/reference/model.m3d",
+        "mesh": "inputs/KF0017/reference/model.stl",
+        "facts": "inputs/KF0017/reference/eval-facts.json",
+        "export_manifest": "inputs/KF0017/reference/export.json",
+        "units": "mm"
+      },
+      "prediction": {
+        "native": "inputs/KF0017/prediction/model.m3d",
+        "mesh": "inputs/KF0017/prediction/model.stl",
+        "facts": "inputs/KF0017/prediction/eval-facts.json",
+        "export_manifest": "inputs/KF0017/prediction/export.json",
+        "units": "mm"
+      },
+      "generation_status": "success",
+      "requirements": []
+    },
+    {
+      "id": "KF0027",
+      "family": "mounting_ring_2k52",
+      "tags": [],
+      "reference": {
+        "native": "inputs/KF0027/reference/model.m3d",
+        "mesh": "inputs/KF0027/reference/model.stl",
+        "facts": "inputs/KF0027/reference/eval-facts.json",
+        "export_manifest": "inputs/KF0027/reference/export.json",
+        "units": "mm"
+      },
+      "prediction": {
+        "native": "inputs/KF0027/prediction/model.m3d",
+        "mesh": "inputs/KF0027/prediction/model.stl",
+        "facts": "inputs/KF0027/prediction/eval-facts.json",
+        "export_manifest": "inputs/KF0027/prediction/export.json",
+        "units": "mm"
+      },
+      "generation_status": "success",
+      "requirements": []
+    }
+  ],
+  "boolean_results": "boolean-results.json",
+  "purpose": "benchmark"
+}

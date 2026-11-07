@@ -1,0 +1,158 @@
+[
+  {
+    "request_sha256": "d8d665173bc6bdda63f2d4bc6524bcf3418653e156a3ba132a5f96c8915d62f9",
+    "protocol_version": "cad-eval-0.2.0",
+    "case_id": "KF0017",
+    "pose": "aligned",
+    "units": "mm",
+    "prediction_native_sha256": "78581c6a90ffabd67e88442fd7e4c9a0e7a9db3c3f600b84e3fe538848137871",
+    "reference_native_sha256": "739f20786cbaf95e2815b377aa7cd1126b664c62c6352fcf9c9b22d34d6defe7",
+    "prediction_mesh_sha256": "9605e544d4dcda5e6557c32378ae9d38a67b1cbd1355b0acad29635c021045a7",
+    "reference_mesh_sha256": "5af43883d0b46675cda40d829dca714c526076af5491fa10c08bea9c4a963d87",
+    "prediction_mesh_units": "mm",
+    "reference_mesh_units": "mm",
+    "prediction_to_reference": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        5.455635943008019e-13
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -8.881784197001252e-16
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  {
+    "request_sha256": "757b7209aab8716e05db07ab3b996ec2dfd6fd6ecf3d21d94d7cf2a965e8d63e",
+    "protocol_version": "cad-eval-0.2.0",
+    "case_id": "KF0017",
+    "pose": "unaligned",
+    "units": "mm",
+    "prediction_native_sha256": "78581c6a90ffabd67e88442fd7e4c9a0e7a9db3c3f600b84e3fe538848137871",
+    "reference_native_sha256": "739f20786cbaf95e2815b377aa7cd1126b664c62c6352fcf9c9b22d34d6defe7",
+    "prediction_mesh_sha256": "9605e544d4dcda5e6557c32378ae9d38a67b1cbd1355b0acad29635c021045a7",
+    "reference_mesh_sha256": "5af43883d0b46675cda40d829dca714c526076af5491fa10c08bea9c4a963d87",
+    "prediction_mesh_units": "mm",
+    "reference_mesh_units": "mm",
+    "prediction_to_reference": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  {
+    "request_sha256": "711348780f5fa4ca9616a1c9ad9086a28e831821330663c91e7ec7e3cb888cdf",
+    "protocol_version": "cad-eval-0.2.0",
+    "case_id": "KF0027",
+    "pose": "aligned",
+    "units": "mm",
+    "prediction_native_sha256": "b93c4e76b93e33993be64971e877690856037393688e5c363135aa8b8622db85",
+    "reference_native_sha256": "13266c04c042c332995076a2aa4fe87282a22e268d28e5c7aeb1cd78ebcad9e3",
+    "prediction_mesh_sha256": "6c17ccd4424876fee732a832270f1a290a639bbad661c15b3c1d632e09dc7ca4",
+    "reference_mesh_sha256": "c5bf64ab6059ef71422223b5f752f7d925e9de15221e73095d62026af5b699c9",
+    "prediction_mesh_units": "mm",
+    "reference_mesh_units": "mm",
+    "prediction_to_reference": [
+      [
+        8.299572171392852e-17,
+        2.2681897045051692e-17,
+        1.0000000000000004,
+        -1.7763568394002505e-15
+      ],
+      [
+        -1.0000000000000004,
+        6.445854501256252e-14,
+        8.309504343078316e-17,
+        5.795364188543317e-14
+      ],
+      [
+        -6.45039577307216e-14,
+        -1.0000000000000004,
+        2.248583659938793e-17,
+        7.815970093361102e-14
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  {
+    "request_sha256": "c4f03ecd84a0c725757efbd717d2a794a927020113e953241a62967a25dedca5",
+    "protocol_version": "cad-eval-0.2.0",
+    "case_id": "KF0027",
+    "pose": "unaligned",
+    "units": "mm",
+    "prediction_native_sha256": "b93c4e76b93e33993be64971e877690856037393688e5c363135aa8b8622db85",
+    "reference_native_sha256": "13266c04c042c332995076a2aa4fe87282a22e268d28e5c7aeb1cd78ebcad9e3",
+    "prediction_mesh_sha256": "6c17ccd4424876fee732a832270f1a290a639bbad661c15b3c1d632e09dc7ca4",
+    "reference_mesh_sha256": "c5bf64ab6059ef71422223b5f752f7d925e9de15221e73095d62026af5b699c9",
+    "prediction_mesh_units": "mm",
+    "reference_mesh_units": "mm",
+    "prediction_to_reference": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  }
+]

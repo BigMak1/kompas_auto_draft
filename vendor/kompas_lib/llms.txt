@@ -1,0 +1,919 @@
+# kompas_lib — высокоуровневая библиотека для ИИ-агентов поверх KsAPI КОМПАС-3D.
+# Карта API: строка на задачу, тип, модуль, класс, функцию, метод, свойство; каждая строка самодостаточна.
+# Поля через TAB: вид  имя  сигнатура  описание  файл:строка в kompas_lib.py  метка строки (L022890)
+#   task   — задача: в сигнатуре цепочка вызовов (→ дальше, | или, [пояснение]); начинайте отсюда;
+#   type   — тип пакета: «← кто возвращает», «→ кто принимает» — что делать с объектом дальше;
+#   module|class|func|method|prop — API; имя = путь импорта; сигнатура: (параметры) -> результат.
+# Поиск (файл целиком не читать):
+#   rg "^task" llms.txt                         все задачи — первый шаг
+#   rg "^type\tkompas_lib\.model\.Face" llms.txt  откуда взять грани и куда их передать
+#   rg "\tkompas_lib\.build\.PartBuilder\." llms.txt   методы класса
+#   python: rows = [l.rstrip("\n").split("\t") for l in open("llms.txt", encoding="utf-8")
+#                   if not l.startswith("#")]
+# Код: kompas_lib.py в этой папке, строка из последнего поля (L022890 → offset 22890); исходников, docs/ и тестов в выпуске нет.
+task	открыть чужую модель только для чтения; открыть .m3d, read_only, копия, не портить исходник	Kompas.connect → Kompas.open [read_only=True, копия; md5 до/после] → PartDocument.info → Document.close [save=False]			
+task	разобрать геометрию детали; грани, рёбра, габарит, отверстия, распознать элементы, замеры	PartDocument.faces | edges | box → recognize_features → measure_model			
+task	снять геометрию вида с векторного PDF; найти виды листа, где вид, область и начало вида, координаты, центры отверстий, радиусы без размера, точки касания, контур, дуги, окружности, масштаб вида	read_pdf_drawing → PdfDrawing.views [габарит, обозначение «Д-Д», масштаб; начало — левый нижний угол габарита] → PdfView.geometry → ViewGeometry.summary | circles [радиус ± radius_err] | lines | near | within | PdfDrawing.geometry [своя область: scale=, origin=]			
+task	прочитать PDF-чертёж; надписи, размеры, текст, допуски, картинка листа, отличия исполнений	read_pdf_drawing → PdfDrawing.summary → PdfDrawing.annotations | PdfDrawing.export_images [если текст не читается — смотреть PNG] → diff_annotations [отличия исполнений]			
+task	построить деталь с проверкой каждого шага; эскиз, выдавливание, вырез, вращение, отверстие, цековка, резьба, уклон, конус, оболочка, ребро жёсткости	Kompas.new_part → PartBuilder [constrain=True] → PartBuilder.sketch [rect | circle | arc | line | polygon] → PartBuilder.extrude | cut [draft= — сужение] | revolve | hole | rib | shell → PartBuilder.report			
+task	скруглить или снять фаску по признакам, а не по номерам; скругление, фаска, катеты, фаска под углом, по двум сторонам, выбор рёбер и граней, галтель на стыке, цепочка рёбер, ступенька скругления	PartBuilder.edges_between [стык двух шагов: прямые и дуги вместе] | edges [of=шаг] → select + between | concave | convex | kind | radius [expect=n] → PartBuilder.fillet | chamfer [цепочка проверяется и достраивается chain=True; сторона катета — face=, по смежности; факты — Step.facts]			
+task	массивы и зеркало; круговой массив, по окружности, равномерно, линейный массив, сетка, зеркальное отражение	PartBuilder.circular_pattern | linear_pattern | mirror			
+task	править построенное; изменить параметры операции, исключить, редактировать эскиз, найти по имени	PartBuilder.get → PartBuilder.modify | exclude | edit_sketch → PartBuilder.report			
+task	ускорить чтение модели; производительность, медленно, долго, кэш геометрии, повторные замеры, профиль времени	PartBuilder.geometry_cache | PartDocument.geometry_cache → PartBuilder.faces [kinds="cylinder": не обмерять другие поверхности] | edges | metrics | get → PartBuilder.invalidate_geometry [после сырых Set/Update/Rebuild; библиотечные изменения сбрасывают сами] → Step [timings: секунды этапов операции; edit не откладывает перестроение]			
+task	определить эскизы полностью; ограничения, размеры эскиза, определённость, недоопределён	PartBuilder.constrain → sketch_state → ConstraintReport [что принято и отброшено] → sketch_edit [правка без потери состояния]			
+task	переменные и параметризация; уравнения, выражения, параметры детали	PartBuilder.vars → Variables.add | set | bind | usage | unused | delete → Variables.rebuild			
+task	исполнения; зависимое исполнение, вариант, конфигурация, второе исполнение	Embodiments → Embodiments.add_dependent → Embodiments.use → PartBuilder.modify | exclude → Embodiments.diff			
+task	материал и масса; плотность, СЧ20, сталь, МЦХ, точность расчёта МЦХ, «Высокая», вес, объём, масса по чертежу	set_material → mass_accuracy [«Высокая» — "high" = 100] → check_mass [MassCheck.implied_density при расхождении]			
+task	аудит дерева построения; число операций, эскизов, плоскостей, одно тело, история построения	audit → Audit.summary | Audit.issues → tree			
+task	сверить модель с чертежом; проверка размеров, сверка по PDF, все ли размеры совпали, сверка исполнений	read_pdf_drawing → check_drawing [embodiment=i] → DrawingCheck.mismatches → DrawingCheck.mark [проверено глазами] → DrawingCheck.summary			
+task	чертёж с размерами одной командой; ассоциативный чертёж по модели, автоматически	create_dimensioned_drawing → DrawingDraft			
+task	чертёж с размерами по шагам; виды, разрез, сечение, компоновка листа, штамп	Kompas.new_drawing → Drawing.add_standard_views → Drawing.add_section → arrange_sheet → add_dimensions → check_dimensions → check_layout → Document.capture			
+task	3D-размеры в модели; размеры в модели, PMI	suggest_model_dimensions → add_model_dimensions → check_model_dimensions | auto_dimension_model			
+task	сборка из деталей; компоненты, сопряжения, порты, коллизии, пересечения	Kompas.new_assembly → AssemblyDocument.insert → Component.port | AssemblyDocument.ref → AssemblyDocument.mate → AssemblyDocument.check → AssemblyDocument.collisions			
+task	отверстие на цилиндрической, конической, сферической или торовой грани; на цилиндре, на конусе, на сфере, на торе, радиальное отверстие, по цилиндрическим координатам, на расточке, на дуге, фланец R	PartBuilder.faces → select + kind ["cylinder" | "cone" | "sphere" | "torus"] → PartBuilder.hole [at=(x, y, z) — точка мира, ось по нормали; цековка, thread=]			
+task	надпись на детали; текст, рельеф, гравировка, выпуклая надпись, вырезать текст, маркировка, WOW	PartBuilder.sketch [text — на касательной к цилиндру offset_plane] → PartBuilder.relief [raised=True — выступ]			
+task	операция, которой нет в построителе; сырой KsAPI, ksapi, своя операция, по сечениям, кинематическая, _run	PartBuilder.container [собрать операцию KsAPI] → PartBuilder.run [expect=add|remove|change] → PartBuilder.step [по имени — для edges(of=)]			
+task	продолжить деталь другим скриптом; найти свой документ, временная деталь, эксперимент, не закрыть чужие документы, documents[-1]	Kompas.new_part [tag=] → Kompas.find → PartBuilder.step | Kompas.scratch_part [закроется сам] → Kompas.close_tagged			
+task	посмотреть результат глазами; рендер, PNG, снимок, изображение модели или чертежа, ракурс	Document.capture | render_model | render_document → crop_sheet			
+task	найти ребро или грань без привязки к абсолютным координатам; допуск, abs, погрешность, плавающая точка, ребро стыка, линия пересечения граней, смежные грани, отбор устарел	PartBuilder.edges_between | faces [of=шаг] → select + between | bounding | concave [expect=n: промах объясняется] | nearest [точка: ближайший, однозначность] → PartBuilder.chain [касательная цепочка]			
+task	проверить геометрию после операции; дефекты, артефакты, микрорёбра, микрограни, открытые рёбра, ступени скругления, контроль качества	PartBuilder [quality=error | warn] → PartBuilder.check_quality [вся деталь или операция; у шага — warnings]			
+task	проверить эскиз до выдавливания; замкнутость, микрозазор, самопересечение, наложение, почти касание, сшить концы	check_contour → snap_contour → PartBuilder.sketch [проверяет и сшивает сам]			
+task	точка и нормаль на кривой грани; параметры u v, ориентация, цилиндр, конус, сфера, тор, отверстие на кривой грани без подбора	PartBuilder.surface_point → SurfacePoint → PartBuilder.hole			
+type	kompas_lib.assembly.Placement	← Component.move, Component.placement	→	kompas_lib.py:14523	L014523
+type	kompas_lib.assembly.Ref	← AssemblyDocument.axis, AssemblyDocument.plane, AssemblyDocument.ref, Component.axis, Component.plane, Component.port, Component.ref	→ AssemblyDocument.mate, AssemblyDocument.ref	kompas_lib.py:14538	L014538
+type	kompas_lib.assembly.Component	← AssemblyDocument.component, AssemblyDocument.components, AssemblyDocument.find, AssemblyDocument.insert, Component.children, Component.walk	→ AssemblyDocument.component, AssemblyDocument.find, AssemblyDocument.mates, AssemblyDocument.overlaps, Ref, analyse	kompas_lib.py:14562	L014562
+type	kompas_lib.assembly.Mate	← AssemblyDocument.mate, AssemblyDocument.mates	→ AssemblyDocument.delete_mate	kompas_lib.py:14796	L014796
+type	kompas_lib.assembly.AssemblyIssue	← AssemblyDocument.collisions, AssemblyDocument.overlaps, AssemblyReport.errors, AssemblyReport.warnings	→ AssemblyReport	kompas_lib.py:14826	L014826
+type	kompas_lib.assembly.AssemblyReport	← AssemblyDocument.check	→	kompas_lib.py:14838	L014838
+type	kompas_lib.assembly.AssemblyDocument	← Kompas.new_assembly	→ Component	kompas_lib.py:14859	L014859
+type	kompas_lib.assembly.Fact	← verify	→ Mate	kompas_lib.py:14440	L014440
+type	kompas_lib.assembly.Port	← Port.placed, PortList.by_id, PortList.cylinders, PortList.find, PortList.planes, PortList.select, Ref.world	→ Component.port, PortList, PortList.find, Ref, verify	kompas_lib.py:14063	L014063
+type	kompas_lib.assembly.PortList	← Component.ports, analyse, build_ports	→	kompas_lib.py:14112	L014112
+type	kompas_lib.build.TreeItem	← tree	→ Audit	kompas_lib.py:4056	L004056
+type	kompas_lib.build.Audit	← audit	→	kompas_lib.py:4068	L004068
+type	kompas_lib.build.Metrics	← PartBuilder.metrics	→ Step	kompas_lib.py:15632	L015632
+type	kompas_lib.build.Step	← PartBuilder.chamfer, PartBuilder.circular_pattern, PartBuilder.cut, PartBuilder.draft, PartBuilder.edit_sketch, PartBuilder.exclude, PartBuilder.extrude, PartBuilder.fillet, PartBuilder.hole, PartBuilder.linear_pattern, PartBuilder.mirror, PartBuilder.modify, PartBuilder.relief, PartBuilder.revolve … +8	→ PartBuilder.circular_pattern, PartBuilder.edges, PartBuilder.faces, PartBuilder.linear_pattern, PartBuilder.mirror	kompas_lib.py:15645	L015645
+type	kompas_lib.build.SurfacePoint	← PartBuilder.surface_point	→	kompas_lib.py:15673	L015673
+type	kompas_lib.build.Sketch	← PartBuilder.sketch	→ PartBuilder.constrain, PartBuilder.cut, PartBuilder.extrude, PartBuilder.relief, PartBuilder.revolve, PartBuilder.rib, PartBuilder.run, Step	kompas_lib.py:15690	L015690
+type	kompas_lib.build.PartBuilder	←	→ Sketch, Variables	kompas_lib.py:15750	L015750
+type	kompas_lib.build.constraints.Geo	← read_geometry	→ plan_constraints	kompas_lib.py:4520	L004520
+type	kompas_lib.build.constraints.Plan	← plan_constraints	→	kompas_lib.py:4559	L004559
+type	kompas_lib.build.ConstraintReport	← PartBuilder.constrain, apply_constraints	→	kompas_lib.py:4747	L004747
+type	kompas_lib.build.Line	← line, polygon, rect	→	kompas_lib.py:3393	L003393
+type	kompas_lib.build.Arc	← arc, arc_by_points	→	kompas_lib.py:3409	L003409
+type	kompas_lib.build.Circle	← circle	→	kompas_lib.py:3430	L003430
+type	kompas_lib.build.SketchText	← text	→	kompas_lib.py:3445	L003445
+type	kompas_lib.build.Measure	← ModelMeasures.find, ModelMeasures.items, ModelMeasures.nearest	→ CheckRow, Extra	kompas_lib.py:5528	L005528
+type	kompas_lib.build.ModelMeasures	← measure_faces, measure_model	→ reconcile	kompas_lib.py:5545	L005545
+type	kompas_lib.build.CheckRow	← DrawingCheck.find, DrawingCheck.mark, DrawingCheck.mismatches	→ DrawingCheck	kompas_lib.py:5917	L005917
+type	kompas_lib.build.Extra	←	→ DrawingCheck	kompas_lib.py:5956	L005956
+type	kompas_lib.build.DrawingCheck	← check_drawing, reconcile	→	kompas_lib.py:5970	L005970
+type	kompas_lib.build.EmbodimentDiff	← Embodiments.diff	→	kompas_lib.py:5009	L005009
+type	kompas_lib.build.MassCheck	← check_mass	→	kompas_lib.py:5232	L005232
+type	kompas_lib.build.ThreadSpec	← thread_spec	→	kompas_lib.py:3325	L003325
+type	kompas_lib.build.Chain	← edge_chains	→	kompas_lib.py:15391	L015391
+type	kompas_lib.build.Variable	← Variables.get, Variables.list, Variables.parameter, read_variable	→	kompas_lib.py:4244	L004244
+type	kompas_lib.build.Variables	← PartBuilder.vars	→	kompas_lib.py:4306	L004306
+type	kompas_lib.Kompas	← Kompas.connect	→ Document	kompas_lib.py:1265	L001265
+type	kompas_lib.Document	← Document.edit, Kompas.active_document, Kompas.documents, Kompas.find, Kompas.find_open, Kompas.open, Kompas.tagged, Kompas.wrap	→ render_document	kompas_lib.py:1445	L001445
+type	kompas_lib.dims.api.Dim	← overall_dims, prune_redundant, suggest_revolution_dims	→ add_dimensions, prune_redundant	kompas_lib.py:10696	L010696
+type	kompas_lib.dims.api.Diameter	← prune_redundant, suggest_end_dimensions, suggest_revolution_dims	→ add_dimensions, prune_redundant	kompas_lib.py:10717	L010717
+type	kompas_lib.dims.api.DimReport	← add_dimensions, add_model_dimensions, arrange_dimensions, auto_dimension_model, check_dimensions, check_model_dimensions, dimension_flat_view	→ DrawingDraft	kompas_lib.py:10732	L010732
+type	kompas_lib.dims.features.HolePattern	← flat_patterns, hole_patterns	→ ModelFeatures	kompas_lib.py:9855	L009855
+type	kompas_lib.dims.features.Gear	← recognize_gear	→ ModelFeatures	kompas_lib.py:9883	L009883
+type	kompas_lib.dims.features.Hole	←	→ ModelFeatures	kompas_lib.py:9999	L009999
+type	kompas_lib.dims.features.ChamferFeature	←	→ ModelFeatures	kompas_lib.py:10009	L010009
+type	kompas_lib.dims.features.Keyway	←	→ ModelFeatures	kompas_lib.py:10017	L010017
+type	kompas_lib.dims.features.Fillet	←	→ ModelFeatures	kompas_lib.py:10036	L010036
+type	kompas_lib.dims.features.Thread	←	→ ModelFeatures	kompas_lib.py:10042	L010042
+type	kompas_lib.dims.ModelFeatures	← recognize_features	→ suggest_model_dimensions	kompas_lib.py:10053	L010053
+type	kompas_lib.dims.flat.Loop	← build_loops	→ FlatFeature	kompas_lib.py:12019	L012019
+type	kompas_lib.dims.flat.FlatPlan	← suggest_flat_dims	→ dimension_flat_view, flat_dim_tiers	kompas_lib.py:12158	L012158
+type	kompas_lib.dims.graph.Symmetry	← AxisGraph.symmetry_of	→ AxisGraph, spanning_forest	kompas_lib.py:9169	L009169
+type	kompas_lib.dims.graph.Link	←	→ Selection, spanning_forest	kompas_lib.py:9300	L009300
+type	kompas_lib.dims.graph.Selection	← spanning_forest	→	kompas_lib.py:9313	L009313
+type	kompas_lib.dims.model.ModelDim	← suggest_model_dimensions	→ add_model_dimensions	kompas_lib.py:12876	L012876
+type	kompas_lib.dims.model.ModelDimension	← read_model_dimensions	→	kompas_lib.py:12890	L012890
+type	kompas_lib.dims.DimRequest	←	→ plan_dimensions	kompas_lib.py:8469	L008469
+type	kompas_lib.dims.DiamRequest	←	→ plan_dimensions	kompas_lib.py:8488	L008488
+type	kompas_lib.dims.DimPlan	← plan_dimensions	→	kompas_lib.py:8502	L008502
+type	kompas_lib.dims.DimFact	←	→ check_redundancy	kompas_lib.py:9390	L009390
+type	kompas_lib.dims.Requirement	← requirement_from_faces	→ check_redundancy	kompas_lib.py:9417	L009417
+type	kompas_lib.dims.revolution.ProfileStep	←	→ DiameterDim, RevolutionProfile, is_groove	kompas_lib.py:10333	L010333
+type	kompas_lib.dims.revolution.Chamfer	←	→ RevolutionProfile	kompas_lib.py:10347	L010347
+type	kompas_lib.dims.revolution.RevolutionProfile	← revolution_profile	→ draft_dimensions, is_groove	kompas_lib.py:10361	L010361
+type	kompas_lib.dims.revolution.LengthDim	← draft_dimensions	→	kompas_lib.py:10521	L010521
+type	kompas_lib.dims.revolution.DiameterDim	← draft_dimensions	→	kompas_lib.py:10530	L010530
+type	kompas_lib.dims.DimStyle	←	→ DiametralDim.bbox, DiametralDim.dim_line, DiametralDim.ext_lines, DiametralDim.segments, DiametralDim.text_box, DiametralDim.text_interval, LinearDim.bbox, LinearDim.dim_line, LinearDim.ext_lines, LinearDim.line_extent, LinearDim.segments, LinearDim.text_box, LinearDim.text_fits_inside, LinearDim.text_range … +12	kompas_lib.py:7709	L007709
+type	kompas_lib.dims.Issue	← DimReport.errors, DimReport.warnings, check_dims, check_redundancy, dim_conflicts, geometry_conflicts, keepout_conflicts, prune_redundant, requirement_from_faces	→ DimPlan, DimReport, count	kompas_lib.py:7733	L007733
+type	kompas_lib.dims.LinearDim	← read_dims	→ align_text_to_extent, check_dims, dim_conflicts, geometry_conflicts, keepout_conflicts	kompas_lib.py:7772	L007772
+type	kompas_lib.dims.DiametralDim	← read_diametral	→	kompas_lib.py:7893	L007893
+type	kompas_lib.dims.stacking.Span	←	→ inside, nested_in, partial, stack, stack_exact, tiers	kompas_lib.py:8175	L008175
+type	kompas_lib.dims.stacking.Stacking	← stack	→	kompas_lib.py:8219	L008219
+type	kompas_lib.drawing.Drawing	← Drawing.geometry_cache, Kompas.new_drawing	→ Sheet, View, arrange_sheet, arrange_views, check_dimensions, check_layout, find_main_view, infer_roles	kompas_lib.py:6905	L006905
+type	kompas_lib.drawing.Sheet	← Drawing.sheet, Drawing.sheets	→	kompas_lib.py:6368	L006368
+type	kompas_lib.drawing.Stamp	← Sheet.stamp	→	kompas_lib.py:6290	L006290
+type	kompas_lib.drawing.RevolutionViews	← suggest_revolution_views	→	kompas_lib.py:10611	L010611
+type	kompas_lib.drawing.Curve2D	← View.curves, View.project	→ View.content_bbox	kompas_lib.py:6459	L006459
+type	kompas_lib.drawing.View	← Drawing.add_section, Drawing.add_standard_views, Drawing.view, Drawing.views, View.base_view, find_main_view	→ Drawing.add_section, Drawing.capture_region, Drawing.invalidate_geometry, View.cut, add_dimensions, annotation_keepouts, arrange_dimensions, arrange_sheet, arrange_views, infer_roles, leader_segments, overall_dims, read_diametral, read_dims … +6	kompas_lib.py:6542	L006542
+type	kompas_lib.DocumentType	← Document.type	→ Document.require	kompas_lib.py:241	L000241
+type	kompas_lib.SheetFormat	← Sheet.format	→ Sheet.set_format, arrange_sheet, format_size	kompas_lib.py:253	L000253
+type	kompas_lib.Projection	← Drawing.add_standard_views	→ Drawing.add_standard_views, RevolutionViews, render_model	kompas_lib.py:264	L000264
+type	kompas_lib.ViewType	← View.type	→	kompas_lib.py:290	L000290
+type	kompas_lib.StampCell	←	→ Stamp.has_cell, Stamp.is_linked, Stamp.raw_text, Stamp.set, Stamp.update	kompas_lib.py:304	L000304
+type	kompas_lib.enums.HideMessage	←	→ Kompas.quiet	kompas_lib.py:350	L000350
+type	kompas_lib.RasterFormat	←	→ render_document	kompas_lib.py:357	L000357
+type	kompas_lib.Point	← Arc.ends, Arc.point, Curve2D.extremes, Curve2D.vertices, Line.ends, LinearDim.pt, OBox.corners, OBox.local, OBox.point, PdfView.origin, Rect.center, View.cut_line, View.from_sheet, View.move_by … +7	→ Angle, ArcGroup, Curve2D, DiamRequest, Diameter, DiametralDim, Dim, DimRequest, FlatFeature, Leader, LinearDim, LinearDim.along, LinearDim.normal, OBox … +12	kompas_lib.py:781	L000781
+type	kompas_lib.Rect	← Curve2D.bbox, DiametralDim.bbox, Drawing.objects_bbox, LinearDim.bbox, LinearDim.rect, LinearDim.text_box, Loop.bbox, OBox.bbox, PdfPage.frame, PdfPage.stamp, PdfPage.tiles, Rect.expand, Rect.inflate, Rect.intersection … +13	→ Annotation, Drawing.capture_region, OBox.intersects, OBox.of, PdfDrawing.geometry, PdfDrawing.render, PdfView, Rect.contains, Rect.intersection, Rect.intersects, Rect.union, SegmentIndex.query, View.cut, ViewBox … +19	kompas_lib.py:796	L000796
+type	kompas_lib.geom.Segment	← Arc.segments, Circle.segments, Curve2D.segments, DiametralDim.dim_line, DiametralDim.ext_lines, DiametralDim.segments, Line.segments, LinearDim.dim_line, LinearDim.ext_lines, LinearDim.segments, SegmentIndex.query, SketchText.segments, arc_polyline, leader_segments … +1	→ OBox.hits_segment, SegmentIndex, check_dims, collinear_overlap, geometry_conflicts, leader_cost, plan_dimensions, segment_hits_rect, segment_rect_overlap, segments_cross	kompas_lib.py:864	L000864
+type	kompas_lib.geom.SegmentIndex	← as_index	→	kompas_lib.py:877	L000877
+type	kompas_lib.geom.OBox	← OBox.of	→ OBox.intersects, OBox.of	kompas_lib.py:1029	L001029
+type	kompas_lib.gost.Scale	← nearest_scale_not_above, scale_from_factor	→	kompas_lib.py:1176	L001176
+type	kompas_lib.layout.LayoutReport	← arrange_sheet, arrange_views	→	kompas_lib.py:7424	L007424
+type	kompas_lib.layout.Role	← infer_roles	→ ViewBox, arrange_sheet, arrange_views	kompas_lib.py:7132	L007132
+type	kompas_lib.layout.LayoutConfig	←	→ arrange, arrange_sheet, arrange_views, check_layout, fit_scale	kompas_lib.py:7159	L007159
+type	kompas_lib.layout.ViewBox	← scaled_boxes	→ arrange, fit_scale, scaled_boxes	kompas_lib.py:7178	L007178
+type	kompas_lib.layout.ViewPlacement	← arrange	→ LayoutReport	kompas_lib.py:7201	L007201
+type	kompas_lib.model.Box3	← Component.box, PartDocument.box	→ Edge, Face, Metrics	kompas_lib.py:1582	L001582
+type	kompas_lib.model.Face	← Component.faces, PartBuilder.faces, PartDocument.faces, analyse, read_faces	→ PartBuilder.chamfer, PartBuilder.hole, PartBuilder.surface_point, PartBuilder.thread, measure_faces	kompas_lib.py:1600	L001600
+type	kompas_lib.model.Edge	← PartBuilder.chain, PartBuilder.edges, PartBuilder.edges_between, PartDocument.edges, complete_chains, continuations, read_edges	→ Chain, PartBuilder.chain, chain_issues, complete_chains, continuations, edge_chains, smooth_joint, tangent_at	kompas_lib.py:1625	L001625
+type	kompas_lib.model.PartDocument	← Kompas.new_part, Kompas.scratch_part	→ Embodiments, PartBuilder, audit, check_dimensions, check_drawing, check_mass, hidden_auxiliary, mass_accuracy, material, measure_model, model_dpi, model_threads, render_model, set_material	kompas_lib.py:1723	L001723
+type	kompas_lib.pdf_drawing.Annotation	← PdfDrawing.annotations, PdfPage.find, attach_counts, dedupe, diff_annotations, merge_numbered	→ PdfPage, attach_counts, dedupe, diff_annotations, merge_numbered, reconcile	kompas_lib.py:2160	L002160
+type	kompas_lib.pdf_drawing.PdfPage	←	→ PdfDrawing	kompas_lib.py:2193	L002193
+type	kompas_lib.pdf_drawing.PdfDrawing	← read_pdf_drawing	→	kompas_lib.py:2255	L002255
+type	kompas_lib.pdf_geometry.Stroke	← ViewGeometry.arcs, ViewGeometry.lines, ViewGeometry.near	→ ArcGroup, ViewGeometry	kompas_lib.py:2587	L002587
+type	kompas_lib.pdf_geometry.ArcGroup	← ViewGeometry.circles	→	kompas_lib.py:2629	L002629
+type	kompas_lib.pdf_geometry.ViewGeometry	← PdfDrawing.geometry, PdfView.geometry, ViewGeometry.within, view_geometry	→	kompas_lib.py:2643	L002643
+type	kompas_lib.pdf_geometry.PdfView	← PdfDrawing.views, find_views	→	kompas_lib.py:2785	L002785
+type	kompas_lib.watchdog.ModalDialog	← modal_dialogs	→	kompas_lib.py:681	L000681
+module	kompas_lib		kompas_lib — высокоуровневая библиотека для ИИ-агентов поверх KsAPI КОМПАС-3D.	kompas_lib.py:15341	L015341
+module	kompas_lib._compat		Нормализация подтверждённых особенностей KsAPI.	kompas_lib.py:474	L000474
+func	kompas_lib._compat.position_dimension_text	(ks, obj, mode, base=0, anchor=None)	Применить поддерживаемый режим, вернуть фактическую точку текста.	kompas_lib.py:479	L000479
+module	kompas_lib._loader		Поиск установленного КОМПАС-3D и загрузка `ksapi.py` из его каталога Bin.	kompas_lib.py:508	L000508
+func	kompas_lib._loader.running_kompas_dirs	() -> list[Path]	Каталоги запущенных процессов KOMPAS.exe (Windows, через Toolhelp32 + QueryFullProcessImageNameW).	kompas_lib.py:542	L000542
+func	kompas_lib._loader.candidate_dirs	() -> list[Path]	Каталоги, в которых ищется ksapi.py, в порядке приоритета: KOMPAS_BIN → запущенный KOMPAS.exe → реестр → установленные версии (новые первыми).	kompas_lib.py:587	L000587
+func	kompas_lib._loader.find_kompas_bin	() -> Path		kompas_lib.py:604	L000604
+func	kompas_lib._loader.load	(bin_dir=None) -> ModuleType	Загружает ksapi (один раз на процесс) и возвращает модуль.	kompas_lib.py:624	L000624
+func	kompas_lib._loader.ks	() -> ModuleType	Модуль ksapi (загружается при первом обращении).	kompas_lib.py:648	L000648
+func	kompas_lib._loader.bin_dir	() -> Path		kompas_lib.py:653	L000653
+func	kompas_lib._loader.flat_constants	() -> dict[str, int]	Плоские константы установленного КОМПАСа (constants.py + constants3d.py).	kompas_lib.py:658	L000658
+module	kompas_lib.assembly		Сборки: вставка моделей, сопряжения по портам, проверка.	kompas_lib.py:15290	L015290
+module	kompas_lib.assembly.component		Компонент сборки (вставка) и базы для сопряжений.	kompas_lib.py:14497	L014497
+class	kompas_lib.assembly.Placement	(origin, x, y, z)	Положение компонента в СК родителя: начало и орты осей.	kompas_lib.py:14523	L014523
+class	kompas_lib.assembly.Ref	(label, kind, raw, component=None, port=None)	База сопряжения: KsAPI-объект + геометрия порта (в СК компонента) для проверки по факту.	kompas_lib.py:14538	L014538
+method	kompas_lib.assembly.Ref.world	() -> Port | None	Геометрия базы в СК сборки при текущем положении компонента.	kompas_lib.py:14546	L014546
+class	kompas_lib.assembly.Component	(doc, part, path, parent=None)	Вставка в сборку.	kompas_lib.py:14562	L014562
+prop	kompas_lib.assembly.Component.name	-> str		kompas_lib.py:14588	L014588
+prop	kompas_lib.assembly.Component.marking	-> str	Обозначение.	kompas_lib.py:14592	L014592
+prop	kompas_lib.assembly.Component.file	-> str	Полный путь к файлу-источнику ('>>…' у локальной детали).	kompas_lib.py:14597	L014597
+prop	kompas_lib.assembly.Component.is_assembly	-> bool		kompas_lib.py:14602	L014602
+prop	kompas_lib.assembly.Component.is_local	-> bool		kompas_lib.py:14606	L014606
+prop	kompas_lib.assembly.Component.fixed	-> bool		kompas_lib.py:14610	L014610
+prop	kompas_lib.assembly.Component.depth	-> int		kompas_lib.py:14620	L014620
+prop	kompas_lib.assembly.Component.placement	-> Placement	Положение в СК родителя (для вложенных — в СК подсборки; в СК сборки — `matrix()`).	kompas_lib.py:14625	L014625
+method	kompas_lib.assembly.Component.matrix	() -> list[float]	Матрица 4×4 (по строкам, перенос в последней строке): СК компонента → СК сборки.	kompas_lib.py:14632	L014632
+method	kompas_lib.assembly.Component.box	() -> Box3	Габарит в СК сборки.	kompas_lib.py:14636	L014636
+method	kompas_lib.assembly.Component.move	(origin=None, *, x=None, z=None, rotate=None, by=None) -> Placement	Переместить без сопряжений: `origin` — новое начало СК, `by` — сдвиг, `x`/`z` — новые направления осей, `rotate=((ax, ay, az), угол°)` — поворот вокр…	kompas_lib.py:14641	L014641
+method	kompas_lib.assembly.Component.children	() -> list[Component]	Прямые вставки подсборки (у детали — пусто).	kompas_lib.py:14667	L014667
+method	kompas_lib.assembly.Component.walk	() -> Iterator[Component]		kompas_lib.py:14673	L014673
+method	kompas_lib.assembly.Component.faces	() -> list[Face]	Грани детали в её собственной СК (кэш на файл).	kompas_lib.py:14685	L014685
+method	kompas_lib.assembly.Component.ports	() -> PortList	Посадочные места: цилиндры (ext/int Ø) и плоскости (plane ±X#n) в СК детали.	kompas_lib.py:14689	L014689
+method	kompas_lib.assembly.Component.raw_faces	() -> list	Грани этой вставки (объекты KsAPI) в порядке `faces()` — для сопряжений и измерений.	kompas_lib.py:14696	L014696
+method	kompas_lib.assembly.Component.port	(query) -> Ref	База сопряжения по порту: 'ext Ø54', 'int Ø9#2', 'plane +X#1'.	kompas_lib.py:14702	L014702
+method	kompas_lib.assembly.Component.plane	(name='XY') -> Ref	Системная плоскость компонента: 'XY', 'XZ', 'YZ'.	kompas_lib.py:14709	L014709
+method	kompas_lib.assembly.Component.axis	(name='X') -> Ref	Системная ось компонента: 'X', 'Y', 'Z'.	kompas_lib.py:14718	L014718
+method	kompas_lib.assembly.Component.ref	(spec) -> Ref	База по строке: порт ('ext Ø54'), плоскость ('XY') или ось ('axis X').	kompas_lib.py:14727	L014727
+method	kompas_lib.assembly.Component.mates	() -> list	Сопряжения, в которых участвует компонент.	kompas_lib.py:14738	L014738
+method	kompas_lib.assembly.Component.info	() -> dict		kompas_lib.py:14742	L014742
+func	kompas_lib.assembly.component.set_axes	(pl, x, z)	Задать орты СК: x и z (z ортогонализуется к x), y = z × x.	kompas_lib.py:14749	L014749
+func	kompas_lib.assembly.component.analyse	(ks, comp) -> tuple[list[Face], PortList]	Грани и порты компонента (дорого: ~2 мс на грань; результат кэшируется документом по файлу).	kompas_lib.py:14761	L014761
+module	kompas_lib.assembly.document		Документ сборки: состав, вставка, сопряжения, проверка.	kompas_lib.py:14773	L014773
+class	kompas_lib.assembly.Mate	(kind, a, b, value=None, error=False, fact=None, name='', raw=None, overlaps=…)	Сопряжение: вид, базы, состояние КОМПАСа и проверка по факту.	kompas_lib.py:14796	L014796
+prop	kompas_lib.assembly.Mate.ok	-> bool	Сопряжение выполнено (пересечения тел сюда не входят — см. `overlaps`).	kompas_lib.py:14809	L014809
+class	kompas_lib.assembly.AssemblyIssue	(severity, code, message, components=())		kompas_lib.py:14826	L014826
+class	kompas_lib.assembly.AssemblyReport	(issues=…, stats=…)		kompas_lib.py:14838	L014838
+prop	kompas_lib.assembly.AssemblyReport.errors	-> list[AssemblyIssue]		kompas_lib.py:14843	L014843
+prop	kompas_lib.assembly.AssemblyReport.warnings	-> list[AssemblyIssue]		kompas_lib.py:14847	L014847
+method	kompas_lib.assembly.AssemblyReport.summary	() -> str		kompas_lib.py:14850	L014850
+class	kompas_lib.assembly.AssemblyDocument	(kompas, raw_doc)	[PartDocument] Сборка (.a3d).	kompas_lib.py:14859	L014859
+method	kompas_lib.assembly.AssemblyDocument.components	(depth=1) -> list[Component]	Вставки до глубины `depth` (1 — прямые; None — все), в порядке дерева.	kompas_lib.py:14880	L014880
+method	kompas_lib.assembly.AssemblyDocument.component	(query) -> Component	Компонент по пути ('Вал:1', 'Подшипник:1/Кольцо:1') или по уникальной части имени/обозначения/файла.	kompas_lib.py:14892	L014892
+method	kompas_lib.assembly.AssemblyDocument.find	(text, among=None) -> list[Component]	Компоненты, у которых имя, путь, обозначение или имя файла содержат `text` (без учёта регистра).	kompas_lib.py:14910	L014910
+method	kompas_lib.assembly.AssemblyDocument.tree	(depth=1) -> str	Таблица состава для агента: путь, обозначение, файл, фиксация, число сопряжений, положение, габарит.	kompas_lib.py:14917	L014917
+method	kompas_lib.assembly.AssemblyDocument.info	() -> dict		kompas_lib.py:14941	L014941
+method	kompas_lib.assembly.AssemblyDocument.insert	(file, at=None, *, x=None, z=None, fixed=False, redraw=False, check_overlap=True) -> Component	Вставить деталь/сборку из файла со связью с файлом.	kompas_lib.py:14948	L014948
+method	kompas_lib.assembly.AssemblyDocument.plane	(name='XY') -> Ref	Системная плоскость сборки ('XY', 'XZ', 'YZ') как база сопряжения.	kompas_lib.py:14987	L014987
+method	kompas_lib.assembly.AssemblyDocument.axis	(name='X') -> Ref	Системная ось сборки ('X', 'Y', 'Z').	kompas_lib.py:14995	L014995
+method	kompas_lib.assembly.AssemblyDocument.ref	(spec) -> Ref	База по строке 'путь/порт': 'Вал:1/ext Ø54', 'Корпус:1/plane +X#1', 'Втулка:1/XY', 'сборка/XY'.	kompas_lib.py:15003	L015003
+method	kompas_lib.assembly.AssemblyDocument.mates	(component=None) -> list[Mate]	Сопряжения сборки (или одного компонента) с состоянием ошибки.	kompas_lib.py:15059	L015059
+method	kompas_lib.assembly.AssemblyDocument.mate	(a, b, kind, value=None, align=None, *, keep_failed=False, check_overlap=True) -> Mate	Сопрячь базы a и b.	kompas_lib.py:15080	L015080
+method	kompas_lib.assembly.AssemblyDocument.delete_mate	(mate)		kompas_lib.py:15152	L015152
+method	kompas_lib.assembly.AssemblyDocument.overlaps	(component, gap=None, min_volume=0.001) -> list[AssemblyIssue]	Пересечения тел одного компонента с соседями (быстро: только соседи с пересекающимся габаритом).	kompas_lib.py:15203	L015203
+method	kompas_lib.assembly.AssemblyDocument.collisions	(depth=1, gap=None, min_volume=0.001) -> list[AssemblyIssue]	Пересечения тел между компонентами уровня `depth` (и зазоры меньше `gap`, мм).	kompas_lib.py:15220	L015220
+method	kompas_lib.assembly.AssemblyDocument.check	(collisions=True, gap=None, depth=1) -> AssemblyReport	Проверка: ошибки сопряжений, нет фиксированной базы, «висящие» компоненты, пересечения/зазоры.	kompas_lib.py:15241	L015241
+method	kompas_lib.assembly.AssemblyDocument.undo	()	Отменить последний шаг (весь блок `edit()`).	kompas_lib.py:15269	L015269
+method	kompas_lib.assembly.AssemblyDocument.render	(projection=None, dpi=100, max_px=1800, **kw) -> bytes	PNG сборки с ракурса (по умолчанию изометрия); `capture()` — снимок окна как есть.	kompas_lib.py:15275	L015275
+module	kompas_lib.assembly.mates		Виды сопряжений, проверка допустимости баз и проверка результата по факту (чистый код).	kompas_lib.py:14364	L014364
+func	kompas_lib.assembly.mates.kind_of	(name) -> str		kompas_lib.py:14409	L014409
+func	kompas_lib.assembly.mates.align_of	(name)		kompas_lib.py:14418	L014418
+func	kompas_lib.assembly.mates.validate	(kind, a, b, value)	Проверить сочетание видов баз (plane/cylinder/axis/edge/ref_plane) и наличие value.	kompas_lib.py:14425	L014425
+class	kompas_lib.assembly.Fact	(ok, detail)	Проверка сопряжения по геометрии в СК сборки.	kompas_lib.py:14440	L014440
+func	kompas_lib.assembly.mates.verify	(kind, a, b, value=None) -> Fact	Выполнено ли сопряжение `kind` между портами a и b (уже в СК сборки).	kompas_lib.py:14446	L014446
+module	kompas_lib.assembly.ports		Порты — посадочные места детали для сопряжений (чистый код, без KsAPI).	kompas_lib.py:13987	L013987
+func	kompas_lib.assembly.ports.canonical_dir	(d) -> Vec3	Направление прямой без знака: первая ненулевая компонента положительна.	kompas_lib.py:14022	L014022
+func	kompas_lib.assembly.ports.apply	(m, p) -> Vec3	Точка из СК компонента в СК сборки (матрица KsAPI: строки — оси, последняя строка — перенос).	kompas_lib.py:14031	L014031
+func	kompas_lib.assembly.ports.apply_dir	(m, v) -> Vec3		kompas_lib.py:14039	L014039
+func	kompas_lib.assembly.ports.dir_label	(d, signed=True) -> str	'+X' для осевого направления, иначе 'n(0.707,0.707,0)'.	kompas_lib.py:14048	L014048
+func	kompas_lib.assembly.ports.fmt_mm	(v) -> str		kompas_lib.py:14057	L014057
+class	kompas_lib.assembly.Port	(id, kind, origin, direction, side=None, diameter=None, length=None, area=0.0, faces=(), group='')	Посадочное место детали: цилиндр (ось + Ø) или плоскость (точка + нормаль наружу).	kompas_lib.py:14063	L014063
+prop	kompas_lib.assembly.Port.radius	-> float | None		kompas_lib.py:14077	L014077
+method	kompas_lib.assembly.Port.placed	(m) -> Port	Тот же порт в СК сборки.	kompas_lib.py:14080	L014080
+method	kompas_lib.assembly.Port.describe	() -> str	Строка для списка портов: id и где он находится (в СК детали).	kompas_lib.py:14084	L014084
+class	kompas_lib.assembly.PortNotFound		[LookupError] Порт не найден или запрос неоднозначен; текст перечисляет подходящие варианты.	kompas_lib.py:14107	L014107
+class	kompas_lib.assembly.PortList	(ports=…, title='')	Порты одной детали.	kompas_lib.py:14112	L014112
+method	kompas_lib.assembly.PortList.by_id	() -> dict[str, Port]		kompas_lib.py:14126	L014126
+method	kompas_lib.assembly.PortList.cylinders	(side=None) -> list[Port]		kompas_lib.py:14129	L014129
+method	kompas_lib.assembly.PortList.planes	() -> list[Port]		kompas_lib.py:14132	L014132
+method	kompas_lib.assembly.PortList.find	(query) -> Port	Порт по id или по неполному запросу ('Ø54', 'int d9#2', 'plane +x').	kompas_lib.py:14135	L014135
+method	kompas_lib.assembly.PortList.select	(kind=None, side=None, d=None, normal=None, tol=LINEAR_TOL) -> list[Port]	Фильтр по признакам: kind='cylinder'|'plane', side='ext'|'int', d=Ø, normal='+X' или вектор.	kompas_lib.py:14155	L014155
+method	kompas_lib.assembly.PortList.summary	(limit=40) -> str	Сводка: одинаковые порты свёрнуты в строку 'int Ø9 ×6 (#1..#6)'.	kompas_lib.py:14172	L014172
+func	kompas_lib.assembly.build_ports	(faces, title='', tol=LINEAR_TOL) -> PortList	Порты из граней `model.Face` (в СК файла детали).	kompas_lib.py:14200	L014200
+func	kompas_lib.assembly.ports.parse_query	(q) -> dict	'int Ø9#2' → {'side': 'int', 'd': 9.0, 'n': 2}; 'plane +x' → {'kind': 'plane', 'normal': '+X'}.	kompas_lib.py:14288	L014288
+func	kompas_lib.assembly.ports.angle_deg	(a, b, unsigned=False) -> float		kompas_lib.py:14344	L014344
+func	kompas_lib.assembly.ports.line_distance	(o1, d1, p) -> float	Расстояние от точки p до прямой (o1, d1).	kompas_lib.py:14351	L014351
+func	kompas_lib.assembly.ports.plane_distance	(o, n, p) -> float	Знаковое расстояние от плоскости (o, n) до точки p.	kompas_lib.py:14356	L014356
+module	kompas_lib.build		Построение детали: эскизы, операции с проверкой результата, отбор рёбер и граней, исполнения, аудит.	kompas_lib.py:16967	L016967
+module	kompas_lib.build.audit		Аудит дерева построения: что в нём лежит, по каждому исполнению.	kompas_lib.py:4034	L004034
+class	kompas_lib.build.TreeItem	(name, type, kind, excluded, error, state='', used=True, raw=None)		kompas_lib.py:4056	L004056
+class	kompas_lib.build.Audit	(embodiment, marking, items, bodies, volume, mass, variables=…, unused_variables=…)		kompas_lib.py:4068	L004068
+method	kompas_lib.build.Audit.count	(kind, include_excluded=True) -> int		kompas_lib.py:4078	L004078
+prop	kompas_lib.build.Audit.total	-> int	Эскизы + операции + вспомогательные плоскости (включая исключённые).	kompas_lib.py:4082	L004082
+prop	kompas_lib.build.Audit.issues	-> list[str]		kompas_lib.py:4087	L004087
+method	kompas_lib.build.Audit.summary	() -> str		kompas_lib.py:4098	L004098
+func	kompas_lib.build.tree	(ks, part, refresh=False) -> list[TreeItem]	Объекты дерева детали (текущего исполнения) в порядке построения, включая исключённые.	kompas_lib.py:4124	L004124
+func	kompas_lib.build.audit	(doc, refresh=False) -> list[Audit]	Аудит каждого исполнения.	kompas_lib.py:4150	L004150
+module	kompas_lib.build.builder		Построение детали: эскизы и операции с проверкой результата и откатом неудачного шага.	kompas_lib.py:15578	L015578
+class	kompas_lib.build.BuildError		[KompasError] Операция не выполнена или не изменила деталь; объект операции уже удалён из дерева.	kompas_lib.py:15627	L015627
+class	kompas_lib.build.Metrics	(volume, mass, faces, bodies, box)		kompas_lib.py:15632	L015632
+class	kompas_lib.build.Step	(name, kind, raw, before=None, after=None, sketch=None, warnings=…, facts=…, timings=…)	Результат операции построителя.	kompas_lib.py:15645	L015645
+prop	kompas_lib.build.Step.volume_delta	-> float		kompas_lib.py:15660	L015660
+class	kompas_lib.build.SurfacePoint	(point, normal, u, v, u_pct, v_pct, du, dv, shift)	Точка на грани, найденная однозначно — проекцией (`IMathSurface3D.NearPointProjection`), без подбора.	kompas_lib.py:15673	L015673
+class	kompas_lib.build.Sketch	(builder, raw, items, on_face=False)	Эскиз на плоскости.	kompas_lib.py:15690	L015690
+prop	kompas_lib.build.Sketch.name	-> str		kompas_lib.py:15710	L015710
+method	kompas_lib.build.Sketch.to_global	(x, y) -> Vec3		kompas_lib.py:15713	L015713
+prop	kompas_lib.build.Sketch.state	-> str	Определённость: defined | under | redundant | unknown (ISketch.GetConstraintsState).	kompas_lib.py:15718	L015718
+class	kompas_lib.build.PartBuilder	(doc, tol=0.001, constrain=False, *, quality='error', min_edge=0.001, min_face=0.0001)	Построение в текущем исполнении детали `doc`.	kompas_lib.py:15750	L015750
+prop	kompas_lib.build.PartBuilder.part			kompas_lib.py:15779	L015779
+prop	kompas_lib.build.PartBuilder.container			kompas_lib.py:15783	L015783
+prop	kompas_lib.build.PartBuilder.vars	-> Variables	Переменные текущего исполнения: `add/set/bind/list/usage` (см. `build.variables`).	kompas_lib.py:15787	L015787
+method	kompas_lib.build.PartBuilder.geometry_cache	()	Общий с doc.geometry_cache() снимок чтений; после сырых изменений — invalidate_geometry().	kompas_lib.py:15793	L015793
+method	kompas_lib.build.PartBuilder.invalidate_geometry	()	Сбросить геометрию/МЦХ после изменений через сырой KsAPI.	kompas_lib.py:15798	L015798
+method	kompas_lib.build.PartBuilder.plane	(ref)	Плоскость: "XY" | "XZ" | "YZ", грань (`Face`), результат `offset_plane` или объект KsAPI.	kompas_lib.py:15802	L015802
+method	kompas_lib.build.PartBuilder.axis	(ref)	Ось: "X" | "Y" | "Z" или объект KsAPI (ось, прямое ребро).	kompas_lib.py:15810	L015810
+method	kompas_lib.build.PartBuilder.frame	(ref) -> tuple[Vec3, Vec3, Vec3, Vec3]	Система координат эскиза на плоскости или грани `ref`: (начало, X, Y, нормаль) в мире.	kompas_lib.py:15818	L015818
+method	kompas_lib.build.PartBuilder.metrics	() -> Metrics		kompas_lib.py:15837	L015837
+method	kompas_lib.build.PartBuilder.edges	(of=None) -> list[Edge]	Рёбра детали или созданные операцией `of`.	kompas_lib.py:15853	L015853
+method	kompas_lib.build.PartBuilder.faces	(of=None, *, kinds=None) -> list[Face]	Грани детали или созданные операцией `of`.	kompas_lib.py:15861	L015861
+method	kompas_lib.build.PartBuilder.edges_between	(a, b=None, *, expect=None) -> list[Edge]	Рёбра стыка: одна смежная грань — из `a`, другая — из `b` (шаг, имя, грань или список).	kompas_lib.py:15878	L015878
+method	kompas_lib.build.PartBuilder.chain	(edges, angle=TANGENT_ANGLE) -> list[Edge]	Выбранные рёбра, достроенные до полных касательных цепочек (по смежности рёбер детали).	kompas_lib.py:15909	L015909
+method	kompas_lib.build.PartBuilder.check_quality	(op=None) -> tuple[list[str], list[str]]	Контроль геометрии (п.9): (ошибки, предупреждения) для результата операции `op` (её рёбра и грани) или всей детали.	kompas_lib.py:15946	L015946
+method	kompas_lib.build.PartBuilder.get	(name)	Объект дерева текущего исполнения по имени, приведённый к своему интерфейсу (IExtrusion, IFillet…).	kompas_lib.py:15994	L015994
+method	kompas_lib.build.PartBuilder.step	(name) -> Step	Шаг по имени объекта дерева — для `edges(of=)`, `faces(of=)`, `mirror`, массивов.	kompas_lib.py:16014	L016014
+method	kompas_lib.build.PartBuilder.run	(op, kind, expect='change', *, name=None, sketch=None, check=None, hint='') -> Step	Выполнить операцию, собранную сырым KsAPI (чего нет в построителе), с теми же проверками и откатом.	kompas_lib.py:16026	L016026
+method	kompas_lib.build.PartBuilder.modify	(name, fn, expect='change') -> Step	Изменить параметры объекта: `fn(obj)` вызывает сеттеры KsAPI, затем Update и проверка.	kompas_lib.py:16043	L016043
+method	kompas_lib.build.PartBuilder.exclude	(name, exclude=True) -> Step	Исключить объект из расчёта (или вернуть).	kompas_lib.py:16066	L016066
+method	kompas_lib.build.PartBuilder.edit_sketch	(name, items, check=True, constrain=None) -> Step	Заменить содержимое эскиза новыми элементами (операции, использующие эскиз, перестраиваются).	kompas_lib.py:16077	L016077
+method	kompas_lib.build.PartBuilder.offset_plane	(base, offset, reverse=False, name=None)	Смещённая вспомогательная плоскость (считается в дереве как объект).	kompas_lib.py:16137	L016137
+method	kompas_lib.build.PartBuilder.sketch	(plane, items, name=None, check=True, closed=True, constrain=None) -> Sketch	Эскиз из элементов `contour`.	kompas_lib.py:16153	L016153
+method	kompas_lib.build.PartBuilder.constrain	(sketch, *, force=False) -> ConstraintReport	Полностью определить эскиз: совпадения, горизонталь/вертикаль, касания, привязка к началу координат, ведущие размеры с переменными; избыточные кандид…	kompas_lib.py:16200	L016200
+method	kompas_lib.build.PartBuilder.extrude	(sketch, depth=0.0, *, reverse=False, depth2=None, symmetric=False, through=False, draft=0.0, draft_widen=False, up_to=None, name=None) -> Step	Добавить материал выдавливанием.	kompas_lib.py:16214	L016214
+method	kompas_lib.build.PartBuilder.cut	(sketch, depth=0.0, *, reverse=False, depth2=None, symmetric=False, through=False, draft=0.0, draft_widen=False, up_to=None, name=None) -> Step	Вырезать выдавливанием.	kompas_lib.py:16224	L016224
+method	kompas_lib.build.PartBuilder.revolve	(sketch, angle=360.0, *, cut=False, reverse=False, angle2=None, name=None) -> Step	Вращение вокруг осевой линии эскиза (элемент стиля "axis").	kompas_lib.py:16285	L016285
+method	kompas_lib.build.PartBuilder.fillet	(edges, radius, name=None, *, chain=True) -> Step	Скругление рёбер постоянным радиусом.	kompas_lib.py:16342	L016342
+method	kompas_lib.build.PartBuilder.chamfer	(edges, distance, distance2=None, *, angle=None, face=None, name=None, chain=True) -> Step	Фаска на рёбрах.	kompas_lib.py:16371	L016371
+method	kompas_lib.build.PartBuilder.mirror	(steps, plane, name=None) -> Step	Зеркальный массив операций относительно плоскости.	kompas_lib.py:16469	L016469
+method	kompas_lib.build.PartBuilder.circular_pattern	(steps, axis, count, angle=360.0, name=None) -> Step	Круговой массив: `count` экземпляров (с исходным) на угле `angle` между крайними (360 — равномерно по кругу: 2 шт. → через 180°; 3 шт. на 90° → 0°, 4…	kompas_lib.py:16478	L016478
+method	kompas_lib.build.PartBuilder.linear_pattern	(steps, axis, count, step, *, reverse=False, axis2=None, count2=1, step2=0.0, reverse2=False, name=None) -> Step	Линейный массив (сетка): `count` экземпляров (с исходным) с шагом `step` вдоль `axis` ("X" | "Y" | "Z" | прямое ребро); вторая ось сетки — `axis2/cou…	kompas_lib.py:16505	L016505
+method	kompas_lib.build.PartBuilder.hole	(face, at, diameter=None, depth=None, *, through=False, end='cone', end_angle=118.0, counterbore=None, countersink=None, thread=None, thread_length=None, name=None) -> Step	Отверстие КОМПАСа на грани детали — одна операция без эскиза, идёт в материал.	kompas_lib.py:16528	L016528
+method	kompas_lib.build.PartBuilder.surface_point	(face, at) -> SurfacePoint	Точка мира `at` → точка на грани однозначно (п.8): проекция `NearPointProjection`, параметры u, v и их доли диапазонов (%, для `ksOffsetByUV`), норма…	kompas_lib.py:16623	L016623
+method	kompas_lib.build.PartBuilder.shell	(faces, thickness, *, outward=False, name=None) -> Step	Оболочка: удалить грани `faces` (открытые стороны) и оставить стенку `thickness` внутрь тела (`outward=True` — наружу).	kompas_lib.py:16660	L016660
+method	kompas_lib.build.PartBuilder.rib	(sketch, thickness, *, angle=0.0, segment=0, name=None) -> Step	Ребро жёсткости по открытому контуру эскиза (`sketch(..., closed=False)`), толщина симметрично плоскости эскиза.	kompas_lib.py:16673	L016673
+method	kompas_lib.build.PartBuilder.draft	(faces, base, angle, *, outward=False, name=None) -> Step	Уклон граней `faces` на `angle`° от основания `base` (грань/плоскость, остающаяся на месте).	kompas_lib.py:16696	L016696
+method	kompas_lib.build.PartBuilder.relief	(sketch, faces, depth, *, raised=False, name=None) -> Step	Рельеф — надпись (`text(...)` в эскизе) или контуры эскиза на гранях `faces`: вырез глубиной `depth`, `raised=True` — выступ высотой `depth` (`IRelie…	kompas_lib.py:16709	L016709
+method	kompas_lib.build.PartBuilder.thread	(face, spec, *, length=None, start=None, name=None) -> Step	Условное изображение резьбы на цилиндрической грани (вал или отверстие).	kompas_lib.py:16732	L016732
+method	kompas_lib.build.PartBuilder.report	() -> str		kompas_lib.py:16819	L016819
+module	kompas_lib.build.constraints		Полное определение эскиза: ограничения и ведущие размеры (spikes/s103–s103f).	kompas_lib.py:4490	L004490
+class	kompas_lib.build.constraints.Geo	(kind, index, pts, r=0.0)	Объект эскиза: `index` — номер в списке объектов, `pts` — {индекс точки KsAPI: (x, y)}.	kompas_lib.py:4520	L004520
+prop	kompas_lib.build.constraints.Geo.center			kompas_lib.py:4528	L004528
+class	kompas_lib.build.constraints.Con	(type, a, ia=-1, b=None, ib=-1, desc='')	Геометрическое ограничение: тип ksConstraintTypeEnum (имя), объект/точка, партнёр/точка.	kompas_lib.py:4533	L004533
+class	kompas_lib.build.constraints.SketchDim	(kind, p1=(0.0, 0.0), p2=(0.0, 0.0), obj=None, desc='')	Ведущий размер: diameter | radius (объект `obj`) или h | v | parallel между точками p1, p2.	kompas_lib.py:4544	L004544
+prop	kompas_lib.build.constraints.SketchDim.value	-> float		kompas_lib.py:4553	L004553
+class	kompas_lib.build.constraints.Plan	(items=…, origin_point=False)		kompas_lib.py:4559	L004559
+func	kompas_lib.build.plan_constraints	(geos) -> Plan		kompas_lib.py:4585	L004585
+func	kompas_lib.build.sketch_edit	(ks, sketch_raw)	Редактирование эскиза → (IDrawingContainer, ISymbols2DContainer) вида эскиза.	kompas_lib.py:4712	L004712
+func	kompas_lib.build.sketch_state	(ks, sketch_raw, refresh=False) -> str	defined | under | redundant | unknown.	kompas_lib.py:4736	L004736
+class	kompas_lib.build.ConstraintReport	(sketch, state, constraints=…, dimensions=…, rejected=…, origin_point=False, unchanged=False)		kompas_lib.py:4747	L004747
+prop	kompas_lib.build.ConstraintReport.ok	-> bool		kompas_lib.py:4757	L004757
+func	kompas_lib.build.constraints.read_geometry	(ks, dc) -> tuple[list[Geo], list]	Геометрия вида эскиза: объекты Geo и соответствующие им объекты KsAPI (тот же порядок).	kompas_lib.py:4768	L004768
+func	kompas_lib.build.constraints.apply_constraints	(ks, sketch_raw, name='', *, force=False) -> ConstraintReport	Полностью определить эскиз `sketch_raw` (ISketch): план → ограничения и ведущие размеры с отбором избыточных → проверка, что геометрия не сдвинулась…	kompas_lib.py:4801	L004801
+module	kompas_lib.build.contour		Элементы эскиза и проверка контура до передачи в КОМПАС (чистый Python, без KsAPI).	kompas_lib.py:3373	L003373
+class	kompas_lib.build.Line	(x1, y1, x2, y2, style='normal')		kompas_lib.py:3393	L003393
+prop	kompas_lib.build.Line.ends	-> tuple[Point, Point]		kompas_lib.py:3401	L003401
+method	kompas_lib.build.Line.segments	() -> list[Segment]		kompas_lib.py:3404	L003404
+class	kompas_lib.build.Arc	(xc, yc, r, a1, a2, ccw=True, style='normal')		kompas_lib.py:3409	L003409
+method	kompas_lib.build.Arc.point	(a) -> Point		kompas_lib.py:3418	L003418
+prop	kompas_lib.build.Arc.ends	-> tuple[Point, Point]		kompas_lib.py:3422	L003422
+method	kompas_lib.build.Arc.segments	() -> list[Segment]		kompas_lib.py:3425	L003425
+class	kompas_lib.build.Circle	(xc, yc, r, style='normal')		kompas_lib.py:3430	L003430
+prop	kompas_lib.build.Circle.ends	-> tuple		kompas_lib.py:3437	L003437
+method	kompas_lib.build.Circle.segments	() -> list[Segment]		kompas_lib.py:3440	L003440
+class	kompas_lib.build.SketchText	(x, y, text, height=5.0, font='GOST type A', align='center', angle=0.0, italic=False, style='text')	Надпись в эскизе — профиль для `PartBuilder.relief` (в контур не входит, `check_contour` её пропускает).	kompas_lib.py:3445	L003445
+prop	kompas_lib.build.SketchText.ends	-> tuple		kompas_lib.py:3458	L003458
+method	kompas_lib.build.SketchText.segments	() -> list[Segment]		kompas_lib.py:3461	L003461
+func	kompas_lib.build.line	(x1, y1, x2, y2, style='normal') -> Line		kompas_lib.py:3469	L003469
+func	kompas_lib.build.circle	(xc, yc, r, style='normal') -> Circle		kompas_lib.py:3473	L003473
+func	kompas_lib.build.arc	(xc, yc, r, a1, a2, ccw=True, style='normal') -> Arc		kompas_lib.py:3477	L003477
+func	kompas_lib.build.arc_by_points	(xc, yc, start, end, ccw=True, style='normal') -> Arc	Дуга по центру и двум концам (радиус — по началу; конец должен лежать на той же окружности).	kompas_lib.py:3481	L003481
+func	kompas_lib.build.polygon	(points, closed=True, style='normal') -> list[Line]		kompas_lib.py:3493	L003493
+func	kompas_lib.build.rect	(x1, y1, x2, y2, style='normal') -> list[Line]		kompas_lib.py:3499	L003499
+func	kompas_lib.build.text	(x, y, s, height=5.0, *, font='GOST type A', align='center', angle=0.0, italic=False) -> SketchText	Надпись в эскизе: `b.relief(b.sketch(плоскость, [text(0, 50, "WOW", 10)]), грани, 0.5)`.	kompas_lib.py:3503	L003503
+func	kompas_lib.build.check_contour	(items, tol=0.0001, closed=True, min_size=0.001, min_gap=0.001) -> list[str]	Проблемы контура (только элементы стиля normal) — до записи в КОМПАС.	kompas_lib.py:3510	L003510
+func	kompas_lib.build.snap_contour	(items, tol=0.0001) -> tuple[list[Item], float]	Сшить концы, совпадающие с точностью `tol`: концы отрезков переносятся точно в общую точку (конец дуги, если он есть в стыке, — дугу не двигаем; инач…	kompas_lib.py:3593	L003593
+func	kompas_lib.build.contour.bounds	(items) -> tuple[float, float, float, float]	Габарит элементов (x1, y1, x2, y2) по ломаной аппроксимации.	kompas_lib.py:3693	L003693
+func	kompas_lib.build.area	(items) -> float	Площадь области «внешние минус внутренние» для одного внешнего контура с отверстиями (по ломаной).	kompas_lib.py:3699	L003699
+module	kompas_lib.build.drawing_check		Сверка модели с чертежом: замеры по граням модели и реестр надписей чертежа со статусами.	kompas_lib.py:5295	L005295
+class	kompas_lib.build.Measure	(kind, value, what, src='', weak=False, place=None, faces=(), pitch=None, same=1, axis=None)	Замер модели: род, значение и что измерено.	kompas_lib.py:5528	L005528
+class	kompas_lib.build.ModelMeasures	()	Замеры модели с поиском по значению.	kompas_lib.py:5545	L005545
+method	kompas_lib.build.ModelMeasures.add	(kind, value, what, *, src='', weak=False, place=None, faces=(), pitch=None, axis=None)		kompas_lib.py:5554	L005554
+method	kompas_lib.build.ModelMeasures.items	(kind, weak=False) -> list[Measure]		kompas_lib.py:5572	L005572
+method	kompas_lib.build.ModelMeasures.find	(kind, lo, hi, weak=False) -> list[Measure]		kompas_lib.py:5584	L005584
+method	kompas_lib.build.ModelMeasures.nearest	(kind, value) -> Measure | None		kompas_lib.py:5588	L005588
+method	kompas_lib.build.ModelMeasures.summary	() -> str		kompas_lib.py:5599	L005599
+func	kompas_lib.build.measure_faces	(faces, threads=(), box=None, tol=0.001) -> ModelMeasures	Замеры по распознанным граням (без КОМПАСа).	kompas_lib.py:5613	L005613
+func	kompas_lib.build.drawing_check.model_threads	(doc) -> list[tuple[str, float, float | None]]	Резьбы детали (условные и в отверстиях): (обозначение, d, шаг).	kompas_lib.py:5894	L005894
+func	kompas_lib.build.measure_model	(doc) -> ModelMeasures	Замеры текущего исполнения детали.	kompas_lib.py:5906	L005906
+class	kompas_lib.build.CheckRow	(ids, text, kind, value=None, count=None, reference=False, suffix='', status=MANUAL, found=…, places=0, nearest=None, note='', rule=None)	Строка реестра: одна надпись (или одинаковые надписи с разных видов) и её статус.	kompas_lib.py:5917	L005917
+prop	kompas_lib.build.CheckRow.label	-> str		kompas_lib.py:5934	L005934
+class	kompas_lib.build.Extra	(kind, value, places, example, note='')	Элемент модели, которого на чертеже нет.	kompas_lib.py:5956	L005956
+class	kompas_lib.build.DrawingCheck	(rows, extras=…, source='', embodiment=None, annotations=0)	Реестр надписей чертежа со статусами и элементы модели без надписи.	kompas_lib.py:5970	L005970
+prop	kompas_lib.build.DrawingCheck.mismatches	-> list[CheckRow]		kompas_lib.py:5979	L005979
+prop	kompas_lib.build.DrawingCheck.ok	-> bool		kompas_lib.py:5983	L005983
+method	kompas_lib.build.DrawingCheck.find	(ref) -> CheckRow	Строка по id надписи («p1.t085»), её тексту («R512») или номеру.	kompas_lib.py:5986	L005986
+method	kompas_lib.build.DrawingCheck.mark	(ref, note='') -> CheckRow	Отметить строку «реализован» (проверено глазами, выполнено иначе…) с пояснением.	kompas_lib.py:5995	L005995
+method	kompas_lib.build.DrawingCheck.summary	(brief=False) -> str		kompas_lib.py:6001	L006001
+func	kompas_lib.build.reconcile	(annotations, measures, *, tol=0.01, angle_tol=0.05) -> DrawingCheck	Сверить надписи с замерами модели (без КОМПАСа).	kompas_lib.py:6209	L006209
+func	kompas_lib.build.check_drawing	(doc, source, *, embodiment=None, tol=0.01, angle_tol=0.05) -> DrawingCheck	Сверить модель (текущее исполнение или `embodiment`) с надписями чертежа: `PdfDrawing`, `PdfPage`, список `Annotation` или строк («Ø20», «4 отв. Ø9»,…	kompas_lib.py:6250	L006250
+module	kompas_lib.build.embodiments		Исполнения детали: создание зависимого, переключение, сравнение.	kompas_lib.py:4905	L004905
+func	kompas_lib.build.embodiments.object_params	(ks, mo, t, *, variables=None)	Снимок параметров объекта дерева для сравнения исполнений (None — тип не сравнивается по параметрам).	kompas_lib.py:4933	L004933
+class	kompas_lib.build.EmbodimentDiff	(a, b, added=…, removed=…, excluded=…, included=…, changed=…, variables=…, driven=…)		kompas_lib.py:5009	L005009
+prop	kompas_lib.build.EmbodimentDiff.total	-> int	Число объектов и переменных, которыми исполнение b отличается от a (без `driven`).	kompas_lib.py:5024	L005024
+method	kompas_lib.build.EmbodimentDiff.summary	() -> str		kompas_lib.py:5029	L005029
+class	kompas_lib.build.Embodiments	(doc)		kompas_lib.py:5046	L005046
+prop	kompas_lib.build.Embodiments.count	-> int		kompas_lib.py:5053	L005053
+prop	kompas_lib.build.Embodiments.current	-> int		kompas_lib.py:5057	L005057
+method	kompas_lib.build.Embodiments.marking	(i) -> str		kompas_lib.py:5060	L005060
+method	kompas_lib.build.Embodiments.add_dependent	(parent=0, base_marking='', number='', additional='') -> int	Зависимое исполнение от `parent`; возвращает его индекс.	kompas_lib.py:5063	L005063
+method	kompas_lib.build.Embodiments.activate	(i)		kompas_lib.py:5073	L005073
+method	kompas_lib.build.Embodiments.use	(i) -> Iterator[None]	Временно сделать исполнение i текущим (всё построение внутри идёт в него).	kompas_lib.py:5081	L005081
+method	kompas_lib.build.Embodiments.snapshot	(i) -> dict[str, tuple[int, bool, object]]	{имя: (тип, исключён, параметры)} для объектов дерева исполнения i.	kompas_lib.py:5090	L005090
+method	kompas_lib.build.Embodiments.variables	(i) -> dict[str, tuple[float, str, bool]]	{имя переменной детали: (значение, выражение, унаследована)} в исполнении i.	kompas_lib.py:5094	L005094
+method	kompas_lib.build.Embodiments.diff	(a=0, b=1) -> EmbodimentDiff	Отличия исполнения b от a: объекты дерева, их параметры и переменные детали.	kompas_lib.py:5113	L005113
+module	kompas_lib.build.mass		Материал и масса детали по исполнениям: назначение материала, точность МЦХ, сверка с массой чертежа.	kompas_lib.py:5149	L005149
+func	kompas_lib.build.set_material	(doc, name, density, embodiments=None)	Материал и плотность (г/см³) детали — во всех исполнениях (или в перечисленных).	kompas_lib.py:5190	L005190
+func	kompas_lib.build.material	(doc) -> tuple[str, float, str]	(название, плотность г/см³, ссылка на справочник или '') текущего исполнения.	kompas_lib.py:5201	L005201
+func	kompas_lib.build.mass_accuracy	(doc, value=None) -> float	Точность расчёта МЦХ документа (0…100, по умолчанию ≈25.51); с `value` — установить: число или "high" (= 100) | "default".	kompas_lib.py:5211	L005211
+class	kompas_lib.build.MassCheck	(embodiment, marking, volume, density, mass, target, tol)		kompas_lib.py:5232	L005232
+prop	kompas_lib.build.MassCheck.error	-> float	Относительное отклонение массы модели от цели.	kompas_lib.py:5242	L005242
+prop	kompas_lib.build.MassCheck.ok	-> bool		kompas_lib.py:5247	L005247
+prop	kompas_lib.build.MassCheck.implied_density	-> float	Плотность, при которой масса модели совпала бы с целью (при текущем объёме), г/см³.	kompas_lib.py:5251	L005251
+prop	kompas_lib.build.MassCheck.volume_needed	-> float	Объём, который дала бы цель при текущей плотности, мм³ (минус текущий — чего не хватает).	kompas_lib.py:5256	L005256
+func	kompas_lib.build.check_mass	(doc, target, tol=0.005, unit='kg') -> list[MassCheck]	Сверка массы исполнений с целью: одно число — для всех, {индекс: масса} или список по порядку.	kompas_lib.py:5270	L005270
+module	kompas_lib.build.select		Отбор рёбер и граней по признакам — вместо номеров, которые меняются при перестроении.	kompas_lib.py:3755	L003755
+class	kompas_lib.build.SelectError		[KompasError] Отбор дал не то число объектов (`select(..., expect=n)`) или неоднозначен (`nearest`).	kompas_lib.py:3786	L003786
+func	kompas_lib.build.select	(items, *predicates, expect=None) -> list[T]	Объекты, для которых выполнены все предикаты.	kompas_lib.py:3790	L003790
+func	kompas_lib.build.kind	(*kinds) -> Predicate	Тип: рёбра line | circle | arc | ellipse | other; грани plane | cylinder | cone | sphere | torus | other.	kompas_lib.py:3821	L003821
+func	kompas_lib.build.radius	(r, tol=SELECT_TOL) -> Predicate		kompas_lib.py:3826	L003826
+func	kompas_lib.build.at	(x=None, y=None, z=None, tol=SELECT_TOL) -> Predicate	Объект целиком лежит в плоскости x=…, y=… и/или z=… (по габариту).	kompas_lib.py:3832	L003832
+func	kompas_lib.build.within	(x1=-1e+300, y1=-1e+300, z1=-1e+300, x2=1e+300, y2=1e+300, z2=1e+300, tol=SELECT_TOL) -> Predicate	Габарит объекта внутри параллелепипеда.	kompas_lib.py:3843	L003843
+func	kompas_lib.build.parallel	(axis, tol=1e-06) -> Predicate	Прямое ребро параллельно оси "x" | "y" | "z"; для граней — ось цилиндра/конуса или нормаль плоскости.	kompas_lib.py:3852	L003852
+func	kompas_lib.build.coaxial	(origin, direction, tol=SELECT_TOL) -> Predicate	Окружность/дуга или цилиндр/конус на оси (origin, direction).	kompas_lib.py:3868	L003868
+func	kompas_lib.build.where	(fn) -> Predicate	Произвольное условие.	kompas_lib.py:3884	L003884
+func	kompas_lib.build.between	(faces_a, faces_b) -> Predicate	Ребро стыка: одна смежная грань — из `faces_a`, другая — из `faces_b` (Face, список Face или ключей).	kompas_lib.py:3899	L003899
+func	kompas_lib.build.bounding	(faces) -> Predicate	Ребро ограничивает одну из граней `faces`.	kompas_lib.py:3910	L003910
+func	kompas_lib.build.convex	() -> Predicate	Выпуклое ребро (внешний угол тела) — под фаску/скругление «снаружи».	kompas_lib.py:3916	L003916
+func	kompas_lib.build.concave	() -> Predicate	Вогнутое ребро (внутренний угол, стык бобышки с телом) — под галтель.	kompas_lib.py:3921	L003921
+func	kompas_lib.build.sharp	() -> Predicate	Не гладкое ребро: грани стыкуются с изломом (у гладкого скруглять нечего).	kompas_lib.py:3926	L003926
+func	kompas_lib.build.distance	(it, p) -> float	Расстояние от точки до ребра (отрезок, окружность, дуга — точно; прочее — по точкам) или до грани (плоскость — до плоскости в пределах габарита; проч…	kompas_lib.py:3932	L003932
+func	kompas_lib.build.passes	(point, tol=SELECT_TOL) -> Predicate	Объект проходит через точку (настоящее расстояние до кривой/поверхности ≤ tol).	kompas_lib.py:3941	L003941
+func	kompas_lib.build.nearest	(items, point, *predicates, ratio=10.0, max_dist=None) -> T	Единственный объект, ближайший к точке `point` (среди удовлетворяющих `predicates`).	kompas_lib.py:3946	L003946
+module	kompas_lib.build.threads		Метрическая резьба ГОСТ 24705-2004: разбор обозначения и параметры для KsAPI (без КОМПАСа).	kompas_lib.py:3295	L003295
+class	kompas_lib.build.ThreadSpec	(d, p)		kompas_lib.py:3325	L003325
+prop	kompas_lib.build.ThreadSpec.coarse	-> bool		kompas_lib.py:3330	L003330
+prop	kompas_lib.build.ThreadSpec.standard	-> str		kompas_lib.py:3334	L003334
+prop	kompas_lib.build.ThreadSpec.minor	-> float	Внутренний диаметр d1 — диаметр отверстия под резьбу в модели КОМПАСа.	kompas_lib.py:3338	L003338
+prop	kompas_lib.build.ThreadSpec.designation	-> str		kompas_lib.py:3343	L003343
+func	kompas_lib.build.thread_spec	(spec) -> ThreadSpec	"M8" | "M8x1" | "М8х1" | "M8-6H" | (d, p) | ThreadSpec → ThreadSpec.	kompas_lib.py:3348	L003348
+module	kompas_lib.build.topology		Топология рёбер без координат: цепочки по общим вершинам, касательная достройка, проверки перед операцией.	kompas_lib.py:15368	L015368
+class	kompas_lib.build.Chain	(edges, closed, ends=…, corners=…)	Связная цепочка рёбер (общие вершины).	kompas_lib.py:15391	L015391
+prop	kompas_lib.build.Chain.length	-> float		kompas_lib.py:15400	L015400
+func	kompas_lib.build.topology.tangent_at	(edge, vertex) -> tuple | None	Касательная ребра в его вершине `vertex` (ключ), направленная от вершины внутрь ребра.	kompas_lib.py:15410	L015410
+func	kompas_lib.build.topology.smooth_joint	(a, b, vertex, angle=TANGENT_ANGLE) -> bool	Рёбра `a` и `b` стыкуются в `vertex` по касательной (одна гладкая линия, а не излом).	kompas_lib.py:15422	L015422
+func	kompas_lib.build.edge_chains	(edges, angle=TANGENT_ANGLE) -> list[Chain]	Разбить рёбра на связные цепочки по общим вершинам (ключам, не координатам).	kompas_lib.py:15440	L015440
+func	kompas_lib.build.topology.continuations	(edge, vertex, pool, angle=TANGENT_ANGLE) -> list[Edge]	Рёбра `pool`, продолжающие `edge` в вершине `vertex` по касательной, той же выпуклости, не гладкие.	kompas_lib.py:15476	L015476
+func	kompas_lib.build.complete_chains	(selected, pool, angle=TANGENT_ANGLE) -> tuple[list[Edge], list[Edge]]	Достроить выбранные рёбра до полных касательных цепочек по рёбрам `pool` (обычно все рёбра детали).	kompas_lib.py:15489	L015489
+func	kompas_lib.build.chain_issues	(selected, pool=None, angle=TANGENT_ANGLE) -> list[str]	Проблемы набора рёбер для скругления/фаски — до операции.	kompas_lib.py:15514	L015514
+module	kompas_lib.build.variables		Переменные детали: создание, изменение (в т.ч. переопределение в зависимом исполнении), привязка параметров операций к выражениям.	kompas_lib.py:4191	L004191
+func	kompas_lib.build.expression_names	(expr) -> set[str]	Имена переменных, на которые ссылается выражение (без функций и встроенных констант).	kompas_lib.py:4227	L004227
+func	kompas_lib.build.is_literal	(expr) -> bool	Выражение — просто число (параметр задан значением, а не через переменные).	kompas_lib.py:4234	L004234
+class	kompas_lib.build.Variable	(name, value, expression, note='', parameter='', owner='', inherited=False, information=False, raw=None)		kompas_lib.py:4244	L004244
+prop	kompas_lib.build.Variable.driven	-> bool	Значение вычисляется из других переменных (а не задано числом и не унаследовано).	kompas_lib.py:4256	L004256
+func	kompas_lib.build.variables.read_variable	(raw, owner='') -> Variable		kompas_lib.py:4268	L004268
+func	kompas_lib.build.variables.variable_usage	(ks, part, *, items=None, part_variables=None) -> dict[str, list[str]]	{переменная детали: где используется — «объект.vN» или другая переменная} (текущее исполнение).	kompas_lib.py:4276	L004276
+func	kompas_lib.build.variables.unused_variables	(ks, part, *, items=None, part_variables=None) -> list[str]	Переменные детали, на которые никто не ссылается (кроме информационных — производных из других переменных: их значение для справки).	kompas_lib.py:4295	L004295
+class	kompas_lib.build.Variables	(builder)	Переменные текущего исполнения детали построителя `b` (`b.vars`).	kompas_lib.py:4306	L004306
+method	kompas_lib.build.Variables.list	(owner=None) -> list[Variable]	Переменные детали (`owner=None`) или параметры объекта дерева (имя или `Step`).	kompas_lib.py:4321	L004321
+method	kompas_lib.build.Variables.get	(name, owner=None) -> Variable		kompas_lib.py:4326	L004326
+method	kompas_lib.build.Variables.parameter	(owner, parameter) -> Variable	Параметр объекта по имени переменной (`v20`) или по названию («Расстояние 1», регистр не важен).	kompas_lib.py:4335	L004335
+method	kompas_lib.build.Variables.usage	() -> dict[str, list[str]]	{переменная детали: где используется — «объект.vN» или другая переменная}.	kompas_lib.py:4346	L004346
+method	kompas_lib.build.Variables.unused	() -> list[str]	Переменные детали, на которые никто не ссылается (кроме информационных).	kompas_lib.py:4350	L004350
+method	kompas_lib.build.Variables.rebuild	() -> bool	Пересчитать модель после изменения переменных (только так меняется геометрия, s101b).	kompas_lib.py:4355	L004355
+method	kompas_lib.build.Variables.add	(name, value, note='') -> Step	Новая переменная детали: число или выражение из уже существующих переменных.	kompas_lib.py:4370	L004370
+method	kompas_lib.build.Variables.set	(name, value, owner=None) -> Step	Изменить переменную детали (число или выражение) и перестроить модель.	kompas_lib.py:4390	L004390
+method	kompas_lib.build.Variables.bind	(owner, parameter, expression) -> Step	Привязать параметр объекта дерева к выражению из переменных детали: `bind("Корпус", "Расстояние 1", "H")`.	kompas_lib.py:4423	L004423
+method	kompas_lib.build.Variables.delete	(name)	Удалить переменную детали текущего исполнения (используемую KsAPI не удаляет — BuildError).	kompas_lib.py:4443	L004443
+module	kompas_lib.capture		Снимки документов КОМПАС: лист чертежа целиком, область листа, 3D-модель с заданного ракурса.	kompas_lib.py:1963	L001963
+func	kompas_lib.capture.render_document	(doc, dpi=100, fmt=None, page=0) -> bytes	Растр документа (для чертежа — лист `page`, для модели — текущий вид окна).	kompas_lib.py:1983	L001983
+func	kompas_lib.capture.crop_sheet	(png, sheet_size, region, pad=2.0) -> bytes	Вырезать из растра листа область `region` (мм листа, Y вверх) с полем `pad` мм.	kompas_lib.py:1997	L001997
+func	kompas_lib.capture.hidden_auxiliary	(part_doc, hide_dimensions=False) -> Iterator[None]	Временно скрыть в 3D вспомогательные объекты (плоскости, оси, эскизы…).	kompas_lib.py:2022	L002022
+func	kompas_lib.capture.model_dpi	(part_doc, max_px, dpi) -> int	Разрешение, при котором снимок модели не превысит `max_px` по длинной стороне.	kompas_lib.py:2040	L002040
+func	kompas_lib.capture.render_model	(part_doc, projection=Projection.ISO, dpi=100, hide_auxiliary=True, restore_view=True, max_px=2000) -> bytes	Снимок 3D-модели с заданного ракурса.	kompas_lib.py:2059	L002059
+module	kompas_lib.core		Сессия КОМПАС-3D и базовый документ.	kompas_lib.py:1239	L001239
+class	kompas_lib.Kompas	(app)	Подключение к запущенному КОМПАС-3D.	kompas_lib.py:1265	L001265
+method	kompas_lib.Kompas.connect	(start=False, bin_dir=None) -> Kompas	Подключиться к запущенному КОМПАСу; при start=True — запустить новый, если не запущен.	kompas_lib.py:1276	L001276
+prop	kompas_lib.Kompas.version	-> str		kompas_lib.py:1293	L001293
+prop	kompas_lib.Kompas.build	-> int		kompas_lib.py:1297	L001297
+method	kompas_lib.Kompas.quiet	(mode=HideMessage.HIDE_NO) -> Iterator[None]	Подавить модальные сообщения КОМПАСа на время блока (с восстановлением прежнего режима).	kompas_lib.py:1302	L001302
+method	kompas_lib.Kompas.wrap	(raw_doc) -> Document	Обернуть ksapi-документ в класс библиотеки по его типу.	kompas_lib.py:1316	L001316
+prop	kompas_lib.Kompas.documents	-> list[Document]		kompas_lib.py:1333	L001333
+prop	kompas_lib.Kompas.active_document	-> Document | None		kompas_lib.py:1338	L001338
+method	kompas_lib.Kompas.find_open	(path) -> Document | None	Документ, уже открытый в КОМПАСе, по пути к файлу.	kompas_lib.py:1342	L001342
+method	kompas_lib.Kompas.open	(path, read_only=False, visible=True) -> Document	Открыть документ (или вернуть уже открытый).	kompas_lib.py:1347	L001347
+method	kompas_lib.Kompas.new_drawing	(fmt=None, landscape=None, visible=True, tag=None) -> Drawing	Создать чертёж с настройками по умолчанию; при необходимости задать формат.	kompas_lib.py:1361	L001361
+method	kompas_lib.Kompas.new_part	(visible=True, tag=None) -> PartDocument	Новая деталь.	kompas_lib.py:1373	L001373
+method	kompas_lib.Kompas.new_assembly	(visible=True, tag=None) -> AssemblyDocument	Новая пустая сборка (см. `kompas_lib.assembly`).	kompas_lib.py:1382	L001382
+method	kompas_lib.Kompas.find	(tag) -> Document | None	Открытый документ с меткой `tag` (из `new_part(tag=…)` и т.п.); при нескольких — последний.	kompas_lib.py:1392	L001392
+method	kompas_lib.Kompas.tagged	(prefix='') -> list[Document]	Документы с меткой kompas_lib (метка начинается с `prefix`); документы без метки сюда не попадают.	kompas_lib.py:1401	L001401
+method	kompas_lib.Kompas.close_tagged	(prefix='', save=False) -> int	Закрыть свои документы (с меткой, начинающейся с `prefix`), не трогая документы пользователя.	kompas_lib.py:1405	L001405
+method	kompas_lib.Kompas.scratch_part	(tag='scratch', visible=True) -> Iterator[PartDocument]	Временная деталь для эксперимента: создаётся с меткой и закрывается без сохранения на выходе из блока (и при исключении).	kompas_lib.py:1414	L001414
+method	kompas_lib.Kompas.raster_params	()	Новый объект IRasterConvertParameters.	kompas_lib.py:1431	L001431
+method	kompas_lib.Kompas.watchdog	(on_dialog=None, interval=0.5)	Наблюдать за блокирующими диалогами в течение блока with.	kompas_lib.py:1439	L001439
+class	kompas_lib.Document	(kompas, raw_doc)	Базовый документ КОМПАС.	kompas_lib.py:1445	L001445
+prop	kompas_lib.Document.type	-> DocumentType		kompas_lib.py:1458	L001458
+prop	kompas_lib.Document.name	-> str		kompas_lib.py:1462	L001462
+prop	kompas_lib.Document.path	-> str	Полный путь к файлу ('' для несохранённого документа).	kompas_lib.py:1466	L001466
+prop	kompas_lib.Document.is_changed	-> bool		kompas_lib.py:1471	L001471
+prop	kompas_lib.Document.tag	-> str | None	Метка kompas_lib (`new_part(tag=…)`, `Kompas.find`); None — документ не помечен (например, пользователя).	kompas_lib.py:1475	L001475
+method	kompas_lib.Document.activate	()		kompas_lib.py:1488	L001488
+method	kompas_lib.Document.save	()		kompas_lib.py:1491	L001491
+method	kompas_lib.Document.save_as	(path) -> Path		kompas_lib.py:1495	L001495
+method	kompas_lib.Document.close	(save=False)		kompas_lib.py:1505	L001505
+prop	kompas_lib.Document.busy	-> bool	Пользователь выполняет в документе интерактивную команду.	kompas_lib.py:1516	L001516
+method	kompas_lib.Document.edit	(allow_busy=False) -> Iterator[Document]	Блок изменений: без модальных сообщений, одним шагом отмены, с перерисовкой в конце.	kompas_lib.py:1521	L001521
+method	kompas_lib.Document.redraw	()		kompas_lib.py:1542	L001542
+method	kompas_lib.Document.capture	(dpi=100, fmt=None, page=0) -> bytes	Растровое изображение документа (по умолчанию PNG), возвращает байты.	kompas_lib.py:1546	L001546
+method	kompas_lib.Document.require	(*types)		kompas_lib.py:1551	L001551
+module	kompas_lib.dims		Размеры: раскладка без пересечений, проверка оформления и состава (ГОСТ 2.307).	kompas_lib.py:13614	L013614
+module	kompas_lib.dims.annotations		Выноски и оформление распознанных элементов на выбранном виде.	kompas_lib.py:13326	L013326
+class	kompas_lib.dims.annotations.Leader	(point, text, source=None, key='')		kompas_lib.py:13341	L013341
+func	kompas_lib.dims.annotations.add_leaders	(view, specs, style=None, max_tiers=12)	Полки по измеренному габариту текста; связи с проекцией грани/ребра.	kompas_lib.py:13348	L013348
+func	kompas_lib.dims.annotations.annotate_hole_patterns	(view, features, by_index, style=None) -> tuple	Круговые массивы отверстий на торцевом виде: диаметр окружности центров + выноска «N отв. ØD».	kompas_lib.py:13435	L013435
+func	kompas_lib.dims.annotations.annotate_features	(view, features, faces, style=None)	Фаски, резьбы и круговые массивы из общего промежуточного слоя.	kompas_lib.py:13492	L013492
+module	kompas_lib.dims.api		Размеры на чертеже КОМПАС: чтение, создание с раскладкой, проверка (ГОСТ 2.307).	kompas_lib.py:10656	L010656
+class	kompas_lib.dims.api.Dim	(p1, p2, axis='auto', side='auto', at=None, diameter=False, reference=False, key=None, prefix='', suffix='', at_range=None)	Размер, который нужно поставить (координаты вида).	kompas_lib.py:10696	L010696
+class	kompas_lib.dims.api.Diameter	(center, radius=None, angle=None, reference=False, key=None, suffix='')	Диаметральный размер окружности вида.	kompas_lib.py:10717	L010717
+class	kompas_lib.dims.api.DimReport	(created=…, issues=…)		kompas_lib.py:10732	L010732
+prop	kompas_lib.dims.api.DimReport.errors	-> list[Issue]		kompas_lib.py:10737	L010737
+prop	kompas_lib.dims.api.DimReport.warnings	-> list[Issue]		kompas_lib.py:10741	L010741
+prop	kompas_lib.dims.api.DimReport.ok	-> bool		kompas_lib.py:10745	L010745
+method	kompas_lib.dims.api.DimReport.as_dict	() -> dict		kompas_lib.py:10748	L010748
+method	kompas_lib.dims.api.DimReport.summary	() -> str		kompas_lib.py:10754	L010754
+func	kompas_lib.dims.api.view_obstacles	(view, curves=None) -> list[Segment]	Линии изображения вида в мм листа: контур (окружности — ломаными), осевые линии, обозначения центров.	kompas_lib.py:10797	L010797
+func	kompas_lib.dims.api.leader_segments	(view) -> list[Segment]	Ветви и полки выносок вида отрезками (мм листа).	kompas_lib.py:10833	L010833
+func	kompas_lib.dims.api.read_dims	(view, content=None) -> list[LinearDim]	Горизонтальные и вертикальные линейные размеры вида (мм листа, фактическое положение надписей).	kompas_lib.py:10849	L010849
+func	kompas_lib.dims.api.read_diametral	(view) -> list[DiametralDim]	Диаметральные размеры вида (мм листа, фактическое положение надписи).	kompas_lib.py:10905	L010905
+func	kompas_lib.dims.api.annotation_keepouts	(view, content=None) -> list[tuple[Rect, str]]	Зоны прочих обозначений вида, куда нельзя ставить размеры.	kompas_lib.py:10938	L010938
+func	kompas_lib.dims.api.leader_cost	(line, crossings, above_contour) -> float	Цена ветви выноски/полки радиуса, мм: пересечение размерной линии или другой выноски — как 30 мм длины, полка над изображением (мешает выносным линия…	kompas_lib.py:10998	L010998
+func	kompas_lib.dims.api.leader_texts	(drawing) -> dict	Размеры надписей выносок, поставленных библиотекой: id объекта -> (ширина, высота), мм листа.	kompas_lib.py:11005	L011005
+func	kompas_lib.dims.api.view_title_bbox	(view) -> Rect | None	Габарит надписи вида («А–А», «Б (2:1)») на листе; у вида без надписи — None.	kompas_lib.py:11014	L011014
+func	kompas_lib.dims.api.scene_keepouts	(view, content=None, style=None) -> list[tuple[Rect, str]]	Все зоны листа, куда размерам вида нельзя: одна сцена для раскладки, выносок и проверки.	kompas_lib.py:11022	L011022
+func	kompas_lib.dims.api.overall_dims	(view, curves=None, side_x='top', side_y='left', key_prefix='overall') -> list[Dim]	Габаритные размеры изображения: ширина (по X вида) и высота (по Y вида).	kompas_lib.py:11115	L011115
+func	kompas_lib.dims.api.suggest_revolution_dims	(view, profile, curves=None, tol=0.01, end_view=None, diameter_policy='section') -> tuple[list[Dim | Diameter], list[str]]	Черновой набор размеров тела вращения на виде, где ось детали лежит в плоскости вида.	kompas_lib.py:11144	L011144
+func	kompas_lib.dims.api.suggest_end_dimensions	(view, profile, scale=None, tol=0.01, diameter_policy='section') -> tuple[list[Diameter], list[str]]	Диаметры коротких ступеней/колец на торцевом виде; scale — масштаб продольного вида.	kompas_lib.py:11268	L011268
+func	kompas_lib.dims.api.prune_redundant	(specs, existing=(), policy='drop', tol=0.001) -> tuple[list[Dim | Diameter], list[Issue]]	Убрать из набора лишние линейные размеры до постановки (ГОСТ 2.307: без повторов и замкнутых цепей).	kompas_lib.py:11302	L011302
+func	kompas_lib.dims.api.add_dimensions	(view, specs, style=None, max_tiers=8) -> DimReport	Поставить размеры на вид: привязка, раскладка без пересечений, проверка результата.	kompas_lib.py:11356	L011356
+func	kompas_lib.dims.api.restore_dimensions	(view, style=None) -> int	После переноса вида вернуть размеры, поставленные библиотекой, в запомненные положения.	kompas_lib.py:11663	L011663
+func	kompas_lib.dims.api.arrange_dimensions	(view, style=None, max_tiers=8, diameters_only=False) -> DimReport	Разложить размеры вида заново, сохраняя их связи (например, когда восстановление не помогло).	kompas_lib.py:11707	L011707
+func	kompas_lib.dims.api.check_dimensions	(drawing, model=None, style=None, completeness=True) -> DimReport	Проверка размеров всего чертежа.	kompas_lib.py:11883	L011883
+module	kompas_lib.dims.curved		Ассоциативные радиальные и угловые размеры с полкой по габариту CAD-текста.	kompas_lib.py:12590	L012590
+class	kompas_lib.dims.curved.Radius	(curve, key='', angle=None, shelf=None)		kompas_lib.py:12604	L012604
+class	kompas_lib.dims.curved.Angle	(first, second, key='', shelf=None)		kompas_lib.py:12612	L012612
+func	kompas_lib.dims.curved.angle_geometry	(first, second, tol=1e-09)	Пересечение прямых и два направленных луча; параллельные отклоняются.	kompas_lib.py:12619	L012619
+func	kompas_lib.dims.curved.add_curved_dimensions	(view, specs, style=None, max_tiers=12, max_realize=6)	Создать Radius/Angle, проверить связи и выбрать полку без пересечения текста.	kompas_lib.py:12679	L012679
+module	kompas_lib.dims.features		Распознавание повторяющихся элементов по инвариантам граней, без имён файлов.	kompas_lib.py:9830	L009830
+class	kompas_lib.dims.features.HolePattern	(axis, radius, center, pitch_radius, centers, faces)		kompas_lib.py:9855	L009855
+prop	kompas_lib.dims.features.HolePattern.count			kompas_lib.py:9864	L009864
+func	kompas_lib.dims.features.flat_patterns	(faces, tol=0.001) -> list[HolePattern]	Круговые массивы отверстий призматической детали (тела вращения нет): ось — любая из трёх, центр массива — середина габарита в радиальной плоскости.	kompas_lib.py:9868	L009868
+class	kompas_lib.dims.features.Gear	(axis, center, teeth, outside_radius, root_radius, t1, t2, faces)		kompas_lib.py:9883	L009883
+prop	kompas_lib.dims.features.Gear.width			kompas_lib.py:9894	L009894
+func	kompas_lib.dims.features.hole_patterns	(faces, axis, center, tol=0.001) -> list[HolePattern]	Цилиндры с параллельными осями и одинаковым r на одной окружности центров.	kompas_lib.py:9898	L009898
+func	kompas_lib.dims.features.recognize_gear	(faces, tol=0.001) -> Gear | None	Венец: регулярные соосные дуги впадин/вершин + повторяющиеся боковые поверхности.	kompas_lib.py:9938	L009938
+class	kompas_lib.dims.features.Hole	(axis, radius, center, t1, t2, faces)		kompas_lib.py:9999	L009999
+class	kompas_lib.dims.features.ChamferFeature	(axis, size, angle, faces)		kompas_lib.py:10009	L010009
+class	kompas_lib.dims.features.Keyway	(axis, width_axis, depth_axis, width, depth, t1, t2, bottom, radius, inner, faces)		kompas_lib.py:10017	L010017
+prop	kompas_lib.dims.features.Keyway.length			kompas_lib.py:10031	L010031
+class	kompas_lib.dims.features.Fillet	(radius, faces)		kompas_lib.py:10036	L010036
+class	kompas_lib.dims.features.Thread	(designation, diameter, pitch, length, left=False, raw=None, faces=())		kompas_lib.py:10042	L010042
+class	kompas_lib.dims.ModelFeatures	(profile=None, body_profile=None, gear=None, holes=…, patterns=…, keyways=…, chamfers=…, fillets=…, threads=…, notes=…)	Общий промежуточный слой.	kompas_lib.py:10053	L010053
+func	kompas_lib.dims.features.recognize_keyways	(faces, profile, tol=0.001)	Пара боковых плоскостей + дно, подтверждённые профилем вала/отверстия.	kompas_lib.py:10067	L010067
+func	kompas_lib.dims.recognize_features	(faces, tol=0.001) -> ModelFeatures	Распознать элементы один раз для обоих способов оформления.	kompas_lib.py:10212	L010212
+func	kompas_lib.dims.features.gear_body_profile	(gear, faces)	Профиль ступицы/отверстия; венец остаётся отдельным распознанным элементом.	kompas_lib.py:10289	L010289
+module	kompas_lib.dims.flat		Образмеривание плоского/призматического изображения по кривым вида (ГОСТ 2.307).	kompas_lib.py:11965	L011965
+class	kompas_lib.dims.flat.Loop	(curves)		kompas_lib.py:12019	L012019
+prop	kompas_lib.dims.flat.Loop.bbox	-> Rect		kompas_lib.py:12023	L012023
+prop	kompas_lib.dims.flat.Loop.kinds	-> dict		kompas_lib.py:12028	L012028
+class	kompas_lib.dims.flat.FlatFeature	(kind, label, size_key, pos_x, pos_y, centered, loop, radius=None, center=None, specs=…)		kompas_lib.py:12036	L012036
+func	kompas_lib.dims.flat.build_loops	(curves) -> list[Loop]	Связать кривые в контуры по общим концам; окружности и замкнутые ломаные — отдельные контуры.	kompas_lib.py:12049	L012049
+class	kompas_lib.dims.flat.FlatPlan	(specs=…, radii=…, leaders=…, notes=…, features=…, pruned=…)		kompas_lib.py:12158	L012158
+func	kompas_lib.dims.flat.suggest_flat_dims	(view, curves=None, max_positions=24, redundant='drop', skip=(), min_readable=None) -> FlatPlan	Черновой набор размеров изображения, ограниченного прямыми и дугами (координаты вида).	kompas_lib.py:12167	L012167
+func	kompas_lib.dims.flat.flat_dim_tiers	(plan) -> tuple[int, int, int, int]	Оценка ярусов размеров по сторонам (л, н, п, в) для резерва при компоновке.	kompas_lib.py:12555	L012555
+func	kompas_lib.dims.flat.dimension_flat_view	(view, style=None, plan=None) -> tuple[DimReport, list[str]]	Поставить на вид набор `suggest_flat_dims`: линейные/диаметры, радиусы, выноски фасок.	kompas_lib.py:12563	L012563
+module	kompas_lib.dims.graph		Граф координат одной оси: общая модель выбора, отсечения лишних и проверки полноты размеров (чистый Python).	kompas_lib.py:9149	L009149
+class	kompas_lib.dims.graph.Symmetry	(m, lo, hi)	Плоскость симметрии детали вдоль оси: координата m и симметричные крайние узлы (габарит) lo, hi.	kompas_lib.py:9169	L009169
+class	kompas_lib.dims.graph.AxisGraph	(tol=0.001, symmetries=())	Координаты одной оси со склейкой по допуску и система непересекающихся множеств со связями.	kompas_lib.py:9176	L009176
+method	kompas_lib.dims.graph.AxisGraph.node	(c) -> int		kompas_lib.py:9193	L009193
+method	kompas_lib.dims.graph.AxisGraph.find	(i) -> int		kompas_lib.py:9199	L009199
+method	kompas_lib.dims.graph.AxisGraph.connected	(a, b) -> bool		kompas_lib.py:9205	L009205
+method	kompas_lib.dims.graph.AxisGraph.symmetry_of	(a, b) -> Symmetry | None	Плоскость симметрии, относительно которой a и b симметричны (межосевой размер пары).	kompas_lib.py:9209	L009209
+method	kompas_lib.dims.graph.AxisGraph.conflicts	(coords, symmetric=False) -> list[Hashable]	Ключи связей, с которыми связь `coords` замкнула бы цепь (пусто — связь допустима).	kompas_lib.py:9224	L009224
+method	kompas_lib.dims.graph.AxisGraph.can_link	(coords, symmetric=False) -> bool		kompas_lib.py:9238	L009238
+method	kompas_lib.dims.graph.AxisGraph.link	(coords, key, symmetric=False) -> bool	Добавить связь, если она ничего не определяет повторно.	kompas_lib.py:9242	L009242
+method	kompas_lib.dims.graph.AxisGraph.path	(u, v) -> list[Hashable]	Ключи связей на пути между узлами (для сообщения о замкнутой цепи).	kompas_lib.py:9265	L009265
+method	kompas_lib.dims.graph.AxisGraph.groups	(coords) -> list[list[float]]	Обязательные координаты, разбитые по компонентам (больше одной группы — что-то не привязано).	kompas_lib.py:9291	L009291
+class	kompas_lib.dims.graph.Link	(axis, coords, cost, kind='position', key=None, payload=None, forced=False, symmetric=False)	Кандидат-связь для выбора: узлы оси модели, стоимость и то, как её поставить (payload).	kompas_lib.py:9300	L009300
+class	kompas_lib.dims.graph.Selection	(chosen=…, redundant=…, unlocated=…)		kompas_lib.py:9313	L009313
+func	kompas_lib.dims.graph.spanning_forest	(required, candidates, tol=0.001, symmetries=None, existing=(), accept=None) -> Selection	Минимальный остовный лес (Краскал) на обязательных узлах каждой оси.	kompas_lib.py:9319	L009319
+module	kompas_lib.dims.model		Ассоциативные размеры 3D: черновик, создание, чтение и проверка.	kompas_lib.py:12855	L012855
+class	kompas_lib.dims.model.ModelDim	(kind, faces, axis, plane_normal, value, key='', count=1, reference=False, plane_face=None)	Задание по индексам граней: linear — две плоскости, diameter — цилиндр.	kompas_lib.py:12876	L012876
+class	kompas_lib.dims.model.ModelDimension	(key, kind, value, label, faces, points, text_position, text_width, text_height, plane_normal, reference=False, count=1, visible=True, raw=None)		kompas_lib.py:12890	L012890
+func	kompas_lib.dims.model.suggest_model_dimensions	(faces, features=None, tol=0.001) -> tuple[list[ModelDim], list[str]]	План по граням без КОМПАСа: цепи плоскостей и неповторяющиеся цилиндры.	kompas_lib.py:12915	L012915
+func	kompas_lib.dims.model.read_model_dimensions	(part, faces=None) -> list[ModelDimension]	Прочитать все модельные размеры, включая существующие размеры пользователя.	kompas_lib.py:13003	L013003
+func	kompas_lib.dims.model.check_model_dimensions	(part, completeness=True, style=None, faces=None) -> DimReport	Проверка значений, связей, повторов и читаемости в плоскостях аннотаций.	kompas_lib.py:13109	L013109
+func	kompas_lib.dims.model.add_model_dimensions	(part, specs, style=None, max_tiers=8) -> DimReport	Создать и разместить явно выбранные задания; один шаг отмены, без Save.	kompas_lib.py:13135	L013135
+func	kompas_lib.dims.model.auto_dimension_model	(part, style=None, completeness=True, max_tiers=8) -> DimReport	Автоматический черновик размеров 3D-модели без дублей и автосохранения.	kompas_lib.py:13285	L013285
+module	kompas_lib.dims.plan		Раскладка размеров вокруг изображения без пересечений (чистый Python).	kompas_lib.py:8431	L008431
+class	kompas_lib.dims.DimRequest	(p1, p2, axis, text_w, text_h, key=None, side='auto', at=None, label='', at_range=None)	Запрос на размер (координаты — мм листа).	kompas_lib.py:8469	L008469
+method	kompas_lib.dims.DimRequest.span	() -> tuple[float, float]		kompas_lib.py:8482	L008482
+class	kompas_lib.dims.DiamRequest	(center, radius, text_w, text_h, key=None, angle=None, label='', outer_radius=None, meta=…)	Диаметральный размер окружности (мм листа).	kompas_lib.py:8488	L008488
+class	kompas_lib.dims.DimPlan	(dims, issues=…, sides=…, tiers=…, step=0.0, realized=0)		kompas_lib.py:8502	L008502
+prop	kompas_lib.dims.DimPlan.ok	-> bool		kompas_lib.py:8511	L008511
+func	kompas_lib.dims.plan_dimensions	(requests, content, obstacles=(), fixed=(), keepouts=(), style=None, max_tiers=8, realize=None, max_realize=8) -> DimPlan	Разложить размеры вокруг изображения `content` (габарит контура, мм листа).	kompas_lib.py:8809	L008809
+module	kompas_lib.dims.redundancy		Проверка состава размеров: лишние (дубликаты, замкнутые цепи) и недостающие (чистый Python).	kompas_lib.py:9361	L009361
+class	kompas_lib.dims.DimFact	(key, axis, a, b, diameter=False, cyl_axis=None, center=…, reference=False, label='', count=1, view=None, extra=(), radial=False)	Размер в координатах модели.	kompas_lib.py:9390	L009390
+prop	kompas_lib.dims.DimFact.value	-> float		kompas_lib.py:9407	L009407
+method	kompas_lib.dims.DimFact.describe	() -> str		kompas_lib.py:9410	L009410
+class	kompas_lib.dims.Requirement	(nodes=…, cylinders=…, patterns=…, features=…, annotations=…, overalls=…, holes=…, radii=…, symmetries=…)	Что должно быть определено размерами (из модели).	kompas_lib.py:9417	L009417
+func	kompas_lib.dims.check_redundancy	(facts, required=None, tol=0.001, annotations=()) -> list[Issue]	Дубликаты, замкнутые цепи, недостающие размеры.	kompas_lib.py:9499	L009499
+func	kompas_lib.dims.requirement_from_faces	(faces, tol=0.001) -> tuple[Requirement, list[Issue]]	Что должно быть определено, по граням модели (`model.Face`).	kompas_lib.py:9627	L009627
+func	kompas_lib.dims.redundancy.symmetries_from_faces	(faces, tol=0.001) -> dict	Плоскости симметрии детали, перпендикулярные осям модели: зеркальное отражение каждой грани (вид поверхности, радиус, габарит грани) относительно сер…	kompas_lib.py:9781	L009781
+module	kompas_lib.dims.revolution		Профиль тела вращения по граням модели (чистый Python, без КОМПАСа).	kompas_lib.py:10318	L010318
+class	kompas_lib.dims.revolution.ProfileStep	(r, t1, t2, inner, face)	Цилиндрический участок профиля: радиус и диапазон вдоль оси.	kompas_lib.py:10333	L010333
+prop	kompas_lib.dims.revolution.ProfileStep.length	-> float		kompas_lib.py:10342	L010342
+class	kompas_lib.dims.revolution.Chamfer	(t1, t2, r, face, angle=None)	Коническая грань малой длины на краю ступени (фаска).	kompas_lib.py:10347	L010347
+prop	kompas_lib.dims.revolution.Chamfer.size	-> float		kompas_lib.py:10356	L010356
+class	kompas_lib.dims.revolution.RevolutionProfile	(axis, center, t_min, t_max, outer=…, inner=…, planes=…, nodes=…, chamfers=…, others=…)		kompas_lib.py:10361	L010361
+prop	kompas_lib.dims.revolution.RevolutionProfile.length	-> float		kompas_lib.py:10374	L010374
+prop	kompas_lib.dims.revolution.RevolutionProfile.hollow	-> bool		kompas_lib.py:10378	L010378
+method	kompas_lib.dims.revolution.RevolutionProfile.outer_radius_at	(t, tol=1e-06) -> float		kompas_lib.py:10381	L010381
+method	kompas_lib.dims.revolution.RevolutionProfile.describe	() -> str		kompas_lib.py:10385	L010385
+func	kompas_lib.dims.revolution.revolution_profile	(faces, tol=0.001, chamfer_max=5.0) -> RevolutionProfile | None	Профиль, если деталь — тело вращения (иначе None).	kompas_lib.py:10399	L010399
+class	kompas_lib.dims.revolution.LengthDim	(a, b, key, overall=False)	Черновой размер вдоль оси: между узлами a и b (координаты вдоль оси детали).	kompas_lib.py:10521	L010521
+class	kompas_lib.dims.revolution.DiameterDim	(step, key, end_view=False)		kompas_lib.py:10530	L010530
+func	kompas_lib.dims.revolution.is_groove	(prof, step, tol=0.001) -> bool	Короткое уменьшение диаметра между двумя более толстыми ступенями.	kompas_lib.py:10536	L010536
+func	kompas_lib.dims.revolution.draft_dimensions	(prof, tol=0.001, scale=1.0, text_height=None) -> tuple[list[LengthDim], list[DiameterDim…	Черновой набор размеров тела вращения без избыточности (ГОСТ 2.307).	kompas_lib.py:10548	L010548
+module	kompas_lib.dims.shapes		Геометрия линейного размера на листе и проверка конфликтов (чистый Python, без КОМПАСа).	kompas_lib.py:7684	L007684
+class	kompas_lib.dims.DimStyle	(text_gap=1.5, ink_along=0.4, ink_normal=1.0, ext_overshoot=2.0, arrow=5.0, outside_offset=5.0, outside_tail=2.0, first_offset=10.0, min_step=8.0, step_clearance=1.5, text_margin=1.0, tol=0.05, min_feature=2.0)		kompas_lib.py:7709	L007709
+method	kompas_lib.dims.DimStyle.step_for	(text_h) -> float	Шаг между ярусами: не меньше 7 мм и не меньше высоты надписи с зазором (округление до 0.5).	kompas_lib.py:7726	L007726
+class	kompas_lib.dims.Issue	(kind, severity, message, keys=(), details=())		kompas_lib.py:7733	L007733
+method	kompas_lib.dims.Issue.as_dict	() -> dict		kompas_lib.py:7740	L007740
+func	kompas_lib.dims.shapes.group_issues	(issues)	Повторяющиеся предупреждения — одна запись с полным списком деталей.	kompas_lib.py:7748	L007748
+class	kompas_lib.dims.LinearDim	(key, p1, p2, axis, line, text_w, text_h, text_mode='center', text_start=None, label='', inside=False, meta=…)	Линейный размер на листе.	kompas_lib.py:7772	L007772
+method	kompas_lib.dims.LinearDim.along	(p) -> float		kompas_lib.py:7798	L007798
+method	kompas_lib.dims.LinearDim.normal	(p) -> float		kompas_lib.py:7801	L007801
+method	kompas_lib.dims.LinearDim.pt	(along, normal) -> Point		kompas_lib.py:7804	L007804
+method	kompas_lib.dims.LinearDim.rect	(a1, a2, n1, n2) -> Rect		kompas_lib.py:7807	L007807
+prop	kompas_lib.dims.LinearDim.lo	-> float		kompas_lib.py:7811	L007811
+prop	kompas_lib.dims.LinearDim.hi	-> float		kompas_lib.py:7815	L007815
+prop	kompas_lib.dims.LinearDim.span	-> float		kompas_lib.py:7819	L007819
+prop	kompas_lib.dims.LinearDim.value	-> float		kompas_lib.py:7823	L007823
+method	kompas_lib.dims.LinearDim.text_range	(style) -> tuple[float, float]		kompas_lib.py:7827	L007827
+method	kompas_lib.dims.LinearDim.text_box	(style, ink=False) -> Rect		kompas_lib.py:7839	L007839
+method	kompas_lib.dims.LinearDim.text_fits_inside	(style) -> bool		kompas_lib.py:7850	L007850
+method	kompas_lib.dims.LinearDim.line_extent	(style) -> tuple[float, float]		kompas_lib.py:7854	L007854
+method	kompas_lib.dims.LinearDim.dim_line	(style) -> Segment		kompas_lib.py:7863	L007863
+method	kompas_lib.dims.LinearDim.ext_lines	(style) -> list[Segment]		kompas_lib.py:7867	L007867
+method	kompas_lib.dims.LinearDim.segments	(style) -> list[tuple[str, Segment]]		kompas_lib.py:7878	L007878
+method	kompas_lib.dims.LinearDim.bbox	(style) -> Rect		kompas_lib.py:7881	L007881
+method	kompas_lib.dims.LinearDim.describe	() -> str		kompas_lib.py:7887	L007887
+class	kompas_lib.dims.DiametralDim	(key, center, radius, angle, text_w, text_h, text_mode='manual', text_t=None, label='', meta=…)	Диаметральный размер окружности на листе (полная размерная линия через центр под углом `angle`).	kompas_lib.py:7893	L007893
+prop	kompas_lib.dims.DiametralDim.u	-> tuple[float, float]		kompas_lib.py:7915	L007915
+prop	kompas_lib.dims.DiametralDim.reading	-> tuple[float, float]		kompas_lib.py:7920	L007920
+prop	kompas_lib.dims.DiametralDim.value	-> float		kompas_lib.py:7925	L007925
+method	kompas_lib.dims.DiametralDim.text_interval	(style) -> tuple[float, float]	Надпись вдоль u: [t1, t2].	kompas_lib.py:7928	L007928
+method	kompas_lib.dims.DiametralDim.text_box	(style, ink=False)		kompas_lib.py:7938	L007938
+method	kompas_lib.dims.DiametralDim.dim_line	(style) -> Segment		kompas_lib.py:7953	L007953
+method	kompas_lib.dims.DiametralDim.ext_lines	(style) -> list[Segment]		kompas_lib.py:7960	L007960
+method	kompas_lib.dims.DiametralDim.segments	(style) -> list[tuple[str, Segment]]		kompas_lib.py:7963	L007963
+method	kompas_lib.dims.DiametralDim.bbox	(style) -> Rect		kompas_lib.py:7966	L007966
+method	kompas_lib.dims.DiametralDim.describe	() -> str		kompas_lib.py:7969	L007969
+func	kompas_lib.dims.shapes.dim_conflicts	(a, b, style) -> list[Issue]	Конфликты двух размеров между собой.	kompas_lib.py:7978	L007978
+func	kompas_lib.dims.shapes.model_mismatch	(d, style) -> float	Насколько фактический габарит объекта (meta["real"], из КОМПАСа) расходится с моделью, мм листа.	kompas_lib.py:8043	L008043
+func	kompas_lib.dims.shapes.align_text_to_extent	(d, real, style)	Надпись, которую КОМПАС вынес наружу сам: API отдаёт запрошенную точку, а габарит объекта — фактическую.	kompas_lib.py:8059	L008059
+func	kompas_lib.dims.shapes.geometry_conflicts	(d, obstacles, style) -> list[Issue]	Конфликты размера с геометрией вида (контур, осевые, штриховка — всё, что передано отрезками).	kompas_lib.py:8074	L008074
+func	kompas_lib.dims.shapes.keepout_conflicts	(d, keepouts, style) -> list[Issue]	Размер заходит в запретные зоны (чужие виды, штамп, обозначения): по надписи и по каждой линии.	kompas_lib.py:8101	L008101
+func	kompas_lib.dims.check_dims	(dims, obstacles=(), keepouts=(), style=None) -> list[Issue]	Все конфликты набора размеров (попарно + с геометрией + с запретными зонами).	kompas_lib.py:8114	L008114
+func	kompas_lib.dims.shapes.count	(issues) -> tuple[int, int]	(ошибки, предупреждения).	kompas_lib.py:8128	L008128
+module	kompas_lib.dims.stacking		Стороны и ярусы внешних линейных размеров без пересечений «размерная × выносная» (чистый Python).	kompas_lib.py:8142	L008142
+class	kompas_lib.dims.stacking.Span	(key, axis, lo, hi, points, side=None, label='')	Внешний размер для раскладки: интервал вдоль оси и точки привязки (мм листа).	kompas_lib.py:8175	L008175
+func	kompas_lib.dims.stacking.inside	(x, s, tol) -> bool		kompas_lib.py:8186	L008186
+func	kompas_lib.dims.stacking.partial	(a, b, tol) -> bool	Частичное перекрытие: у каждого конец строго внутри другого (не вложены, не стык, не равны).	kompas_lib.py:8190	L008190
+func	kompas_lib.dims.stacking.nested_in	(a, b, tol) -> bool	Выносная линия b пересечёт размерную a, если b дальше: конец b строго внутри a, но не перекрытие.	kompas_lib.py:8196	L008196
+func	kompas_lib.dims.stacking.tiers	(spans, tol) -> dict	Минимальные ярусы на одной стороне: t(a) > t(b) для всех b, чей конец внутри a.	kompas_lib.py:8201	L008201
+class	kompas_lib.dims.stacking.Stacking	(sides, tiers, conflicts)		kompas_lib.py:8219	L008219
+func	kompas_lib.dims.stacking.stack	(spans, content, first, step, tol=0.05, max_flip_rounds=4) -> Stacking	Стороны и минимальные ярусы для размеров одной оси.	kompas_lib.py:8225	L008225
+func	kompas_lib.dims.stacking.stack_exact	(spans, content, first, step, tol=0.05, max_tiers=12, time_limit=1.0)	Точная раскладка сторон и ярусов через CP-SAT (OR-Tools); None — нет решателя или не сошёлся.	kompas_lib.py:8305	L008305
+class	kompas_lib.dims.stacking.TwoSides	(tol=0.001)	Инкрементальная проверка: можно ли развести набор интервалов одной оси на две стороны.	kompas_lib.py:8382	L008382
+method	kompas_lib.dims.stacking.TwoSides.conflicts	(key, lo, hi) -> list	Ключи интервалов, с которыми новый замкнёт нечётный цикл (пусто — можно добавить).	kompas_lib.py:8402	L008402
+method	kompas_lib.dims.stacking.TwoSides.add	(key, lo, hi) -> bool		kompas_lib.py:8414	L008414
+module	kompas_lib.drawing		Чертёж: листы, штамп, виды, разрезы/сечения, размеры.	kompas_lib.py:13966	L013966
+module	kompas_lib.drawing.auto		Черновой чертёж из общего слоя конструктивных элементов.	kompas_lib.py:13649	L013649
+class	kompas_lib.drawing.auto.DrawingDraft	(drawing, features, report)		kompas_lib.py:13684	L013684
+func	kompas_lib.drawing.auto.create_dimensioned_drawing	(part, diameter_policy='section', include_keyways=True)	Создать проверяемый черновик; вернуть документ, элементы и отчёт.	kompas_lib.py:13783	L013783
+module	kompas_lib.drawing.document		Документ-чертёж: листы, виды, разрезы/сечения.	kompas_lib.py:6890	L006890
+class	kompas_lib.drawing.Drawing	(kompas, raw_doc)	[Document]	kompas_lib.py:6905	L006905
+prop	kompas_lib.drawing.Drawing.sheets	-> list[Sheet]		kompas_lib.py:6920	L006920
+prop	kompas_lib.drawing.Drawing.sheet	-> Sheet	Первый лист.	kompas_lib.py:6925	L006925
+prop	kompas_lib.drawing.Drawing.stamp			kompas_lib.py:6930	L006930
+method	kompas_lib.drawing.Drawing.geometry_cache	() -> Iterator[Drawing]	Блок, в котором геометрия каждого вида (View.curves) читается из КОМПАСа один раз.	kompas_lib.py:6955	L006955
+method	kompas_lib.drawing.Drawing.invalidate_geometry	(view=None, bounds_only=False)	Сброс кэша после низкоуровневых изменений: bounds_only — размеры/обозначения.	kompas_lib.py:6974	L006974
+prop	kompas_lib.drawing.Drawing.views	-> list[View]	Виды чертежа без системного.	kompas_lib.py:6984	L006984
+method	kompas_lib.drawing.Drawing.view	(key) -> View	Вид по номеру или имени.	kompas_lib.py:6993	L006993
+method	kompas_lib.drawing.Drawing.objects_bbox	(raw_objects) -> Rect | None	Габарит объектов на листе (мм).	kompas_lib.py:7001	L007001
+method	kompas_lib.drawing.Drawing.add_standard_views	(model, projections=(Projection.FRONT, Proj…, scale=1.0, at=None, main_projection=Projection.FRONT, gap=20.0) -> dict[Projection, View]	Создать стандартные ассоциативные виды модели.	kompas_lib.py:7011	L007011
+method	kompas_lib.drawing.Drawing.add_section	(base, points, at, section=True, scale=None, arrows_left=False) -> View	Линия разреза на виде `base` и вид разреза/сечения.	kompas_lib.py:7043	L007043
+method	kompas_lib.drawing.Drawing.rebuild	()		kompas_lib.py:7081	L007081
+method	kompas_lib.drawing.Drawing.info	() -> dict		kompas_lib.py:7085	L007085
+method	kompas_lib.drawing.Drawing.capture_region	(region, dpi=200, pad=3.0) -> bytes	PNG фрагмента листа (область в мм листа или габарит вида).	kompas_lib.py:7093	L007093
+module	kompas_lib.drawing.sheet		Лист оформления: формат, рамка, зоны штампа.	kompas_lib.py:6355	L006355
+class	kompas_lib.drawing.Sheet	(drawing, raw_sheet, index)		kompas_lib.py:6368	L006368
+prop	kompas_lib.drawing.Sheet.format	-> SheetFormat		kompas_lib.py:6379	L006379
+prop	kompas_lib.drawing.Sheet.landscape	-> bool		kompas_lib.py:6383	L006383
+prop	kompas_lib.drawing.Sheet.multiplicity	-> int		kompas_lib.py:6387	L006387
+prop	kompas_lib.drawing.Sheet.size	-> tuple[float, float]	(ширина, высота) листа, мм.	kompas_lib.py:6391	L006391
+method	kompas_lib.drawing.Sheet.set_format	(fmt, landscape=True, multiplicity=1)		kompas_lib.py:6396	L006396
+prop	kompas_lib.drawing.Sheet.frame	-> Rect	Внутренняя рамка (ГОСТ 2.104: слева 20 мм, остальные 5 мм).	kompas_lib.py:6406	L006406
+prop	kompas_lib.drawing.Sheet.keepouts	-> list[Rect]	Занятые оформлением зоны: основная надпись, доп. графы, графа 26 и т.п. (мм листа).	kompas_lib.py:6412	L006412
+prop	kompas_lib.drawing.Sheet.stamp	-> Stamp		kompas_lib.py:6427	L006427
+method	kompas_lib.drawing.Sheet.info	() -> dict		kompas_lib.py:6430	L006430
+module	kompas_lib.drawing.stamp		Основная надпись (штамп) листа.	kompas_lib.py:6269	L006269
+func	kompas_lib.drawing.stamp.display_text	(value) -> str	Текст графы так, как он отображается (ссылки заменены их текущим значением).	kompas_lib.py:6280	L006280
+func	kompas_lib.drawing.stamp.is_linked	(value) -> bool	Графа содержит ссылку (на свойство модели, вид и т.п.) — значение формирует КОМПАС.	kompas_lib.py:6285	L006285
+class	kompas_lib.drawing.Stamp	(sheet, raw_stamp)	Штамп листа.	kompas_lib.py:6290	L006290
+method	kompas_lib.drawing.Stamp.raw_text	(cell) -> str	Текст графы как он хранится (со ссылками).	kompas_lib.py:6302	L006302
+method	kompas_lib.drawing.Stamp.is_linked	(cell) -> bool		kompas_lib.py:6310	L006310
+method	kompas_lib.drawing.Stamp.has_cell	(cell) -> bool		kompas_lib.py:6313	L006313
+method	kompas_lib.drawing.Stamp.set	(cell, value, force=False)		kompas_lib.py:6316	L006316
+method	kompas_lib.drawing.Stamp.update	(values, force=False)	Записать несколько граф и обновить штамп один раз.	kompas_lib.py:6330	L006330
+method	kompas_lib.drawing.Stamp.to_dict	() -> dict[str, dict]	Все известные графы: отображаемый текст и признак связи.	kompas_lib.py:6341	L006341
+module	kompas_lib.drawing.suggest		Черновой минимальный набор видов тела вращения; выбор исправляет вызывающий.	kompas_lib.py:10602	L010602
+class	kompas_lib.drawing.RevolutionViews	(main_projection, projections, cut_normal, needs_end, reasons)		kompas_lib.py:10611	L010611
+func	kompas_lib.drawing.suggest_revolution_views	(profile, faces=(), scale=1.0) -> RevolutionViews	Продольный вид + торец для полости, коротких ступеней или отверстий во фланце.	kompas_lib.py:10619	L010619
+module	kompas_lib.drawing.view		Вид чертежа (в т.ч. ассоциативный вид модели, разрез/сечение).	kompas_lib.py:6441	L006441
+class	kompas_lib.drawing.Curve2D	(kind, style, p1=None, p2=None, center=None, radius=None, angles=None, ccw=True, points=None, closed=False, source_type=0, raw=None)	Геометрический объект вида в координатах вида (единицы модели).	kompas_lib.py:6459	L006459
+method	kompas_lib.drawing.Curve2D.extremes	() -> list[Point]	Точки, задающие габарит кривой (у дуг и окружностей — с квадрантными точками).	kompas_lib.py:6475	L006475
+prop	kompas_lib.drawing.Curve2D.bbox	-> Rect | None		kompas_lib.py:6488	L006488
+prop	kompas_lib.drawing.Curve2D.is_axial	-> bool	Осевая (штрихпунктирная) линия.	kompas_lib.py:6495	L006495
+prop	kompas_lib.drawing.Curve2D.is_hidden	-> bool		kompas_lib.py:6505	L006505
+method	kompas_lib.drawing.Curve2D.segments	() -> list[Segment]	Аппроксимация отрезками (в тех же координатах).	kompas_lib.py:6511	L006511
+method	kompas_lib.drawing.Curve2D.vertices	() -> list[Point]	Точки, к которым KsAPI привязывает размер через Associate(): концы и середина отрезка, концы дуги, центр.	kompas_lib.py:6529	L006529
+class	kompas_lib.drawing.View	(drawing, raw_view)		kompas_lib.py:6542	L006542
+prop	kompas_lib.drawing.View.number	-> int		kompas_lib.py:6561	L006561
+prop	kompas_lib.drawing.View.name	-> str		kompas_lib.py:6565	L006565
+prop	kompas_lib.drawing.View.type	-> ViewType		kompas_lib.py:6569	L006569
+prop	kompas_lib.drawing.View.origin	-> Point	Точка привязки вида на листе (мм).	kompas_lib.py:6576	L006576
+prop	kompas_lib.drawing.View.scale	-> float		kompas_lib.py:6581	L006581
+prop	kompas_lib.drawing.View.angle	-> float		kompas_lib.py:6585	L006585
+prop	kompas_lib.drawing.View.is_associative	-> bool		kompas_lib.py:6589	L006589
+prop	kompas_lib.drawing.View.projection_name	-> str		kompas_lib.py:6593	L006593
+prop	kompas_lib.drawing.View.source_file	-> str		kompas_lib.py:6597	L006597
+prop	kompas_lib.drawing.View.is_section	-> bool	True — сечение, False — разрез или обычный вид.	kompas_lib.py:6601	L006601
+prop	kompas_lib.drawing.View.is_projection_linked	-> bool	Вид в проекционной связи с базовым (сдвигается только вдоль одной оси).	kompas_lib.py:6606	L006606
+prop	kompas_lib.drawing.View.base_view	-> View | None		kompas_lib.py:6611	L006611
+method	kompas_lib.drawing.View.cut_line	() -> list[Point]	Для разреза/сечения — точки линии разреза в координатах ЛИСТА (пусто, если нет).	kompas_lib.py:6617	L006617
+method	kompas_lib.drawing.View.info	() -> dict		kompas_lib.py:6629	L006629
+method	kompas_lib.drawing.View.bbox	() -> Rect | None	Габарит вида на листе (мм листа), включая все его объекты (размеры, обозначения).	kompas_lib.py:6641	L006641
+method	kompas_lib.drawing.View.content_bbox	(curves=None) -> Rect | None	Габарит геометрии вида (контур детали: все кривые, в т.ч.	kompas_lib.py:6661	L006661
+method	kompas_lib.drawing.View.move_to	(x, y) -> Point	Переместить точку привязки.	kompas_lib.py:6695	L006695
+method	kompas_lib.drawing.View.move_by	(dx, dy) -> Point		kompas_lib.py:6711	L006711
+method	kompas_lib.drawing.View.set_scale	(scale)		kompas_lib.py:6715	L006715
+method	kompas_lib.drawing.View.to_sheet	(x, y) -> Point		kompas_lib.py:6725	L006725
+method	kompas_lib.drawing.View.from_sheet	(x, y) -> Point		kompas_lib.py:6729	L006729
+method	kompas_lib.drawing.View.to_sheet_len	(length) -> float	Длина из единиц вида в мм листа.	kompas_lib.py:6733	L006733
+method	kompas_lib.drawing.View.project_point	(x, y, z) -> Point	Проекция точки модели в координаты вида.	kompas_lib.py:6738	L006738
+method	kompas_lib.drawing.View.project	(model_object) -> list[Curve2D]	Кривые вида, порождённые объектом модели (ребро/грань; Edge/Face или raw).	kompas_lib.py:6745	L006745
+method	kompas_lib.drawing.View.curves	(sag=0.05) -> list[Curve2D]	Геометрия вида (координаты вида): отрезки, окружности, дуги — точно; NURBS, Безье, эллипсы, дуги эллипсов, ломаные, эквидистанты, контуры, конические…	kompas_lib.py:6799	L006799
+prop	kompas_lib.drawing.View.symbols		ISymbols2DContainer вида (размеры, обозначения) — для низкоуровневой работы.	kompas_lib.py:6822	L006822
+method	kompas_lib.drawing.View.cut	(through, at, region=None, half=None, margin=3.0) -> int	Разрез в самом виде (ГОСТ 2.305): полный, «половина вида — половина разреза» или местный.	kompas_lib.py:6827	L006827
+method	kompas_lib.drawing.View.set_designation	(show_scale=None, show_name=None)	Настроить надпись вида («А-А (2:1)»).	kompas_lib.py:6875	L006875
+module	kompas_lib.enums		Перечисления KsAPI.	kompas_lib.py:222	L000222
+class	kompas_lib.DocumentType		[IntEnum] Тип документа (DocumentTypeEnum).	kompas_lib.py:241	L000241
+class	kompas_lib.SheetFormat		[IntEnum] Формат листа (ksDocumentFormatEnum).	kompas_lib.py:253	L000253
+class	kompas_lib.Projection		[IntEnum] Стандартный вид относительно главного (ksRelativeProjectionTypeEnum).	kompas_lib.py:264	L000264
+class	kompas_lib.ViewType		[IntEnum] Тип вида чертежа (LtViewType).	kompas_lib.py:290	L000290
+class	kompas_lib.StampCell		[IntEnum] Графы основной надписи (ksStampEnum, ГОСТ 2.104).	kompas_lib.py:304	L000304
+class	kompas_lib.LineStyle		[IntEnum] Системные стили линий (ksCurveStyleEnum).	kompas_lib.py:333	L000333
+class	kompas_lib.DimOrientation		[IntEnum] Ориентация линейного размера (ksLineDimensionOrientationEnum).	kompas_lib.py:343	L000343
+class	kompas_lib.enums.HideMessage		[IntEnum] Режим подавления сообщений КОМПАСа (ksHideMessageEnum).	kompas_lib.py:350	L000350
+class	kompas_lib.RasterFormat		[IntEnum] Растровые форматы экспорта (ksRasterFormatEnum).	kompas_lib.py:357	L000357
+func	kompas_lib.enums.by_name	(name) -> IntEnum	Член перечисления по исходному имени константы KsAPI, например by_name('ksStMaterial').	kompas_lib.py:373	L000373
+func	kompas_lib.enums.verify_installed	() -> list[tuple[str, int, int]]	Сверяет сгенерированные значения с constants.py установленного КОМПАСа.	kompas_lib.py:379	L000379
+module	kompas_lib.enums.raw		444 перечислений SDK КОМПАСа с исходными именами: raw.ksObj3dTypeEnum.o3d_face…; имена ищите rg по dist/kompas_lib.py	kompas_lib.py:17042	L017042
+module	kompas_lib.errors		Исключения библиотеки.	kompas_lib.py:409	L000409
+class	kompas_lib.KompasError		[Exception] Базовое исключение kompas_lib.	kompas_lib.py:412	L000412
+class	kompas_lib.KsapiNotFoundError		[KompasError] Не найден ksapi.py / установленный КОМПАС-3D.	kompas_lib.py:416	L000416
+class	kompas_lib.NotConnectedError		[KompasError] Нет связи с запущенным КОМПАС-3D.	kompas_lib.py:420	L000420
+class	kompas_lib.KompasBusyError		[KompasError] В документе выполняется интерактивный процесс пользователя; изменение небезопасно.	kompas_lib.py:424	L000424
+class	kompas_lib.OperationFailedError	(operation, details='')	[KompasError] Вызов KsAPI вернул неуспех.	kompas_lib.py:428	L000428
+class	kompas_lib.WrongDocumentTypeError		[KompasError] Документ не того типа (например, ожидался чертёж).	kompas_lib.py:437	L000437
+class	kompas_lib.LayoutError		[KompasError] Компоновка невозможна (не помещается на формат и т.п.).	kompas_lib.py:441	L000441
+class	kompas_lib.assembly.ComponentNotFoundError		[KompasError, LookupError] Компонент сборки не найден или запрос неоднозначен; текст перечисляет варианты.	kompas_lib.py:445	L000445
+class	kompas_lib.assembly.MateError	(message, mate=None)	[KompasError] Сопряжение не выполнено (ошибка КОМПАСа или не сходится геометрия); сопряжение удалено, положение возвращено.	kompas_lib.py:449	L000449
+func	kompas_lib.errors.check	(result, operation, details='')	Возвращает result, если он «истинный», иначе бросает OperationFailedError.	kompas_lib.py:460	L000460
+module	kompas_lib.geom		Простая 2D-геометрия для компоновки и проверки пересечений (без зависимостей от КОМПАСа).	kompas_lib.py:768	L000768
+class	kompas_lib.Point	(x, y)		kompas_lib.py:781	L000781
+method	kompas_lib.Point.dist	(o) -> float		kompas_lib.py:791	L000791
+class	kompas_lib.Rect	(x1, y1, x2, y2)	Ось-ориентированный прямоугольник: (x1, y1) — левый нижний, (x2, y2) — правый верхний угол.	kompas_lib.py:796	L000796
+method	kompas_lib.Rect.of	(x1, y1, x2, y2) -> Rect	Нормализует порядок координат.	kompas_lib.py:804	L000804
+prop	kompas_lib.Rect.width	-> float		kompas_lib.py:809	L000809
+prop	kompas_lib.Rect.height	-> float		kompas_lib.py:813	L000813
+prop	kompas_lib.Rect.center	-> Point		kompas_lib.py:817	L000817
+prop	kompas_lib.Rect.area	-> float		kompas_lib.py:821	L000821
+method	kompas_lib.Rect.expand	(left=0, bottom=0, right=0, top=0) -> Rect		kompas_lib.py:824	L000824
+method	kompas_lib.Rect.inflate	(d) -> Rect		kompas_lib.py:827	L000827
+method	kompas_lib.Rect.shift	(dx, dy) -> Rect		kompas_lib.py:830	L000830
+method	kompas_lib.Rect.intersects	(o, tol=0.0) -> bool	Пересечение с перекрытием больше tol (касание не считается).	kompas_lib.py:833	L000833
+method	kompas_lib.Rect.intersection	(o) -> Rect | None		kompas_lib.py:838	L000838
+method	kompas_lib.Rect.contains	(o, tol=1e-06) -> bool		kompas_lib.py:842	L000842
+method	kompas_lib.Rect.contains_point	(p, tol=1e-06) -> bool		kompas_lib.py:846	L000846
+method	kompas_lib.Rect.union	(o) -> Rect		kompas_lib.py:849	L000849
+method	kompas_lib.Rect.as_tuple	() -> tuple[float, float, float, float]		kompas_lib.py:852	L000852
+func	kompas_lib.geom.union_all	(rects) -> Rect | None		kompas_lib.py:856	L000856
+class	kompas_lib.geom.Segment	(a, b)		kompas_lib.py:864	L000864
+prop	kompas_lib.geom.Segment.length	-> float		kompas_lib.py:869	L000869
+prop	kompas_lib.geom.Segment.bbox	-> Rect		kompas_lib.py:873	L000873
+class	kompas_lib.geom.SegmentIndex	(segments, cell=10.0)	Равномерная сетка для быстрого отбора отрезков вблизи прямоугольника.	kompas_lib.py:877	L000877
+method	kompas_lib.geom.SegmentIndex.query	(r) -> list[Segment]		kompas_lib.py:916	L000916
+func	kompas_lib.geom.near	(obstacles, r, tol=0.0)	Отрезки-кандидаты вблизи r: из SegmentIndex — по сетке, из обычной последовательности — все.	kompas_lib.py:929	L000929
+func	kompas_lib.geom.as_index	(obstacles, cell=10.0) -> SegmentIndex		kompas_lib.py:936	L000936
+func	kompas_lib.geom.segments_cross	(s1, s2, tol=1e-06) -> bool	Собственное пересечение отрезков (общие концы и касание концом не считаются).	kompas_lib.py:943	L000943
+func	kompas_lib.geom.segment_rect_overlap	(s, r) -> float	Длина части отрезка внутри прямоугольника (отсечение Лианга — Барски).	kompas_lib.py:955	L000955
+func	kompas_lib.geom.segment_hits_rect	(s, r, tol=1e-06) -> bool	Отрезок проходит через внутренность прямоугольника (а не только касается границы).	kompas_lib.py:974	L000974
+func	kompas_lib.geom.collinear_overlap	(s1, s2, tol=1e-06) -> float	Длина общей части двух отрезков, лежащих на одной прямой (0 — если не на одной прямой).	kompas_lib.py:982	L000982
+func	kompas_lib.geom.arc_polyline	(center, radius, a1=0.0, a2=360.0, ccw=True, per_circle=48) -> list[Segment]	Ломаная, аппроксимирующая дугу (углы в градусах; a1 == a2 — полная окружность).	kompas_lib.py:997	L000997
+func	kompas_lib.geom.arc_extremes	(center, radius, a1=0.0, a2=360.0, ccw=True) -> list[Point]	Точки дуги, задающие её габарит: концы + квадрантные точки (0°, 90°, 180°, 270°) внутри дуги.	kompas_lib.py:1009	L001009
+class	kompas_lib.geom.OBox	(o, d, a1, a2, n1, n2)	Повёрнутый прямоугольник: точки o + a·d + b·n, a ∈ [a1, a2], b ∈ [n1, n2], где n = d, повёрнутый на 90°.	kompas_lib.py:1029	L001029
+method	kompas_lib.geom.OBox.of	(r) -> OBox		kompas_lib.py:1042	L001042
+prop	kompas_lib.geom.OBox.n	-> tuple[float, float]		kompas_lib.py:1048	L001048
+method	kompas_lib.geom.OBox.point	(a, b) -> Point		kompas_lib.py:1051	L001051
+method	kompas_lib.geom.OBox.local	(p) -> Point		kompas_lib.py:1055	L001055
+method	kompas_lib.geom.OBox.corners	() -> list[Point]		kompas_lib.py:1060	L001060
+prop	kompas_lib.geom.OBox.bbox	-> Rect		kompas_lib.py:1065	L001065
+method	kompas_lib.geom.OBox.hits_segment	(s, tol=1e-06) -> bool	Отрезок проходит через внутренность (касание границы не считается).	kompas_lib.py:1069	L001069
+method	kompas_lib.geom.OBox.intersects	(other, tol=0.0) -> bool	Перекрытие внутренностей больше tol (теорема о разделяющей оси).	kompas_lib.py:1074	L001074
+module	kompas_lib.gost		Нормативные константы ЕСКД, которых нет в KsAPI.	kompas_lib.py:1136	L001136
+func	kompas_lib.gost.format_size	(fmt, landscape) -> tuple[float, float]	(ширина, высота) листа в мм.	kompas_lib.py:1163	L001163
+class	kompas_lib.gost.Scale	(value)	Масштаб изображения, value = длина на чертеже / натуральная длина.	kompas_lib.py:1176	L001176
+prop	kompas_lib.gost.Scale.factor	-> float		kompas_lib.py:1181	L001181
+prop	kompas_lib.gost.Scale.label	-> str	'1:2', '2,5:1', '1:1' — как в основной надписи.	kompas_lib.py:1185	L001185
+func	kompas_lib.gost.is_standard_scale	(factor, tol=1e-06) -> bool		kompas_lib.py:1212	L001212
+func	kompas_lib.gost.nearest_scale_not_above	(factor) -> Scale	Наибольший стандартный масштаб, не превышающий factor (для подгонки на лист).	kompas_lib.py:1216	L001216
+func	kompas_lib.gost.scale_from_factor	(factor) -> Scale		kompas_lib.py:1222	L001222
+module	kompas_lib.layout		Компоновка: расстановка видов на листе (и далее — размеров) без наложений.	kompas_lib.py:7670	L007670
+module	kompas_lib.layout.apply		Применение компоновки видов к чертежу КОМПАС.	kompas_lib.py:7409	L007409
+class	kompas_lib.layout.LayoutReport	(placement, scale, scale_changed, residuals=…)		kompas_lib.py:7424	L007424
+prop	kompas_lib.layout.LayoutReport.ok	-> bool		kompas_lib.py:7431	L007431
+method	kompas_lib.layout.LayoutReport.as_dict	() -> dict		kompas_lib.py:7434	L007434
+func	kompas_lib.layout.find_main_view	(drawing) -> View		kompas_lib.py:7439	L007439
+func	kompas_lib.layout.infer_roles	(drawing, main=None) -> dict[int, Role]	Роль каждого вида (по номеру) относительно главного — по проекционной связи и взаимному положению.	kompas_lib.py:7455	L007455
+func	kompas_lib.layout.arrange_views	(drawing, cfg=None, roles=None, main=None, auto_scale=False, max_scale=None) -> LayoutReport	Расставить виды на листе по правилам LayoutConfig.	kompas_lib.py:7505	L007505
+func	kompas_lib.layout.arrange_sheet	(drawing, formats=(SheetFormat.A4, SheetF…, cfg=None, main=None, roles=None) -> LayoutReport	Сначала натуральный масштаб на A4/A3/A2, затем уменьшение на этих форматах.	kompas_lib.py:7594	L007594
+func	kompas_lib.layout.check_layout	(drawing, cfg=None) -> list[str]	Проблемы текущей компоновки: выход за рамку, наезд на штамп, пересечение/близость видов.	kompas_lib.py:7645	L007645
+module	kompas_lib.layout.views		Компоновка видов на листе (чистый алгоритм, без КОМПАСа).	kompas_lib.py:7109	L007109
+class	kompas_lib.layout.Role		[str, Enum] Положение вида относительно главного (ГОСТ 2.305, метод первого угла).	kompas_lib.py:7132	L007132
+func	kompas_lib.layout.dim_reserve	(tiers, text_height=gost.DIM_TEXT_HEIGHT) -> float	Ширина зоны под `tiers` ярусов размеров (мм листа). 0 ярусов — 0.	kompas_lib.py:7151	L007151
+class	kompas_lib.layout.LayoutConfig	(frame_margin=12.0, keepout_margin=6.0, view_gap=12.0, dim_tiers=2, reserves=…, free_side='auto', step=1.0)	Параметры компоновки (все размеры — мм листа).	kompas_lib.py:7159	L007159
+method	kompas_lib.layout.LayoutConfig.reserve_for	(key) -> Sides		kompas_lib.py:7169	L007169
+class	kompas_lib.layout.ViewBox	(key, bbox, role=Role.FREE, order=0.0, anchor_x=None, anchor_y=None, content=None)	Вид для компоновки: текущий габарит на листе и роль.	kompas_lib.py:7178	L007178
+class	kompas_lib.layout.ViewPlacement	(targets, shifts, composition, area)	Результат: целевой габарит каждого вида и сдвиг относительно текущего.	kompas_lib.py:7201	L007201
+method	kompas_lib.layout.ViewPlacement.as_dict	() -> dict		kompas_lib.py:7208	L007208
+func	kompas_lib.layout.arrange	(boxes, frame, keepouts, cfg=None) -> ViewPlacement | None	Рассчитать положения видов.	kompas_lib.py:7317	L007317
+func	kompas_lib.layout.views.scaled_boxes	(boxes, origins, k) -> list[ViewBox]	Габариты видов при изменении масштаба в k раз (относительно точек привязки видов).	kompas_lib.py:7363	L007363
+func	kompas_lib.layout.fit_scale	(boxes, origins, current, frame, keepouts, cfg=None, max_scale=None) -> gost.Scale | None	Наибольший стандартный масштаб (≤ max_scale), при котором компоновка помещается.	kompas_lib.py:7392	L007392
+module	kompas_lib.model		3D-документ (деталь/сборка): свойства и геометрические факты для агента.	kompas_lib.py:1559	L001559
+class	kompas_lib.model.Box3	(x1, y1, z1, x2, y2, z2)		kompas_lib.py:1582	L001582
+prop	kompas_lib.model.Box3.size	-> Vec3		kompas_lib.py:1591	L001591
+prop	kompas_lib.model.Box3.center	-> Vec3		kompas_lib.py:1595	L001595
+class	kompas_lib.model.Face	(index, kind, area, box, radius=None, axis_origin=None, axis_dir=None, normal=None, raw=None, cone_angle=None, minor_radius=None, internal=None, major_radius=None, point=None, outward=None, sweep=None, ends=None, arc=None, key=None)	Грань тела.	kompas_lib.py:1600	L001600
+class	kompas_lib.model.Edge	(index, kind, length, box, start=None, end=None, center=None, radius=None, normal=None, raw=None, key=None, faces=(), vertices=(), convexity=None, tangents=(), mid=None)	Ребро тела.	kompas_lib.py:1625	L001625
+func	kompas_lib.model.read_faces	(ks, part, objects=None, *, kinds=None) -> list[Face]	Грани тел `part` (деталь или компонент сборки) в собственной СК её файла.	kompas_lib.py:1654	L001654
+class	kompas_lib.model.PartDocument	(kompas, raw_doc)	[Document] Документ детали (или сборки) и его верхний компонент.	kompas_lib.py:1723	L001723
+method	kompas_lib.model.PartDocument.geometry_cache	()	Повторные чтения геометрии/МЦХ без повторного обхода KsAPI внутри блока.	kompas_lib.py:1734	L001734
+method	kompas_lib.model.PartDocument.invalidate_geometry	()	Сбросить снимки геометрии и МЦХ после низкоуровневых изменений.	kompas_lib.py:1750	L001750
+prop	kompas_lib.model.PartDocument.part		Верхний компонент **текущего исполнения**.	kompas_lib.py:1769	L001769
+prop	kompas_lib.model.PartDocument.designation	-> str	Обозначение (децимальный номер).	kompas_lib.py:1782	L001782
+prop	kompas_lib.model.PartDocument.title	-> str	Наименование.	kompas_lib.py:1793	L001793
+prop	kompas_lib.model.PartDocument.material	-> str		kompas_lib.py:1804	L001804
+method	kompas_lib.model.PartDocument.set_material	(name, density)	Материал и плотность (г/см³).	kompas_lib.py:1807	L001807
+prop	kompas_lib.model.PartDocument.mass	-> float	Масса, г (как возвращает KsAPI).	kompas_lib.py:1814	L001814
+prop	kompas_lib.model.PartDocument.density	-> float		kompas_lib.py:1819	L001819
+method	kompas_lib.model.PartDocument.info	() -> dict	Сводка для агента.	kompas_lib.py:1822	L001822
+method	kompas_lib.model.PartDocument.box	() -> Box3	Габарит тел детали (без системных плоскостей).	kompas_lib.py:1831	L001831
+method	kompas_lib.model.PartDocument.faces	(*, kinds=None) -> list[Face]	Грани тел документа с распознанным типом поверхности.	kompas_lib.py:1842	L001842
+method	kompas_lib.model.PartDocument.features	(tol=0.001, faces=None)	Распознанные элементы и данные модельных резьб для 2D/3D-оформления.	kompas_lib.py:1857	L001857
+method	kompas_lib.model.PartDocument.auto_dimension	(**kwargs)	Автоматически поставить ассоциативные 3D-размеры, вернуть отчёт.	kompas_lib.py:1878	L001878
+method	kompas_lib.model.PartDocument.edges	() -> list[Edge]		kompas_lib.py:1883	L001883
+func	kompas_lib.model.face_key	(ks, obj) -> int	Ключ грани: указатель интерфейса `IFace` стабилен для одной грани — из детали, из операции, из `IEdge.GetAdjacentFace`, `IFace.GetConnectedFaces` (s1…	kompas_lib.py:1887	L001887
+func	kompas_lib.model.edge_key	(ks, obj) -> int	Ключ ребра (как `face_key`, через `IEdge`).	kompas_lib.py:1893	L001893
+func	kompas_lib.model.read_edges	(ks, objects) -> list[Edge]	Рёбра тел из объектов KsAPI (все рёбра детали, рёбра операции `IFeature(op).GetModelObjects`…).	kompas_lib.py:1915	L001915
+module	kompas_lib.pdf_drawing		Чертёж из PDF любого происхождения: что можно прочитать машинно и что — только глазами.	kompas_lib.py:2093	L002093
+class	kompas_lib.pdf_drawing.Annotation	(id, page, text, kind, bbox, angle=0.0, height=0.0, value=None, count=None, reference=False, suffix='', label='', scale='', zone='field', source='text')	Надпись чертежа из текстового слоя.	kompas_lib.py:2160	L002160
+method	kompas_lib.pdf_drawing.Annotation.short	() -> str		kompas_lib.py:2178	L002178
+class	kompas_lib.pdf_drawing.PdfPage	(index, width, height, format, kind, text_quality, chars, paths, image_coverage, annotations=…)		kompas_lib.py:2193	L002193
+prop	kompas_lib.pdf_drawing.PdfPage.frame	-> Rect	Внутренняя рамка по ГОСТ 2.104 (для листа другого стандарта — приблизительно).	kompas_lib.py:2206	L002206
+prop	kompas_lib.pdf_drawing.PdfPage.stamp	-> Rect	Место основной надписи по ГОСТ 2.104: правый нижний угол рамки, 185×55.	kompas_lib.py:2211	L002211
+prop	kompas_lib.pdf_drawing.PdfPage.text_usable	-> bool		kompas_lib.py:2217	L002217
+method	kompas_lib.pdf_drawing.PdfPage.tiles	(rows=2, cols=2, overlap=15.0) -> list[Rect]	Области рамки сеткой rows×cols с перекрытием (мм) — для чтения листа по частям.	kompas_lib.py:2220	L002220
+method	kompas_lib.pdf_drawing.PdfPage.find	(kind=None, zone=None) -> list[Annotation]		kompas_lib.py:2232	L002232
+method	kompas_lib.pdf_drawing.PdfPage.summary	() -> str		kompas_lib.py:2236	L002236
+class	kompas_lib.pdf_drawing.PdfDrawing	(path, pages)		kompas_lib.py:2255	L002255
+method	kompas_lib.pdf_drawing.PdfDrawing.annotations	() -> list[Annotation]		kompas_lib.py:2259	L002259
+method	kompas_lib.pdf_drawing.PdfDrawing.summary	() -> str		kompas_lib.py:2262	L002262
+method	kompas_lib.pdf_drawing.PdfDrawing.render	(page=0, region=None, dpi=None, max_px=MAX_PX, out=None) -> bytes	PNG листа или области (мм листа, Y вверх).	kompas_lib.py:2265	L002265
+method	kompas_lib.pdf_drawing.PdfDrawing.export_images	(out_dir, page=0, px_per_mm=6.0, max_px=MAX_PX) -> list[Path]	Растр для чтения глазами: обзор листа, фрагменты рамки и штамп — PNG-файлы в `out_dir`.	kompas_lib.py:2286	L002286
+method	kompas_lib.pdf_drawing.PdfDrawing.geometry	(region, page=0, **kw) -> ViewGeometry	Отрезки, дуги и окружности вида в области `region` (мм листа) — в мм модели: `scale="1:2"`, `origin=(x, y)` мм листа, `min_width`, `tol` — см. `pdf_g…	kompas_lib.py:2311	L002311
+method	kompas_lib.pdf_drawing.PdfDrawing.views	(page=0) -> list[PdfView]	Виды листа: габарит, обозначение («А», «Д-Д», «Б(2:1)»), масштаб; `view.geometry()` — линии вида в мм модели от левого нижнего угла габарита.	kompas_lib.py:2317	L002317
+func	kompas_lib.pdf_drawing.parse_annotation	(text) -> dict	Разобрать одну надпись.	kompas_lib.py:2329	L002329
+func	kompas_lib.pdf_drawing.text_quality	(text) -> float	Доля символов, ожидаемых на чертеже (ASCII, кириллица, знаки ЕСКД). 1.0 для пустой строки.	kompas_lib.py:2369	L002369
+func	kompas_lib.pdf_drawing.classify	(chars, quality, paths, image_coverage) -> str	Можно ли пользоваться текстовым слоем страницы.	kompas_lib.py:2378	L002378
+func	kompas_lib.pdf_drawing.sheet_format	(width, height, tol=3.0) -> str | None		kompas_lib.py:2391	L002391
+func	kompas_lib.pdf_drawing.attach_counts	(items) -> list[Annotation]	Отдельная строка «6 мест» под размером становится его `count`; присоединённые строки убираются.	kompas_lib.py:2399	L002399
+func	kompas_lib.pdf_drawing.diff_annotations	(a, b) -> tuple[list[Annotation], list[Annotation…	Надписи, которые есть только в `a` и только в `b` (по смыслу, без координат) — для сравнения исполнений.	kompas_lib.py:2423	L002423
+func	kompas_lib.pdf_drawing.dedupe	(items, tol=0.5) -> list[Annotation]	Одинаковая надпись в том же месте (CAD часто рисует текст дважды) — оставить одну.	kompas_lib.py:2503	L002503
+func	kompas_lib.pdf_drawing.merge_numbered	(items) -> list[Annotation]	Номер пункта («3» или «3.») слева на одной строке с текстом — склеить: это пункт требований, не размер.	kompas_lib.py:2514	L002514
+func	kompas_lib.pdf_drawing.read_pdf_drawing	(path) -> PdfDrawing	Прочитать PDF-чертёж: тип каждой страницы и, если текстовому слою можно верить, надписи.	kompas_lib.py:2531	L002531
+module	kompas_lib.pdf_geometry		Геометрия вида из векторного PDF: отрезки, дуги и окружности в мм модели (чистый Python, без КОМПАСа).	kompas_lib.py:2543	L002543
+class	kompas_lib.pdf_geometry.Stroke	(kind, start, end, width, center=None, radius=None, a1=None, a2=None, residual=0.0, points=2, radius_err=0.0)	Отрезок, дуга или окружность вида в мм модели.	kompas_lib.py:2587	L002587
+prop	kompas_lib.pdf_geometry.Stroke.sweep	-> float		kompas_lib.py:2602	L002602
+prop	kompas_lib.pdf_geometry.Stroke.length	-> float		kompas_lib.py:2610	L002610
+method	kompas_lib.pdf_geometry.Stroke.short	() -> str		kompas_lib.py:2615	L002615
+class	kompas_lib.pdf_geometry.ArcGroup	(center, radius, sweep, strokes, radius_err=0.0)	Дуги и окружности с общим центром и радиусом (одна окружность, разрезанная пересечениями).	kompas_lib.py:2629	L002629
+class	kompas_lib.pdf_geometry.ViewGeometry	(strokes, region, origin, scale, widths=…)	Примитивы вида в мм модели и преобразование лист ↔ вид.	kompas_lib.py:2643	L002643
+method	kompas_lib.pdf_geometry.ViewGeometry.to_view	(x, y) -> Point	Точка листа (мм) → мм модели.	kompas_lib.py:2651	L002651
+method	kompas_lib.pdf_geometry.ViewGeometry.to_sheet	(x, y) -> Point	Мм модели → точка листа (мм).	kompas_lib.py:2655	L002655
+prop	kompas_lib.pdf_geometry.ViewGeometry.box	-> Rect | None		kompas_lib.py:2660	L002660
+method	kompas_lib.pdf_geometry.ViewGeometry.lines	(*, horizontal=None, vertical=None, min_length=0.0, angle_tol=0.1) -> list[Stroke]	Отрезки; `horizontal`/`vertical` — с допуском `angle_tol`°, `min_length` — мм модели.	kompas_lib.py:2666	L002666
+method	kompas_lib.pdf_geometry.ViewGeometry.arcs	(radius=None, tol=0.05) -> list[Stroke]	Дуги и окружности, при `radius` — с этим радиусом (± `tol`, мм модели).	kompas_lib.py:2680	L002680
+method	kompas_lib.pdf_geometry.ViewGeometry.circles	(tol=0.05, min_sweep=0.0) -> list[ArcGroup]	Дуги одной окружности, собранные вместе, по возрастанию радиуса.	kompas_lib.py:2685	L002685
+method	kompas_lib.pdf_geometry.ViewGeometry.near	(x, y, distance) -> list[Stroke]	Примитивы, проходящие ближе `distance` (мм модели) к точке.	kompas_lib.py:2711	L002711
+method	kompas_lib.pdf_geometry.ViewGeometry.within	(x1, y1, x2, y2) -> ViewGeometry	Только примитивы, целиком лежащие в прямоугольнике (мм модели).	kompas_lib.py:2716	L002716
+method	kompas_lib.pdf_geometry.ViewGeometry.summary	(limit=300) -> str	Текстом: толщины линий в области, окружности, затем все примитивы (сначала длинные).	kompas_lib.py:2723	L002723
+func	kompas_lib.pdf_geometry.parse_scale	(scale) -> float	Масштаб вида → мм листа на мм модели: "1:2" → 0.5, "2:1" → 2, число — как есть.	kompas_lib.py:2743	L002743
+func	kompas_lib.pdf_geometry.view_geometry	(path, region, *, page=0, scale='1:1', origin=None, min_width=0.3, max_width=None, tol=0.1) -> ViewGeometry	Отрезки, дуги и окружности линий PDF в области `region` (мм листа).	kompas_lib.py:2755	L002755
+class	kompas_lib.pdf_geometry.PdfView	(path, page, box, label='', scale='', kind='view')	Вид листа PDF: габарит основных линий, обозначение и масштаб; `geometry()` — линии вида в мм модели с началом в левом нижнем углу габарита (крайние т…	kompas_lib.py:2785	L002785
+prop	kompas_lib.pdf_geometry.PdfView.origin	-> Point		kompas_lib.py:2796	L002796
+prop	kompas_lib.pdf_geometry.PdfView.size	-> tuple[float, float]	Габарит вида в мм модели (по масштабу; без масштаба — мм листа).	kompas_lib.py:2800	L002800
+method	kompas_lib.pdf_geometry.PdfView.geometry	(**kw) -> ViewGeometry	`view_geometry` по области вида; `scale`, `origin`, `min_width`, `tol` можно переопределить.	kompas_lib.py:2805	L002805
+func	kompas_lib.pdf_geometry.find_views	(path, page, min_width=0.3, max_width=0.7) -> list[PdfView]	Виды листа `page` (`PdfPage` из `read_pdf_drawing`): группы основных линий в поле рамки.	kompas_lib.py:2818	L002818
+func	kompas_lib.pdf_geometry.fit_circle	(points) -> tuple[float, float, float, float] | None	Окружность по точкам (МНК Каса): (cx, cy, r, наибольшее отклонение) или None (меньше 3 точек, прямая).	kompas_lib.py:2945	L002945
+module	kompas_lib.vec3		Трёхмерные векторы кортежами `(x, y, z)`: арифметика и округление координат, прочитанных из KsAPI.	kompas_lib.py:1089	L001089
+func	kompas_lib.vec3.vadd	(a, b) -> Vec3		kompas_lib.py:1096	L001096
+func	kompas_lib.vec3.vsub	(a, b) -> Vec3		kompas_lib.py:1100	L001100
+func	kompas_lib.vec3.vmul	(a, k) -> Vec3		kompas_lib.py:1104	L001104
+func	kompas_lib.vec3.dot	(a, b) -> float		kompas_lib.py:1108	L001108
+func	kompas_lib.vec3.cross	(a, b) -> Vec3		kompas_lib.py:1112	L001112
+func	kompas_lib.vec3.norm	(a) -> float		kompas_lib.py:1116	L001116
+func	kompas_lib.vec3.unit	(a) -> Vec3		kompas_lib.py:1120	L001120
+func	kompas_lib.vec3.rounded	(v, nd=6) -> float	Округлить координату и убрать «-0.0»: значения из KsAPI сравниваются и печатаются без шума.	kompas_lib.py:1127	L001127
+module	kompas_lib.watchdog		Наблюдение за модальными окнами КОМПАСа без закрытия пользовательских диалогов.	kompas_lib.py:672	L000672
+class	kompas_lib.watchdog.ModalDialog	(handle, title)		kompas_lib.py:681	L000681
+func	kompas_lib.watchdog.modal_dialogs	(main_window) -> list[ModalDialog]	Видимые диалоги того же процесса с заблокированным окном-владельцем.	kompas_lib.py:686	L000686
+class	kompas_lib.watchdog.ModalWatchdog	(main_window, on_dialog=None, interval=0.5, poll=None)	Поток сообщает о новых окнах, пока основной поток ожидает вызов KsAPI.	kompas_lib.py:717	L000717

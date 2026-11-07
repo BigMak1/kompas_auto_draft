@@ -2,7 +2,7 @@
 # Проверить всё вручную: uv run pre-commit run --all-files
 
 # Файлы КОМПАС и сырые отчёты KsAPI не правятся автоматически
-exclude: ^(kompas_data|reports|vendor|runs)/
+exclude: ^(kompas_data|reports|vendor|runs|eval|data|artifacts)/
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

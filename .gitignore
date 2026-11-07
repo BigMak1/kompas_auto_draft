@@ -5,6 +5,13 @@ mcp/
 .codex
 .mcp.json
 vendor/
+!/vendor/
+/vendor/*
+!/vendor/kompas_lib/
+/vendor/kompas_lib/*
+!/vendor/kompas_lib/kompas_lib.py
+!/vendor/kompas_lib/README.md
+!/vendor/kompas_lib/llms.txt
 AGENTS.md
 
 # KOMPAS: временные файлы-блокировки открытых документов
@@ -17,6 +24,7 @@ __pycache__/
 *.py[cod]
 .ruff_cache/
 .pytest_cache/
+.hw01-work/
 
 # Локальные прогоны, наборы из общего проекта и производные модели
 runs/

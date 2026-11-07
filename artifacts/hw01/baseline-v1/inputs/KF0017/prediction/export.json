@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "chord_mm": 0.01,
+    "angle": 0.05,
+    "max_cells": 2000000
+  },
+  "implementation": {
+    "worker_sha256": "2bac17fc513978bf4f06bd2dc0f21b448dec76b933138e01d3d0f44af2ee8906",
+    "vendor_sha256": "9cfce59ddc6241e9f87edf6997637eb0fedb96552235df7fdc9615b36e546630",
+    "normalizer_sha256": "e62cae395ced87facff649b0ea3161069131fbd2d9c2159244a6728a04e49c87"
+  },
+  "native_sha256": "78581c6a90ffabd67e88442fd7e4c9a0e7a9db3c3f600b84e3fe538848137871",
+  "source_version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования); build 2780",
+  "files": {
+    "model.stl": "9605e544d4dcda5e6557c32378ae9d38a67b1cbd1355b0acad29635c021045a7",
+    "kernel-facts.json": "2315eb1581cb182db88f9d3f2ef2569144e73edfef9d19b4f0f1d85dde1d597e",
+    "raw-facts.json": "e44e6d9ef9ec2147211a6dbfad282946931dd11b3a52ac9d02d101031967d0b9",
+    "eval-facts.json": "14a60a101cea3217857d0f6a36a5f165d93cc554311aeffb8931221a5249e2a0"
+  },
+  "axes_method": "kernel_axes"
+}

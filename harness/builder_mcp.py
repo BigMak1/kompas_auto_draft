@@ -8,6 +8,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any
@@ -15,6 +16,7 @@ from zipfile import BadZipFile, ZipFile
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
+from harness import budget  # noqa: E402
 from harness.native_worker import atomic  # noqa: E402
 from harness.recipe import validate  # noqa: E402
 
@@ -180,6 +182,8 @@ class Bridge:
                 return self.health()
             if name == "view_input" and set(args) <= {"crop"}:
                 return self.view_input(args.get("crop"))
+            if budget.limits(self.run) and (REPO / "runs/hw01-quarantine.json").exists():
+                raise RuntimeError("An unresolved CAD call requires operator inspection")
             uncertain = self.run / "control" / "uncertain.json"
             if uncertain.exists():
                 state = json.loads(uncertain.read_text())
@@ -192,6 +196,7 @@ class Bridge:
                     return self.finish(args["attempt"])
                 raise RuntimeError("Previous native call unresolved; operator must inspect it")
             if name == "build" and set(args) == {"recipe"}:
+                budget.reserve_build(self.run)
                 return self.build(validate(args["recipe"]))
             if name == "finish" and set(args) == {"attempt"}:
                 return self.finish(args["attempt"])
@@ -206,6 +211,8 @@ class Bridge:
             check=False,
         )
         if completed.returncode:
+            if budget.limits(self.run):
+                atomic(self.run / "control/infrastructure-error.json", b'{"stage":"health"}')
             if connection_failed_before_execution(completed):
                 message = (
                     "SSH connection blocked before Windows execution. Call this tool as a registered "
@@ -259,6 +266,8 @@ class Bridge:
         }
 
     def build(self, recipe: dict) -> dict:
+        budget.check(self.run)
+        recipe = validate(recipe)
         raw = self.run / "raw"
         attempts = [int(p.name.split("-")[1]) for p in raw.glob("attempt-*") if p.is_dir()]
         attempt = max(attempts, default=0) + 1
@@ -268,6 +277,7 @@ class Bridge:
         directory.mkdir()
         payload = json.dumps(recipe, ensure_ascii=False).encode()
         atomic(directory / "recipe.json", payload)
+        atomic(self.run / "control/native-inflight.json", json.dumps({"attempt": attempt}).encode())
         try:
             completed = subprocess.run(
                 remote_command(self.settings, directory),
@@ -277,18 +287,22 @@ class Bridge:
                 check=False,
             )
         except subprocess.TimeoutExpired as exc:
+            budget.quarantine(self.run, "Native call timed out")
             atomic(directory / "ssh.stdout", exc.stdout or b"")
             atomic(directory / "ssh.stderr", exc.stderr or b"")
             atomic(self.run / "control" / "uncertain.json", json.dumps({"attempt": attempt}).encode())
             raise RuntimeError(
                 "Native call timed out. Further builds blocked; do not retry automatically"
             ) from exc
+        (self.run / "control/native-inflight.json").unlink(missing_ok=True)
         atomic(directory / "ssh.stdout", completed.stdout)
         atomic(directory / "ssh.stderr", completed.stderr)
         atomic(directory / "transport.json", json.dumps({"returncode": completed.returncode}).encode())
         result_path = directory / "result.json"
         if completed.returncode != 0 or not result_path.is_file():
             if connection_failed_before_execution(completed) and not result_path.exists():
+                if budget.limits(self.run):
+                    atomic(self.run / "control/infrastructure-error.json", b'{"stage":"build_transport"}')
                 return {
                     "isError": True,
                     "content": [
@@ -307,11 +321,13 @@ class Bridge:
                     ],
                 }
             atomic(self.run / "control" / "uncertain.json", json.dumps({"attempt": attempt}).encode())
+            budget.quarantine(self.run, "Native worker did not complete normally")
             raise RuntimeError("Native worker did not complete normally; operator inspection required")
         result = json.loads(result_path.read_text())
         result["attempt"] = attempt
         preview = directory / "preview.png"
         if result["status"] == "built" and result.get("cleanup_error"):
+            budget.quarantine(self.run, "Cleanup failed after saving a model")
             atomic(
                 self.run / "control" / "uncertain.json",
                 json.dumps({"attempt": attempt, "reason": "cleanup_failed_after_save"}).encode(),
@@ -335,6 +351,7 @@ class Bridge:
         return {"content": content, "isError": result["status"] != "built"}
 
     def finish(self, attempt: Any) -> dict:
+        budget.check(self.run)
         if type(attempt) is not int or not 1 <= attempt <= 30:
             raise ValueError("Invalid attempt number")
         directory = self.run / "raw" / f"attempt-{attempt:04d}"
@@ -343,6 +360,9 @@ class Bridge:
         data = model.read_bytes()
         if result["status"] != "built" or hashlib.sha256(data).hexdigest() != result["model_sha256"]:
             raise ValueError("Attempt is not a verified build")
+        if budget.limits(self.run) and (self.run / "artifacts/selection.json").exists():
+            raise RuntimeError("Final selection is immutable")
+        budget.check(self.run)
         atomic(self.run / "artifacts" / "model.m3d", data)
         atomic(
             self.run / "artifacts" / "selection.json",
@@ -351,6 +371,7 @@ class Bridge:
                     "attempt": attempt,
                     "model_sha256": result["model_sha256"],
                     "status": "selected_for_evaluation",
+                    "selected_at": datetime.now(UTC).isoformat(),
                 }
             ).encode(),
         )

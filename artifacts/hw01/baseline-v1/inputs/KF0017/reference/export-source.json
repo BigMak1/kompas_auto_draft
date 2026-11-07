@@ -1,0 +1,19 @@
+{
+  "profile": {
+    "chord_mm": 0.01,
+    "angle": 0.05,
+    "max_cells": 2000000
+  },
+  "implementation": {
+    "worker_sha256": "2bac17fc513978bf4f06bd2dc0f21b448dec76b933138e01d3d0f44af2ee8906",
+    "vendor_sha256": "9cfce59ddc6241e9f87edf6997637eb0fedb96552235df7fdc9615b36e546630",
+    "normalizer_sha256": "e62cae395ced87facff649b0ea3161069131fbd2d9c2159244a6728a04e49c87"
+  },
+  "native_sha256": "739f20786cbaf95e2815b377aa7cd1126b664c62c6352fcf9c9b22d34d6defe7",
+  "source_version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования); build 2780",
+  "files": {
+    "model.stl": "5af43883d0b46675cda40d829dca714c526076af5491fa10c08bea9c4a963d87",
+    "kernel-facts.json": "ec03988ffced430c31895c5c170957aa9529522aa450e113c0bee9e30b8e4c33",
+    "raw-facts.json": "acb404d8dbccf04fc03c9fee9e14e8dd039dd6af74ac3e2f3e932150ba536d61"
+  }
+}

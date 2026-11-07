@@ -1,0 +1,2894 @@
+{
+  "version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования); build 2780",
+  "metadata": {
+    "author": "P-S",
+    "created": 45670.48280092593,
+    "changed": 45670.48333333333,
+    "comment": "Модуль генерации 3D-моделей программы <Валы и механические передачи 2D>"
+  },
+  "tree": [
+    {
+      "name": "Плоскость XY",
+      "type": 1,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость ZX",
+      "type": 2,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость ZY",
+      "type": 3,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Ось X",
+      "type": 71,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Ось Y",
+      "type": 72,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Ось Z",
+      "type": 73,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Начало координат",
+      "type": 4,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:1",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12",
+      "type": 25,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Фаска:1",
+      "type": 33,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Фаска:2",
+      "type": 33,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость под углом:1",
+      "type": 15,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:2",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:3",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость под углом:2",
+      "type": 15,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:4",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость под углом:3",
+      "type": 15,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:5",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Плоскость под углом:4",
+      "type": 15,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:6",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Эскиз:7",
+      "type": 5,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внутр. контур, ступень 1: Цилиндр. D=65, L=12",
+      "type": 26,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Фаска:3",
+      "type": 33,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Фаска:4",
+      "type": 33,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 2 сквоз.отв. D=8, угол=135°, 1",
+      "type": 29,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 2 сквоз.отв. D=8, угол=135°, отверстия",
+      "type": 36,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 4 сквоз.отв. D=8.4 с цековкой, 2",
+      "type": 29,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 4 сквоз.отв. D=8.4 с цековкой, 2",
+      "type": 29,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 4 сквоз.отв. D=8.4 с цековкой, 2",
+      "type": 29,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Внеш. контур, ступень 1: Цилиндр. D=105, L=12: 4 сквоз.отв. D=8.4 с цековкой, 2",
+      "type": 29,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Точка 1 на оси детали",
+      "type": 70,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Точка 2 на оси детали",
+      "type": 70,
+      "excluded": false,
+      "error": 0
+    },
+    {
+      "name": "Ось детали",
+      "type": 615,
+      "excluded": false,
+      "error": 0
+    }
+  ],
+  "length_units": 1,
+  "mass_units": 0,
+  "axes": [
+    [
+      true,
+      0.9999979977875566,
+      -0.0014149948548257756,
+      0.0014149948548257002
+    ],
+    [
+      true,
+      0.002001104914382707,
+      0.707105365408531,
+      -0.7071053654085719
+    ],
+    [
+      true,
+      1.1145598333150986e-16,
+      0.7071067811865682,
+      0.7071067811865271
+    ]
+  ],
+  "principal_moments": [
+    817039.8525748234,
+    425694.6947437333,
+    401661.9733483971
+  ],
+  "central_moments": [
+    817038.2854641031,
+    413679.1176014256,
+    413679.1176014255,
+    553.7502760640601,
+    -553.7502760640288,
+    12017.144253029137
+  ],
+  "bbox": [
+    true,
+    -3.184081677783118e-15,
+    -52.5,
+    -52.5,
+    12.000000000000005,
+    52.5,
+    52.5
+  ],
+  "measures": {
+    "diameter": [
+      {
+        "kind": "diameter",
+        "value": 105.0,
+        "what": "цил. Ø105, ось ∥X (y=0; z=0)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          105.0
+        ],
+        "faces": [
+          1
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.0,
+        "what": "отв. Ø8, ось ∥X (y=-30,052; z=-30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            -30.052,
+            -30.052
+          ],
+          8.0
+        ],
+        "faces": [
+          5
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          -30.052,
+          -30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.0,
+        "what": "отв. Ø8, ось ∥X (y=30,052; z=30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            30.052,
+            30.052
+          ],
+          8.0
+        ],
+        "faces": [
+          6
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          30.052,
+          30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 14.0,
+        "what": "отв. Ø14, ось ∥X (y=42,5; z=0)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            42.5,
+            0.0
+          ],
+          14.0
+        ],
+        "faces": [
+          7
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          42.5,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.4,
+        "what": "отв. Ø8,4, ось ∥X (y=42,5; z=0)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            42.5,
+            0.0
+          ],
+          8.4
+        ],
+        "faces": [
+          9
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          42.5,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 14.0,
+        "what": "отв. Ø14, ось ∥X (y=30,052; z=-30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            30.052,
+            -30.052
+          ],
+          14.0
+        ],
+        "faces": [
+          10
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          30.052,
+          -30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.4,
+        "what": "отв. Ø8,4, ось ∥X (y=30,052; z=-30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            30.052,
+            -30.052
+          ],
+          8.4
+        ],
+        "faces": [
+          11
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          30.052,
+          -30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.4,
+        "what": "отв. Ø8,4, ось ∥X (y=0; z=-42,5)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -42.5
+          ],
+          8.4
+        ],
+        "faces": [
+          14
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -42.5
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 14.0,
+        "what": "отв. Ø14, ось ∥X (y=0; z=-42,5)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -42.5
+          ],
+          14.0
+        ],
+        "faces": [
+          15
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -42.5
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 14.0,
+        "what": "отв. Ø14, ось ∥X (y=-30,052; z=30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            -30.052,
+            30.052
+          ],
+          14.0
+        ],
+        "faces": [
+          16
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          -30.052,
+          30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 8.4,
+        "what": "отв. Ø8,4, ось ∥X (y=-30,052; z=30,052)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            -30.052,
+            30.052
+          ],
+          8.4
+        ],
+        "faces": [
+          18
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          -30.052,
+          30.052
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 65.0,
+        "what": "отв. Ø65, ось ∥X (y=0; z=0)",
+        "src": "cylinder",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          65.0
+        ],
+        "faces": [
+          19
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 104.0,
+        "what": "конус 90°, торец Ø104, ось ∥X (y=0; z=0)",
+        "src": "cone",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          104.0
+        ],
+        "faces": [
+          3
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 66.0,
+        "what": "конус 90°, торец Ø66, ось ∥X (y=0; z=0)",
+        "src": "cone",
+        "weak": false,
+        "place": [
+          "Ø",
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          66.0
+        ],
+        "faces": [
+          20
+        ],
+        "pitch": null,
+        "same": 1,
+        "axis": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "kind": "diameter",
+        "value": 85.0,
+        "what": "окружность центров 2 отв. Ø8: Ø85 вокруг цил. Ø105 ∥X (y=0; z=0)",
+        "src": "pcd",
+        "weak": false,
+        "place": [
+          "pcd",
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          0.0,
+          0.0,
+          85.0
+        ],
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      },
+      {
+        "kind": "diameter",
+        "value": 120.208,
+        "what": "окружность центров 2 отв. Ø8: Ø120,208 вокруг отв. Ø14 ∥X (y=30,052; z=-30,052)",
+        "src": "pcd",
+        "weak": false,
+        "place": [
+          "pcd",
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          -30.052,
+          -30.052,
+          120.208
+        ],
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      },
+      {
+        "kind": "diameter",
+        "value": 120.208,
+        "what": "окружность центров 2 отв. Ø8: Ø120,208 вокруг отв. Ø14 ∥X (y=-30,052; z=30,052)",
+        "src": "pcd",
+        "weak": false,
+        "place": [
+          "pcd",
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          30.052,
+          30.052,
+          120.208
+        ],
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      },
+      {
+        "kind": "diameter",
+        "value": 120.208,
+        "what": "окружность центров 2 отв. Ø14: Ø120,208 вокруг отв. Ø8 ∥X (y=-30,052; z=-30,052)",
+        "src": "pcd",
+        "weak": false,
+        "place": [
+          "pcd",
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          -30.052,
+          30.052,
+          120.208
+        ],
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      },
+      {
+        "kind": "diameter",
+        "value": 120.208,
+        "what": "окружность центров 2 отв. Ø14: Ø120,208 вокруг отв. Ø8 ∥X (y=30,052; z=30,052)",
+        "src": "pcd",
+        "weak": false,
+        "place": [
+          "pcd",
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          30.052,
+          -30.052,
+          120.208
+        ],
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      }
+    ],
+    "radius": [],
+    "linear": [
+      {
+        "kind": "linear",
+        "value": 12.000000000000009,
+        "what": "габарит по X",
+        "src": "box",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 105.0,
+        "what": "габарит по Y",
+        "src": "box",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 8.0,
+        "what": "плоскости x=0 и x=8",
+        "src": "plane",
+        "weak": false,
+        "place": null,
+        "faces": [
+          0,
+          8
+        ],
+        "pitch": null,
+        "same": 5,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 4.0,
+        "what": "плоскости x=8 и x=12",
+        "src": "plane",
+        "weak": false,
+        "place": null,
+        "faces": [
+          8,
+          2
+        ],
+        "pitch": null,
+        "same": 13,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 42.5,
+        "what": "между осями цил. Ø105 ∥X (y=0; z=0) и отв. Ø14 ∥X (y=42,5; z=0)",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 30.052038,
+        "what": "между осями цил. Ø105 ∥X (y=0; z=0) и отв. Ø14 ∥X (y=30,052; z=-30,052) по Y",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 32,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 32.528091642561634,
+        "what": "между осями отв. Ø14 ∥X (y=42,5; z=0) и отв. Ø14 ∥X (y=30,052; z=-30,052)",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 12.447962,
+        "what": "между осями отв. Ø14 ∥X (y=42,5; z=0) и отв. Ø14 ∥X (y=30,052; z=-30,052) по Y",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 12,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 60.10407640085654,
+        "what": "между осями отв. Ø14 ∥X (y=42,5; z=0) и отв. Ø14 ∥X (y=0; z=-42,5)",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 21,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 78.52976000158722,
+        "what": "между осями отв. Ø14 ∥X (y=42,5; z=0) и отв. Ø14 ∥X (y=-30,052; z=30,052)",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 72.552038,
+        "what": "между осями отв. Ø14 ∥X (y=42,5; z=0) и отв. Ø14 ∥X (y=-30,052; z=30,052) по Y",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 12,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 84.99999943310324,
+        "what": "между осями отв. Ø14 ∥X (y=30,052; z=-30,052) и отв. Ø14 ∥X (y=-30,052; z=30,052)",
+        "src": "axis",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 10.0,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая цил. Ø105 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 22.447962,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая цил. Ø105 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 52.5,
+        "what": "ось отв. Ø14 ∥X (y=0; z=-42,5) — образующая цил. Ø105 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 82.552038,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая цил. Ø105 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 95.0,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая цил. Ø105 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 26.052038,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.552038,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 56.104076,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 34.052037999999996,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 76.552038,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 64.10407599999999,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 8.447962000000004,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 16.447962,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 49.5,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 19.447962,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 79.552038,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 35.5,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 5.447962,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 65.552038,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 46.7,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 16.647962000000003,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 76.752038,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 38.3,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 8.247961999999998,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.352038,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 37.052037999999996,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 67.10407599999999,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 6.9999999999999964,
+        "what": "ось отв. Ø8 ∥X (y=30,052; z=30,052) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 12,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 23.052038,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 53.104076,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 34.252038,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 64.304076,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 4.199999999999999,
+        "what": "ось отв. Ø8 ∥X (y=30,052; z=30,052) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 12,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 25.852038,
+        "what": "ось цил. Ø105 ∥X (y=0; z=0) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 55.904076,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 2.4479620000000004,
+        "what": "ось отв. Ø14 ∥X (y=30,052; z=-30,052) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 32.5,
+        "what": "ось отв. Ø14 ∥X (y=0; z=-42,5) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 62.552037999999996,
+        "what": "ось отв. Ø14 ∥X (y=-30,052; z=30,052) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 75.0,
+        "what": "ось отв. Ø14 ∥X (y=42,5; z=0) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 78.552038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 86.552038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 18.447962000000004,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 26.447962,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 3.0,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 12,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 17.0,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 5.799999999999997,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 14.200000000000003,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 15.447962000000004,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 29.447962,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 18.247962,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 26.647962,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 48.3,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 56.7,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 45.5,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 59.5,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 75.552038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 89.552038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø14 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 78.352038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 86.752038,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 20.0,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 102.0,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 88.0,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 99.2,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 90.8,
+        "what": "образующая цил. Ø105 ∥X (y=0; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 52.104076,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 61.552037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 72.752038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 64.352038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 63.10407599999999,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 49.104076,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 60.304075999999995,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 51.904076,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 30.252038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 21.852038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 33.052037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 19.052038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 10.999999999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 10,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 0.1999999999999993,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 8.2,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 58.552037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 6.447962,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.10407599999999,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 83.552038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 69.552038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 80.752038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 72.352038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 71.10407599999999,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 57.10407599999999,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.304076,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 59.904075999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 38.252038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 29.852037999999997,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 41.052037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 27.052037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 66.552038,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 1.552037999999996,
+        "what": "образующая отв. Ø8 ∥X (y=-30,052; z=-30,052) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 1.447962000000004,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 12.647962000000007,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 4.247962000000001,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 23.447962,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 9.447962,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y) — образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 20.647962000000003,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 12.247961999999998,
+        "what": "образующая отв. Ø8 ∥X (y=30,052; z=30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 2.799999999999997,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 11.200000000000003,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 16,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 15.247962000000001,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 23.647962,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 45.3,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 53.7,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 56.5,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 75.352038,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 83.752038,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 82.0,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 1.2479620000000011,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 9.647962,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 31.3,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 39.7,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 28.5,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 61.352038,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 69.752038,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.0,
+        "what": "образующая отв. Ø14 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 20.847962000000003,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 50.900000000000006,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 80.952038,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 79.2,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 4.047961999999998,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 34.099999999999994,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 64.152038,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 70.8,
+        "what": "образующая отв. Ø8,4 ∥X (y=42,5; z=0) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 32.85203799999999,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 41.252038,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 44.052037999999996,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 74.10407599999999,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø14 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 62.904075999999996,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 71.304076,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 4.552037999999996,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 18.852038,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 27.252038,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 8,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 16.052038,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 46.104076,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø14 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 48.904076,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 57.304075999999995,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 55.552037999999996,
+        "what": "образующая отв. Ø14 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 38.452038,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 68.504076,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 1.7520379999999989,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 66.752038,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 21.652038,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 51.704076,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø8,4 ∥X (y=-30,052; z=30,052) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 6.647962,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 58.352038,
+        "what": "образующая отв. Ø8,4 ∥X (y=30,052; z=-30,052) (−Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 28.3,
+        "what": "образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 36.7,
+        "what": "образующая отв. Ø8,4 ∥X (y=0; z=-42,5) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 25.5,
+        "what": "образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (+Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 39.5,
+        "what": "образующая отв. Ø14 ∥X (y=0; z=-42,5) (+Y) — образующая отв. Ø65 ∥X (y=0; z=0) (−Y)",
+        "src": "tangent",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      },
+      {
+        "kind": "linear",
+        "value": 0.5,
+        "what": "высота конус 90° Ø105→Ø104 (∥X (y=0; z=0))",
+        "src": "length",
+        "weak": false,
+        "place": null,
+        "faces": [
+          3
+        ],
+        "pitch": null,
+        "same": 4,
+        "axis": null
+      }
+    ],
+    "thread": [],
+    "angle": [
+      {
+        "kind": "angle",
+        "value": 180.0,
+        "what": "шаг отв. Ø8 по окружности Ø85 вокруг цил. Ø105 ∥X (y=0; z=0)",
+        "src": "pcd",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 1,
+        "axis": null
+      },
+      {
+        "kind": "angle",
+        "value": 90.0,
+        "what": "шаг отв. Ø8 по окружности Ø120,208 вокруг отв. Ø14 ∥X (y=30,052; z=-30,052)",
+        "src": "pcd",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 10,
+        "axis": null
+      },
+      {
+        "kind": "angle",
+        "value": 45.0,
+        "what": "шаг отв. Ø14 по окружности Ø85 вокруг цил. Ø105 ∥X (y=0; z=0)",
+        "src": "pcd",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 6,
+        "axis": null
+      },
+      {
+        "kind": "angle",
+        "value": 135.0,
+        "what": "шаг отв. Ø14 по окружности Ø85 вокруг цил. Ø105 ∥X (y=0; z=0)",
+        "src": "pcd",
+        "weak": false,
+        "place": null,
+        "faces": [],
+        "pitch": null,
+        "same": 2,
+        "axis": null
+      }
+    ]
+  },
+  "export_returned": true
+}

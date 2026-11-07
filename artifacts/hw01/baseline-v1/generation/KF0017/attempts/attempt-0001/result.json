@@ -1,0 +1,468 @@
+{
+  "status": "built",
+  "kompas_version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования)",
+  "kompas_build": 2780,
+  "metrics": {
+    "volume": 9365.273680285447,
+    "mass": 73.57359003232247,
+    "faces": 6,
+    "bodies": 1,
+    "box": {
+      "x1": -22.5,
+      "y1": -22.5,
+      "z1": 0.0,
+      "x2": 22.5,
+      "y2": 21.937410968480307,
+      "z2": 13.0
+    }
+  },
+  "report": "✔ outer_d (new-variable): ΔV=+0 мм³, граней 0, тел 0\n✔ bore_d (new-variable): ΔV=+0 мм³, граней 0, тел 0\n✔ thickness (new-variable): ΔV=+0 мм³, граней 0, тел 0\n✔ slot_width (new-variable): ΔV=+0 мм³, граней 0, тел 0\n✔ blank (extrude): ΔV=+20675.6 мм³, граней 3, тел 1\n✔ bore (cut): ΔV=-10455.2 мм³, граней 4, тел 1\n✔ slot (cut): ΔV=-855.113 мм³, граней 6, тел 1\nИтог: V=9365.27 мм³, m=73.5736 г, граней 6, тел 1, габарит 45×44.4374×13\nПредупреждения дерева недоступны через установленную обёртку KsAPI.",
+  "parametric": {
+    "steps": {
+      "blank_profile": {
+        "op": "sketch",
+        "bindings": [],
+        "state": "defined",
+        "auto_constraints": {
+          "sketch": "blank_profile",
+          "state": "defined",
+          "constraints": [
+            "точка в начале координат зафиксирована"
+          ],
+          "dimensions": [
+            [
+              "v9",
+              45.0,
+              "Ø45 в (0, 0)"
+            ]
+          ],
+          "rejected": [],
+          "origin_point": false,
+          "unchanged": false
+        },
+        "dimensions": [
+          {
+            "selector": "d0",
+            "variable": "v9",
+            "initial_value": 45.0,
+            "description": "Ø45 в (0, 0)"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "v8",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "blank_profile",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v9",
+            "value": 45.0,
+            "expression": "45",
+            "note": "",
+            "parameter": "Диаметральный размер",
+            "owner": "blank_profile",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      },
+      "blank": {
+        "op": "extrude",
+        "bindings": [],
+        "parameters": [
+          {
+            "name": "v18",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "blank",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v21",
+            "value": 13.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Расстояние 1",
+            "owner": "blank",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v23",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 1",
+            "owner": "blank",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v24",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Расстояние 2",
+            "owner": "blank",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v26",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 2",
+            "owner": "blank",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      },
+      "bore_profile": {
+        "op": "sketch",
+        "bindings": [],
+        "state": "defined",
+        "auto_constraints": {
+          "sketch": "bore_profile",
+          "state": "defined",
+          "constraints": [
+            "точка в начале координат зафиксирована"
+          ],
+          "dimensions": [
+            [
+              "v28",
+              32.0,
+              "Ø32 в (0, 0)"
+            ]
+          ],
+          "rejected": [],
+          "origin_point": false,
+          "unchanged": false
+        },
+        "dimensions": [
+          {
+            "selector": "d0",
+            "variable": "v28",
+            "initial_value": 32.0,
+            "description": "Ø32 в (0, 0)"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "v27",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "bore_profile",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v28",
+            "value": 32.0,
+            "expression": "32",
+            "note": "",
+            "parameter": "Диаметральный размер",
+            "owner": "bore_profile",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      },
+      "bore": {
+        "op": "cut",
+        "bindings": [],
+        "parameters": [
+          {
+            "name": "v37",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "bore",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v43",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Расстояние 1",
+            "owner": "bore",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v45",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 1",
+            "owner": "bore",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v42",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 2",
+            "owner": "bore",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      },
+      "slot_profile": {
+        "op": "sketch",
+        "bindings": [],
+        "state": "defined",
+        "auto_constraints": {
+          "sketch": "slot_profile",
+          "state": "defined",
+          "constraints": [
+            "совпадение (-5, 0)",
+            "совпадение (5, 0)",
+            "совпадение (5, 45)",
+            "совпадение (-5, 45)",
+            "горизонталь (-5, 0)–(5, 0)",
+            "вертикаль (5, 0)–(5, 45)",
+            "горизонталь (5, 45)–(-5, 45)",
+            "вертикаль (-5, 45)–(-5, 0)",
+            "точка начала координат зафиксирована",
+            "начало координат в середине (-5, 0)–(5, 0)",
+            "на оси X: (-5, 0)",
+            "на оси X: (5, 0)"
+          ],
+          "dimensions": [
+            [
+              "v47",
+              10.0,
+              "длина (-5, 0)–(5, 0)"
+            ],
+            [
+              "v48",
+              45.0,
+              "длина (5, 0)–(5, 45)"
+            ]
+          ],
+          "rejected": [
+            "длина (5, 45)–(-5, 45)",
+            "длина (-5, 45)–(-5, 0)",
+            "положение H (-5, 0)",
+            "положение H (5, 0)",
+            "положение H (5, 45)",
+            "положение V (5, 45)",
+            "положение H (-5, 45)",
+            "положение V (-5, 45)"
+          ],
+          "origin_point": true,
+          "unchanged": false
+        },
+        "dimensions": [
+          {
+            "selector": "d0",
+            "variable": "v47",
+            "initial_value": 10.0,
+            "description": "длина (-5, 0)–(5, 0)"
+          },
+          {
+            "selector": "d1",
+            "variable": "v48",
+            "initial_value": 45.0,
+            "description": "длина (5, 0)–(5, 45)"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "v46",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "slot_profile",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v47",
+            "value": 10.0,
+            "expression": "10",
+            "note": "",
+            "parameter": "Линейный размер",
+            "owner": "slot_profile",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v48",
+            "value": 45.0,
+            "expression": "45",
+            "note": "",
+            "parameter": "Линейный размер",
+            "owner": "slot_profile",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      },
+      "slot": {
+        "op": "cut",
+        "bindings": [],
+        "parameters": [
+          {
+            "name": "v57",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Исключить из расчета",
+            "owner": "slot",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v63",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Расстояние 1",
+            "owner": "slot",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v65",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 1",
+            "owner": "slot",
+            "inherited": false,
+            "information": false
+          },
+          {
+            "name": "v62",
+            "value": 0.0,
+            "expression": "",
+            "note": "",
+            "parameter": "Угол 2",
+            "owner": "slot",
+            "inherited": false,
+            "information": false
+          }
+        ]
+      }
+    },
+    "variables": [
+      {
+        "name": "outer_d",
+        "value": 45.0,
+        "expression": "45",
+        "note": "Наружный диаметр втулки, справочный размер чертежа",
+        "parameter": "",
+        "owner": "",
+        "inherited": false,
+        "information": false
+      },
+      {
+        "name": "bore_d",
+        "value": 32.0,
+        "expression": "32",
+        "note": "Диаметр сквозного отверстия",
+        "parameter": "",
+        "owner": "",
+        "inherited": false,
+        "information": false
+      },
+      {
+        "name": "thickness",
+        "value": 13.0,
+        "expression": "13",
+        "note": "Осевая толщина втулки",
+        "parameter": "",
+        "owner": "",
+        "inherited": false,
+        "information": false
+      },
+      {
+        "name": "slot_width",
+        "value": 10.0,
+        "expression": "10",
+        "note": "Номинальная ширина прорези; допуск чертежа +1 мм",
+        "parameter": "",
+        "owner": "",
+        "inherited": false,
+        "information": false
+      }
+    ],
+    "unused_variables": [
+      "bore_d",
+      "outer_d",
+      "slot_width",
+      "thickness"
+    ]
+  },
+  "edges": [
+    {
+      "index": 0,
+      "description": "Edge(index=0, kind='arc', length=131.287480257979, box=Box3(x1=-22.5, y1=-22.5, z1=0.0, x2=22.5, y2=21.937410968480304, z2=0.0), start=(-5.0, 21.937411, 0.0), end=(5.0, 21.937411, 0.0), center=(0.0, 0.0, 0.0), radius=22.5, normal=(0.0, 0.0, 1.0), key=1334706695528, faces=(1335312436152, 1335312436856), vertices=(1334706814328, 1334706818792), convexity='convex', tangents=((-0.9749960430435691, -0.22222222222222218, 0.0), (-0.9749960430435691, 0.22222222222222252, 0.0)), mid=(0.0, -22.5, 0.0))"
+    },
+    {
+      "index": 1,
+      "description": "Edge(index=1, kind='arc', length=131.287480257979, box=Box3(x1=-22.5, y1=-22.5, z1=13.0, x2=22.5, y2=21.937410968480304, z2=13.0), start=(-5.0, 21.937411, 13.0), end=(5.0, 21.937411, 13.0), center=(0.0, 0.0, 13.0), radius=22.5, normal=(0.0, 0.0, 1.0), key=1334706698552, faces=(1335312428760, 1335312436152), vertices=(1334706817784, 1334706815480), convexity='convex', tangents=((-0.9749960430435691, -0.22222222222222218, 0.0), (-0.9749960430435691, 0.22222222222222252, 0.0)), mid=(0.0, -22.5, 13.0))"
+    },
+    {
+      "index": 2,
+      "description": "Edge(index=2, kind='arc', length=90.3606063891812, box=Box3(x1=-16.0, y1=-16.0, z1=0.0, x2=16.0, y2=15.198684153570664, z2=0.0), start=(-5.0, 15.198684, 0.0), end=(5.0, 15.198684, 0.0), center=(0.0, 0.0, 0.0), radius=16.0, normal=(0.0, 0.0, 1.0), key=1334706700712, faces=(1335312436856, 1335312444600), vertices=(1334706811880, 1334706818504), convexity='convex', tangents=((-0.9499177595981665, -0.3125, 0.0), (-0.9499177595981665, 0.3124999999999999, 0.0)), mid=(0.0, -16.0, 0.0))"
+    },
+    {
+      "index": 3,
+      "description": "Edge(index=3, kind='arc', length=90.3606063891812, box=Box3(x1=-16.0, y1=-16.0, z1=13.0, x2=16.0, y2=15.198684153570664, z2=13.0), start=(-5.0, 15.198684, 13.0), end=(5.0, 15.198684, 13.0), center=(0.0, 0.0, 13.0), radius=16.0, normal=(0.0, 0.0, 1.0), key=1334706702728, faces=(1335312428760, 1335312444600), vertices=(1334706819224, 1334706816488), convexity='convex', tangents=((-0.9499177595981665, -0.3125, 0.0), (-0.9499177595981665, 0.3124999999999999, 0.0)), mid=(0.0, -16.0, 13.0))"
+    },
+    {
+      "index": 4,
+      "description": "Edge(index=5, kind='line', length=13.0, box=Box3(x1=-5.0, y1=15.19868415357066, z1=0.0, x2=-5.0, y2=15.19868415357066, z2=13.0), start=(-5.0, 15.198684, 0.0), end=(-5.0, 15.198684, 13.0), center=None, radius=None, normal=None, key=1334706722600, faces=(1335312444600, 1335312455512), vertices=(1334706811880, 1334706816488), convexity='convex', tangents=((0.0, 0.0, 1.0), (0.0, 0.0, 1.0)), mid=(-5.0, 15.198684, 6.5))"
+    },
+    {
+      "index": 5,
+      "description": "Edge(index=9, kind='line', length=6.73872681490964, box=Box3(x1=-5.0, y1=15.198684153570664, z1=0.0, x2=-5.0, y2=21.937410968480304, z2=0.0), start=(-5.0, 21.937411, 0.0), end=(-5.0, 15.198684, 0.0), center=None, radius=None, normal=None, key=1334706725048, faces=(1335312436856, 1335312455512), vertices=(1334706814328, 1334706811880), convexity='convex', tangents=((0.0, -1.0, 0.0), (0.0, -1.0, 0.0)), mid=(-5.0, 18.568048, 0.0))"
+    },
+    {
+      "index": 6,
+      "description": "Edge(index=6, kind='line', length=6.73872681490964, box=Box3(x1=-5.0, y1=15.198684153570664, z1=13.0, x2=-5.0, y2=21.937410968480304, z2=13.0), start=(-5.0, 21.937411, 13.0), end=(-5.0, 15.198684, 13.0), center=None, radius=None, normal=None, key=1334706722744, faces=(1335312428760, 1335312455512), vertices=(1334706816488, 1334706817784), convexity='convex', tangents=((0.0, -1.0, 0.0), (0.0, -1.0, 0.0)), mid=(-5.0, 18.568048, 13.0))"
+    },
+    {
+      "index": 7,
+      "description": "Edge(index=11, kind='line', length=13.0, box=Box3(x1=-5.0, y1=21.9374109684803, z1=0.0, x2=-5.0, y2=21.9374109684803, z2=13.0), start=(-5.0, 21.937411, 0.0), end=(-5.0, 21.937411, 13.0), center=None, radius=None, normal=None, key=1334706723320, faces=(1335312436152, 1335312455512), vertices=(1334706817784, 1334706814328), convexity='convex', tangents=((0.0, 0.0, 1.0), (0.0, 0.0, 1.0)), mid=(-5.0, 21.937411, 6.5))"
+    },
+    {
+      "index": 8,
+      "description": "Edge(index=10, kind='line', length=13.0, box=Box3(x1=5.0, y1=15.198684153570664, z1=0.0, x2=5.0, y2=15.198684153570664, z2=13.0), start=(5.0, 15.198684, 0.0), end=(5.0, 15.198684, 13.0), center=None, radius=None, normal=None, key=1334706725192, faces=(1335312444600, 1335312453752), vertices=(1334706819224, 1334706818504), convexity='convex', tangents=((0.0, 0.0, 1.0), (0.0, 0.0, 1.0)), mid=(5.0, 15.198684, 6.5))"
+    },
+    {
+      "index": 9,
+      "description": "Edge(index=4, kind='line', length=6.73872681490964, box=Box3(x1=5.0, y1=15.198684153570664, z1=0.0, x2=5.0, y2=21.937410968480304, z2=0.0), start=(5.0, 15.198684, 0.0), end=(5.0, 21.937411, 0.0), center=None, radius=None, normal=None, key=1334706722456, faces=(1335312436856, 1335312453752), vertices=(1334706818504, 1334706818792), convexity='convex', tangents=((0.0, 1.0, 0.0), (0.0, 1.0, 0.0)), mid=(5.0, 18.568048, 0.0))"
+    },
+    {
+      "index": 10,
+      "description": "Edge(index=7, kind='line', length=6.73872681490964, box=Box3(x1=5.0, y1=15.198684153570664, z1=13.0, x2=5.0, y2=21.937410968480304, z2=13.0), start=(5.0, 15.198684, 13.0), end=(5.0, 21.937411, 13.0), center=None, radius=None, normal=None, key=1334706725480, faces=(1335312428760, 1335312453752), vertices=(1334706815480, 1334706819224), convexity='convex', tangents=((0.0, 1.0, 0.0), (0.0, 1.0, 0.0)), mid=(5.0, 18.568048, 13.0))"
+    },
+    {
+      "index": 11,
+      "description": "Edge(index=8, kind='line', length=13.0, box=Box3(x1=5.0, y1=21.937410968480304, z1=0.0, x2=5.0, y2=21.937410968480304, z2=13.0), start=(5.0, 21.937411, 0.0), end=(5.0, 21.937411, 13.0), center=None, radius=None, normal=None, key=1334706722888, faces=(1335312436152, 1335312453752), vertices=(1334706818792, 1334706815480), convexity='convex', tangents=((0.0, 0.0, 1.0), (0.0, 0.0, 1.0)), mid=(5.0, 21.937411, 6.5))"
+    }
+  ],
+  "model_sha256": "c1ba8d7c6894938cee294608c2dd8d20aaefc7e761143103f3868a83e21e5c40"
+}

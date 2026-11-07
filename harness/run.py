@@ -7,10 +7,12 @@ import os
 import re
 import shutil
 import subprocess
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from harness import budget
 from harness.builder_mcp import NATIVE_BUILD_TIMEOUT, remote_command, verify_bundle
 from harness.native_worker import atomic
 
@@ -19,15 +21,23 @@ RUN = REPO / "runs" / "e2e" / "kf0011-codex-003"
 CODEX_VERSION = "codex-cli 0.166.0"
 
 
-def prepare(run: Path, settings_path: Path) -> None:
-    """Чистый комплект KF0011: только вход и общие инструкции, без истории решений."""
+def prepare(
+    run: Path,
+    settings_path: Path,
+    *,
+    dataset: Path | None = None,
+    pair_id: str = "KF0011",
+    experiment: dict | None = None,
+) -> None:
+    """Чистый комплект выбранной пары: только вход и общие инструкции."""
     if run.parent != REPO / "runs" / "e2e" or not re.fullmatch(r"[a-z0-9-]+", run.name):
         raise ValueError("New run must be a named directory directly under runs/e2e")
     if run.exists():
         raise RuntimeError("Run already exists; never overwrite a previous experiment")
-    dataset = REPO / "kompas_data" / "e2e-27-v1"
+    dataset = dataset or REPO / "kompas_data" / "e2e-27-v1"
+    experiment = experiment or {}
     inventory = json.loads((dataset / "manifest.json").read_text())
-    item = next(item for item in inventory["items"] if item["pair_id"] == "KF0011")
+    item = next(item for item in inventory["items"] if item["pair_id"] == pair_id)
     data = (dataset / item["input_png"]["path"]).read_bytes()
     if hashlib.sha256(data).hexdigest() != item["input_png"]["sha256"]:
         raise RuntimeError("Frozen input checksum mismatch")
@@ -38,13 +48,14 @@ def prepare(run: Path, settings_path: Path) -> None:
         (temporary / path).mkdir(parents=True)
     atomic(temporary / "builder/input/drawing.png", data)
     for source, target in (
-        ("editable_builder_v2.md", "AGENTS.md"),
-        ("api_v2.md", "API.md"),
-        ("connection_v2.md", "CONNECTION.md"),
+        (experiment.get("prompt_version", "editable_builder_v2") + ".md", "AGENTS.md"),
+        (experiment.get("api_version", "api_v2") + ".md", "API.md"),
+        (experiment.get("connection_version", "connection_v2") + ".md", "CONNECTION.md"),
     ):
         atomic(temporary / "builder" / target, (REPO / "harness/prompts" / source).read_bytes())
     for name in ("kompas_lib.py", "AGENTS.md", "README.md", "llms.txt"):
-        shutil.copyfile(REPO / "vendor/kompas_lib" / name, temporary / "builder/library" / name)
+        if (REPO / "vendor/kompas_lib" / name).exists():
+            shutil.copyfile(REPO / "vendor/kompas_lib" / name, temporary / "builder/library" / name)
     atomic(temporary / "builder/.builder-root", b"")
     atomic(temporary / "control/canary.txt", b"Evaluator-only isolation sentinel\n")
     atomic(temporary / "control/settings.json", json.dumps(settings, indent=2).encode())
@@ -53,8 +64,8 @@ def prepare(run: Path, settings_path: Path) -> None:
         "run_id": run.name,
         "status": "prepared",
         "created_at": datetime.now(UTC).isoformat(),
-        "dataset": "e2e-27-v1",
-        "pair_id": "KF0011",
+        "dataset": inventory.get("dataset_id", dataset.name),
+        "pair_id": pair_id,
         "purpose": "editable_cad_development_run",
         "recipe_version": 2,
         "input": item["input_png"] | {"path": "builder/input/drawing.png"},
@@ -64,7 +75,7 @@ def prepare(run: Path, settings_path: Path) -> None:
         "cost": None,
         "metrics": None,
         "prompt": "builder/AGENTS.md",
-        "prompt_version": "editable_builder_v2",
+        "prompt_version": experiment.get("prompt_version", "editable_builder_v2"),
         "prompt_sha256": hashlib.sha256((temporary / "builder/AGENTS.md").read_bytes()).hexdigest(),
         "command_template": (
             f".venv/bin/python -m harness.run launch --run runs/e2e/{run.name} --model <model-id>"
@@ -75,6 +86,10 @@ def prepare(run: Path, settings_path: Path) -> None:
         "isolation": "must_pass_preflight_before_launch",
         "evaluation": "pending",
     }
+    if experiment:
+        manifest["limits"] = {key: experiment[key] for key in ("max_seconds", "max_builds")}
+        manifest["reasoning_effort"] = experiment["reasoning_effort"]
+        manifest["purpose"] = "hw01_baseline"
     atomic(temporary / "manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2).encode())
     temporary.rename(run)
     seal(run)
@@ -99,6 +114,7 @@ def toml(value: Any) -> str:
 
 def configuration(run: Path) -> dict:
     builder = run / "builder"
+    manifest = json.loads((run / "manifest.json").read_text()) if (run / "manifest.json").exists() else {}
     disabled = (
         "apps",
         "connectors",
@@ -153,7 +169,7 @@ def configuration(run: Path) -> dict:
         "skills.bundled.enabled": False,
         "skills.include_instructions": False,
         "skills.config": [],
-        "model_reasoning_effort": "high",
+        "model_reasoning_effort": manifest.get("reasoning_effort", "high"),
         "shell_environment_policy.inherit": "none",
         "shell_environment_policy.set": {
             "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
@@ -201,7 +217,6 @@ def seal(run: Path) -> None:
     files = list((REPO / "harness").glob("*.py")) + list((REPO / "vendor" / "kompas_lib").glob("*"))
     files += [REPO / "scripts" / name for name in ("ksapi_mcp_ssh.sh", "ksapi_mcp_stdio.py")]
     files += [
-        REPO / ".codex" / "config.toml",
         run / "control" / "settings.json",
         run / "control" / "codex-config.json",
     ]
@@ -265,7 +280,8 @@ for key, path in [('sibling_denied', b.parent/'control/canary.txt'),
                   ('repo_denied', b.parents[3]/'README.md'),
                   ('source_denied', b.parents[4]/'kompas-drawings/README.md'),
                   ('reference_denied', b.parents[3]/'kompas_data/e2e-27-v1/references/KF0011/model.m3d'),
-                  ('previous_run_denied', b.parent.parent/'kf0011-codex-001/artifacts/model.m3d')]:
+                  ('previous_run_denied', b.parent.parent/'kf0011-codex-001/artifacts/model.m3d'),
+                  ('public_reference_denied', b.parents[3]/'data/hw01/v1/references/KF0017/model.m3d')]:
     try:
         path.read_bytes()
         results[key] = False
@@ -324,13 +340,15 @@ raise SystemExit(0 if all(results.values()) else 1)
     if result.returncode != 0:
         raise RuntimeError("Isolation preflight failed; see control/isolation-check.json")
     checks = json.loads(result.stdout)
-    if len(checks) != 10 or not all(value is True for value in checks.values()):
+    if len(checks) != 11 or not all(value is True for value in checks.values()):
         raise RuntimeError("Isolation preflight incomplete")
     return report
 
 
 def launch(run: Path, model: str) -> int:
     require_unstarted(run)
+    if (REPO / "runs/hw01-quarantine.json").exists():
+        raise RuntimeError("Unresolved CAD operation; inspect runs/hw01-quarantine.json")
     preflight(run)
     native_check(run)
     config = configuration(run)
@@ -369,7 +387,7 @@ def launch(run: Path, model: str) -> int:
     manifest.update(
         status="running",
         model=model,
-        model_settings={"reasoning_effort": "high"},
+        model_settings={"reasoning_effort": config["model_reasoning_effort"]},
         started_at=start["started_at"],
         command=command,
         prompt_sha256=start["prompt_sha256"],
@@ -377,19 +395,45 @@ def launch(run: Path, model: str) -> int:
     atomic(run / "manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2).encode())
     # Удалить служебные переменные родительской сессии. Авторизация Codex остаётся штатной.
     env = {k: v for k, v in os.environ.items() if not k.startswith("CODEX_THREAD")}
+    budget.begin(run)
+    started_clock = time.monotonic()
+    timed_out = False
     try:
         with (
             (run / "raw" / "events.jsonl").open("xb") as events,
             (run / "raw" / "stderr.log").open("xb") as errors,
         ):
-            result = subprocess.run(command, input=prompt, stdout=events, stderr=errors, env=env, check=False)
+            with subprocess.Popen(
+                command, stdin=subprocess.PIPE, stdout=events, stderr=errors, env=env
+            ) as process:
+                try:
+                    process.communicate(input=prompt, timeout=manifest.get("limits", {}).get("max_seconds"))
+                except subprocess.TimeoutExpired:
+                    timed_out = True
+                    if (run / "control/native-inflight.json").exists():
+                        budget.quarantine(
+                            run, "Deadline reached during native operation; inspect before another run"
+                        )
+                    process.terminate()
+                    try:
+                        process.wait(timeout=10)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        process.wait()
+                result = subprocess.CompletedProcess(command, process.returncode)
     except BaseException:
         manifest.update(status="interrupted_or_launcher_failed", finished_at=datetime.now(UTC).isoformat())
         atomic(run / "manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2).encode())
         raise
     selected = run / "artifacts" / "selection.json"
     manifest.update(
-        status="generated_pending_evaluation" if selected.exists() else "no_selected_model",
+        status="generated_pending_evaluation"
+        if selected.exists()
+        else "timeout"
+        if timed_out
+        else "no_selected_model",
+        elapsed_seconds=time.monotonic() - started_clock,
+        timed_out=timed_out,
         returncode=result.returncode,
         finished_at=datetime.now(UTC).isoformat(),
     )

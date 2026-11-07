@@ -1,0 +1,32 @@
+{
+  "pair_id": "KF0027",
+  "status": "passed",
+  "input_png_sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c",
+  "reference_m3d_sha256": "13266c04c042c332995076a2aa4fe87282a22e268d28e5c7aeb1cd78ebcad9e3",
+  "method": "visual reading of PNG before generation, compared with native geometry measurements and current saved configuration",
+  "scope": "nominal geometry; not certification of material, finish or all manufacturing tolerances",
+  "matched_drawing_constraints": {
+    "outer_diameter_mm": 105.0,
+    "inner_diameter_mm": 65.0,
+    "thickness_mm": 12.0,
+    "bolt_circle_mm": 85.0,
+    "plain_holes": {
+      "count": 2,
+      "diameter_mm": 8.0
+    },
+    "counterbored_holes": {
+      "count": 4,
+      "through_diameter_mm": 8.4,
+      "counterbore_diameter_mm": 14.0,
+      "counterbore_depth_mm": 8.0
+    },
+    "edge_chamfers_mm": 0.5
+  },
+  "evidence": [
+    "raw-facts.json",
+    "eval-facts.json",
+    "model.stl"
+  ],
+  "reviewed_at": "2026-11-07",
+  "original_run": "runs/hw01-qa/review_2026-11-07_20-00-23/export_2026-11-07_20-00-35"
+}

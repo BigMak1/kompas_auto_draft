@@ -1,0 +1,31 @@
+experiment_id = "hw01-baseline-v1"
+dataset = "data/hw01/v1"
+bundle = "artifacts/hw01/baseline-v1"
+model = "gpt-6-astra"
+reasoning_effort = "high"
+prompt_version = "hw01_direct_v1"
+api_version = "api_v2"
+connection_version = "connection_v2"
+max_seconds = 900
+max_builds = 15
+protocol = "cad-eval-0.2.0"
+
+[evaluation]
+alignment = "rigid"
+tau_relative = 0.01
+surface_samples = 8192
+registration_samples = 2048
+edge_samples = 4096
+seed = 20261107
+icp_iterations = 40
+icp_candidates = 8
+symmetry_steps = 12
+inertia_relative_gap = 0.01
+edge_angle_degrees = 30.0
+expected_bodies = 1
+dimension_tolerance_mm = 0.01
+
+[export]
+chord_mm = 0.01
+angle = 0.05
+max_cells = 2000000

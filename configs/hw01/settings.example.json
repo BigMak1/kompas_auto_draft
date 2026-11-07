@@ -1,0 +1,6 @@
+{
+  "ssh_host": "windows-cad",
+  "windows_repo": "C:\\shared\\kompas_auto_draft",
+  "windows_python": "C:\\Python312\\python.exe",
+  "kompas_bin_dir": "C:\\Program Files\\ASCON\\KOMPAS-3D v25 Study\\Bin"
+}
