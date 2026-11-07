@@ -1,17 +1,11 @@
-# Локальные настройки и поставки инструментов
+# Локальный архив прежних этапов и настройки инструментов
+.local-archive/
 .ai/
 .claude
 mcp/
 .codex
 .mcp.json
 vendor/
-!/vendor/
-/vendor/*
-!/vendor/kompas_lib/
-/vendor/kompas_lib/*
-!/vendor/kompas_lib/kompas_lib.py
-!/vendor/kompas_lib/README.md
-!/vendor/kompas_lib/llms.txt
 AGENTS.md
 
 # KOMPAS: временные файлы-блокировки открытых документов
@@ -27,10 +21,9 @@ __pycache__/
 .hw01-work/
 .ipynb_checkpoints/
 
-# Локальные прогоны, наборы из общего проекта и производные модели
+# Локальные прогоны и данные прежних этапов
 runs/
-/kompas_data/e2e-*/
-/kompas_data/**/*_копия_*.m3d
+kompas_data/
 
 # macOS
 .DS_Store

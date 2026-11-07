@@ -1,8 +1,8 @@
-# Хуки перед коммитом. Установка: uv run pre-commit install
-# Проверить всё вручную: uv run pre-commit run --all-files
+# Установка: uv run --project notebooks --group dev pre-commit install
+# Проверка: uv run --project notebooks --group dev pre-commit run --all-files
 
 # Файлы КОМПАС и сырые отчёты KsAPI не правятся автоматически
-exclude: ^(kompas_data|reports|vendor|runs|eval|data|artifacts)/
+exclude: ^(data|\.local-archive)/
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

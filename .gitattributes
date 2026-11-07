@@ -1,8 +1,5 @@
-# Снимки зависимостей и результаты доступны по ссылкам; GitHub сворачивает их diff.
-/eval/geometry/** linguist-vendored
-/vendor/kompas_lib/** linguist-vendored
-/data/hw01/** linguist-generated
-/artifacts/hw01/** linguist-generated
+# Выгрузки CAD доступны по ссылкам; GitHub сворачивает их diff.
+/data/reference/** linguist-generated
 *.m3d binary
 *.cdw binary
 *.stl binary

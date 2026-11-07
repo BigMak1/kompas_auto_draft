@@ -1,4 +1,0 @@
-{
-  "status": "failed",
-  "error": "BuildError: bore (cut): объём не уменьшился (ΔV=+0 мм³); проверьте сторону (reverse=…) и плоскость эскиза: <Sketch 'bore_profile' X→+X Y→+Y N→+Z>. Операция удалена."
-}
