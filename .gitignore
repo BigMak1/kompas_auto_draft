@@ -5,6 +5,7 @@ mcp/
 .codex
 .mcp.json
 vendor/
+AGENTS.md
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
