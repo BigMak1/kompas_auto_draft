@@ -25,6 +25,7 @@ __pycache__/
 .ruff_cache/
 .pytest_cache/
 .hw01-work/
+.ipynb_checkpoints/
 
 # Локальные прогоны, наборы из общего проекта и производные модели
 runs/
