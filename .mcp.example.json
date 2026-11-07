@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ksapi-expert": {
+      "type": "stdio",
+      "command": "/bin/bash",
+      "args": [
+        "/absolute/path/to/kompas_auto_draft/scripts/ksapi_mcp_ssh.sh"
+      ]
+    }
+  }
+}

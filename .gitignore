@@ -1,14 +1,26 @@
-# AI
+# Локальные настройки и поставки инструментов
 .ai/
 .claude
 mcp/
+.codex
+.mcp.json
+vendor/
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
 
 # Python
 .venv/
+.venv-eval/
 __pycache__/
 *.py[cod]
 .ruff_cache/
 .pytest_cache/
+
+# Локальные прогоны, наборы из общего проекта и производные модели
+runs/
+/kompas_data/e2e-*/
+/kompas_data/**/*_копия_*.m3d
+
+# macOS
+.DS_Store

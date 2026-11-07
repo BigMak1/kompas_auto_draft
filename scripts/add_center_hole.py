@@ -13,6 +13,7 @@ Refuses to touch a file whose name does not contain "копия" (work on copies
 
 Usage (x64 Python on the KOMPAS machine):
     python add_center_hole.py <path-to-copy.m3d> [--diameter 4] [--apply]
+    python add_center_hole.py <path-to-copy.m3d> --centre 12 8 3 --apply
 """
 
 import argparse
@@ -47,7 +48,7 @@ def in_plane_basis(normal):
     return e1, cross(normal, e1)
 
 
-def survey_face(face, radius):
+def survey_face(face, radius, requested_centre=None):
     """Centre, normal, area and whether a hole of `radius` fits at the centre."""
     u = (face.GetParamUMin() + face.GetParamUMax()) / 2
     v = (face.GetParamVMin() + face.GetParamVMax()) / 2
@@ -55,7 +56,8 @@ def survey_face(face, radius):
     ok_n, nx, ny, nz = face.GetNormal(u, v, 0.0, 0.0, 0.0)
     if not (ok_p and ok_n):
         return None
-    centre, normal = [cx, cy, cz], unit([nx, ny, nz])
+    centre = list(requested_centre) if requested_centre is not None else [cx, cy, cz]
+    normal = unit([nx, ny, nz])
     e1, e2 = in_plane_basis(normal)
     ring = radius + MARGIN_MM
     probes = [centre] + [
@@ -120,8 +122,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("path")
     parser.add_argument("--diameter", type=float, default=4.0)
+    parser.add_argument("--centre", type=float, nargs=3, metavar=("X", "Y", "Z"))
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
+    if not math.isfinite(args.diameter) or args.diameter <= 0:
+        parser.error("diameter must be finite and positive")
+    if args.centre is not None and not all(math.isfinite(c) for c in args.centre):
+        parser.error("centre coordinates must be finite")
     if "копия" not in args.path.lower():
         print("refusing: work on copies only (file name must contain 'копия')", file=sys.stderr)
         return 3
@@ -145,7 +152,7 @@ def main():
         for obj in ksapi.IModelContainer(part).GetObjects(K3.o3d_face):
             face = ksapi.IFace(obj)
             if face and face.IsPlanar():
-                info = survey_face(face, radius)
+                info = survey_face(face, radius, args.centre)
                 if info:
                     candidates.append((info, face))
         candidates.sort(key=lambda c: c[0]["area_mm2"], reverse=True)
@@ -163,8 +170,14 @@ def main():
 
         sketch, extrusion, sketch_xy = cut_hole(part, chosen[1], chosen[0]["centre"], radius)
         part.RebuildModel(True)
+        features = ksapi.IFeature(part).GetSubFeatures(K.ksOperTree, False, False)
+        invalid = [f.GetName() for f in features if not f.IsValid()]
+        if invalid:
+            raise RuntimeError(f"invalid model features; not saved: {invalid}")
         mass = ksapi.IMassInertiaParam(part)
         mass.Calculate()
+        if mass.GetMass() >= mass_before:
+            raise RuntimeError("hole did not remove material; not saved")
         report.update(
             {
                 "applied": True,

@@ -15,7 +15,7 @@ dev = [
 [tool.ruff]
 line-length = 110
 target-version = "py312"
-extend-exclude = ["kompas_data", "reports"]
+extend-exclude = ["kompas_data", "reports", "vendor", "runs"]
 
 [tool.ruff.lint]
 # pycodestyle, pyflakes, isort, pyupgrade, bugbear, blind-except, ruff-specific
