@@ -2,7 +2,7 @@
 name = "kompas-hw01-eda"
 version = "0.1.0"
 description = "Автономный EDA-ноутбук учебного набора CAD"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "jupyterlab>=4.2,<5",
     "ipykernel>=6.29,<8",
@@ -12,6 +12,11 @@ dependencies = [
     "matplotlib>=3.9,<4",
     "pillow>=11,<14",
     "trimesh>=4.6,<6",
+    "plotly>=6,<7",
+    "anywidget>=0.11,<1",
+    "ipywidgets>=8,<9",
+    "cadquery==2.7.0",
+    "ocp-vscode==4.2.0",
 ]
 
 [tool.uv]

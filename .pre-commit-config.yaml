@@ -1,28 +1,15 @@
-# Установка: uv run --project notebooks --group dev pre-commit install
-# Проверка: uv run --project notebooks --group dev pre-commit run --all-files
-
-# Файлы КОМПАС и сырые отчёты KsAPI не правятся автоматически
-exclude: ^(data|\.local-archive)/
-
+# Ruff берётся из основного окружения и uv.lock.
+files: ^(src|tests)/.*\.py$
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
-    hooks:
-      - id: trailing-whitespace
-        args: [--markdown-linebreak-ext=md]
-      - id: end-of-file-fixer
-      - id: mixed-line-ending
-        args: [--fix=lf]
-      - id: check-yaml
-      - id: check-toml
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-added-large-files
-        args: [--maxkb=2048]
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.17.2
+  - repo: local
     hooks:
       - id: ruff-check
-        args: [--fix]
+        name: Линт Python
+        entry: uv run --locked ruff check
+        language: unsupported
+        types: [python]
       - id: ruff-format
+        name: Форматирование Python
+        entry: uv run --locked ruff format --check
+        language: unsupported
+        types: [python]

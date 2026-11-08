@@ -1,5 +1,6 @@
 # Локальный архив прежних этапов и настройки инструментов
 .local-archive/
+artifacts/
 .ai/
 .claude
 mcp/
@@ -7,13 +8,15 @@ mcp/
 .mcp.json
 vendor/
 AGENTS.md
+.env
+.env.*
+!.env.example
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
 
 # Python
 .venv/
-.venv-eval/
 __pycache__/
 *.py[cod]
 .ruff_cache/

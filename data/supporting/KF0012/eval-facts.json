@@ -1,0 +1,56 @@
+{
+  "source": "kompas",
+  "source_version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования); build 2780",
+  "native_sha256": "9ba6b5a00d4bbdbd19d686a73450870874a56c9b09422dd1bff390fa5251902f",
+  "units": "mm",
+  "mesh_units": "mm",
+  "body_count": 1,
+  "solid_valid": true,
+  "volume_mm3": 820773.6334361233,
+  "area_mm2": 147927.1751353105,
+  "topology": {
+    "faces": 626,
+    "edges": 1846,
+    "vertices": 1238
+  },
+  "mesh_sha256": "b228d502fe4ddf731a024a25defea2263e7cb6d418cc5d7e5d84148e788bb0d6",
+  "dimensions_mm": {
+    "diameter": [
+      30.0,
+      55.0,
+      59.0,
+      83.0,
+      84.0,
+      84.55335,
+      86.100912,
+      146.0,
+      243.864,
+      245.864
+    ],
+    "radius": [
+      0.4,
+      1.52,
+      7.0,
+      27.5,
+      40.977333,
+      113.95,
+      122.932
+    ],
+    "thread": [],
+    "linear": [
+      1.0,
+      2.0,
+      4.895021999999997,
+      22.481615,
+      50.5,
+      54.50000000000002,
+      245.864
+    ]
+  },
+  "evidence": {
+    "kernel_facts_sha256": "187eb4edd45ae2d570d451bda22c36d0f3b0fa326174f7a7320f8a3ad8f25f9a",
+    "original_mesh_sha256": "c1135815bdcea89d3f52cbbc6f9820a3fadf31d05bf0770127fdd5373d2b20e8",
+    "mesh_conversion": "ASCII → binary STL; без упрощения, координаты сохранены в float32",
+    "measurement_selection": "Диаметры, радиусы, габариты и длины поверхностей; комбинаторные расстояния между касательными и тензор инерции не включены."
+  }
+}

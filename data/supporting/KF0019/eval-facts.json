@@ -1,0 +1,40 @@
+{
+  "source": "kompas",
+  "source_version": "КОМПАС-3D v25 Учебная версия (Не для коммерческого использования); build 2780",
+  "native_sha256": "16b2b12b244e4ba57f5533a5b99e49ed07e14ecd4161893a8c6f5abdb4197096",
+  "units": "mm",
+  "mesh_units": "mm",
+  "body_count": 1,
+  "solid_valid": true,
+  "volume_mm3": 4720.046612476101,
+  "area_mm2": 2980.645062307182,
+  "topology": {
+    "faces": 5,
+    "edges": 5,
+    "vertices": 5
+  },
+  "mesh_sha256": "34ede2ece8e849dabac52759fe5e9caf311259a4a4dc9b7447a1462dd7a5a6e3",
+  "dimensions_mm": {
+    "diameter": [
+      8.5,
+      13.0,
+      40.0
+    ],
+    "radius": [],
+    "linear": [
+      1.75,
+      2.25,
+      4.0,
+      15.75,
+      24.25,
+      40.0
+    ],
+    "thread": []
+  },
+  "evidence": {
+    "kernel_facts_sha256": "04c3b1c36fa315987b157e092f5f5dee687f031ad08216c0a391bc7a13888132",
+    "original_mesh_sha256": "d2709851a934eeca65289b877f631ae76532b148effaec929fc1448f9cfa7d4e",
+    "mesh_conversion": "ASCII → binary STL; без упрощения, координаты сохранены в float32",
+    "measurement_selection": "Топология, объём и уникальные измеренные размеры; тензор инерции не включён"
+  }
+}

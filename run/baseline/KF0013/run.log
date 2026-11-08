@@ -1,0 +1,5 @@
+19:53:52  ПРОГОН     baseline/KF0013
+19:53:52  LLM        gpt-6.1-sol, рассуждения medium. Отправляю один запрос.
+19:53:55  ОШИБКА     Этап: получение ответа LLM. InternalServerError: Error code: 500 - An error occurred while processing your request. You can retry your request, or contact us through our help center at help.openai.com if the error persists. Please include the request ID req_d8d8090b5bd449839be62d0b279f2699 in your message.; HTTP: 500; код: server_error; ID запроса: req_d8d8090b5bd449839be62d0b279f2699
+19:53:55  ДИАГНОСТИКА artifacts/baseline/KF0013/error.log
+19:53:55  ФАЙЛЫ      run/baseline/KF0013
