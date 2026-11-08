@@ -12,19 +12,11 @@ dependencies = [
     "matplotlib>=3.9,<4",
     "pillow>=11,<14",
     "trimesh>=4.6,<6",
-    "cadquery==2.7.0",
-    "ocp-vscode==4.2.0",
     "scipy>=1.14,<2",
 ]
 
 [tool.uv]
 package = false
-
-[dependency-groups]
-dev = [
-    "pre-commit>=4.7",
-    "ruff>=0.17",
-]
 
 [tool.ruff]
 line-length = 110
