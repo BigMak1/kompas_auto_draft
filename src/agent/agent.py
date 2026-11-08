@@ -34,13 +34,35 @@ STAGES = {
 }
 
 
-def image_url(source: Path) -> str:
+def prepare_image(source: Path, max_side: int | None) -> tuple[str, dict]:
+    """Проверяем PNG и ограничиваем размер копии для API; оригинал не меняется."""
     payload = source.read_bytes()
+    info = {
+        "name": source.name,
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "original_bytes": len(payload),
+    }
     with Image.open(BytesIO(payload)) as image:
         if image.format != "PNG":
             raise ValueError("Ожидается PNG")
+        if getattr(image, "n_frames", 1) != 1:
+            raise ValueError("Ожидается статический PNG с одним кадром")
         image.verify()
-    return "data:image/png;base64," + base64.b64encode(payload).decode()
+    with Image.open(BytesIO(payload)) as image:
+        image.load()
+        info["original_size"] = list(image.size)
+        if max_side is not None and max(image.size) > max_side:
+            image.thumbnail((max_side, max_side), Image.Resampling.LANCZOS)
+            buffer = BytesIO()
+            image.save(buffer, format="PNG")
+            payload = buffer.getvalue()
+        info.update(sent_size=list(image.size), mode=image.mode)
+    info.update(
+        sent_bytes=len(payload),
+        sent_sha256=hashlib.sha256(payload).hexdigest(),
+        resized=info["original_size"] != info["sent_size"],
+    )
+    return "data:image/png;base64," + base64.b64encode(payload).decode(), info
 
 
 def make_agent(settings: AgentSettings, model: Any = None) -> Agent:
@@ -126,7 +148,7 @@ def begin(run: Run, kind: str, config: Config) -> dict:
         "environment_sha256": {name: sha256(ROOT / name) for name in ("pyproject.toml", "uv.lock")},
         "versions": {
             name: importlib.metadata.version(name)
-            for name in ("openai-agents", "openai", "cadquery", "cadquery-ocp", "trimesh")
+            for name in ("openai-agents", "openai", "cadquery", "cadquery-ocp", "trimesh", "pillow")
         },
     }
     write_json(run.artifacts / "run.json", record)
@@ -215,12 +237,14 @@ def finish(run: Run, record: dict, started: float) -> None:
 async def generate(source: Path, run: Run, config: Config) -> dict:
     if not os.environ.get("OPENAI_API_KEY"):
         raise ValueError("Задайте OPENAI_API_KEY в .env или окружении")
-    image = image_url(source)
-    input_hash = sha256(source)
+    image, image_info = prepare_image(source, config.agent.image_max_side)
     record = begin(run, "single_shot_generation", config)
-    record.update(input={"name": source.name, "sha256": input_hash}, stage="llm")
+    record.update(input=image_info, stage="llm")
     write_json(run.artifacts / "run.json", record)
     settings = config.agent
+    before = "×".join(map(str, image_info["original_size"]))
+    after = "×".join(map(str, image_info["sent_size"]))
+    run.log("PNG", f"{before} → {after} пикс.; отправляется {image_info['sent_bytes'] / 1024:.0f} КиБ.")
     run.log("LLM", f"{settings.model}, рассуждения {settings.reasoning_effort}. Отправляю один запрос.")
     started = time.monotonic()
     journal = Journal(run, record)

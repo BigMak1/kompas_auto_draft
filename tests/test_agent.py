@@ -1,8 +1,10 @@
 """Офлайн-проверки SDK и построителя без обращения к внешним сервисам."""
 
 import asyncio
+import base64
 import json
 import math
+from io import BytesIO
 from pathlib import Path
 
 import pytest
@@ -184,6 +186,48 @@ def test_missing_key_preserves_previous_result(tmp_path: Path, monkeypatch: pyte
     (run.directory / "model.stl").write_bytes(b"previous")
     with pytest.raises(ValueError, match="OPENAI_API_KEY"):
         asyncio.run(agent.generate(tmp_path / "absent.png", run, load_config()))
+    assert (run.directory / "model.stl").read_bytes() == b"previous"
+
+
+@pytest.mark.parametrize(
+    ("size", "limit", "expected"),
+    [
+        ((80, 40), 32, (32, 16)),
+        ((40, 80), 32, (16, 32)),
+        ((16, 8), 32, (16, 8)),
+        ((32, 20), 32, (32, 20)),
+        ((80, 40), None, (80, 40)),
+    ],
+)
+def test_image_copy_preserves_original_and_aspect_ratio(
+    tmp_path: Path, size: tuple[int, int], limit: int | None, expected: tuple[int, int]
+) -> None:
+    source = tmp_path / "drawing.png"
+    Image.new("RGB", size, "white").save(source)
+    original = source.read_bytes()
+    url, info = agent.prepare_image(source, limit)
+    decoded = base64.b64decode(url.split(",", 1)[1], validate=True)
+    with Image.open(BytesIO(decoded)) as image:
+        image.load()
+        assert image.format == "PNG" and image.mode == "RGB" and image.size == expected
+    assert source.read_bytes() == original
+    assert info["sha256"] == sha256(source)
+    assert info["original_size"] == list(size) and info["sent_size"] == list(expected)
+    assert info["resized"] == (size != expected)
+    if size == expected:
+        assert decoded == original and info["sent_sha256"] == info["sha256"]
+
+
+def test_corrupt_png_preserves_previous_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", "offline-placeholder")
+    source = tmp_path / "corrupt.png"
+    Image.new("RGB", (16, 16), "white").save(source)
+    source.write_bytes(source.read_bytes()[:40])
+    run = Run("KFtest", root=tmp_path)
+    run.create()
+    (run.directory / "model.stl").write_bytes(b"previous")
+    with pytest.raises(OSError):
+        asyncio.run(agent.generate(source, run, load_config()))
     assert (run.directory / "model.stl").read_bytes() == b"previous"
 
 

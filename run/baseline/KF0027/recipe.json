@@ -6,42 +6,6 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 52.083333
-      },
-      "z": 0.0,
-      "depth": 0.166667,
-      "direction": "+Z"
-    },
-    {
-      "action": "add",
-      "profile": {
-        "kind": "circle",
-        "x": 0.0,
-        "y": 0.0,
-        "radius": 52.25
-      },
-      "z": 0.166667,
-      "depth": 0.166666,
-      "direction": "+Z"
-    },
-    {
-      "action": "add",
-      "profile": {
-        "kind": "circle",
-        "x": 0.0,
-        "y": 0.0,
-        "radius": 52.416667
-      },
-      "z": 0.333333,
-      "depth": 0.166667,
-      "direction": "+Z"
-    },
-    {
-      "action": "add",
-      "profile": {
-        "kind": "circle",
-        "x": 0.0,
-        "y": 0.0,
         "radius": 52.5
       },
       "z": 0.5,
@@ -54,10 +18,58 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 52.416667
+        "radius": 52.4375
+      },
+      "z": 0.375,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 52.3125
+      },
+      "z": 0.25,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 52.1875
+      },
+      "z": 0.125,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 52.0625
+      },
+      "z": 0.0,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 52.4375
       },
       "z": 11.5,
-      "depth": 0.166667,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -66,10 +78,10 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 52.25
+        "radius": 52.3125
       },
-      "z": 11.666667,
-      "depth": 0.166666,
+      "z": 11.625,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -78,10 +90,22 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 52.083333
+        "radius": 52.1875
       },
-      "z": 11.833333,
-      "depth": 0.166667,
+      "z": 11.75,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 52.0625
+      },
+      "z": 11.875,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -102,10 +126,10 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.916667
+        "radius": 32.9375
       },
       "z": 0.0,
-      "depth": 0.166667,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -114,10 +138,10 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.75
+        "radius": 32.8125
       },
-      "z": 0.166667,
-      "depth": 0.166666,
+      "z": 0.125,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -126,10 +150,10 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.583333
+        "radius": 32.6875
       },
-      "z": 0.333333,
-      "depth": 0.166667,
+      "z": 0.25,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -138,10 +162,22 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.583333
+        "radius": 32.5625
+      },
+      "z": 0.375,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 32.5625
       },
       "z": 11.5,
-      "depth": 0.166667,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -150,10 +186,10 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.75
+        "radius": 32.6875
       },
-      "z": 11.666667,
-      "depth": 0.166666,
+      "z": 11.625,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -162,10 +198,22 @@
         "kind": "circle",
         "x": 0.0,
         "y": 0.0,
-        "radius": 32.916667
+        "radius": 32.8125
       },
-      "z": 11.833333,
-      "depth": 0.166667,
+      "z": 11.75,
+      "depth": 0.125,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 32.9375
+      },
+      "z": 11.875,
+      "depth": 0.125,
       "direction": "+Z"
     },
     {
@@ -184,6 +232,18 @@
       "action": "cut",
       "profile": {
         "kind": "circle",
+        "x": 0.0,
+        "y": 42.5,
+        "radius": 7.0
+      },
+      "z": 12.0,
+      "depth": 8.0,
+      "direction": "-Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
         "x": -30.052038,
         "y": 30.052038,
         "radius": 4.2
@@ -196,6 +256,18 @@
       "action": "cut",
       "profile": {
         "kind": "circle",
+        "x": -30.052038,
+        "y": 30.052038,
+        "radius": 7.0
+      },
+      "z": 12.0,
+      "depth": 8.0,
+      "direction": "-Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
         "x": -42.5,
         "y": 0.0,
         "radius": 4.2
@@ -203,6 +275,18 @@
       "z": 0.0,
       "depth": 12.0,
       "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": -42.5,
+        "y": 0.0,
+        "radius": 7.0
+      },
+      "z": 12.0,
+      "depth": 8.0,
+      "direction": "-Z"
     },
     {
       "action": "cut",
@@ -215,42 +299,6 @@
       "z": 0.0,
       "depth": 12.0,
       "direction": "+Z"
-    },
-    {
-      "action": "cut",
-      "profile": {
-        "kind": "circle",
-        "x": 0.0,
-        "y": 42.5,
-        "radius": 7.0
-      },
-      "z": 12.0,
-      "depth": 8.0,
-      "direction": "-Z"
-    },
-    {
-      "action": "cut",
-      "profile": {
-        "kind": "circle",
-        "x": -30.052038,
-        "y": 30.052038,
-        "radius": 7.0
-      },
-      "z": 12.0,
-      "depth": 8.0,
-      "direction": "-Z"
-    },
-    {
-      "action": "cut",
-      "profile": {
-        "kind": "circle",
-        "x": -42.5,
-        "y": 0.0,
-        "radius": 7.0
-      },
-      "z": 12.0,
-      "depth": 8.0,
-      "direction": "-Z"
     },
     {
       "action": "cut",

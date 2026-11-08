@@ -1,6 +1,4 @@
 # Выгрузки CAD доступны по ссылкам; GitHub сворачивает их diff.
 /data/target/** linguist-generated
-/data/supporting/** linguist-generated
 /run/**/*.stl linguist-generated
-*.cdw binary
 *.stl binary

@@ -19,6 +19,7 @@ class AgentSettings(Settings):
     timeout_seconds: float = Field(gt=0)
     max_output_tokens: int = Field(gt=0)
     image_detail: Literal["low", "high", "auto"]
+    image_max_side: int | None = Field(default=None, ge=1)
     prompt_version: str = Field(min_length=1)
     prompt: str = Field(min_length=1)
 

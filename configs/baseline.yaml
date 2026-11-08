@@ -7,6 +7,7 @@ agent:
   timeout_seconds: 900
   max_output_tokens: 8192
   image_detail: high
+  image_max_side: 4096
   prompt_version: single-shot-cad-v1
   prompt: |
     По PNG чертежа составь один полный рецепт новой CAD-детали.

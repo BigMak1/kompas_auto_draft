@@ -12,11 +12,9 @@ dependencies = [
     "matplotlib>=3.9,<4",
     "pillow>=11,<14",
     "trimesh>=4.6,<6",
-    "plotly>=6,<7",
-    "anywidget>=0.11,<1",
-    "ipywidgets>=8,<9",
     "cadquery==2.7.0",
     "ocp-vscode==4.2.0",
+    "scipy>=1.14,<2",
 ]
 
 [tool.uv]

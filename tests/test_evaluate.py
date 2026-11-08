@@ -1,5 +1,6 @@
 """Аналитические проверки двух метрик, изоляции оценщика и сохранения таблицы."""
 
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -96,14 +97,13 @@ def test_measurement_error_has_separate_log(tmp_path: Path, monkeypatch: pytest.
 def dataset(tmp_path: Path) -> Path:
     items = [{"pair_id": name, "split": "val"} for name in ["KF0011", *[f"VAL{i}" for i in range(1, 10)]]]
     (tmp_path / "data/target").mkdir(parents=True)
-    files = {}
     for item in items:
         run = Run(item["pair_id"], root=tmp_path)
         run.create()
         mesh = trimesh.creation.box()
         target = tmp_path / "data/target" / f"{run.pair_id}.stl"
         mesh.export(target)
-        files[f"target/{run.pair_id}.stl"] = sha256(target)
+        item["target_mesh"] = {"path": f"target/{run.pair_id}.stl", "sha256": sha256(target)}
         if run.pair_id != "VAL1":
             mesh.apply_translation([10, 0, 0])
         mesh.export(run.directory / "model.stl")
@@ -114,7 +114,7 @@ def dataset(tmp_path: Path) -> Path:
                 "cad": {"files": {"model.stl": sha256(run.directory / "model.stl")}},
             },
         )
-    write_json(tmp_path / "data/manifest.json", {"items": items, "files": files})
+    write_json(tmp_path / "data/manifest.json", {"items": items})
     return tmp_path
 
 
@@ -162,7 +162,26 @@ def test_stale_file_or_changed_config_cannot_keep_old_mean(dataset: Path) -> Non
     assert evaluation.evaluate_run(run, settings)["status"] == "error"
 
 
-def test_dataset_hashes_and_orientation() -> None:
+@pytest.mark.parametrize("change", ["wrong_hash", "missing", "duplicate"])
+def test_evaluation_requires_one_target_with_matching_hash(dataset: Path, change: str) -> None:
+    path = dataset / "data/manifest.json"
+    manifest = read_json(path)
+    item = next(item for item in manifest["items"] if item["pair_id"] == "VAL1")
+    if change == "wrong_hash":
+        item["target_mesh"]["sha256"] = "wrong"
+    elif change == "missing":
+        manifest["items"].remove(item)
+    else:
+        manifest["items"].append(item)
+    write_json(path, manifest)
+    run = Run("VAL1", root=dataset)
+    result = evaluation.evaluate(
+        run.directory / "model.stl", dataset / "data/target/VAL1.stl", load_config().evaluation
+    )
+    assert result["status"] == "error" and result["iou"] is None and result["f_score"] is None
+
+
+def test_dataset_hashes_and_geometry() -> None:
     items = read_json(ROOT / "data/manifest.json")["items"]
     assert len(items) == 10
     assert all(item["split"] == "val" for item in items)
@@ -172,5 +191,69 @@ def test_dataset_hashes_and_orientation() -> None:
     assert {p.stem for p in (ROOT / "data/target").glob("*.stl")} == names
     for item in items:
         if item["pair_id"] in {"KF0011", "KF0012", "KF0018"}:
-            assert item["pair_validation"] == "known_mismatch" and item["limitations"]
+            assert item["pair_validation"] == "Есть известные различия" and item["limitations"]
     evaluation.check_data(ROOT / "data")
+
+
+@pytest.fixture
+def prepared_data(tmp_path: Path) -> Path:
+    """Копия одной опубликованной пары, без исходных выгрузок и соседнего репозитория."""
+    manifest = read_json(ROOT / "data/manifest.json")
+    item = next(item for item in manifest["items"] if item["pair_id"] == "KF0017")
+    manifest["items"] = [item]
+    for record in [item["input_png"], item["target_mesh"]]:
+        path = tmp_path / record["path"]
+        path.parent.mkdir()
+        shutil.copyfile(ROOT / "data" / record["path"], path)
+    write_json(tmp_path / "manifest.json", manifest)
+    return tmp_path
+
+
+def test_prepared_data_works_without_historical_sources(prepared_data: Path) -> None:
+    assert {path.name for path in prepared_data.iterdir()} == {"input", "target", "manifest.json"}
+    evaluation.check_data(prepared_data)
+
+
+@pytest.mark.parametrize("relative", ["input/KF0017.png", "target/KF0017.stl"])
+@pytest.mark.parametrize("change", ["missing", "tampered"])
+def test_prepared_data_detects_missing_and_tampered_files(
+    prepared_data: Path, relative: str, change: str
+) -> None:
+    path = prepared_data / relative
+    if change == "missing":
+        path.unlink()
+    else:
+        path.write_bytes(path.read_bytes() + b"changed")
+    with pytest.raises(ValueError, match=relative):
+        evaluation.check_data(prepared_data)
+
+
+@pytest.mark.parametrize("key", ["input_png", "target_mesh"])
+def test_prepared_data_requires_hashes_for_both_sides(prepared_data: Path, key: str) -> None:
+    path = prepared_data / "manifest.json"
+    manifest = read_json(path)
+    del manifest["items"][0][key]["sha256"]
+    write_json(path, manifest)
+    with pytest.raises(ValueError, match="SHA256"):
+        evaluation.check_data(prepared_data)
+
+
+@pytest.mark.parametrize("change", ["open_surface", "shifted_z", "wrong_units"])
+def test_prepared_data_checks_geometry_and_units(prepared_data: Path, change: str) -> None:
+    path = prepared_data / "manifest.json"
+    manifest = read_json(path)
+    target = manifest["items"][0]["target_mesh"]
+    if change == "wrong_units":
+        manifest["coordinates"]["units"] = "m"
+    else:
+        mesh_path = prepared_data / target["path"]
+        mesh = evaluation.load_mesh(mesh_path)
+        if change == "open_surface":
+            mesh.update_faces(np.arange(len(mesh.faces) - 1))
+        else:
+            mesh.apply_translation([0, 0, 5])
+        mesh.export(mesh_path)
+        target["sha256"] = sha256(mesh_path)
+    write_json(path, manifest)
+    with pytest.raises(ValueError, match=r"тело|Единицы"):
+        evaluation.check_data(prepared_data)

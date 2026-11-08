@@ -118,7 +118,14 @@ def evaluate(
         manifest_path = reference_path.parent.parent / "manifest.json"
         if reference_path.parent.name == "target" and manifest_path.is_file():
             manifest = read_json(manifest_path)
-            if reference_hash != manifest["files"]["target/" + reference_path.name]:
+            targets = [
+                item["target_mesh"]
+                for item in manifest["items"]
+                if item["target_mesh"]["path"] == "target/" + reference_path.name
+            ]
+            if len(targets) != 1:
+                raise ValueError("Эталон должен встречаться в описи ровно один раз")
+            if reference_hash != targets[0]["sha256"]:
                 raise ValueError("SHA256 эталона не совпал с описью")
         record["reference"] = {"name": reference_path.name, "sha256": reference_hash}
         reference = load_mesh(reference_path)
@@ -150,28 +157,26 @@ def evaluate(
 
 
 def check_data(data: Path) -> None:
+    """Проверяем опубликованные PNG/STL; историческая выгрузка из КОМПАС не нужна."""
     manifest = read_json(data / "manifest.json")
     names = [item["pair_id"] for item in manifest["items"]]
-    if len(names) != len(set(names)):
-        raise ValueError("Деталь повторяется в описи")
-    for path, expected in manifest["files"].items():
-        if sha256(data / path) != expected:
-            raise ValueError(f"SHA256 не совпал: {path}")
+    if not names or len(names) != len(set(names)):
+        raise ValueError("Опись должна содержать непустой список деталей без повторов")
+    if manifest["coordinates"]["units"] != "mm":
+        raise ValueError("Единицы эталонов должны быть mm")
     for item in manifest["items"]:
-        target = item["target_mesh"]
-        if sha256(data / target["path"]) != target["sha256"]:
-            raise ValueError("Изменён эталон")
-        matrix = np.asarray(target["source_to_target"])
-        rotation = matrix[:3, :3]
-        if not np.allclose(rotation.T @ rotation, np.eye(3)) or not np.isclose(np.linalg.det(rotation), 1):
-            raise ValueError("Оси должны быть ортогональными, без масштаба и отражения")
-        original = load_mesh(data / target["source_mesh"])
-        original.apply_transform(matrix)
-        if original.export(file_type="stl") != (data / target["path"]).read_bytes():
-            raise ValueError("Эталон не соответствует исходной сетке и преобразованию")
-        mesh = load_mesh(data / target["path"])
-        if not mesh.is_volume or abs(mesh.bounds[0, 2]) > 1e-5:
-            raise ValueError("Некорректное тело или нижний торец не на Z=0")
+        for key, folder, extension in [("input_png", "input", "png"), ("target_mesh", "target", "stl")]:
+            record = item[key]
+            if record["path"] != f"{folder}/{item['pair_id']}.{extension}":
+                raise ValueError(f"Некорректный путь {key}: {record['path']}")
+            path = data / record["path"]
+            if not path.is_file():
+                raise ValueError(f"Отсутствует файл набора: {record['path']}")
+            if sha256(path) != record.get("sha256"):
+                raise ValueError(f"SHA256 не совпал или не указан: {record['path']}")
+        mesh = load_mesh(data / item["target_mesh"]["path"])
+        if not np.isfinite(mesh.vertices).all() or not mesh.is_volume or abs(mesh.bounds[0, 2]) > 1e-5:
+            raise ValueError(f"{item['pair_id']}: некорректное тело или нижний торец не на Z=0")
 
 
 def cached_result(run: Run, settings: EvaluationSettings) -> dict | None:

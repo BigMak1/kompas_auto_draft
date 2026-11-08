@@ -1,7 +1,10 @@
 """Ошибки настоящего SDK на подставленном HTTP-ответе; сети и LLM в тестах нет."""
 
 import asyncio
+import base64
+import hashlib
 import json
+from io import BytesIO
 from pathlib import Path
 
 import httpx2 as httpx
@@ -15,7 +18,9 @@ from src.config import load_config
 from src.utils import Run, error_details, log_error, read_json, write_json
 
 
-@pytest.mark.parametrize("outcome", ["success", "incomplete", "failed", "auth", "quota", "connection"])
+@pytest.mark.parametrize(
+    "outcome", ["success", "incomplete", "failed", "server", "auth", "quota", "connection"]
+)
 def test_http_response_and_errors_are_saved_without_retry(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture, outcome: str
 ) -> None:
@@ -33,10 +38,12 @@ def test_http_response_and_errors_are_saved_without_retry(
         "incomplete_details": {"reason": "max_output_tokens"} if outcome == "incomplete" else None,
         "error": {"code": "server_error", "message": "Backend unavailable"} if outcome == "failed" else None,
     }
-    if outcome in {"auth", "quota"}:
+    if outcome in {"auth", "quota", "server"}:
         payload = {
             "error": {
-                "code": "invalid_api_key" if outcome == "auth" else "insufficient_quota",
+                "code": {"auth": "invalid_api_key", "quota": "insufficient_quota", "server": "server_error"}[
+                    outcome
+                ],
                 "message": f"Synthetic API error; key={secret}",
                 "type": "invalid_request_error",
                 "param": None,
@@ -71,9 +78,21 @@ def test_http_response_and_errors_are_saved_without_retry(
         calls.append(request)
         assert len(calls) == 1, "Повторный запрос запрещён"
         assert request.url == "https://api.openai.com/v1/responses"
+        body = json.loads(request.content)
+        content = body["input"][0]["content"]
+        assert len(content) == 1 and content[0]["type"] == "input_image"
+        assert content[0]["detail"] == "high"
+        prefix, encoded = content[0]["image_url"].split(",", 1)
+        assert prefix == "data:image/png;base64"
+        sent_image = base64.b64decode(encoded, validate=True)
+        with Image.open(BytesIO(sent_image)) as image:
+            image.load()
+            assert image.format == "PNG" and image.size == (8, 4)
+        saved_input = read_json(run.artifacts / "run.json")["input"]
+        assert saved_input["sent_sha256"] == hashlib.sha256(sent_image).hexdigest()
         if outcome == "connection":
             raise httpx.ConnectError("Connection refused in offline test", request=request)
-        status = {"auth": 401, "quota": 429}.get(outcome, 200)
+        status = {"auth": 401, "quota": 429, "server": 500}.get(outcome, 200)
         return httpx.Response(status, json=payload, headers={"x-request-id": "req_offline"})
 
     def http_client(**kwargs: object) -> httpx.AsyncClient:
@@ -89,9 +108,11 @@ def test_http_response_and_errors_are_saved_without_retry(
     monkeypatch.setattr(agent, "DefaultAsyncHttpxClient", http_client)
     monkeypatch.setattr(cad, "build", build)
     source = tmp_path / "drawing.png"
-    Image.new("RGB", (8, 8), "white").save(source)
+    Image.new("RGB", (20, 10), "white").save(source)
     run = Run("OFFLINE", root=tmp_path)
-    record = asyncio.run(agent.generate(source, run, load_config()))
+    config = load_config()
+    config.agent.image_max_side = 8
+    record = asyncio.run(agent.generate(source, run, config))
     assert len(calls) == 1
     if outcome == "success":
         assert record["status"] == "success" and record["cad_builds"] == 1
@@ -109,6 +130,7 @@ def test_http_response_and_errors_are_saved_without_retry(
     expected = {
         "incomplete": "max_output_tokens",
         "failed": "server_error",
+        "server": "server_error",
         "auth": "invalid_api_key",
         "quota": "insufficient_quota",
         "connection": "Connection refused in offline test",

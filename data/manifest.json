@@ -1,179 +1,51 @@
 {
-  "schema_version": 1,
   "dataset_id": "cad-validation-10",
-  "source_dataset": "kompas-e2e-27",
-  "source_manifest_sha256": "d30c18b4eaa2f93180e05eed0a8e63be0d02936abb31be982ec1ed5f05d3da99",
-  "status": "prepared_for_cadquery",
+  "source": "Учебные примеры КОМПАС-3D v25 Study; корпус kompas-e2e-27 из репозитория kompas-drawings (27 пар).",
+  "selection": "10 пар отобраны по разнообразию форм и сложности, без использования метрик генератора. Все относятся к val; отдельной dev-выборки и независимого test пока нет.",
+  "coordinates": {
+    "units": "mm",
+    "origin": "Центр основной окружности — (0, 0) в XY; задний торец — Z=0.",
+    "axes": "X вправо, Y вверх на круговом виде чертежа; толщина вдоль +Z.",
+    "evaluation": "Без автоматического совмещения, поворота и изменения масштаба."
+  },
+  "review_scope": "Проверялись ключевые размеры и исполнение, не все поверхности и допуски. Известные различия сохранены; эталоны не исправлялись под PNG. Подробные измерения и история подготовки находятся в локальном архиве.",
   "items": [
     {
       "pair_id": "KF0010",
       "name": "Вал с фланцем",
       "family": "reducer_shaft_0101",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0101.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0101.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "checked_key_dimensions",
-      "limitations": [
-        "Ступени, канавки, шпоночный паз, центровые и фланцевые отверстия; фаски и скругления выходят за текущую схему рецепта."
-      ],
       "input_png": {
         "path": "input/KF0010.png",
-        "sha256": "7b701473d23ddef418a4bce0291d4b9937a60d3af9415e1b2fa41c5be1c87eb8",
-        "bytes": 804622,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0010/drawing.png",
-        "width_px": 10525,
-        "height_px": 4962
-      },
-      "reference_m3d": {
-        "sha256": "dbe467d9eb7ce5e0b5928f4c7f65eaaecbe872b6d6fbd1145da1afb869d071ac",
-        "bytes": 278027,
-        "source_path": "data/kompas-files/pairs/KF0010/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0010/drawing.cdw",
-        "sha256": "04e504c96d65539d88700b6c817bba204b24c54b1fe8b7a07817acdf191019fd",
-        "bytes": 124952,
-        "source_path": "data/kompas-files/pairs/KF0010/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0010/review.json",
-      "reference_export": {
-        "path": "supporting/KF0010",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0010"
+        "sha256": "7b701473d23ddef418a4bce0291d4b9937a60d3af9415e1b2fa41c5be1c87eb8"
       },
       "target_mesh": {
         "path": "target/KF0010.stl",
-        "sha256": "c0d0b70756d4fd9126aa4d98f1720e681ed039cd5df7e43463397f99ac51b0ee",
-        "units": "mm",
-        "source_mesh": "supporting/KF0010/model.stl",
-        "source_sha256": "44ac51f872020de97bda3153d8dcfaa7e85c48eba1dff4ddc7371326015f06bb",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            246.00000000000009
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось цилиндрической поверхности исходной модели",
-          "z_range_mm": [
-            8.526512829121202e-14,
-            200.00000000000009
-          ]
-        }
-      }
+        "sha256": "c0d0b70756d4fd9126aa4d98f1720e681ed039cd5df7e43463397f99ac51b0ee"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Ступени, канавки, шпоночный паз, центровые и фланцевые отверстия; фаски и скругления выходят за текущую схему рецепта."
+      ]
     },
     {
       "pair_id": "KF0011",
+      "name": "Шестерня",
       "family": "reducer_gear_0102",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0102.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0102.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "known_mismatch",
       "input_png": {
         "path": "input/KF0011.png",
-        "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec",
-        "bytes": 381228,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0011/drawing.png",
-        "width_px": 4962,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "e6000f617c7e428a5eafb9b943af30a6638e7c513e0f88297d998a98cfa17b5a",
-        "bytes": 316003,
-        "source_path": "data/kompas-files/pairs/KF0011/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0011/drawing.cdw",
-        "sha256": "ad1f95e63d8d7bcfe00bf0b3277850c16c8fe3fcd0f6c2f6d4ae19739884490f",
-        "bytes": 119382,
-        "source_path": "data/kompas-files/pairs/KF0011/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "reference_export": {
-        "path": "supporting/KF0011",
-        "source_repository": "kompas-drawings",
-        "source_directory": "runs/e2e/kf0011-codex-005/evaluation/pipeline_2026-11-07_18-30-22/worker/export_2026-11-07_18-30-31"
+        "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec"
       },
       "target_mesh": {
         "path": "target/KF0011.stl",
-        "sha256": "623898b8602b132bd8a80eacdebb0a77ae6941efd6ee281981ead1506f32f9aa",
-        "units": "mm",
-        "source_mesh": "supporting/KF0011/model.stl",
-        "source_sha256": "0963c65cce09bcc3f10a03b15d50eb6f096b64ed5c914ff68b58e47124c098b4",
-        "source_to_target": [
-          [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            7.903923548896351e-17,
-            1.0242984812396485e-06
-          ],
-          "outer_radius_mm": 35.049999806816245,
-          "z_range_mm": [
-            -8.881784197001252e-16,
-            33.0
-          ]
-        }
+        "sha256": "623898b8602b132bd8a80eacdebb0a77ae6941efd6ee281981ead1506f32f9aa"
       },
-      "name": "Шестерня",
+      "pair_validation": "Есть известные различия",
       "limitations": [
         "Отверстие Ø32 на чертеже против Ø30,6 в модели; расхождение исходной пары учитывается при разборе метрик."
       ]
@@ -182,811 +54,159 @@
       "pair_id": "KF0012",
       "name": "Зубчатое колесо",
       "family": "reducer_gear_0103",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0103.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0103.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "source_family": "Samples/Reducer",
-      "split": "val",
-      "pair_validation": "known_mismatch",
-      "limitations": [
-        "Отверстие Ø54H8 (+0,046) на чертеже против Ø55 в модели (дуга R27,5). Наружный диаметр Ø245h12 на листе против габарита 245,864 мм у модели. Расхождения исходной пары сохранены, эталон не исправлялся под PNG.",
-        "60 зубьев, модуль 4, шпоночный паз и шесть отверстий Ø30 на окружности Ø146. Фаски, радиусы и зубчатый профиль воспроизводятся текущим рецептом лишь приближённо."
-      ],
       "input_png": {
         "path": "input/KF0012.png",
-        "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
-        "bytes": 582881,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0012/drawing.png",
-        "width_px": 7442,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "9ba6b5a00d4bbdbd19d686a73450870874a56c9b09422dd1bff390fa5251902f",
-        "bytes": 1003102,
-        "source_path": "data/kompas-files/pairs/KF0012/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0012/drawing.cdw",
-        "sha256": "7a19adda2e3ce422bda4c7fdb4bb32ef5e6e992f8308078fdb862869bfa9b729",
-        "bytes": 116010,
-        "source_path": "data/kompas-files/pairs/KF0012/drawing.cdw"
-      },
-      "qa_review": "supporting/KF0012/review.json",
-      "reference_export": {
-        "path": "supporting/KF0012",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0012"
+        "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e"
       },
       "target_mesh": {
         "path": "target/KF0012.stl",
-        "sha256": "f0265492eac131700e0edcb49d7c250247859c76bb107bcf953fdd41ebe88e8f",
-        "units": "mm",
-        "source_mesh": "supporting/KF0012/model.stl",
-        "source_sha256": "b228d502fe4ddf731a024a25defea2263e7cb6d418cc5d7e5d84148e788bb0d6",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            54.50000000000001
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось отверстия исходной модели: X, y=z=0",
-          "z_range_mm": [
-            7.105427357601002e-15,
-            54.500000000000014
-          ]
-        }
-      }
+        "sha256": "f0265492eac131700e0edcb49d7c250247859c76bb107bcf953fdd41ebe88e8f"
+      },
+      "pair_validation": "Есть известные различия",
+      "limitations": [
+        "Отверстие Ø54H8 (+0,046) на чертеже против Ø55 в модели (дуга R27,5). Наружный диаметр Ø245h12 на листе против габарита 245,864 мм у модели. Расхождения исходной пары сохранены, эталон не исправлялся под PNG.",
+        "60 зубьев, модуль 4, шпоночный паз и шесть отверстий Ø30 на окружности Ø146. Фаски, радиусы и зубчатый профиль воспроизводятся текущим рецептом лишь приближённо."
+      ]
     },
     {
       "pair_id": "KF0013",
       "name": "Корпус редуктора",
       "family": "reducer_housing_0104",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0104.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0104.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "checked_key_dimensions",
-      "limitations": [
-        "Литой корпус с рёбрами, уклонами и резьбой. Проверены главная ось, основные отверстия и глубина; полной проверки всех литейных поверхностей нет."
-      ],
       "input_png": {
         "path": "input/KF0013.png",
-        "sha256": "8ef1f21a1458ffe85cc5c765a49e45c689487375931281d903005a223e0662e3",
-        "bytes": 1072644,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0013/drawing.png",
-        "width_px": 9934,
-        "height_px": 7017
-      },
-      "reference_m3d": {
-        "sha256": "a413ca80d9ff506f92df59e25ad77e9fd8319fa7c1cd02e62bd10767421ae243",
-        "bytes": 1062830,
-        "source_path": "data/kompas-files/pairs/KF0013/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0013/drawing.cdw",
-        "sha256": "55d4c057672a0e120b1db3adfb61a4275586653bd0d6a182b182eac5bf7d9d9e",
-        "bytes": 144241,
-        "source_path": "data/kompas-files/pairs/KF0013/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0013/review.json",
-      "reference_export": {
-        "path": "supporting/KF0013",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0013"
+        "sha256": "8ef1f21a1458ffe85cc5c765a49e45c689487375931281d903005a223e0662e3"
       },
       "target_mesh": {
         "path": "target/KF0013.stl",
-        "sha256": "896bfc983118b064b2d84a842065eea2f6f3fbe401784adb88bb14462c43ff40",
-        "units": "mm",
-        "source_mesh": "supporting/KF0013/model.stl",
-        "source_sha256": "e8bddcf4b9ea0010bc62532e0c6841b04f29e09f4cd83a80214f60a6cb852e44",
-        "source_to_target": [
-          [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            -1.0,
-            0.0,
-            57.000000000000014
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось цилиндрической поверхности исходной модели",
-          "z_range_mm": [
-            1.4210854715202004e-14,
-            112.00000000000001
-          ]
-        }
-      }
+        "sha256": "896bfc983118b064b2d84a842065eea2f6f3fbe401784adb88bb14462c43ff40"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Литой корпус с рёбрами, уклонами и резьбой. Проверены главная ось, основные отверстия и глубина; полной проверки всех литейных поверхностей нет."
+      ]
     },
     {
       "pair_id": "KF0014",
       "name": "Круглая крышка",
       "family": "reducer_cover_0105",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0105.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0105.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "checked_key_dimensions",
-      "limitations": [
-        "Восемь крепёжных отверстий и фигурный край. Литейные уклоны, радиусы и фаски входят в эталон, но не в текущий рецепт."
-      ],
       "input_png": {
         "path": "input/KF0014.png",
-        "sha256": "15558367315c35417a10f526b19586b34a0ecc78ee4bf33a5c8c895159bcc8b1",
-        "bytes": 551658,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0014/drawing.png",
-        "width_px": 7442,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "62517d7e3821175e8c4dba205754c8017964a813135ab3cb3355b3fa216ed332",
-        "bytes": 315123,
-        "source_path": "data/kompas-files/pairs/KF0014/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0014/drawing.cdw",
-        "sha256": "be6a84f996d6d643abb9cc724ca1be23ebe867087246a16bd4cbdaf7d39e417f",
-        "bytes": 109866,
-        "source_path": "data/kompas-files/pairs/KF0014/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0014/review.json",
-      "reference_export": {
-        "path": "supporting/KF0014",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0014"
+        "sha256": "15558367315c35417a10f526b19586b34a0ecc78ee4bf33a5c8c895159bcc8b1"
       },
       "target_mesh": {
         "path": "target/KF0014.stl",
-        "sha256": "aece3dfad399280ba41834a36d16187b3d5134787bbe193f039dcbca4af46957",
-        "units": "mm",
-        "source_mesh": "supporting/KF0014/model.stl",
-        "source_sha256": "adcfc9e386e39633614b7a60cf7f5fbe88d8d809b3124c32621acf09c6baa60f",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            10.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось цилиндрической поверхности исходной модели",
-          "z_range_mm": [
-            0.0,
-            17.0
-          ]
-        }
-      }
+        "sha256": "aece3dfad399280ba41834a36d16187b3d5134787bbe193f039dcbca4af46957"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Восемь крепёжных отверстий и фигурный край. Литейные уклоны, радиусы и фаски входят в эталон, но не в текущий рецепт."
+      ]
     },
     {
       "pair_id": "KF0016",
       "name": "Втулка",
       "family": "reducer_bushing_0107",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0107.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0107.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "checked_key_dimensions",
-      "limitations": [
-        "Две фаски 1 × 45° входят в эталон; диаметр 65 указан как справочный."
-      ],
       "input_png": {
         "path": "input/KF0016.png",
-        "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
-        "bytes": 191923,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0016/drawing.png",
-        "width_px": 2481,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "028e43f243992460bf1379d9d236d88a8537d03c5eb22b29239f6e236ab47eaf",
-        "bytes": 134912,
-        "source_path": "data/kompas-files/pairs/KF0016/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0016/drawing.cdw",
-        "sha256": "1cd0ae7cd751ec1606766823fd3710f742533d861af8a7171fe311c5b7e4c299",
-        "bytes": 107464,
-        "source_path": "data/kompas-files/pairs/KF0016/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0016/review.json",
-      "reference_export": {
-        "path": "supporting/KF0016",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0016"
+        "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c"
       },
       "target_mesh": {
         "path": "target/KF0016.stl",
-        "sha256": "6bb403bfcf7664addb92e05b62446a1c9a76ae8de9b66ccaaee91dd9e79667f1",
-        "units": "mm",
-        "source_mesh": "supporting/KF0016/model.stl",
-        "source_sha256": "279a9ba3006ada61db5f9ec3b9f347e2b1f390e06b7aa60d2beefbc263a06e96",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            19.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось цилиндрической поверхности исходной модели",
-          "z_range_mm": [
-            0.0,
-            19.0
-          ]
-        }
-      }
+        "sha256": "6bb403bfcf7664addb92e05b62446a1c9a76ae8de9b66ccaaee91dd9e79667f1"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Две фаски 1 × 45° входят в эталон; диаметр 65 указан как справочный."
+      ]
     },
     {
       "pair_id": "KF0017",
+      "name": "Прорезная втулка",
       "family": "slotted_bushing_0108",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0108.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0108.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "passed",
       "input_png": {
         "path": "input/KF0017.png",
-        "sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
-        "bytes": 182716,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0017/drawing.png",
-        "width_px": 2481,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "739f20786cbaf95e2815b377aa7cd1126b664c62c6352fcf9c9b22d34d6defe7",
-        "bytes": 122999,
-        "source_path": "data/kompas-files/pairs/KF0017/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0017/drawing.cdw",
-        "sha256": "2bbe720ddfbfd261c7fac279c769ee88344e03a04929e02f0d9bfab55e567267",
-        "bytes": 103495,
-        "source_path": "data/kompas-files/pairs/KF0017/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0017/review.json",
-      "reference_export": {
-        "path": "supporting/KF0017",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "runs/hw01-qa/review_2026-11-07_20-00-23/export_2026-11-07_20-00-29"
+        "sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548"
       },
       "target_mesh": {
         "path": "target/KF0017.stl",
-        "sha256": "557b9a34b3cd6a331fa1d3f18d57f38925d08b139bb565de671bed43620320df",
-        "units": "mm",
-        "source_mesh": "supporting/KF0017/model.stl",
-        "source_sha256": "5af43883d0b46675cda40d829dca714c526076af5491fa10c08bea9c4a963d87",
-        "source_to_target": [
-          [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            6.860981519590045e-16,
-            -7.188793790529523e-07
-          ],
-          "outer_radius_mm": 22.499999916186166,
-          "z_range_mm": [
-            0.0,
-            13.0
-          ]
-        }
+        "sha256": "557b9a34b3cd6a331fa1d3f18d57f38925d08b139bb565de671bed43620320df"
       },
-      "name": "Прорезная втулка",
+      "pair_validation": "Пройдена сохранённая проверка пары",
       "limitations": []
     },
     {
       "pair_id": "KF0018",
       "name": "Сальник",
       "family": "reducer_seal_0110",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0110.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0110.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "source_family": "Samples/Reducer",
-      "split": "val",
-      "pair_validation": "known_mismatch",
-      "limitations": [
-        "На листе плоское кольцо со справочной толщиной 6* мм; в модели конические торцы и осевой габарит 7,10644 мм. Это различие геометрии исходной пары, а не вывод о производственном браке по справочному размеру.",
-        "Диаметры модели Ø65 и Ø82 находятся на верхних границах заданных на листе Ø64±1 и Ø81±1. Они отличаются от номиналов, но не выходят за явно указанные интервалы. Допуски не применяются как зона нечувствительности IoU/F-score."
-      ],
       "input_png": {
         "path": "input/KF0018.png",
-        "sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
-        "bytes": 142905,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0018/drawing.png",
-        "width_px": 2481,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "ef18c1068cb2420cbcf3eb31b7d9a2bae2f7ee2fa4bafaed38bbb97ccf4f88eb",
-        "bytes": 131577,
-        "source_path": "data/kompas-files/pairs/KF0018/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0018/drawing.cdw",
-        "sha256": "add56469fdc06bdc2258d83b3a8454b60b6d0bb05356253e0b8784bd27fa580d",
-        "bytes": 90629,
-        "source_path": "data/kompas-files/pairs/KF0018/drawing.cdw"
-      },
-      "qa_review": "supporting/KF0018/review.json",
-      "reference_export": {
-        "path": "supporting/KF0018",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0018"
+        "sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c"
       },
       "target_mesh": {
         "path": "target/KF0018.stl",
-        "sha256": "4a7a5656fef5b1d905d1b3bed6fe68430e929589633f2fc720cb06eebb17e7b4",
-        "units": "mm",
-        "source_mesh": "supporting/KF0018/model.stl",
-        "source_sha256": "7654dcca9bca372f2cd946c0381dacac7f62c8f856a4787bdf52abe2b049d217",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            3.5532199773267976
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось отверстия исходной модели: X, y=z=0",
-          "z_range_mm": [
-            -5.631883226442369e-08,
-            7.1064400109724275
-          ]
-        }
-      }
+        "sha256": "4a7a5656fef5b1d905d1b3bed6fe68430e929589633f2fc720cb06eebb17e7b4"
+      },
+      "pair_validation": "Есть известные различия",
+      "limitations": [
+        "На листе плоское кольцо со справочной толщиной 6* мм; в модели конические торцы и осевой габарит 7,10644 мм. Это различие геометрии исходной пары, а не вывод о производственном браке по справочному размеру.",
+        "Диаметры модели Ø65 и Ø82 находятся на верхних границах заданных на листе Ø64±1 и Ø81±1. Они отличаются от номиналов, но не выходят за явно указанные интервалы. Допуски не применяются как зона нечувствительности IoU/F-score."
+      ]
     },
     {
       "pair_id": "KF0019",
       "name": "Шайба с зенковкой",
       "family": "reducer_washer_0111",
-      "source_group": "Samples/Reducer",
+      "split": "val",
       "original_cdw": "Samples/Reducer/078.505.0.0111.00.CDW",
       "original_m3d": "Samples/Reducer/078.505.0.0111.00.M3D",
-      "pairing_rule": "same_dir_same_name",
-      "split": "val",
-      "pair_validation": "checked_key_dimensions",
-      "limitations": [
-        "Зенковка 90° не представляется точно цилиндрическими вырезами текущего рецепта."
-      ],
       "input_png": {
         "path": "input/KF0019.png",
-        "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
-        "bytes": 170738,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0019/drawing.png",
-        "width_px": 2481,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "16b2b12b244e4ba57f5533a5b99e49ed07e14ecd4161893a8c6f5abdb4197096",
-        "bytes": 120824,
-        "source_path": "data/kompas-files/pairs/KF0019/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0019/drawing.cdw",
-        "sha256": "a678e8ee5fa112111d7a84065754748b853d545a29b920a0f20ee2d8393fbae1",
-        "bytes": 101197,
-        "source_path": "data/kompas-files/pairs/KF0019/drawing.cdw"
-      },
-      "source_family": "Samples/Reducer",
-      "qa_review": "supporting/KF0019/review.json",
-      "reference_export": {
-        "path": "supporting/KF0019",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "artifacts/dataset-expansion/exports/KF0019"
+        "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366"
       },
       "target_mesh": {
         "path": "target/KF0019.stl",
-        "sha256": "20c1d096298e192c97f7f7a9a0ccee6c274b64ec1f62f83c67c5c9d7d447b8c2",
-        "units": "mm",
-        "source_mesh": "supporting/KF0019/model.stl",
-        "source_sha256": "34ede2ece8e849dabac52759fe5e9caf311259a4a4dc9b7447a1462dd7a5a6e3",
-        "source_to_target": [
-          [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            0.0,
-            0.0
-          ],
-          "circle_center_basis": "Основная ось цилиндрической поверхности исходной модели",
-          "z_range_mm": [
-            0.0,
-            4.0
-          ]
-        }
-      }
+        "sha256": "20c1d096298e192c97f7f7a9a0ccee6c274b64ec1f62f83c67c5c9d7d447b8c2"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Зенковка 90° не представляется точно цилиндрическими вырезами текущего рецепта."
+      ]
     },
     {
       "pair_id": "KF0027",
+      "name": "Кольцо с отверстиями",
       "family": "mounting_ring_2k52",
-      "source_group": "Samples/Shaft/2D/Вырезы по круговому массиву",
+      "split": "val",
       "original_cdw": "Samples/Shaft/2D/Вырезы по круговому массиву/2К52.50.001 Кольцо.cdw",
       "original_m3d": "Samples/Shaft/3D/Вырезы по круговому массиву/2К52.50.001 Кольцо.m3d",
-      "pairing_rule": "mirror_2d_3d_same_name",
-      "split": "val",
-      "pair_validation": "passed",
       "input_png": {
         "path": "input/KF0027.png",
-        "sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c",
-        "bytes": 275789,
-        "source_path": "data/kompas-files/exports/20261023-1530/KF0027/drawing.png",
-        "width_px": 4962,
-        "height_px": 3509
-      },
-      "reference_m3d": {
-        "sha256": "13266c04c042c332995076a2aa4fe87282a22e268d28e5c7aeb1cd78ebcad9e3",
-        "bytes": 158355,
-        "source_path": "data/kompas-files/pairs/KF0027/model.m3d",
-        "role": "historical_source_metadata_only"
-      },
-      "source_cdw": {
-        "path": "supporting/KF0027/drawing.cdw",
-        "sha256": "ae1989e4c4a684474d393f28bd01ced9f728107b61a3742881447e5eace4c2b7",
-        "bytes": 97609,
-        "source_path": "data/kompas-files/pairs/KF0027/drawing.cdw"
-      },
-      "source_family": "Samples/Shaft",
-      "qa_review": "supporting/KF0027/review.json",
-      "reference_export": {
-        "path": "supporting/KF0027",
-        "source_repository": "kompas_auto_draft",
-        "source_directory": "runs/hw01-qa/review_2026-11-07_20-00-23/export_2026-11-07_20-00-35"
+        "sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c"
       },
       "target_mesh": {
         "path": "target/KF0027.stl",
-        "sha256": "9264f9dc8ea24382d2e9fe67ce4b30eb97bb497dcd2e413de198da413a29f4d6",
-        "units": "mm",
-        "source_mesh": "supporting/KF0027/model.stl",
-        "source_sha256": "c5bf64ab6059ef71422223b5f752f7d925e9de15221e73095d62026af5b699c9",
-        "source_to_target": [
-          [
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          [
-            0.0,
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            -1.0,
-            0.0,
-            0.0,
-            12.0
-          ],
-          [
-            0.0,
-            0.0,
-            0.0,
-            1.0
-          ]
-        ],
-        "checks": {
-          "valid_volume": true,
-          "orthogonal_right_handed": true,
-          "circle_center_xy_mm": [
-            -5.298535487665193e-07,
-            2.421662423026163e-14
-          ],
-          "outer_radius_mm": 52.500000264669374,
-          "z_range_mm": [
-            0.0,
-            12.0
-          ]
-        }
+        "sha256": "9264f9dc8ea24382d2e9fe67ce4b30eb97bb497dcd2e413de198da413a29f4d6"
       },
-      "name": "Кольцо с отверстиями",
+      "pair_validation": "Пройдена сохранённая проверка пары",
       "limitations": []
     }
-  ],
-  "files": {
-    "input/KF0010.png": "7b701473d23ddef418a4bce0291d4b9937a60d3af9415e1b2fa41c5be1c87eb8",
-    "input/KF0011.png": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec",
-    "input/KF0012.png": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
-    "input/KF0013.png": "8ef1f21a1458ffe85cc5c765a49e45c689487375931281d903005a223e0662e3",
-    "input/KF0014.png": "15558367315c35417a10f526b19586b34a0ecc78ee4bf33a5c8c895159bcc8b1",
-    "input/KF0016.png": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
-    "input/KF0017.png": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
-    "input/KF0018.png": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
-    "input/KF0019.png": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
-    "input/KF0027.png": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c",
-    "target/KF0010.stl": "c0d0b70756d4fd9126aa4d98f1720e681ed039cd5df7e43463397f99ac51b0ee",
-    "target/KF0011.stl": "623898b8602b132bd8a80eacdebb0a77ae6941efd6ee281981ead1506f32f9aa",
-    "target/KF0012.stl": "f0265492eac131700e0edcb49d7c250247859c76bb107bcf953fdd41ebe88e8f",
-    "target/KF0013.stl": "896bfc983118b064b2d84a842065eea2f6f3fbe401784adb88bb14462c43ff40",
-    "target/KF0014.stl": "aece3dfad399280ba41834a36d16187b3d5134787bbe193f039dcbca4af46957",
-    "target/KF0016.stl": "6bb403bfcf7664addb92e05b62446a1c9a76ae8de9b66ccaaee91dd9e79667f1",
-    "target/KF0017.stl": "557b9a34b3cd6a331fa1d3f18d57f38925d08b139bb565de671bed43620320df",
-    "target/KF0018.stl": "4a7a5656fef5b1d905d1b3bed6fe68430e929589633f2fc720cb06eebb17e7b4",
-    "target/KF0019.stl": "20c1d096298e192c97f7f7a9a0ccee6c274b64ec1f62f83c67c5c9d7d447b8c2",
-    "target/KF0027.stl": "9264f9dc8ea24382d2e9fe67ce4b30eb97bb497dcd2e413de198da413a29f4d6",
-    "supporting/KF0010/drawing.cdw": "04e504c96d65539d88700b6c817bba204b24c54b1fe8b7a07817acdf191019fd",
-    "supporting/KF0010/eval-facts.json": "d8c8ddaea0ce4d4275091088b2b3727ff9bcb09f9c7801ccf7c99bd6b565a163",
-    "supporting/KF0010/model.stl": "44ac51f872020de97bda3153d8dcfaa7e85c48eba1dff4ddc7371326015f06bb",
-    "supporting/KF0010/review.json": "64235ba9be0451d9abf99a8aed77a8096292bee5666f4d3fd4b5469102143a70",
-    "supporting/KF0011/drawing.cdw": "ad1f95e63d8d7bcfe00bf0b3277850c16c8fe3fcd0f6c2f6d4ae19739884490f",
-    "supporting/KF0011/eval-facts.json": "29b7a8ff3b76ead6913054f54f1f0df3ca202ff32e25b2298385e77580f17d2f",
-    "supporting/KF0011/export-source.json": "82270f32a0547aea983d979df62c890ae1b7fa91fd0cd7499d6d34c7e346c5a3",
-    "supporting/KF0011/export.json": "3fd29fce01068492ba6918a7e1a7d8eda4bb309e377b2520f01c0c26a89a7051",
-    "supporting/KF0011/kernel-facts.json": "02db90d700c0afac958d697dc853a12b2b2c01bda79ef0465fdde8172c2308c1",
-    "supporting/KF0011/model.stl": "0963c65cce09bcc3f10a03b15d50eb6f096b64ed5c914ff68b58e47124c098b4",
-    "supporting/KF0011/raw-facts.json": "ab895af27249f03c30a03a74ca66215dbe299dec61b14ea3deea863e5d5b992f",
-    "supporting/KF0012/drawing.cdw": "7a19adda2e3ce422bda4c7fdb4bb32ef5e6e992f8308078fdb862869bfa9b729",
-    "supporting/KF0012/eval-facts.json": "aa5f21e3358f766d4914fd7f21a6b8d5dbbb3f27e4d5ea4e5aec345ca997113f",
-    "supporting/KF0012/model.stl": "b228d502fe4ddf731a024a25defea2263e7cb6d418cc5d7e5d84148e788bb0d6",
-    "supporting/KF0012/review.json": "3a6cb2b11b68197640330115fa425579586040ad75015d3a3e2611c6d3e4d803",
-    "supporting/KF0013/drawing.cdw": "55d4c057672a0e120b1db3adfb61a4275586653bd0d6a182b182eac5bf7d9d9e",
-    "supporting/KF0013/eval-facts.json": "43a5c0ebfecb32a201839fc1d24423c7d6650aee970bb6b19191e9760fb4c8b0",
-    "supporting/KF0013/model.stl": "e8bddcf4b9ea0010bc62532e0c6841b04f29e09f4cd83a80214f60a6cb852e44",
-    "supporting/KF0013/review.json": "2668a4619477d6a0a6807aa3b68913ea46d7e97439593a2bdf44d3809f4cdd72",
-    "supporting/KF0014/drawing.cdw": "be6a84f996d6d643abb9cc724ca1be23ebe867087246a16bd4cbdaf7d39e417f",
-    "supporting/KF0014/eval-facts.json": "8184c5589e1ae53ab9388ec7613712256e69b2af238e388f8aabe836be2acb29",
-    "supporting/KF0014/model.stl": "adcfc9e386e39633614b7a60cf7f5fbe88d8d809b3124c32621acf09c6baa60f",
-    "supporting/KF0014/review.json": "4ad500b97bd2b314fe91570cdde5fde97b84cf064564ce7688f8e12183e63940",
-    "supporting/KF0016/drawing.cdw": "1cd0ae7cd751ec1606766823fd3710f742533d861af8a7171fe311c5b7e4c299",
-    "supporting/KF0016/eval-facts.json": "e493554f4b13ed4f56d718e73e13cdc2e83a2035b4e905ea237bc3e62a5854c3",
-    "supporting/KF0016/model.stl": "279a9ba3006ada61db5f9ec3b9f347e2b1f390e06b7aa60d2beefbc263a06e96",
-    "supporting/KF0016/review.json": "fba02a849ea22663c79e57a927b92df15e7ec808022f942a741e9dde360ef381",
-    "supporting/KF0017/drawing.cdw": "2bbe720ddfbfd261c7fac279c769ee88344e03a04929e02f0d9bfab55e567267",
-    "supporting/KF0017/eval-facts.json": "b40d4283f0dffbc84fe1489bf03125e26ce17d08f2b335547204a7d8f3caffb0",
-    "supporting/KF0017/export-source.json": "891f937ac2b84bdfe0c2d4595924e413614d48496f49380295740ab411a35a3c",
-    "supporting/KF0017/export.json": "292fa9fb3958472cd5d6a00325342a3d9a316120dd91cb2310b9f4014837801f",
-    "supporting/KF0017/kernel-facts.json": "ec03988ffced430c31895c5c170957aa9529522aa450e113c0bee9e30b8e4c33",
-    "supporting/KF0017/model.stl": "5af43883d0b46675cda40d829dca714c526076af5491fa10c08bea9c4a963d87",
-    "supporting/KF0017/raw-facts.json": "acb404d8dbccf04fc03c9fee9e14e8dd039dd6af74ac3e2f3e932150ba536d61",
-    "supporting/KF0017/review.json": "1c037d5a45f6192596f7910fb8493989a73edb352586f7b67fb9c9f334a86920",
-    "supporting/KF0018/drawing.cdw": "add56469fdc06bdc2258d83b3a8454b60b6d0bb05356253e0b8784bd27fa580d",
-    "supporting/KF0018/eval-facts.json": "83e8257a6e8ba4559ef085dabc043d576946684ac7f4907ec3a7c96a12b02296",
-    "supporting/KF0018/model.stl": "7654dcca9bca372f2cd946c0381dacac7f62c8f856a4787bdf52abe2b049d217",
-    "supporting/KF0018/review.json": "8b281de4f6b21e42560b9e3ecc30337e4667606d442e2592188df5feb37536c8",
-    "supporting/KF0019/drawing.cdw": "a678e8ee5fa112111d7a84065754748b853d545a29b920a0f20ee2d8393fbae1",
-    "supporting/KF0019/eval-facts.json": "02b35193f50f6f480984ff6f3008cbf6d35a8c8070a5af128a3b80497e3bc02d",
-    "supporting/KF0019/model.stl": "34ede2ece8e849dabac52759fe5e9caf311259a4a4dc9b7447a1462dd7a5a6e3",
-    "supporting/KF0019/review.json": "5814c0135b11298a592955b3c5a5272357fba0d570710a30341742e4b5c428da",
-    "supporting/KF0027/drawing.cdw": "ae1989e4c4a684474d393f28bd01ced9f728107b61a3742881447e5eace4c2b7",
-    "supporting/KF0027/eval-facts.json": "8743e4f8c092b4040c723614433c83e02004893ede9c7acad58cceac3b37bc37",
-    "supporting/KF0027/export-source.json": "e7d00fdb0b804b101b3b894266031fc8952bfc1b6414aa6649e4cc61eb3ab0a3",
-    "supporting/KF0027/export.json": "a9a1940015a7e9c33c5bb67f01da4d38903ebb9f26389c189a6d264d92bf05be",
-    "supporting/KF0027/kernel-facts.json": "d252977df1060b67237cc688cf15eb5102b6dc6da37a5faa9a1dbce84b823978",
-    "supporting/KF0027/model.stl": "c5bf64ab6059ef71422223b5f752f7d925e9de15221e73095d62026af5b699c9",
-    "supporting/KF0027/raw-facts.json": "a1c923d77509a5d9ec33fc95cae8c18db3a978eb949c7f1b1154ea4c468e9d4b",
-    "supporting/KF0027/review.json": "c2a99493fb9a6080f5ab81473d09c03b6038491508659643ddc2437d4c013836"
-  },
-  "coordinates": {
-    "units": "mm",
-    "circle_center_xy": [
-      0,
-      0
-    ],
-    "axis": "+Z",
-    "back_face_z": 0,
-    "front_view": "X вправо, Y вверх на круговом виде PNG; передний торец Z=толщина",
-    "alignment_at_evaluation": "identity"
-  },
-  "split_policy": {
-    "current": "all_validation",
-    "future": "Отдельная dev-выборка по семействам деталей в следующих итерациях."
-  },
-  "selection": {
-    "kind": "purposeful",
-    "count": 10,
-    "source_declared_pairs": 27,
-    "source_png_available": 26,
-    "criteria": "Разные формы и сложность; 10 доступных пар PNG–STL. Пары с обнаруженными расхождениями допускаются с явными пометками. Отбор не опирается на метрики генератора.",
-    "excluded_known_mismatches": [
-      "KF0015"
-    ],
-    "limitations": "Рабочая валидация начальной итерации, не независимый тест. KF0011, KF0012 и KF0018 сохранены с явным описанием различий исходной пары; метрики отражают также эти различия.",
-    "revision": 2,
-    "included_known_mismatches": [
-      "KF0011",
-      "KF0012",
-      "KF0018"
-    ],
-    "replacement": {
-      "added": [
-        "KF0012",
-        "KF0018"
-      ],
-      "removed": [
-        "KF0025",
-        "KF0029"
-      ],
-      "reason": "Сохранён размер набора 10; заменены две пары с неполными размерными цепями. Их исходные материалы сохранены в локальном архиве."
-    }
-  }
+  ]
 }
