@@ -1,16 +1,7 @@
-# Локальный архив прежних этапов и настройки инструментов
-.local-archive/
-artifacts/
+# AI
 .ai/
 .claude
 mcp/
-.codex
-.mcp.json
-vendor/
-AGENTS.md
-.env
-.env.*
-!.env.example
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
@@ -21,12 +12,3 @@ __pycache__/
 *.py[cod]
 .ruff_cache/
 .pytest_cache/
-.hw01-work/
-.ipynb_checkpoints/
-
-# Локальные прогоны и данные прежних этапов
-runs/
-kompas_data/
-
-# macOS
-.DS_Store

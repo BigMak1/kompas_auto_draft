@@ -1,0 +1,577 @@
+[
+ {
+  "name": "Уголок_мебельный_по_модели_результат.cdw",
+  "full_path": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный_по_модели_результат.cdw",
+  "read_only": false,
+  "changed": false,
+  "author": "111",
+  "organization": "Ascon",
+  "comment": "",
+  "sheets": [
+   {
+    "index": 0,
+    "format": "A4",
+    "multiplicity": 1,
+    "vertical": true,
+    "size_mm": [
+     210.0,
+     297.0
+    ],
+    "layout_style": 1,
+    "layout_library": "C:\\Program Files\\ASCON\\KOMPAS-3D v25 Study\\Sys\\GRAPHIC_2023.LYT",
+    "title_block": {
+     "-1": "",
+     "6": "^(#3~2:1)brackets=0;param=1;type=view;viewName=2;~",
+     "32": "A4",
+     "2": "УМО.001$|$|$|$|$|$|",
+     "1": "Уголок мебельный",
+     "3": "Сталь 10  ГОСТ 1050-2013",
+     "5": "0,03",
+     "110": "Иванов",
+     "111": "Петров",
+     "40": "О",
+     "112": "Дубинина",
+     "114": "Буянов",
+     "115": "Поликарпов",
+     "9": "Группа компаний\nАСКОН",
+     "8": "1"
+    }
+   }
+  ],
+  "model_link": {
+   "linked": true,
+   "spec_data_from_model": false,
+   "model_file": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный.m3d"
+  },
+  "technical_requirements": "*Размеры для справок\nОбщие допуски по ГОСТ 30893.1 - т.\nПокрытие Ц6.хр.бцв.",
+  "views": [
+   {
+    "number": 0,
+    "name": "Системный вид",
+    "type": "system",
+    "scale": 1.0,
+    "origin": [
+     0.0,
+     0.0
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 1,
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 1,
+      "visible": true
+     }
+    ],
+    "geometry": {},
+    "annotations": {},
+    "dimensions": [],
+    "leaders": []
+   },
+   {
+    "number": 1,
+    "name": "Спереди 1",
+    "type": "arbitrary",
+    "scale": 2.0,
+    "origin": [
+     53.05431451012409,
+     191.61471790710033
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 26,
+    "association": {
+     "source_file": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный.m3d",
+     "projection": "#Спереди",
+     "section": false,
+     "projection_link": false,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 7,
+      "visible": true
+     },
+     {
+      "name": "Скрытые",
+      "objects": 1,
+      "visible": false
+     }
+    ],
+    "geometry": {
+     "LineSegments": 10,
+     "Arcs": 5,
+     "DrawingTexts": 1,
+     "Points": 12
+    },
+    "annotations": {
+     "LineDimensions": 2,
+     "RadialDimensions": 1,
+     "CutLines": 1,
+     "CentreMarkers": 1
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 28.49999999999999,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 20.000000000000014,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Radial",
+      "nominal": 28.500000000000007,
+      "sign": 3,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   },
+   {
+    "number": 2,
+    "name": "Проекционный вид 2",
+    "type": "standard",
+    "scale": 2.0,
+    "origin": [
+     53.05431451012409,
+     169.61471790710027
+    ],
+    "angle": 0.0,
+    "current": true,
+    "visible": true,
+    "object_count": 29,
+    "association": {
+     "source_file": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный.m3d",
+     "projection": "",
+     "section": false,
+     "projection_link": true,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 9,
+      "visible": true
+     }
+    ],
+    "geometry": {
+     "LineSegments": 13,
+     "Circles": 2,
+     "Arcs": 1,
+     "DrawingTexts": 1,
+     "Points": 13
+    },
+    "annotations": {
+     "LineDimensions": 2,
+     "RadialDimensions": 1,
+     "DiametralDimensions": 2,
+     "AxisLines": 2
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 24.000000000000007,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 19.999999999999986,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Radial",
+      "nominal": 28.500000000000004,
+      "sign": 3,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Diametral",
+      "nominal": 10.5,
+      "sign": 1,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Diametral",
+      "nominal": 6.5,
+      "sign": 1,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   },
+   {
+    "number": 3,
+    "name": "Разрез А-А",
+    "type": "section",
+    "scale": 2.0,
+    "origin": [
+     130.26370842024596,
+     191.61471790710033
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 42,
+    "association": {
+     "source_file": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный.m3d",
+     "projection": "",
+     "section": false,
+     "projection_link": true,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 8,
+      "visible": true
+     },
+     {
+      "name": "Скрытые",
+      "objects": 1,
+      "visible": false
+     }
+    ],
+    "geometry": {
+     "LineSegments": 22,
+     "Nurbses": 1,
+     "Hatches": 1,
+     "DrawingTexts": 1,
+     "Points": 18
+    },
+    "annotations": {
+     "LineDimensions": 3,
+     "AngleDimensions": 1,
+     "AxisLines": 3
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 28.5,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 3.0,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 3.0,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Angle",
+      "nominal": 120.0000000000001,
+      "sign": 0,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   }
+  ],
+  "duplicate_of_already_listed": false
+ },
+ {
+  "name": "Уголок_мебельный_УМО.001_результат.cdw",
+  "full_path": "C:\\Mac\\Home\\Documents\\VS_code_projects\\ITMO\\kompas_auto_draft\\1.Уголок_мебельный\\Уголок_мебельный_УМО.001_результат.cdw",
+  "read_only": false,
+  "changed": false,
+  "author": "111",
+  "organization": "Ascon",
+  "comment": "",
+  "sheets": [
+   {
+    "index": 0,
+    "format": "A4",
+    "multiplicity": 1,
+    "vertical": true,
+    "size_mm": [
+     210.0,
+     297.0
+    ],
+    "layout_style": 1,
+    "layout_library": "C:\\Program Files\\ASCON\\KOMPAS-3D v25 Study\\Sys\\GRAPHIC_2023.LYT",
+    "title_block": {
+     "-1": "",
+     "6": "2:1",
+     "32": "A4",
+     "2": "УМО.001$|$|$|$|$|$|",
+     "1": "Уголок мебельный",
+     "110": "Иванов",
+     "130": "31.01.2017",
+     "111": "Петров",
+     "131": "31.01.2017",
+     "40": "О",
+     "112": "Дубинина",
+     "132": "31.01.2017",
+     "114": "Буянов",
+     "134": "31.01.2017",
+     "115": "Поликарпов",
+     "135": "31.01.2017",
+     "5": "0,03",
+     "3": "Сталь 10 ГОСТ 1050-2013",
+     "9": "Группа компаний\nАСКОН",
+     "8": "1"
+    }
+   }
+  ],
+  "model_link": {
+   "linked": false,
+   "spec_data_from_model": false,
+   "model_file": null
+  },
+  "technical_requirements": "*Размеры для справок.\nОбщие допуски по ГОСТ 30893.1 - m.\nПокрытие Ц6.хр.бцв.",
+  "views": [
+   {
+    "number": 0,
+    "name": "Системный вид",
+    "type": "system",
+    "scale": 1.0,
+    "origin": [
+     0.0,
+     0.0
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 1,
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 1,
+      "visible": true
+     }
+    ],
+    "geometry": {},
+    "annotations": {},
+    "dimensions": [],
+    "leaders": []
+   },
+   {
+    "number": 1,
+    "name": "Главный",
+    "type": "normal",
+    "scale": 2.0,
+    "origin": [
+     60.0,
+     200.0
+    ],
+    "angle": 0.0,
+    "current": true,
+    "visible": true,
+    "object_count": 16,
+    "association": {
+     "source_file": "",
+     "projection": "",
+     "section": false,
+     "projection_link": false,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 16,
+      "visible": true
+     }
+    ],
+    "geometry": {
+     "LineSegments": 3,
+     "Arcs": 5,
+     "DrawingContours": 1
+    },
+    "annotations": {
+     "LineDimensions": 2,
+     "RadialDimensions": 1,
+     "AxisLines": 3
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 20.000000000000004,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 28.49999999999997,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Radial",
+      "nominal": 28.499999999999982,
+      "sign": 3,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   },
+   {
+    "number": 2,
+    "name": "Сверху",
+    "type": "normal",
+    "scale": 2.0,
+    "origin": [
+     60.0,
+     173.0
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 18,
+    "association": {
+     "source_file": "",
+     "projection": "",
+     "section": false,
+     "projection_link": false,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 16,
+      "visible": true
+     },
+     {
+      "name": "Скрытые",
+      "objects": 2,
+      "visible": false
+     }
+    ],
+    "geometry": {
+     "LineSegments": 4,
+     "Circles": 2,
+     "Arcs": 1,
+     "DrawingContours": 1,
+     "Lines": 2
+    },
+    "annotations": {
+     "LineDimensions": 2,
+     "RadialDimensions": 1,
+     "DiametralDimensions": 2,
+     "AxisLines": 2
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 24.0,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 19.999999999999996,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Radial",
+      "nominal": 28.500000000000007,
+      "sign": 3,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Diametral",
+      "nominal": 10.5,
+      "sign": 1,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Diametral",
+      "nominal": 6.5,
+      "sign": 1,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   },
+   {
+    "number": 3,
+    "name": "Слева",
+    "type": "normal",
+    "scale": 2.0,
+    "origin": [
+     121.0,
+     200.0
+    ],
+    "angle": 0.0,
+    "current": false,
+    "visible": true,
+    "object_count": 29,
+    "association": {
+     "source_file": "",
+     "projection": "",
+     "section": false,
+     "projection_link": false,
+     "hidden_lines_visible": false
+    },
+    "layers": [
+     {
+      "name": "Системный слой",
+      "objects": 22,
+      "visible": true
+     },
+     {
+      "name": "Скрытые",
+      "objects": 7,
+      "visible": false
+     }
+    ],
+    "geometry": {
+     "LineSegments": 8,
+     "Nurbses": 1,
+     "DrawingContours": 5,
+     "Hatches": 1,
+     "Lines": 7
+    },
+    "annotations": {
+     "LineDimensions": 3,
+     "AngleDimensions": 1,
+     "AxisLines": 2
+    },
+    "dimensions": [
+     {
+      "kind": "Line",
+      "nominal": 3.0,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 3.0,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Line",
+      "nominal": 28.5,
+      "sign": 0,
+      "has_tolerance": true
+     },
+     {
+      "kind": "Angle",
+      "nominal": 119.99999999999997,
+      "sign": 0,
+      "has_tolerance": true
+     }
+    ],
+    "leaders": []
+   }
+  ],
+  "duplicate_of_already_listed": false
+ }
+]
