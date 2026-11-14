@@ -19,21 +19,73 @@ sys.path.insert(0, KOMPAS_BIN)
 import ksapi  # noqa: E402  (loads ksAPICLink.dll from KOMPAS_BIN on import)
 from constants import constants as K  # noqa: E402
 
-FORMATS = {K.ksFormatA0: "A0", K.ksFormatA1: "A1", K.ksFormatA2: "A2", K.ksFormatA3: "A3",
-           K.ksFormatA4: "A4", K.ksFormatA5: "A5", K.ksFormatUser: "user"}
-VIEW_TYPES = {K.vt_System: "system", K.vt_Normal: "normal", K.vt_Arbitrary: "arbitrary",
-              K.vt_Standart: "standard", K.vt_Projected: "projected", K.vt_Arrow: "arrow",
-              K.vt_Remote: "remote", K.vt_Section: "section", K.vt_Remote2D: "remote2d"}
+FORMATS = {
+    K.ksFormatA0: "A0",
+    K.ksFormatA1: "A1",
+    K.ksFormatA2: "A2",
+    K.ksFormatA3: "A3",
+    K.ksFormatA4: "A4",
+    K.ksFormatA5: "A5",
+    K.ksFormatUser: "user",
+}
+VIEW_TYPES = {
+    K.vt_System: "system",
+    K.vt_Normal: "normal",
+    K.vt_Arbitrary: "arbitrary",
+    K.vt_Standart: "standard",
+    K.vt_Projected: "projected",
+    K.vt_Arrow: "arrow",
+    K.vt_Remote: "remote",
+    K.vt_Section: "section",
+    K.vt_Remote2D: "remote2d",
+}
 
-DRAWING_GETTERS = ["GetLineSegments", "GetCircles", "GetArcs", "GetEllipses", "GetEllipseArcs",
-                   "GetPolyLines2D", "GetBeziers", "GetNurbses", "GetRectangles", "GetRegularPolygons",
-                   "GetDrawingContours", "GetHatches", "GetColourings", "GetDrawingTexts", "GetPoints",
-                   "GetLines", "GetMacroObjects", "GetInsertionObjects", "GetRasters", "GetEquidistants"]
-SYMBOL_GETTERS = ["GetLineDimensions", "GetRadialDimensions", "GetDiametralDimensions", "GetAngleDimensions",
-                  "GetArcDimensions", "GetHeightDimensions", "GetBreakLineDimensions", "GetBreakRadialDimensions",
-                  "GetRoughs", "GetLeaders", "GetBases", "GetTolerances", "GetDrawingTables", "GetCutLines",
-                  "GetViewPointers", "GetCentreMarkers", "GetAxisLines", "GetWaveLines", "GetBrokenLines",
-                  "GetRemoteElements", "GetCircularsCentres", "GetLinearsCentres"]
+DRAWING_GETTERS = [
+    "GetLineSegments",
+    "GetCircles",
+    "GetArcs",
+    "GetEllipses",
+    "GetEllipseArcs",
+    "GetPolyLines2D",
+    "GetBeziers",
+    "GetNurbses",
+    "GetRectangles",
+    "GetRegularPolygons",
+    "GetDrawingContours",
+    "GetHatches",
+    "GetColourings",
+    "GetDrawingTexts",
+    "GetPoints",
+    "GetLines",
+    "GetMacroObjects",
+    "GetInsertionObjects",
+    "GetRasters",
+    "GetEquidistants",
+]
+SYMBOL_GETTERS = [
+    "GetLineDimensions",
+    "GetRadialDimensions",
+    "GetDiametralDimensions",
+    "GetAngleDimensions",
+    "GetArcDimensions",
+    "GetHeightDimensions",
+    "GetBreakLineDimensions",
+    "GetBreakRadialDimensions",
+    "GetRoughs",
+    "GetLeaders",
+    "GetBases",
+    "GetTolerances",
+    "GetDrawingTables",
+    "GetCutLines",
+    "GetViewPointers",
+    "GetCentreMarkers",
+    "GetAxisLines",
+    "GetWaveLines",
+    "GetBrokenLines",
+    "GetRemoteElements",
+    "GetCircularsCentres",
+    "GetLinearsCentres",
+]
 DIMENSION_GETTERS = [g for g in SYMBOL_GETTERS if g.endswith("Dimensions")]
 
 
@@ -79,16 +131,18 @@ def read_sheets(doc):
         sheet = layout.GetItem(i)
         fmt = safe(sheet.GetFormat)
         stamp = safe(sheet.GetStamp)
-        sheets.append({
-            "index": i,
-            "format": FORMATS.get(safe(fmt.GetFormat), safe(fmt.GetFormat)) if fmt else None,
-            "multiplicity": safe(fmt.GetFormatMultiplicity) if fmt else None,
-            "vertical": safe(fmt.IsVerticalOrientation) if fmt else None,
-            "size_mm": [safe(fmt.GetFormatWidth), safe(fmt.GetFormatHeight)] if fmt else None,
-            "layout_style": safe(sheet.GetLayoutStyleNumber),
-            "layout_library": safe(sheet.GetLayoutLibraryFileName),
-            "title_block": read_stamp(stamp) if stamp else None,
-        })
+        sheets.append(
+            {
+                "index": i,
+                "format": FORMATS.get(safe(fmt.GetFormat), safe(fmt.GetFormat)) if fmt else None,
+                "multiplicity": safe(fmt.GetFormatMultiplicity) if fmt else None,
+                "vertical": safe(fmt.IsVerticalOrientation) if fmt else None,
+                "size_mm": [safe(fmt.GetFormatWidth), safe(fmt.GetFormatHeight)] if fmt else None,
+                "layout_style": safe(sheet.GetLayoutStyleNumber),
+                "layout_library": safe(sheet.GetLayoutLibraryFileName),
+                "title_block": read_stamp(stamp) if stamp else None,
+            }
+        )
     return sheets
 
 
@@ -100,12 +154,14 @@ def read_dimensions(symbols):
             continue
         for obj in safe(coll.GetObjects, default=[]):
             dt = ksapi.IDimensionText(obj)
-            dims.append({
-                "kind": getter[3:-len("Dimensions")] or getter,
-                "nominal": safe(dt.GetNominalValue) if dt else None,
-                "sign": safe(dt.GetSign) if dt else None,
-                "has_tolerance": safe(dt.IsHasTolerance) if dt else None,
-            })
+            dims.append(
+                {
+                    "kind": getter[3 : -len("Dimensions")] or getter,
+                    "nominal": safe(dt.GetNominalValue) if dt else None,
+                    "sign": safe(dt.GetSign) if dt else None,
+                    "has_tolerance": safe(dt.IsHasTolerance) if dt else None,
+                }
+            )
     return dims
 
 
@@ -117,10 +173,12 @@ def read_leaders(symbols):
     for obj in safe(coll.GetObjects, default=[]):
         ld = ksapi.ILeader(obj)
         if ld:
-            leaders.append({
-                "on_shelf": text_str(safe(ld.GetTextOnShelf)),
-                "under_shelf": text_str(safe(ld.GetTextUnderShelf)),
-            })
+            leaders.append(
+                {
+                    "on_shelf": text_str(safe(ld.GetTextOnShelf)),
+                    "under_shelf": text_str(safe(ld.GetTextUnderShelf)),
+                }
+            )
     return leaders
 
 
@@ -146,13 +204,23 @@ def read_view(view):
             "hidden_lines_visible": safe(assoc.IsHiddenLinesVisible),
         }
     layers = safe(view.GetLayers)
-    info["layers"] = [
-        {"name": safe(layer.GetName), "objects": safe(layer.GetObjectCount), "visible": safe(layer.IsVisible)}
-        for layer in (layers.GetLayer(i) for i in range(safe(layers.GetCount, default=0)))
-        if layer
-    ] if layers and not isinstance(layers, str) else []
+    info["layers"] = (
+        [
+            {
+                "name": safe(layer.GetName),
+                "objects": safe(layer.GetObjectCount),
+                "visible": safe(layer.IsVisible),
+            }
+            for layer in (layers.GetLayer(i) for i in range(safe(layers.GetCount, default=0)))
+            if layer
+        ]
+        if layers and not isinstance(layers, str)
+        else []
+    )
     drawing = ksapi.IDrawingContainer(view)
-    info["geometry"] = {g[3:]: n for g in DRAWING_GETTERS if (n := collection_count(drawing, g))} if drawing else {}
+    info["geometry"] = (
+        {g[3:]: n for g in DRAWING_GETTERS if (n := collection_count(drawing, g))} if drawing else {}
+    )
     symbols = ksapi.ISymbols2DContainer(view)
     if symbols:
         info["annotations"] = {g[3:]: n for g in SYMBOL_GETTERS if (n := collection_count(symbols, g))}
@@ -179,7 +247,9 @@ def read_drawing(doc):
         report["model_link"] = {
             "linked": safe(drawing.IsLinkWithModel),
             "spec_data_from_model": safe(drawing.IsSpecificationDataFromModel),
-            "model_file": safe(model_view.GetSourceFileName) if model_view and not isinstance(model_view, str) else None,
+            "model_file": safe(model_view.GetSourceFileName)
+            if model_view and not isinstance(model_view, str)
+            else None,
         }
         demand = safe(drawing.GetTechnicalDemand)
         created = demand and not isinstance(demand, str) and safe(demand.IsCreated)

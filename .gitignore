@@ -2,6 +2,23 @@
 .ai/
 .claude
 mcp/
+/.codex/
+/AGENTS.md
+
+# Локальные настройки
+/.env
+
+# Локальные материалы других домашних работ и экспериментов
+/.local-archive/
+/artifacts/
+/notebooks/
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/

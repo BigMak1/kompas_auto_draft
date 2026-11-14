@@ -1,0 +1,27 @@
+[project]
+name = "kompas-auto-draft"
+version = "0.1.0"
+description = "Генерация 3D-модели по изображению чертежа в КОМПАС-3D"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7",
+    "ruff>=0.17",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = ["kompas_data", "reports"]
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, pyupgrade, bugbear, blind-except, ruff-specific
+select = ["E", "F", "I", "UP", "B", "BLE", "RUF"]
+# Тексты и комментарии на русском: кириллица не считается «похожими» символами
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.format]
+quote-style = "double"

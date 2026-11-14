@@ -19,7 +19,7 @@ import ksapi  # noqa: E402  (loads ksAPICLink.dll from KOMPAS_BIN on import)
 from constants import constants as K  # noqa: E402
 from constants3d import constants as K3  # noqa: E402
 
-OBJ3D_TYPES = {v: k[len("o3d_"):] for k, v in vars(K3).items() if k.startswith("o3d_")}
+OBJ3D_TYPES = {v: k[len("o3d_") :] for k, v in vars(K3).items() if k.startswith("o3d_")}
 MODEL_DOC_TYPES = {K.ksDocumentPart: "part", K.ksDocumentAssembly: "assembly"}
 MAX_DEPTH = 6
 
@@ -35,14 +35,16 @@ def safe(fn, *args, default=None):
 def read_variables(feature):
     out = []
     for var in safe(feature.GetVariables, False, False, default=[]):
-        out.append({
-            "name": safe(var.GetName),
-            "value": safe(var.GetValue),
-            "expression": safe(var.GetExpression),
-            "note": safe(var.GetNote) or safe(var.GetParameterNote),
-            "external": safe(var.IsExternal),
-            "information": safe(var.IsInformation),
-        })
+        out.append(
+            {
+                "name": safe(var.GetName),
+                "value": safe(var.GetValue),
+                "expression": safe(var.GetExpression),
+                "note": safe(var.GetNote) or safe(var.GetParameterNote),
+                "external": safe(var.IsExternal),
+                "information": safe(var.IsInformation),
+            }
+        )
     return out
 
 
@@ -94,7 +96,9 @@ def read_model(doc):
             "material": safe(mass.GetMaterial),
             "mass_units": safe(mass.GetMassUnits),
             "length_units": safe(mass.GetLengthUnits),
-        } if mass else None,
+        }
+        if mass
+        else None,
         "gabarit": size,
         "tree": read_feature(ksapi.IFeature(part)),
     }
