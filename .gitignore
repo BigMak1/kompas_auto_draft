@@ -28,5 +28,9 @@ __pycache__/
 runs/
 kompas_data/
 
+# Результаты baseline добавляются в следующих заданиях
+/run/
+/results/
+
 # macOS
 .DS_Store

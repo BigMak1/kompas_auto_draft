@@ -1,0 +1,64 @@
+[project]
+name = "kompas_auto_draft"
+version = "0.3.0"
+description = "ML System Design: данные, EDA и baseline PNG → рецепт → CadQuery → STL"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "openai-agents==0.24.0",
+    "pydantic>=2,<3",
+    "pillow>=11",
+    "cadquery==2.7.0",
+    "trimesh==4.12.2",
+    "numpy>=2,<3",
+    "scipy>=1.14,<2",
+    "rtree>=1.4,<2",
+    "manifold3d>=3,<4",
+    "pyyaml>=6,<7",
+    "rich>=13,<15",
+]
+
+[dependency-groups]
+dev = ["poethepoet>=0.40,<1", "pytest>=8", "ruff>=0.17", "pre-commit>=4.7"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "BLE", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.poe]
+verbosity = -1
+
+[tool.poe.tasks]
+help = { cmd = "poe --help", help = "Показать команды проекта" }
+run = { cmd = "python -m src.agent run", envfile = { optional = [".env"] }, help = "Построить весь набор; одну деталь: poe run KF0027" }
+build = { cmd = "python -m src.agent build", help = "Построить STL из готового рецепта" }
+evaluate = { cmd = "python -m src.evaluate", help = "Оценить сохранённые модели: IoU и F-score" }
+lint = { cmd = "ruff check src tests notebooks/EDA.ipynb", help = "Проверить код baseline, тестов и EDA" }
+format = { cmd = "ruff format src tests notebooks/EDA.ipynb", help = "Отформатировать Python-код и ячейки EDA" }
+format-check = { cmd = "ruff format --check src tests notebooks/EDA.ipynb", help = "Проверить форматирование кода и EDA" }
+test = { cmd = "pytest -q", help = "Автономные тесты без обращений к модели" }
+data-check = { cmd = "python -m src.agent check", help = "Проверить конфиг, контрольные суммы и геометрию данных" }
+check = { sequence = ["lint", "format-check", "test", "data-check", "eda-check"], help = "Код, тесты, данные и EDA без генерации моделей" }
+hooks = { cmd = "pre-commit run --all-files", help = "Проверки pre-commit" }
+
+[tool.poe.tasks.eda]
+cmd = "uv run --project notebooks --locked jupyter lab notebooks/EDA.ipynb"
+help = "Открыть EDA в Jupyter Lab"
+executor = { type = "simple" }
+env = { VIRTUAL_ENV = "" }
+
+[tool.poe.tasks.eda-check]
+cmd = "uv run --project notebooks --locked jupyter nbconvert --to notebook --execute notebooks/EDA.ipynb --output EDA.executed.ipynb --output-dir artifacts/mlsd --ExecutePreprocessor.timeout=300 --ExecutePreprocessor.kernel_name=python3"
+help = "Выполнить EDA в отдельный файл без изменения исходного ноутбука"
+executor = { type = "simple" }
+env = { VIRTUAL_ENV = "" }
