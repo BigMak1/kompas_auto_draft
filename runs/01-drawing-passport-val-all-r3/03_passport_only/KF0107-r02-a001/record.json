@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0107",
+  "repeat": 2,
+  "variant": "03_passport_only",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0107.png",
+    "sha256": "f973b0f1c0c335abe7f0f0de9b4048d5696fa6681e60e5e6056109c94fa17f6c",
+    "original_bytes": 112635,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 112635,
+    "sent_sha256": "f973b0f1c0c335abe7f0f0de9b4048d5696fa6681e60e5e6056109c94fa17f6c",
+    "resized": false
+  },
+  "orientation": "Ось втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, со стороны внутренней левой резьбы; +Z идёт вправо по разрезу. Продольный внутренний шпоночный паз, показанный сверху торцевого сечения справа, направлен к +Y; его середина лежит в плоскости YZ.",
+  "seconds": 77.25350133399479,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 11092,
+    "output_tokens": 6502
+  },
+  "trace_id": "tr-6ffbfdcae3b2a2b660798b07f9e66537",
+  "reading_path": "readings/KF0107-r02-passport-a001",
+  "reading_sha256": "8bc60834239692f732288ae84f818f1463d073aeef353c22e5a07e672836b0b5",
+  "reading_trace_id": "tr-6654c4a300c605399052cca79383027a",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 5887,
+      "input_tokens_details": {
+        "cache_write_tokens": 5884,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 5884
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2568,
+      "output_tokens_details": {
+        "reasoning_tokens": 890
+      },
+      "total_tokens": 8455
+    },
+    "http_responses": 1,
+    "request_id": "req_c34da054d840402cad00b40c459f9eb9",
+    "http_status": 200,
+    "response_id": "resp_0bd1d98916f4bd66016b033775e96087d2a28bc2ec4fae49e2",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 28.03909966701758,
+    "trace_id": "tr-6ffbfdcae3b2a2b660798b07f9e66537"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 39,
+    "noop_steps": [],
+    "volume_mm3": 97329.45597921913,
+    "bounds_mm": [
+      [
+        -19.0,
+        -19.0,
+        0.0
+      ],
+      [
+        19.000000000000004,
+        18.76166303929372,
+        133.0
+      ]
+    ],
+    "triangles": 56032,
+    "files": {
+      "model.stl": "e8c30328b4c5fef296b66b42633a26681be96d0f49c0fffd9bf81f95058b4881"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "d8d50bd827daf277bae1b369e3b6c227a137439fe7937cf93bbd0d2a0b67514e",
+    "debug/llm/response.json": "f79459ae308453288f0ed83613015871534844e904892ff15389078ee35184da",
+    "debug/llm/stage.json": "27e536b752ba88436def4e8f76b815bf4492efd7b927762569eda0380df4a093",
+    "model.stl": "e8c30328b4c5fef296b66b42633a26681be96d0f49c0fffd9bf81f95058b4881",
+    "passport.json": "321a9bda8a079c43447bb23afa05479e4c5958e0dbf9848ae110e6bafd51a0d7",
+    "recipe.json": "e66b89d527feff3c24bb9a23de3f94a98b6d45075929b2f13389ce5c12762603",
+    "run.log": "8a5eca8f24382f3a28cfe6fec496ba306df6aaeb13ad34341c5d1cfc381e2e03"
+  }
+}

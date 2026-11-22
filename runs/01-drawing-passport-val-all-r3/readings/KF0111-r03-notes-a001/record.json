@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0111",
+  "repeat": 3,
+  "status": "success",
+  "input": {
+    "name": "KF0111.png",
+    "sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "original_bytes": 109923,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 109923,
+    "sent_sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "resized": false
+  },
+  "orientation": "Ось наружного цилиндра вала совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида, рядом с парой меньших сегментных пазов. +Z идёт вправо по этому виду, к одиночному большому сегментному пазу. Большой паз направлен к +Y; его середина лежит в плоскости YZ. Два меньших паза находятся со сторон +Y и -Y, как показано на продольном виде и нижнем торцевом сечении.",
+  "usage": {
+    "input_tokens": 3690,
+    "input_tokens_details": {
+      "cache_write_tokens": 3687,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3687
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2142,
+    "output_tokens_details": {
+      "reasoning_tokens": 516
+    },
+    "total_tokens": 5832
+  },
+  "http_responses": 1,
+  "request_id": "req_61e49bcb42bc4ea19e5e1cb9f7daff54",
+  "http_status": 200,
+  "response_id": "resp_0c0eeeeed23505f1016b0337d8e84487d2b60260ab132ccaa8",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 35.49737199998344,
+  "trace_id": "tr-be6936b13f20491888fa51bdf9c75794",
+  "files": {
+    "debug/request.json": "53f624bf89d09380366be325d51252b1a0e01cbe0e99c29990e3b0d3eb1a41a8",
+    "debug/response.json": "9ad3fe118a51f8804778117f613eced577b4798d8c45ea41345e4a6438510409",
+    "debug/stage.json": "74cbf9a28e2e103d88b7c4fc9a8b39915fe22ad6988f11c15511eeb40428bd64",
+    "notes.md": "ecd803b928778bf299b90857a65e0a725f5cef30a5782155d547d836e3de1cce",
+    "run.log": "6d370b6313ed0bedfb4935525131b53d350170846a4d4abe672b8cd2f9ac3ec7"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0109",
+  "repeat": 3,
+  "status": "success",
+  "input": {
+    "name": "KF0109.png",
+    "sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "original_bytes": 122717,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 122717,
+    "sent_sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "resized": false
+  },
+  "orientation": "Ось втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, со стороны меньшего конического отверстия и более узкого шпоночного паза. +Z идёт вправо по разрезу, к большему отверстию. Оба внутренних паза, показанные сверху торцевых сечений, направлены к +Y; их середины лежат в плоскости YZ.",
+  "usage": {
+    "input_tokens": 3673,
+    "input_tokens_details": {
+      "cache_write_tokens": 3670,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3670
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2285,
+    "output_tokens_details": {
+      "reasoning_tokens": 516
+    },
+    "total_tokens": 5958
+  },
+  "http_responses": 1,
+  "request_id": "req_d61702c66cda4eafb626c5c2ae9494e7",
+  "http_status": 200,
+  "response_id": "resp_0d7256235fd3d76a016b033795467887d291dbbc11008070e3",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 35.925055957981385,
+  "trace_id": "tr-bc4ab847e152246450c44e1ac3061e11",
+  "files": {
+    "debug/request.json": "071a7190e3f2801a82976a93fe116de865b15aed1785ecf6aabef9db3e725125",
+    "debug/response.json": "4f119919dbd99e51f885fbdd21c26c227d42cb6fa457a04e45474a1e68c1c683",
+    "debug/stage.json": "d31dcb11a44dd6f77596254dca4661e71ff8b4068aab9fd1af89d34f618f7acc",
+    "notes.md": "824ac182b4048843b93c2b70640753afdb7eff07cb18c87dc4c889bff548af1d",
+    "run.log": "5c986f2cfc84c68d2df5ff37a00df7478b99ccba3cefb79dcfe335a65404b506"
+  }
+}

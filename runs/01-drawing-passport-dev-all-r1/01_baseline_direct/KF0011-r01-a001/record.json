@@ -1,0 +1,95 @@
+{
+  "pair_id": "KF0011",
+  "repeat": 1,
+  "variant": "01_baseline_direct",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0011.png",
+    "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec",
+    "original_bytes": 381228,
+    "original_size": [
+      4962,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      2897
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1856478,
+    "sent_sha256": "efe8927a2245e994914227fecd81bd4a81bad6330b199df80b1a5577b597e89f",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, расположенного слева на листе; +Z идёт вправо по этому разрезу. Верхний шпоночный паз торцевого вида направлен к +Y; центр паза лежит в плоскости YZ. Торцы геометрически эквивалентны.",
+  "seconds": 46.297288708999986,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4573,
+    "output_tokens": 2668
+  },
+  "trace_id": "tr-5a651470d9fecc859c8af9daa969363a",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4573,
+      "input_tokens_details": {
+        "cache_write_tokens": 4570,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4570
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2668,
+      "output_tokens_details": {
+        "reasoning_tokens": 1532
+      },
+      "total_tokens": 7241
+    },
+    "http_responses": 1,
+    "request_id": "req_3b3081776d1b4adeb40a706c383d7d55",
+    "http_status": 200,
+    "response_id": "resp_04e7f6744b432006016b034653246087d28552d2e49235c4dc",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 44.05229745898396,
+    "trace_id": "tr-5a651470d9fecc859c8af9daa969363a"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 9,
+    "noop_steps": [],
+    "volume_mm3": 68100.8433864166,
+    "bounds_mm": [
+      [
+        -34.518,
+        -34.965,
+        0.0
+      ],
+      [
+        35.029,
+        34.965,
+        33.0
+      ]
+    ],
+    "triangles": 6636,
+    "files": {
+      "model.stl": "9a6778d2a4cf0883d3659449cfae10caca8157f5d778576b4db4ba42f0a98582"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "2343136c297404ffb0ed883f16ad951fa1cde234c7c0674fe6105adbca640a33",
+    "debug/llm/response.json": "db43484a72b85455a29404e0d7c62958ef4fac357a024dd092f295856edfece0",
+    "debug/llm/stage.json": "2d7a818a8f9723c711f07667ed45b2effc590f9cb1dba612c973f9d817611c2c",
+    "model.stl": "9a6778d2a4cf0883d3659449cfae10caca8157f5d778576b4db4ba42f0a98582",
+    "recipe.json": "060181102d0fb51005897195b7f12c169dd1accbeb75cb57739f5a5565e966a0",
+    "run.log": "557e0e76373c2fc2962d21aa0564a44eefa1bbbf37eb16cc05c8615e521f273f"
+  }
+}

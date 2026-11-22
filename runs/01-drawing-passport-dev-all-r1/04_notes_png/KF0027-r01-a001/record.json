@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0027",
+  "repeat": 1,
+  "variant": "04_notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0027.png",
+    "sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c",
+    "original_bytes": 275789,
+    "original_size": [
+      4962,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      2897
+    ],
+    "mode": "RGB",
+    "sent_bytes": 986087,
+    "sent_sha256": "7f755fd32ece4aef6a37e94d42feb40878572100a8287710f4404ce08b2f288b",
+    "resized": true
+  },
+  "orientation": "Ось большого центрального отверстия кольца совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец разреза слева на листе, со входами цековок; +Z идёт вправо по разрезу. Ось верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх. Сохрани стороны остальных отверстий относительно этого ориентира.",
+  "seconds": 60.28416125100921,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 9713,
+    "output_tokens": 3709
+  },
+  "trace_id": "tr-10d7f3a3e70eb47c9e68aa6eb8d2c83a",
+  "reading_path": "readings/KF0027-r01-notes-a001",
+  "reading_sha256": "2f912ac517debd1adb6fb878b9f30221fb2711598cc5424b175bf855a92d1d8c",
+  "reading_trace_id": "tr-4ab8a347036fcb625358d2c137bbda0e",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 6025,
+      "input_tokens_details": {
+        "cache_write_tokens": 6022,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 6022
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1763,
+      "output_tokens_details": {
+        "reasoning_tokens": 736
+      },
+      "total_tokens": 7788
+    },
+    "http_responses": 1,
+    "request_id": "req_d8a598185e71451d905a3a9c113fa222",
+    "http_status": 200,
+    "response_id": "resp_0c16bed11d32e623016b03464f5d4087d29e32b5a66cd3a18b",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 22.73748350000824,
+    "trace_id": "tr-10d7f3a3e70eb47c9e68aa6eb8d2c83a"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 24,
+    "noop_steps": [],
+    "volume_mm3": 56935.900475097835,
+    "bounds_mm": [
+      [
+        -52.5,
+        -52.5,
+        0.0
+      ],
+      [
+        52.5,
+        52.5,
+        12.0
+      ]
+    ],
+    "triangles": 28248,
+    "files": {
+      "model.stl": "8029da532ef07d406aa8ba3baccfaea4c5628fd5d5a6ebb9be0eb6c9ddf3ab87"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "f94fcff1dd4647f5695d05307d375d55b54847c763071b34e3d40da10ee7e1a7",
+    "debug/llm/response.json": "a33daa3c0d32eacd2907abb263cb8c84185b98990eed1f8818231b2c8e6fbd97",
+    "debug/llm/stage.json": "a5efefc2eb2371f7ca54fdcccf4b8385821787a641d3ccd27c0b36b78aca5809",
+    "model.stl": "8029da532ef07d406aa8ba3baccfaea4c5628fd5d5a6ebb9be0eb6c9ddf3ab87",
+    "notes.md": "0a466b3a6c12d281b08ce5ee75f835fdd347fb3fcc1b0be239f2f7bd3a9644b5",
+    "recipe.json": "fce6257ece04ff8e995738160dc0d0aa55edaca26f629ff67d6f8744f38c68df",
+    "run.log": "76a22068f8c8e6738912cae3920326079dd7627eb3d612168066273c94b227f1"
+  }
+}

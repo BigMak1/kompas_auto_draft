@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0019",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0019.png",
+    "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "original_bytes": 170738,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 170738,
+    "sent_sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "resized": false
+  },
+  "orientation": "Ось отверстия шайбы совпадает с Z, её центр в XY — (0, 0). База Z=0 — торец со входом конической зенковки, слева на показанном разрезе. +Z идёт вправо по разрезу, к меньшему выходу отверстия. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 3649,
+    "input_tokens_details": {
+      "cache_write_tokens": 3646,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3646
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 836,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 4485
+  },
+  "http_responses": 1,
+  "request_id": "req_399b4f4ec2f34e9ca3e6d3c72fb8d85f",
+  "http_status": 200,
+  "response_id": "resp_0bad9dc004ac2e7c016b03466e824c87d282518a4433d004c9",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 14.41640733400709,
+  "trace_id": "tr-dcb449e031be9bfc33f96b3132b14a5b",
+  "files": {
+    "debug/request.json": "3fe38ff40a9f1944f1c6b9cf0be94b227150d236b9163c35bbf2a97dee5ad8e6",
+    "debug/response.json": "cd043c32adcf6afabd058c2ba290fc2b7ab2e9a1d8a8ebe9d9df2c69413a93be",
+    "debug/stage.json": "c267dd6069f811b1e6e09f43b9e5f6ba19cb2b6afff4195b6ca7f69e15c60646",
+    "notes.md": "36b4ea19320e86b9b931f749635693c3ba9d6798bbb384d91d6ca72f2ec6f831",
+    "run.log": "0aeb08058b888888c337239844306415201d04e6c715ed91b3c3ece452b068dd"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0029",
+  "repeat": 1,
+  "variant": "02_passport_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0029.png",
+    "sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "original_bytes": 228562,
+    "original_size": [
+      3515,
+      2487
+    ],
+    "sent_size": [
+      3515,
+      2487
+    ],
+    "mode": "RGB",
+    "sent_bytes": 228562,
+    "sent_sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "resized": false
+  },
+  "orientation": "Ось отверстия ступицы совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец ступицы на продольном разрезе слева, как указано в примечании на листе. +Z идёт вправо по разрезу. Верхний шпоночный паз на торцевом виде направлен к +Y; его центр лежит в плоскости YZ. Торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. База относится к ступице, а не к торцу зубчатого венца.",
+  "seconds": 124.06253845800529,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 15646,
+    "output_tokens": 10230
+  },
+  "trace_id": "tr-3a5ecabd212c25dba7dc6b01725784ab",
+  "reading_path": "readings/KF0029-r01-passport-a001",
+  "reading_sha256": "59a8c9770f76c3c721ecdca29b507d7450e0277961ec995d4e750e0512b05121",
+  "reading_trace_id": "tr-de77b76fac9185bcc87001a8289e17c5",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 10401,
+      "input_tokens_details": {
+        "cache_write_tokens": 10398,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 10398
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 5329,
+      "output_tokens_details": {
+        "reasoning_tokens": 2997
+      },
+      "total_tokens": 15730
+    },
+    "http_responses": 1,
+    "request_id": "req_1d54e5f53ea44985b0f79e2bf5a915a7",
+    "http_status": 200,
+    "response_id": "resp_07d5f1a809a5caf4016b034762552087d29052f749ed503c2d",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 70.56279908301076,
+    "trace_id": "tr-3a5ecabd212c25dba7dc6b01725784ab"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 17,
+    "noop_steps": [],
+    "volume_mm3": 1247468.483353687,
+    "bounds_mm": [
+      [
+        -190.3215,
+        -190.3215,
+        0.0
+      ],
+      [
+        190.3215,
+        190.3215,
+        55.0
+      ]
+    ],
+    "triangles": 18840,
+    "files": {
+      "model.stl": "c34e1619b1924e0a22dc9b380450ce654e875633b4368fd41ae7c056561ead7c"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "259972607d174c957a54266be0bed2b2a2f521e541f7b33845ba38a122c75ff9",
+    "debug/llm/response.json": "6255a7954dbceb4a713df3db512da2c1f267afef6e2c88a3c443d5551211c13a",
+    "debug/llm/stage.json": "6f9abca1e34f912f80a83492e70b4900acc2efb4b955fba99966792298159cb9",
+    "model.stl": "c34e1619b1924e0a22dc9b380450ce654e875633b4368fd41ae7c056561ead7c",
+    "passport.json": "83d07b046c1c3456f2a5a38e553e0dc6563bebbd1a3c821d942a462dadc7e676",
+    "recipe.json": "d4ccb3a00cab8fab617f55597554535b3f49acdcda4d07617a1fbf815c9cf671",
+    "run.log": "18bb82e0e6777cf0046c81bb17ebdb9489e75cfbedf9cdf7de78a68f28cd5e36"
+  }
+}

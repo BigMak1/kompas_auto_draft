@@ -1,0 +1,12 @@
+# Стратегия, роль в исследовании, гипотеза и промпты эксперимента 02_passport_png.
+pipeline: passport_png
+role: improvement
+label: 02 · Паспорт + PNG
+description: PNG → паспорт; паспорт + PNG → рецепт → STL
+hypothesis: >
+  Основное улучшение: двухэтапный агент сначала извлекает строгий JSON-паспорт
+  (виды, элементы, размеры, связи, общие примечания), затем построитель генерирует
+  рецепт, опираясь одновременно на паспорт и исходный PNG.
+prompts:
+  passport: prompts/drawing_passport.md
+  builder: prompts/cad_builder.md

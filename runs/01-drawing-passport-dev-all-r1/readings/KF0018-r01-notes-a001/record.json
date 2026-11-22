@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0018",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0018.png",
+    "sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
+    "original_bytes": 142905,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 142905,
+    "sent_sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
+    "resized": false
+  },
+  "orientation": "Ось отверстия плоского кольца совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец показанного разреза; +Z идёт вправо по разрезу, вдоль толщины кольца. Торцы геометрически эквивалентны. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 3649,
+    "input_tokens_details": {
+      "cache_write_tokens": 3646,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3646
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 813,
+    "output_tokens_details": {
+      "reasoning_tokens": 178
+    },
+    "total_tokens": 4462
+  },
+  "http_responses": 1,
+  "request_id": "req_490aa5d4bfae4525bc34ac135af3b154",
+  "http_status": 200,
+  "response_id": "resp_0be634a3060f8949016b0347ba0ec487d2bdd49c7270cbb76e",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 15.056124708004063,
+  "trace_id": "tr-2bc2b658448dab9efa5a29939dc9cc80",
+  "files": {
+    "debug/request.json": "32e4f1b624465b6dd250cf09c84517624754f32e350d824b4b6705e62c9261fe",
+    "debug/response.json": "9f6a8df41286388a23c96107f7ff91de415d3fe92f7a95d5eec6a4dfdd73d76f",
+    "debug/stage.json": "45d37b1c2d7f27590c8ed7e41ebfa39dbc77ff38ebb34ae17d1750862b6142e0",
+    "notes.md": "ba47ba20b63cdda4dd5f1cbc15edfc02279274c481fb59c317e4329a04018e65",
+    "run.log": "350998f909853c08eae5f37b0df8d471dc2a1f74414870bf7078b00aaacf723c"
+  }
+}

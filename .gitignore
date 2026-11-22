@@ -1,4 +1,6 @@
-# Локальные настройки и поставки инструментов
+# Локальный архив прежних этапов и настройки инструментов
+.local-archive/
+logs/
 .ai/
 .claude
 mcp/
@@ -6,22 +8,34 @@ mcp/
 .mcp.json
 vendor/
 AGENTS.md
+.env
+.env.*
+!.env.example
+
+# SQLite WAL-файлы локального MLflow (коммитится только tracking.db и artifacts/)
+mlflow/*.db-wal
+mlflow/*.db-shm
+mlflow/.runtime/
+mlflow/.publishing.db
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
 
 # Python
 .venv/
-.venv-eval/
 __pycache__/
 *.py[cod]
 .ruff_cache/
 .pytest_cache/
+.hw01-work/
+.ipynb_checkpoints/
 
-# Локальные прогоны, наборы из общего проекта и производные модели
-runs/
-/kompas_data/e2e-*/
-/kompas_data/**/*_копия_*.m3d
+# Устаревшая папка ДЗ1, локальный отладочный build и HTTP-дампы OpenAI внутри runs/
+# В Git сохраняются рецепты, паспорта, заметки, сгенерированные model.stl, журналы, оценки и study.json.
+runs/_manual/
+runs/**/debug/
+run/
+kompas_data/
 
 # macOS
 .DS_Store

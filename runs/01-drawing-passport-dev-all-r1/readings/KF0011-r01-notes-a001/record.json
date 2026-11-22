@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0011",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0011.png",
+    "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec",
+    "original_bytes": 381228,
+    "original_size": [
+      4962,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      2897
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1856478,
+    "sent_sha256": "efe8927a2245e994914227fecd81bd4a81bad6330b199df80b1a5577b597e89f",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, расположенного слева на листе; +Z идёт вправо по этому разрезу. Верхний шпоночный паз торцевого вида направлен к +Y; центр паза лежит в плоскости YZ. Торцы геометрически эквивалентны.",
+  "usage": {
+    "input_tokens": 3662,
+    "input_tokens_details": {
+      "cache_write_tokens": 3659,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3659
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 3170,
+    "output_tokens_details": {
+      "reasoning_tokens": 1319
+    },
+    "total_tokens": 6832
+  },
+  "http_responses": 1,
+  "request_id": "req_602a7250090448f18071007548b2a2a0",
+  "http_status": 200,
+  "response_id": "resp_044180bc0dc40761016b0345d3a71487d29ff805f57b38c36a",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 66.77994450001279,
+  "trace_id": "tr-4b7f8681d7046f149b8119c15d5484f2",
+  "files": {
+    "debug/request.json": "36ccfdebc21b316cbe9176a9d345be5746a340ebd400fa2e033b5f690b5068a5",
+    "debug/response.json": "19f1adf9cd84c3d1a4ec79d2d493a5188833fea67a0689bf7bc55f4e855efeb6",
+    "debug/stage.json": "a763097125aa2fa512d5108cd085bc57f07c5d8462ea8f85d3ee8777ca8e5c54",
+    "notes.md": "2e029b3782a155bd5677b234e16da4ec0f9ff184caf0d3bce5a74402078f4a53",
+    "run.log": "04ec96c9002e4c74f012affaffcb2bcb34fcc2d87ad67aad71ff0bae95fca17f"
+  }
+}

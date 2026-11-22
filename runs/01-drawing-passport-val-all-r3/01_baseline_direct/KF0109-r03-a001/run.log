@@ -1,0 +1,9 @@
+2026-11-22 21:52:28,620  МАРШРУТ    [KF0109 · 01_baseline_direct · r3] 01 · Baseline (direct) · начинаю.
+2026-11-22 21:52:28,622  ВХОД       [KF0109 · 01_baseline_direct · r3] Построитель: PNG + подсказка ориентации.
+2026-11-22 21:52:28,622  РЕЦЕПТ     [KF0109 · 01_baseline_direct · r3] Отправляю один запрос. Осталось 16384 выходных токенов и 900.0 с.
+2026-11-22 21:52:54,700  ОТВЕТ      [KF0109 · 01_baseline_direct · r3] 26.1 с · вход 4584 · выход 2911/16384 токенов, рассуждения 702.
+2026-11-22 21:52:54,701  РЕЦЕПТ     [KF0109 · 01_baseline_direct · r3] Проверен и сохранён: 47 операций.
+2026-11-22 21:52:54,701  CAD        [KF0109 · 01_baseline_direct · r3] Запускаю CadQuery и экспорт STL; осталось 873.9 с.
+2026-11-22 21:52:56,641  ОШИБКА     [KF0109 · 01_baseline_direct · r3] построение CAD. ValueError: Шаг 2: требуется одно корректное объёмное тело
+2026-11-22 21:52:56,641  ПОДРОБНО   [KF0109 · 01_baseline_direct · r3] /Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/runs/01-drawing-passport-val-all-r3/01_baseline_direct/KF0109-r03-a001/debug/error.log
+2026-11-22 21:52:56,642  ИТОГ       [KF0109 · 01_baseline_direct · r3] Неудачный исход · 28.0 с · построений 1.

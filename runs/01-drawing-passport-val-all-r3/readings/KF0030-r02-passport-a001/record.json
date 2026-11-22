@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0030",
+  "repeat": 2,
+  "status": "success",
+  "input": {
+    "name": "KF0030.png",
+    "sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "original_bytes": 135938,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 135938,
+    "sent_sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "resized": false
+  },
+  "orientation": "Ось фланца и центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец широкого фланца на продольном разрезе слева, со входами цековок, согласно примечанию на листе. +Z идёт вправо по разрезу, к выступающей втулочной части. Ось самого верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "usage": {
+    "input_tokens": 5246,
+    "input_tokens_details": {
+      "cache_write_tokens": 5243,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5243
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 4800,
+    "output_tokens_details": {
+      "reasoning_tokens": 931
+    },
+    "total_tokens": 10046
+  },
+  "http_responses": 1,
+  "request_id": "req_846882315dfa4b1d8abd3cca1071ca2c",
+  "http_status": 200,
+  "response_id": "resp_0a0fc79c305412bf016b0338f756c087d2bfd0a5ba385c9acc",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 50.110260332992766,
+  "trace_id": "tr-676c85710de907c851dd6097e06b2feb",
+  "files": {
+    "debug/request.json": "eb9cb80ebb90de6fe71f4abeb1eee037e672e4f373c73968c3fb0126e60d8e5f",
+    "debug/response.json": "3353f2cabf3bb5e956090882efdc80bb111e1c0d9c68f749f2ecdeb43ac3d2b0",
+    "debug/stage.json": "3e9fa81275ffb52b5bd9f328769d71ad7da04a93a7f4fea218e462f4ca6f34ed",
+    "passport.json": "c131de54308e8853e59ce4b0b63e563f87fcf8c3bd793b61c894547be897f5be",
+    "run.log": "60010a2c3e229163eb0a299ffd49160a59b71a5520d092722af227311c4f2056"
+  }
+}

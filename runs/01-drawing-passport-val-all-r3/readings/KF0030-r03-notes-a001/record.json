@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0030",
+  "repeat": 3,
+  "status": "success",
+  "input": {
+    "name": "KF0030.png",
+    "sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "original_bytes": 135938,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 135938,
+    "sent_sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "resized": false
+  },
+  "orientation": "Ось фланца и центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец широкого фланца на продольном разрезе слева, со входами цековок, согласно примечанию на листе. +Z идёт вправо по разрезу, к выступающей втулочной части. Ось самого верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "usage": {
+    "input_tokens": 3702,
+    "input_tokens_details": {
+      "cache_write_tokens": 3699,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3699
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2490,
+    "output_tokens_details": {
+      "reasoning_tokens": 411
+    },
+    "total_tokens": 6192
+  },
+  "http_responses": 1,
+  "request_id": "req_9c4c77f8e200498985df61def029752c",
+  "http_status": 200,
+  "response_id": "resp_0ba378e02ad3f76e016b0339a56d1087d28b9d052ab7bcdb81",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 37.20436962498934,
+  "trace_id": "tr-12e4f8d66cf89c0a9126ce9c35f7d6a0",
+  "files": {
+    "debug/request.json": "c84728eb3b2928f31f0b37fb7c818848842920164ddb158c575ac4a4df56beca",
+    "debug/response.json": "4e04e1f8759a5b2e4ea505093843d9afe7254a0c6e715a7520b11201ed605d80",
+    "debug/stage.json": "4381a1d06b9d50785347969db2e0cd62c8020860dc4331b4bf7fadd14ea0ee48",
+    "notes.md": "75fd8b012a917912a840d3116f018018cc41b1dc5503d50cbba501e043580cb3",
+    "run.log": "979e23eec29a92014c6381874ebc402bbbefdbfefa00e89f7fe6798f3570a549"
+  }
+}

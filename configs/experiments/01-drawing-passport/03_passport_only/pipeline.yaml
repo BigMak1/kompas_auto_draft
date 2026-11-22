@@ -1,0 +1,12 @@
+# Стратегия, роль в исследовании, гипотеза и промпты эксперимента 03_passport_only.
+pipeline: passport_only
+role: ablation
+ablation_of: 02_passport_png
+label: 03 · Только паспорт
+description: PNG → паспорт → рецепт → STL (построитель без PNG)
+hypothesis: >
+  Абляция 1 (отключение PNG на втором этапе): проверяет, достаточно ли одного
+  структурированного паспорта без повторного просмотра чертежа построителем.
+prompts:
+  passport: prompts/drawing_passport.md
+  builder: prompts/cad_builder.md

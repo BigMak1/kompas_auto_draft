@@ -1,0 +1,696 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез слева",
+      "kind": "section",
+      "description": "Ось Z горизонтальна; +Z вправо, +Y вверх. Левый крайний торец — база Z=0; втулочная часть справа."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид",
+      "kind": "view",
+      "description": "Взгляд от базы вдоль +Z; +X влево, +Y вверх. Верхнее крепёжное отверстие лежит на +Y."
+    },
+    {
+      "id": "v3",
+      "label": "Б(5:1)",
+      "kind": "detail",
+      "description": "Увеличенный профиль внутренней канавки; +Z вправо, как на разрезе."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр оси на левом крайнем торце широкого фланца, Z=0; центр в XY — (0,0).",
+    "axis_z": "Общая ось фланца и центрального отверстия; +Z к выступающей втулочной части.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "flange",
+      "description": "Широкий цилиндрический фланец.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "hub",
+      "description": "Соосная выступающая втулочная часть справа.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "front_recess",
+      "description": "Соосная широкая расточка со стороны базы.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "bore_step",
+      "description": "Малая ступень центрального сквозного отверстия после передней расточки.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "bore_step",
+      "description": "Средняя ступень центрального отверстия.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "bore_step",
+      "description": "Правая расточка центрального отверстия.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "annular_groove",
+      "description": "Внутренняя кольцевая канавка Б у начала средней ступени.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f8",
+      "kind": "hole_pattern",
+      "description": "Общая окружность расположения крепёжных отверстий.",
+      "view_ids": [
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f9",
+      "kind": "counterbored_hole_group",
+      "description": "Группа сквозных гладких отверстий с цековками от базы; включает верхнее отверстие.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f10",
+      "kind": "threaded_hole_group",
+      "description": "Группа сквозных резьбовых отверстий с входными фасками от базы.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f11",
+      "kind": "fillet",
+      "description": "Скругление наружного уступа втулочной части.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f12",
+      "kind": "fillet",
+      "description": "Скругление дна правой расточки.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f13",
+      "kind": "chamfer_group",
+      "description": "Фаски наружных торцов и выхода средней ступени отверстия.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f14",
+      "kind": "chamfer",
+      "description": "Входная фаска правой расточки; осевая величина задана примечанием.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Диаметр фланца",
+      "raw": "⌀120",
+      "value": 120.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Толщина фланца",
+      "raw": "13",
+      "value": 13.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Общая длина",
+      "raw": "32",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Наружный диаметр втулочной части",
+      "raw": "⌀75",
+      "value": 75.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Диаметр передней расточки",
+      "raw": "D75 до Z=2",
+      "value": 75.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Глубина передней расточки от базы",
+      "raw": "D75 до Z=2",
+      "value": 2.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Диаметр малой ступени",
+      "raw": "⌀45",
+      "value": 45.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Конечная координата малой ступени",
+      "raw": "D45 до Z=7",
+      "value": 7.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Диаметр средней ступени",
+      "raw": "⌀55",
+      "value": 55.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Конечная координата средней ступени",
+      "raw": "D55 до Z=22",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Диаметр правой расточки",
+      "raw": "⌀62",
+      "value": 62.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Начальная координата правой расточки",
+      "raw": "D62 от Z=22 до правого торца Z=32.",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Координата правого торца",
+      "raw": "D62 от Z=22 до правого торца Z=32.",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Начальная координата канавки",
+      "raw": "Канавка Б начинается при Z=7.",
+      "value": 7.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Осевая ширина канавки",
+      "raw": "3",
+      "value": 3.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Диаметр профиля канавки",
+      "raw": "⌀55,5",
+      "value": 55.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Радиус левого сопряжения канавки",
+      "raw": "R1",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Радиус правого сопряжения канавки",
+      "raw": "R0,5",
+      "value": 0.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Угол правого перехода канавки",
+      "raw": "45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Радиус наружного уступа",
+      "raw": "Уступ наружной D75: R0,5; дно D62: R0,1.",
+      "value": 0.5,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f11",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Радиус дна правой расточки",
+      "raw": "Уступ наружной D75: R0,5; дно D62: R0,1.",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f12",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Размер общих фасок",
+      "raw": "Наружные торцы и выход D55: фаски 1x45°.",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f13",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Угол общих фасок",
+      "raw": "Наружные торцы и выход D55: фаски 1x45°.",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f13",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Осевая величина входной фаски справа",
+      "raw": "Вход D62 справа: 0,5x30° вдоль оси.",
+      "value": 0.5,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f14",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Угол входной фаски справа",
+      "raw": "Вход D62 справа: 0,5x30° вдоль оси.",
+      "value": 30.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f14",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Входной диаметр справа",
+      "raw": "Входной диаметр справа D62,577350.",
+      "value": 62.57735,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f14",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Число крепёжных осей",
+      "raw": "6 осей крепежа на D96, через 60°.",
+      "value": 6.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Диаметр окружности крепежа",
+      "raw": "6 осей крепежа на D96, через 60°.",
+      "value": 96.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Угловой шаг крепёжных осей",
+      "raw": "6 осей крепежа на D96, через 60°.",
+      "value": 60.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Количество гладких отверстий",
+      "raw": "3 отв. D8,4 сквозные: верхнее и через 120°.",
+      "value": 3.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d31",
+      "name": "Диаметр гладких отверстий",
+      "raw": "3 отв. D8,4 сквозные: верхнее и через 120°.",
+      "value": 8.4,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d32",
+      "name": "Угловой шаг гладких отверстий",
+      "raw": "3 отв. D8,4 сквозные: верхнее и через 120°.",
+      "value": 120.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d33",
+      "name": "Диаметр цековок",
+      "raw": "Их цековки D14 глубиной 9 слева.",
+      "value": 14.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d34",
+      "name": "Глубина цековок от базы вдоль +Z",
+      "raw": "Их цековки D14 глубиной 9 слева.",
+      "value": 9.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d35",
+      "name": "Количество резьбовых отверстий",
+      "raw": "Остальные 3 отв. M8x1,25 сквозные.",
+      "value": 3.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d36",
+      "name": "Номинальный диаметр метрической резьбы",
+      "raw": "Остальные 3 отв. M8x1,25 сквозные.",
+      "value": 8.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d37",
+      "name": "Шаг резьбы",
+      "raw": "Остальные 3 отв. M8x1,25 сквозные.",
+      "value": 1.25,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d38",
+      "name": "Размер входных фасок резьбы",
+      "raw": "Входные фаски M8: 1,6x45° слева.",
+      "value": 1.6,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d39",
+      "name": "Угол входных фасок резьбы",
+      "raw": "Входные фаски M8: 1,6x45° слева.",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d40",
+      "name": "Диаметр условного представления резьбы",
+      "raw": "Резьбы в 3D условные (D6,64684).",
+      "value": 6.64684,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7"
+      ],
+      "description": "Соосны Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "description": "Последовательные участки центрального отверстия от базы к правому торцу; глубины отсчитываются вдоль +Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f7",
+        "f5"
+      ],
+      "description": "Канавка расположена у левого входа средней ступени; профиль раскрыт на Б.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f8",
+        "f9",
+        "f10"
+      ],
+      "description": "Обе группы лежат на общей окружности и чередуются; их оси параллельны Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f9",
+        "f10"
+      ],
+      "description": "Цековки и резьбовые входные фаски открыты к базе, в сторону −Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f11",
+        "f1",
+        "f2"
+      ],
+      "description": "Скругление сопрягает задний торец фланца с наружной поверхностью втулки.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f12",
+        "f6"
+      ],
+      "description": "Скругление у левого дна правой расточки.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f14",
+        "f6"
+      ],
+      "description": "Фаска открыта к правому торцу, в сторону +Z.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Осевые глубины от левого торца (Z=0):",
+      "view_id": "v1",
+      "status": "observed"
+    },
+    {
+      "raw": "Винтовые витки крепежа не строить.",
+      "view_id": "v2",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Направление взгляда на плоскость продольного разреза явно не обозначено; его осевые и вертикальные направления заданы ориентацией задачи.",
+    "Обобщённое указание «Наружные торцы» не перечисляет каждую кромку фасок отдельно."
+  ]
+}

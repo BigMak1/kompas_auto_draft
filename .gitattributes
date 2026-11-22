@@ -1,0 +1,11 @@
+# Хеши текстовых журналов и исходников сохраняются при клонировании на Windows.
+* text=auto eol=lf
+
+# Выгрузки CAD доступны по ссылкам; GitHub сворачивает их diff.
+/data/target/** linguist-generated
+/runs/**/model.stl linguist-generated
+*.stl binary
+
+# Переносимая история MLflow.
+*.db binary
+/mlflow/artifacts/** linguist-generated

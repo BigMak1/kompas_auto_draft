@@ -1,0 +1,304 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез слева",
+      "kind": "section",
+      "description": "Плоскость YZ; +Z вправо, +Y вверх, взгляд вдоль +X. База Z=0 — левый торец широкой ступени."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид справа на листе",
+      "kind": "view",
+      "description": "Взгляд от базы вдоль +Z; +X влево, +Y вверх. Большее отверстие сверху, меньшее снизу."
+    },
+    {
+      "id": "v3",
+      "label": "Примечания под разрезом",
+      "kind": "other",
+      "description": "Размеры отверстий, фаски и условного представления резьбы."
+    },
+    {
+      "id": "v4",
+      "label": "Основная надпись",
+      "kind": "table",
+      "description": "Геометрических размеров нет."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр наружных цилиндров на левом торце широкой ступени; Z=0, X=0, Y=0.",
+    "axis_z": "+Z вдоль оси наружных цилиндров вправо на разрезе, к узкой ступени.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "body",
+      "description": "Ступенчатое цилиндрическое тело.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "outer_cylinder",
+      "description": "Широкая ступень от базового торца до уступа.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "outer_cylinder",
+      "description": "Узкая ступень от уступа до правого торца.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "threaded_through_hole",
+      "description": "Верхнее сквозное резьбовое отверстие на +Y; в эталоне условно представлено гладким цилиндром без винтовых витков.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "chamfer",
+      "description": "Входная фаска верхнего отверстия со стороны базового торца.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "through_hole",
+      "description": "Нижнее сквозное цилиндрическое отверстие на −Y.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "counterbore",
+      "description": "Цековка нижнего отверстия со входом на базовом торце; глубина отсчитывается вдоль +Z.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Общая длина тела вдоль Z",
+      "raw": "60",
+      "value": 60.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Длина широкой ступени от базы вдоль +Z",
+      "raw": "40",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Наружный диаметр широкой ступени",
+      "raw": "⌀120",
+      "value": 120.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Наружный диаметр узкой ступени",
+      "raw": "⌀100",
+      "value": 100.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Диаметр цековки",
+      "raw": "⌀20",
+      "value": 20.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Диаметр нижнего сквозного отверстия",
+      "raw": "⌀12",
+      "value": 12.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Глубина цековки от базы",
+      "raw": "8",
+      "value": 8.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Смещение оси верхнего отверстия от оси детали вдоль +Y",
+      "raw": "30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Смещение оси нижнего отверстия от оси детали вдоль −Y",
+      "raw": "30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Номинальный диаметр резьбы верхнего отверстия",
+      "raw": "М24х3",
+      "value": 24.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Шаг резьбы верхнего отверстия",
+      "raw": "М24х3",
+      "value": 3.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Размер входной фаски верхнего отверстия",
+      "raw": "2,5х45°",
+      "value": 2.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Угол входной фаски верхнего отверстия",
+      "raw": "2,5х45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Диаметр условного цилиндра резьбы в эталоне",
+      "raw": "D20,752410",
+      "value": 20.75241,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Наружные цилиндры соосны Z; соединены плоским кольцевым уступом.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f6"
+      ],
+      "description": "Оси параллельны Z и лежат в плоскости YZ, при X=0; отверстия проходят между обоими торцами.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f5"
+      ],
+      "description": "Фаска соосна верхнему отверстию и открывается на базовый торец.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f7"
+      ],
+      "description": "Цековка соосна нижнему отверстию и переходит в него плоским кольцевым дном.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [],
+  "unresolved": [
+    "Допуски размеров и класс точности резьбы не указаны."
+  ]
+}

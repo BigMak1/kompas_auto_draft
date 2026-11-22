@@ -1,0 +1,477 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез",
+      "kind": "section",
+      "description": "Слева на листе; плоскость YZ, +Z вправо, +Y вверх; взгляд вдоль +X. Левый торец — база Z=0."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевое сечение справа",
+      "kind": "section",
+      "description": "Паз сверху соответствует +Y. Принят взгляд с правого торца вдоль −Z, +X вправо; направление взгляда на листе не обозначено."
+    },
+    {
+      "id": "v3",
+      "label": "Размерные примечания",
+      "kind": "other",
+      "description": "Текст под продольным разрезом."
+    },
+    {
+      "id": "v4",
+      "label": "Основная надпись",
+      "kind": "table",
+      "description": "Геометрических параметров нет."
+    }
+  ],
+  "coordinates": {
+    "origin": "Пересечение оси втулки с левым торцом продольного разреза; центр в XY — (0,0).",
+    "axis_z": "Ось втулки; +Z вправо на продольном разрезе. Осевые положения отсчитываются от левого торца; паз направлен к +Y, его середина в YZ.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "outer_cylinder",
+      "description": "Наружная цилиндрическая поверхность; база A.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "internal_thread",
+      "description": "Внутренняя левая резьба со стороны базового торца; поле допуска по выноске.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "bore",
+      "description": "Гладкая осевая расточка после резьбовой зоны.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "keyway",
+      "description": "Сквозной продольный внутренний шпоночный паз на стороне +Y.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "chamfer_group",
+      "description": "Наружные фаски на обоих торцах и фаска правого входа отверстия.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "entrance_chamfer",
+      "description": "Входная фаска отверстия у базового левого торца.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "conical_transition",
+      "description": "Конический переход от резьбового отверстия к гладкой расточке.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Общая длина",
+      "raw": "133",
+      "value": 133.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Наружный диаметр",
+      "raw": "⌀38g6(−0,009/−0,025)",
+      "value": 38.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Резьба, номинальный диаметр",
+      "raw": "M20LH-7H",
+      "value": 20.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Длина резьбовой зоны от левого торца",
+      "raw": "24",
+      "value": 24.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Диаметр гладкой расточки",
+      "raw": "⌀22",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Ширина паза",
+      "raw": "6D10(+0,078/+0,030)",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Глубина паза от наружной образующей со стороны +Y до дна, к оси",
+      "raw": "6 +0,2",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Радиус углов дна паза",
+      "raw": "R0,25",
+      "value": 0.25,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Допуск симметричности паза относительно базы A",
+      "raw": "≡ | T/2 0,01 | A",
+      "value": 0.01,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Шероховатость наружной поверхности Ra, значение в mm",
+      "raw": "Ra 0,8",
+      "value": 0.0008,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Шероховатость паза Ra, значение в mm",
+      "raw": "Ra 3,2",
+      "value": 0.0032,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "hypothesis"
+    },
+    {
+      "id": "d12",
+      "name": "Размер фасок",
+      "raw": "Наружные фаски и правый вход: 1,6x45°.",
+      "value": 1.6,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Угол фасок",
+      "raw": "1,6x45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Шаг левой резьбы",
+      "raw": "Резьба M20x2,5 LH",
+      "value": 2.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Начало резьбовой зоны, Z",
+      "raw": "зона от левого торца 0...24",
+      "value": 0.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Конец резьбовой зоны, Z",
+      "raw": "зона от левого торца 0...24",
+      "value": 24.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Диаметр левого входа",
+      "raw": "Слева: вход D22,29368",
+      "value": 22.29368,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Размер левой входной фаски",
+      "raw": "фаска 2,5x45° до D17,29368",
+      "value": 2.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Угол левой входной фаски",
+      "raw": "2,5x45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Диаметр после левой входной фаски",
+      "raw": "до D17,29368",
+      "value": 17.29368,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Угол конического перехода к оси",
+      "raw": "Конус 45° к оси",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Начало конического перехода, Z",
+      "raw": "от Z=21,5 (D17,29368)",
+      "value": 21.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Начальный диаметр конического перехода",
+      "raw": "D17,29368",
+      "value": 17.29368,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Конец конического перехода, Z",
+      "raw": "до Z=23,85316 (D22)",
+      "value": 23.85316,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Конечный диаметр конического перехода",
+      "raw": "D22",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Диаметр гладкой расточки по примечанию",
+      "raw": "Гладкая расточка D22 до Z=131,4",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Конец гладкой расточки, Z",
+      "raw": "до Z=131,4",
+      "value": 131.4,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Диаметр правого входа",
+      "raw": "вход справа D25,2",
+      "value": 25.2,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3",
+        "f6",
+        "f7"
+      ],
+      "description": "Поверхности соосны Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f6",
+        "f7",
+        "f3",
+        "f5"
+      ],
+      "description": "По +Z: левый вход, резьбовая зона, конический переход, гладкая расточка, правый вход.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f3",
+        "f2"
+      ],
+      "description": "Паз открыт во внутреннюю полость и проходит по всей длине, включая резьбовую зону.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f1"
+      ],
+      "description": "Срединная плоскость паза YZ содержит ось базовой наружной поверхности.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Паз сквозной на всю длину. Z отсчитывается от левого торца.",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Резьба в эталоне с витками, при оценке применять тот же профиль.",
+      "view_id": "v3",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Направление взгляда торцевого сечения не обозначено; принято со стороны +Z.",
+    "Точная область действия Ra 3,2 на поверхностях паза не уточнена.",
+    "Точная форма захода и сбега витков резьбы не размерена; резьбовая зона и переход заданы перекрывающимися осевыми диапазонами."
+  ]
+}

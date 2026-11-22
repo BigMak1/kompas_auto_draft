@@ -1,0 +1,36 @@
+# Паспорт исследования №1, выборка, расписание и парные сравнения.
+number: 1
+name: 01-drawing-passport
+title: Влияние паспорта чертежа
+description: >
+  Сравнение однопроходного baseline (01_baseline_direct) с двухэтапным подходом (извлечение
+  структурированного паспорта чертежа перед генерацией CAD-рецепта) и двумя
+  абляциями (без PNG у построителя и со свободными текстовыми заметками).
+hypothesis: >
+  Предварительное структурированное чтение чертежа в строгий JSON-паспорт (виды,
+  элементы, размеры, связи и общие примечания) снижает пропуски размеров и ошибки
+  привязки по сравнению с прямой генерацией по PNG.
+
+dataset_version: drawing-cad-v3
+manifest: data/manifest.json
+
+execution:
+  repeats: 3
+  validation_size: 5
+  order_seed: 20261115
+  concurrency: 4
+  progress_interval_seconds: 30
+
+comparisons:
+  - candidate: 02_passport_png
+    control: 01_baseline_direct
+    question: Даёт ли структурированный паспорт + PNG прирост относительно однопроходного baseline?
+  - candidate: 03_passport_only
+    control: 01_baseline_direct
+    question: Превосходит ли один только паспорт (без PNG у построителя) прямой baseline?
+  - candidate: 02_passport_png
+    control: 03_passport_only
+    question: Каков вклад повторного доступа построителя к PNG поверх готового паспорта?
+  - candidate: 02_passport_png
+    control: 04_notes_png
+    question: Каков вклад строгой JSON-схемы паспорта по сравнению со свободными заметками?

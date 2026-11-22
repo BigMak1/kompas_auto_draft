@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0018",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0018.png",
+    "sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
+    "original_bytes": 142905,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 142905,
+    "sent_sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c",
+    "resized": false
+  },
+  "orientation": "Ось отверстия плоского кольца совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец показанного разреза; +Z идёт вправо по разрезу, вдоль толщины кольца. Торцы геометрически эквивалентны. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 5193,
+    "input_tokens_details": {
+      "cache_write_tokens": 5190,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5190
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 863,
+    "output_tokens_details": {
+      "reasoning_tokens": 203
+    },
+    "total_tokens": 6056
+  },
+  "http_responses": 1,
+  "request_id": "req_c84c02efdd6c4de2aa1b703f917d2769",
+  "http_status": 200,
+  "response_id": "resp_003cc5f55958bbe6016b0346b0816c87d29f00d2c042df7801",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 13.159002208005404,
+  "trace_id": "tr-16a9a9f9c4f1270d9bb38cc7e5342991",
+  "files": {
+    "debug/request.json": "a3dc8b9d6df0067c5e3c16d0797c310f4cbed2091efd3f62a380e9d644c856f1",
+    "debug/response.json": "d7eb19ac898a32fa548c31482cfbbc14de8a2f93b1b1568afa8b0e1abf9c58e2",
+    "debug/stage.json": "501fa3143ed29155f82f80b42b9ba554907b292df5e85c1f0f7881fb0345ea63",
+    "passport.json": "91f9abdd8757b40197253306b6d336b1f35aec281c4bc5823f6cbde391934588",
+    "run.log": "c473a0b6ca9e65bf65235426af6682ac1e2342c4b097c7ac9cc07149ec850e40"
+  }
+}

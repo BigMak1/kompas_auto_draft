@@ -1,0 +1,179 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Осевой разрез без обозначения",
+      "kind": "section",
+      "description": "Продольный разрез в плоскости YZ: +Z вправо, база Z=0 слева. Условно +Y вверх, взгляд вдоль +X; выбор допустим при свободном повороте вокруг Z."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия на входном торце конической зенковки; этот торец — база Z=0.",
+    "axis_z": "Ось отверстия; +Z от входа зенковки к торцу с меньшим выходом отверстия. Углового ориентира нет, поворот вокруг Z свободен.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "cylindrical_body",
+      "description": "Круглая шайба с цилиндрической наружной поверхностью.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "conical_countersink",
+      "description": "Коническая зенковка со стороны базы, сужающаяся по +Z.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "cylindrical_bore",
+      "description": "Цилиндрический участок отверстия от зенковки до выходного торца.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "planar_face",
+      "description": "Входной торец слева на разрезе, база Z=0.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "planar_face",
+      "description": "Выходной торец справа на разрезе, со стороны +Z.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Наружный диаметр",
+      "raw": "⌀40",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Толщина между торцами",
+      "raw": "4*",
+      "value": 4.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Диаметр входа зенковки на базе",
+      "raw": "⌀13",
+      "value": 13.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Полный угол конуса зенковки",
+      "raw": "90°±2°",
+      "value": 90.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Диаметр цилиндрического отверстия",
+      "raw": "⌀8,5",
+      "value": 8.5,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "description": "Наружный цилиндр, зенковка и цилиндрический участок отверстия соосны оси Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Зенковка непосредственно переходит в цилиндрический участок отверстия.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f5"
+      ],
+      "description": "Торцы параллельны и перпендикулярны Z; толщина отсчитывается от базы по +Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f4"
+      ],
+      "description": "Большой край зенковки расположен в плоскости входного торца.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f5"
+      ],
+      "description": "Цилиндрический участок отверстия открыт на выходном торце.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "1. * Размер для справок.",
+      "view_id": null,
+      "status": "observed"
+    },
+    {
+      "raw": "2. Неуказанные предельные отклонения размеров H14, h14.",
+      "view_id": null,
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Глубина зенковки и длина цилиндрического участка отверстия отдельно не указаны."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0031",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0031.png",
+    "sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "original_bytes": 91742,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 91742,
+    "sent_sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "resized": false
+  },
+  "orientation": "Ось наружных цилиндрических поверхностей совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец более широкой ступени на продольном разрезе слева, со входом цековки нижнего отверстия. +Z идёт вправо по разрезу, к более узкой ступени. Ось верхнего, большего резьбового отверстия на торцевом виде находится на положительной полуоси Y (X=0); меньшее отверстие — на отрицательной. Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "usage": {
+    "input_tokens": 5247,
+    "input_tokens_details": {
+      "cache_write_tokens": 5244,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5244
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2525,
+    "output_tokens_details": {
+      "reasoning_tokens": 908
+    },
+    "total_tokens": 7772
+  },
+  "http_responses": 1,
+  "request_id": "req_710e93c5d754424d8077f1157d60b44f",
+  "http_status": 200,
+  "response_id": "resp_094789330ba30429016b034680a9ec87d28d809d8fe2e8e2af",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 31.658812042005593,
+  "trace_id": "tr-0c4f1fad18f44a16fc37fa63d6485352",
+  "files": {
+    "debug/request.json": "016e711bf6a8bd281ecafd70679e01a00b2cfd4921897750930077dd687fdb30",
+    "debug/response.json": "d6203e98b6ba86f0102ac451691a70b02bea3b872eb4d060dcf20effe5739f5b",
+    "debug/stage.json": "e90ac6f3e2b2ba881c4dc912b821b23e579750e31d976d4d7510c8719d601287",
+    "passport.json": "4ac9ea4170b7f0c776d21a82faaef150a33e7c286662e37b01f38dcfa8fc0c40",
+    "run.log": "34e31d7cee2a4d800b362c0d6865e5e9fe9a91299f81e58c1ad515b50de38985"
+  }
+}

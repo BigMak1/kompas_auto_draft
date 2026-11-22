@@ -1,0 +1,580 @@
+{
+  "name": "01-drawing-passport-dev-all-r1",
+  "split": "dev",
+  "formal_validation": false,
+  "expected": 40,
+  "measured": 40,
+  "variants": {
+    "01_baseline_direct": {
+      "measured": 10,
+      "expected": 10,
+      "iou": 0.9331267264796717,
+      "iou_part_std": 0.10412956057934612,
+      "f_score": 0.9380022164141274,
+      "f_score_part_std": 0.1535301300775169,
+      "validity": 1.0,
+      "per_part": {
+        "KF0011": {
+          "iou": {
+            "mean": 0.6726913427260434,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.5071402244554098,
+            "std": null
+          }
+        },
+        "KF0012": {
+          "iou": {
+            "mean": 0.8943485080025683,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9227374938948744,
+            "std": null
+          }
+        },
+        "KF0016": {
+          "iou": {
+            "mean": 0.9941796454534416,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0017": {
+          "iou": {
+            "mean": 0.9952428126111961,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0018": {
+          "iou": {
+            "mean": 0.9995502328696941,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0019": {
+          "iou": {
+            "mean": 0.9974127758504217,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0025": {
+          "iou": {
+            "mean": 0.8774334884699134,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9599441376245794,
+            "std": null
+          }
+        },
+        "KF0027": {
+          "iou": {
+            "mean": 0.9954660985323852,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0029": {
+          "iou": {
+            "mean": 0.9056238009198102,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9902003081664099,
+            "std": null
+          }
+        },
+        "KF0031": {
+          "iou": {
+            "mean": 0.9993185593612423,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        }
+      },
+      "repeat_means": {
+        "iou": [
+          0.9331267264796717
+        ],
+        "f_score": [
+          0.9380022164141274
+        ]
+      },
+      "repeat_std": {
+        "iou": null,
+        "f_score": null
+      },
+      "generation_failures": 0,
+      "infra_failures": 0,
+      "outcome_counts": {
+        "valid_stl": 10
+      },
+      "seconds_mean": 38.146542191706246,
+      "input_tokens_mean": 4581.4,
+      "output_tokens_mean": 2613
+    },
+    "02_passport_png": {
+      "measured": 10,
+      "expected": 10,
+      "iou": 0.9356414367646355,
+      "iou_part_std": 0.0964179623059414,
+      "f_score": 0.9458939946367615,
+      "f_score_part_std": 0.13134936630277136,
+      "validity": 1.0,
+      "per_part": {
+        "KF0011": {
+          "iou": {
+            "mean": 0.7021020622357841,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.5780358124738165,
+            "std": null
+          }
+        },
+        "KF0012": {
+          "iou": {
+            "mean": 0.8999729483075791,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9307596881028085,
+            "std": null
+          }
+        },
+        "KF0016": {
+          "iou": {
+            "mean": 0.9941796454544234,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0017": {
+          "iou": {
+            "mean": 0.9952428126111961,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0018": {
+          "iou": {
+            "mean": 0.9995502328696941,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0019": {
+          "iou": {
+            "mean": 0.9976147248968646,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0025": {
+          "iou": {
+            "mean": 0.8787247773370526,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9599441376245794,
+            "std": null
+          }
+        },
+        "KF0027": {
+          "iou": {
+            "mean": 0.9972319033538098,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0029": {
+          "iou": {
+            "mean": 0.8924767012187088,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9902003081664099,
+            "std": null
+          }
+        },
+        "KF0031": {
+          "iou": {
+            "mean": 0.9993185593612423,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        }
+      },
+      "repeat_means": {
+        "iou": [
+          0.9356414367646355
+        ],
+        "f_score": [
+          0.9458939946367615
+        ]
+      },
+      "repeat_std": {
+        "iou": null,
+        "f_score": null
+      },
+      "generation_failures": 0,
+      "infra_failures": 0,
+      "outcome_counts": {
+        "valid_stl": 10
+      },
+      "seconds_mean": 66.66402540000271,
+      "input_tokens_mean": 13031.8,
+      "output_tokens_mean": 5169.2
+    },
+    "03_passport_only": {
+      "measured": 10,
+      "expected": 10,
+      "iou": 0.9362387890749306,
+      "iou_part_std": 0.09614794787119223,
+      "f_score": 0.9456746084710833,
+      "f_score_part_std": 0.1313792817798666,
+      "validity": 1.0,
+      "per_part": {
+        "KF0011": {
+          "iou": {
+            "mean": 0.7021020622357841,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.5780358124738165,
+            "std": null
+          }
+        },
+        "KF0012": {
+          "iou": {
+            "mean": 0.8989679128994108,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.928565826446027,
+            "std": null
+          }
+        },
+        "KF0016": {
+          "iou": {
+            "mean": 0.994280409794013,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0017": {
+          "iou": {
+            "mean": 0.9952428126111961,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0018": {
+          "iou": {
+            "mean": 0.9995502328696941,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0019": {
+          "iou": {
+            "mean": 0.9976147248968646,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0025": {
+          "iou": {
+            "mean": 0.8787844063731655,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9599441376245794,
+            "std": null
+          }
+        },
+        "KF0027": {
+          "iou": {
+            "mean": 0.9972319032706942,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0029": {
+          "iou": {
+            "mean": 0.8992948664372411,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9902003081664099,
+            "std": null
+          }
+        },
+        "KF0031": {
+          "iou": {
+            "mean": 0.9993185593612423,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        }
+      },
+      "repeat_means": {
+        "iou": [
+          0.9362387890749306
+        ],
+        "f_score": [
+          0.9456746084710833
+        ]
+      },
+      "repeat_std": {
+        "iou": null,
+        "f_score": null
+      },
+      "generation_failures": 0,
+      "infra_failures": 0,
+      "outcome_counts": {
+        "valid_stl": 10
+      },
+      "seconds_mean": 66.9821678458975,
+      "input_tokens_mean": 10065,
+      "output_tokens_mean": 5234.9
+    },
+    "04_notes_png": {
+      "measured": 10,
+      "expected": 10,
+      "iou": 0.9346714157331877,
+      "iou_part_std": 0.09681896884483199,
+      "f_score": 0.9451338477702419,
+      "f_score_part_std": 0.13109213970091313,
+      "validity": 1.0,
+      "per_part": {
+        "KF0011": {
+          "iou": {
+            "mean": 0.7025647306106186,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.5793295563257497,
+            "std": null
+          }
+        },
+        "KF0012": {
+          "iou": {
+            "mean": 0.8936281613396946,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9218644755856796,
+            "std": null
+          }
+        },
+        "KF0016": {
+          "iou": {
+            "mean": 0.994280409794013,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0017": {
+          "iou": {
+            "mean": 0.9952428126111961,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0018": {
+          "iou": {
+            "mean": 0.9995502328696941,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0019": {
+          "iou": {
+            "mean": 0.9976147248968646,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0025": {
+          "iou": {
+            "mean": 0.8785811284076102,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9599441376245794,
+            "std": null
+          }
+        },
+        "KF0027": {
+          "iou": {
+            "mean": 0.9975144219469223,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        },
+        "KF0029": {
+          "iou": {
+            "mean": 0.8884189754940208,
+            "std": null
+          },
+          "f_score": {
+            "mean": 0.9902003081664099,
+            "std": null
+          }
+        },
+        "KF0031": {
+          "iou": {
+            "mean": 0.9993185593612423,
+            "std": null
+          },
+          "f_score": {
+            "mean": 1.0,
+            "std": null
+          }
+        }
+      },
+      "repeat_means": {
+        "iou": [
+          0.9346714157331877
+        ],
+        "f_score": [
+          0.9451338477702419
+        ]
+      },
+      "repeat_std": {
+        "iou": null,
+        "f_score": null
+      },
+      "generation_failures": 0,
+      "infra_failures": 0,
+      "outcome_counts": {
+        "valid_stl": 10
+      },
+      "seconds_mean": 63.69400627100549,
+      "input_tokens_mean": 9752.6,
+      "output_tokens_mean": 3993.6
+    }
+  },
+  "comparisons": [
+    {
+      "candidate": "02_passport_png",
+      "control": "01_baseline_direct",
+      "question": "Даёт ли структурированный паспорт + PNG прирост относительно однопроходного baseline?",
+      "delta_iou": 0.0025147102849638614,
+      "delta_f_score": 0.007891778222634094,
+      "delta_validity": 0.0,
+      "conclusion": "Критерий улучшения выполнен (IoU, F-score и валидность не хуже базы)"
+    },
+    {
+      "candidate": "03_passport_only",
+      "control": "01_baseline_direct",
+      "question": "Превосходит ли один только паспорт (без PNG у построителя) прямой baseline?",
+      "delta_iou": 0.0031120625952589798,
+      "delta_f_score": 0.007672392056955912,
+      "delta_validity": 0.0,
+      "conclusion": "Критерий улучшения выполнен (IoU, F-score и валидность не хуже базы)"
+    },
+    {
+      "candidate": "02_passport_png",
+      "control": "03_passport_only",
+      "question": "Каков вклад повторного доступа построителя к PNG поверх готового паспорта?",
+      "delta_iou": -0.0005973523102951184,
+      "delta_f_score": 0.00021938616567818148,
+      "delta_validity": 0.0,
+      "conclusion": "Компромисс между метриками или валидностью"
+    },
+    {
+      "candidate": "02_passport_png",
+      "control": "04_notes_png",
+      "question": "Каков вклад строгой JSON-схемы паспорта по сравнению со свободными заметками?",
+      "delta_iou": 0.0009700210314478319,
+      "delta_f_score": 0.0007601468665195954,
+      "delta_validity": 0.0,
+      "conclusion": "Критерий улучшения выполнен (IoU, F-score и валидность не хуже базы)"
+    }
+  ],
+  "complete": true,
+  "physical_usage": {
+    "attempted_stages": 60,
+    "stages_with_usage": 60,
+    "seconds": 1949.9817007531237,
+    "input_tokens": 322164,
+    "output_tokens": 139093,
+    "note": "Общий этап чтения учтён физически один раз; включены все технические попытки."
+  }
+}

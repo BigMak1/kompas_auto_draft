@@ -1,0 +1,575 @@
+{
+  "steps": [
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 30.0
+      },
+      "z": 1.0,
+      "depth": 93.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.875
+      },
+      "z": 0.75,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.625
+      },
+      "z": 0.5,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.375
+      },
+      "z": 0.25,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.125
+      },
+      "z": 0.0,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.875
+      },
+      "z": 94.0,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.625
+      },
+      "z": 94.25,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.375
+      },
+      "z": 94.5,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 29.125
+      },
+      "z": 94.75,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.0
+      },
+      "z": 52.0,
+      "depth": 43.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 0.6667
+      },
+      "z": 42.7624,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 2.0
+      },
+      "z": 43.5322,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 3.3333
+      },
+      "z": 44.302,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 4.6667
+      },
+      "z": 45.0718,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 6.0
+      },
+      "z": 45.8416,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 7.3333
+      },
+      "z": 46.6114,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 8.6667
+      },
+      "z": 47.3812,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 10.0
+      },
+      "z": 48.151,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 11.3333
+      },
+      "z": 48.9208,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 12.6667
+      },
+      "z": 49.6906,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 14.0
+      },
+      "z": 50.4604,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 15.3333
+      },
+      "z": 51.2302,
+      "depth": 0.7698,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "polygon",
+        "points": [
+          {
+            "x": -5.0,
+            "y": 0.0
+          },
+          {
+            "x": 5.0,
+            "y": 0.0
+          },
+          {
+            "x": 5.0,
+            "y": 18.9
+          },
+          {
+            "x": 4.9464,
+            "y": 19.1
+          },
+          {
+            "x": 4.8,
+            "y": 19.2464
+          },
+          {
+            "x": 4.6,
+            "y": 19.3
+          },
+          {
+            "x": -4.6,
+            "y": 19.3
+          },
+          {
+            "x": -4.8,
+            "y": 19.2464
+          },
+          {
+            "x": -4.9464,
+            "y": 19.1
+          },
+          {
+            "x": -5.0,
+            "y": 18.9
+          }
+        ]
+      },
+      "z": 52.0,
+      "depth": 43.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.125
+      },
+      "z": 94.0,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.375
+      },
+      "z": 94.25,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.625
+      },
+      "z": 94.5,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.875
+      },
+      "z": 94.75,
+      "depth": 0.25,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -1.74,
+        "y": 0.0,
+        "width": 3.48,
+        "height": 31.0
+      },
+      "z": 47.0,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -2.915,
+        "y": 0.0,
+        "width": 5.83,
+        "height": 31.0
+      },
+      "z": 47.625,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.631,
+        "y": 0.0,
+        "width": 7.262,
+        "height": 31.0
+      },
+      "z": 48.25,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.134,
+        "y": 0.0,
+        "width": 8.268,
+        "height": 31.0
+      },
+      "z": 48.875,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.496,
+        "y": 0.0,
+        "width": 8.992,
+        "height": 31.0
+      },
+      "z": 49.5,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.7496,
+        "y": 0.0,
+        "width": 9.4992,
+        "height": 31.0
+      },
+      "z": 50.125,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.9113,
+        "y": 0.0,
+        "width": 9.8226,
+        "height": 31.0
+      },
+      "z": 50.75,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.9902,
+        "y": 0.0,
+        "width": 9.9804,
+        "height": 31.0
+      },
+      "z": 51.375,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.9902,
+        "y": 0.0,
+        "width": 9.9804,
+        "height": 31.0
+      },
+      "z": 52.0,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.9113,
+        "y": 0.0,
+        "width": 9.8226,
+        "height": 31.0
+      },
+      "z": 52.625,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.7496,
+        "y": 0.0,
+        "width": 9.4992,
+        "height": 31.0
+      },
+      "z": 53.25,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.496,
+        "y": 0.0,
+        "width": 8.992,
+        "height": 31.0
+      },
+      "z": 53.875,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -4.134,
+        "y": 0.0,
+        "width": 8.268,
+        "height": 31.0
+      },
+      "z": 54.5,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.631,
+        "y": 0.0,
+        "width": 7.262,
+        "height": 31.0
+      },
+      "z": 55.125,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -2.915,
+        "y": 0.0,
+        "width": 5.83,
+        "height": 31.0
+      },
+      "z": 55.75,
+      "depth": 0.625,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -1.74,
+        "y": 0.0,
+        "width": 3.48,
+        "height": 31.0
+      },
+      "z": 56.375,
+      "depth": 0.625,
+      "direction": "+Z"
+    }
+  ]
+}

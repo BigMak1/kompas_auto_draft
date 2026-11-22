@@ -1,0 +1,11 @@
+# Параметры LLM-вызовов и подготовки изображений для честного сравнения вариантов.
+agent:
+  model: gpt-6.1-sol
+  reasoning_effort: medium
+  timeout_seconds: 900
+  max_output_tokens: 16384
+  image_detail: high
+  image_max_side: 4096
+
+reading:
+  max_output_tokens: 8192

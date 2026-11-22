@@ -1,27 +1,56 @@
 [project]
-name = "kompas-auto-draft"
-version = "0.1.0"
-description = "Генерация 3D-модели по изображению чертежа в КОМПАС-3D"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+name = "kompas_auto_draft"
+version = "0.3.0"
+description = "AI-пайплайны генерации 3D CAD (PNG → рецепт → CadQuery → STL), трекинг MLflow 3 и офлайн-оценка IoU/F-score"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "openai-agents==0.24.0",
+    "pydantic>=2,<3",
+    "pillow>=11",
+    "cadquery==2.7.0",
+    "trimesh==4.12.2",
+    "numpy>=2,<3",
+    "scipy>=1.14,<2",
+    "rtree>=1.4,<2",
+    "manifold3d>=3,<4",
+    "pyyaml>=6,<7",
+    "rich>=13,<15",
+    "poethepoet>=0.40,<1",
+    "mlflow>=3.7,<4",
+    "matplotlib>=3.9,<4",
+    "filelock>=3,<4",
+]
 
 [dependency-groups]
-dev = [
-    "pre-commit>=4.7",
-    "ruff>=0.17",
-]
+dev = ["pytest>=8", "ruff>=0.17", "pre-commit>=4.7"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
 
 [tool.ruff]
 line-length = 110
 target-version = "py312"
-extend-exclude = ["kompas_data", "reports", "vendor", "runs"]
 
 [tool.ruff.lint]
-# pycodestyle, pyflakes, isort, pyupgrade, bugbear, blind-except, ruff-specific
 select = ["E", "F", "I", "UP", "B", "BLE", "RUF"]
-# Тексты и комментарии на русском: кириллица не считается «похожими» символами
 ignore = ["RUF001", "RUF002", "RUF003"]
 
-[tool.ruff.format]
-quote-style = "double"
+[tool.poe]
+verbosity = -1
+
+[tool.poe.tasks]
+help = { cmd = "poe --help", help = "Показать команды проекта" }
+exp = { cmd = "python -m src.experiments", envfile = { optional = [".env"] }, help = "Исследования: list | show | check | run | evaluate | report | sync | purge | build" }
+exp-check = { cmd = "python -m src.experiments check", help = "Проверить YAML, промпты и манифест датасета без API" }
+build = { cmd = "python -m src.experiments build", help = "Детерминированная пересборка STL из готового рецепта без LLM" }
+tracking = { cmd = "python -m src.tracking", help = "Запустить локальный MLflow UI (http://127.0.0.1:5000)" }
+lint = { cmd = "ruff check src tests", help = "Линт Python" }
+format = { cmd = "ruff format src tests", help = "Форматирование Python" }
+format-check = { cmd = "ruff format --check src tests", help = "Проверка форматирования" }
+test = { cmd = "pytest -q", help = "Офлайн-тесты" }
+hooks = { cmd = "pre-commit run --all-files", help = "Проверки pre-commit" }
+check = { sequence = ["lint", "format-check", "test", "exp-check"], help = "Все офлайн-проверки проекта" }

@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0029",
+  "repeat": 1,
+  "variant": "04_notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0029.png",
+    "sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "original_bytes": 228562,
+    "original_size": [
+      3515,
+      2487
+    ],
+    "sent_size": [
+      3515,
+      2487
+    ],
+    "mode": "RGB",
+    "sent_bytes": 228562,
+    "sent_sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "resized": false
+  },
+  "orientation": "Ось отверстия ступицы совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец ступицы на продольном разрезе слева, как указано в примечании на листе. +Z идёт вправо по разрезу. Верхний шпоночный паз на торцевом виде направлен к +Y; его центр лежит в плоскости YZ. Торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. База относится к ступице, а не к торцу зубчатого венца.",
+  "seconds": 109.7261066250212,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 10868,
+    "output_tokens": 7947
+  },
+  "trace_id": "tr-ad06901767469f3adff0a4bf2f88194d",
+  "reading_path": "readings/KF0029-r01-notes-a001",
+  "reading_sha256": "61a05139e3b134139e07a3ae8cacad5ee171ed3e42c67d75eaf5427fd1179f1b",
+  "reading_trace_id": "tr-988cf739c8bef7bdd3178198bd8559a6",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 7167,
+      "input_tokens_details": {
+        "cache_write_tokens": 7164,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 7164
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 4870,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      },
+      "total_tokens": 12037
+    },
+    "http_responses": 1,
+    "request_id": "req_c410b9464df8442691843e86b4f73d55",
+    "http_status": 200,
+    "response_id": "resp_08b007eafc8a01e7016b0346a52a8487d2a0c0711f09a1adc4",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 61.247101417015074,
+    "trace_id": "tr-ad06901767469f3adff0a4bf2f88194d"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 11,
+    "noop_steps": [],
+    "volume_mm3": 1226231.9114043338,
+    "bounds_mm": [
+      [
+        -190.3215,
+        -190.3215,
+        0.0
+      ],
+      [
+        190.3215,
+        190.3215,
+        55.0
+      ]
+    ],
+    "triangles": 8360,
+    "files": {
+      "model.stl": "0bd1ef7a28e39114ad9906024944320599c95d0c19890ef666bcebcd266461b0"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "f8ca918768eaa3eee03e2c2af5b6824795a55c98d33845128ecc0fcaf159f9e4",
+    "debug/llm/response.json": "c58c3709d3051652f1f62c7ab99dd29a6c5f0347d85b30a83c6a9306f3227cbe",
+    "debug/llm/stage.json": "67b4d70d8541799b456ee78e0d2d96461dcd6078533557558a1c17712b82a2fa",
+    "model.stl": "0bd1ef7a28e39114ad9906024944320599c95d0c19890ef666bcebcd266461b0",
+    "notes.md": "2c5fd9951606858269f6de4caed3514cd6c3d8e2b39923a9047fe9f72aaf9b5c",
+    "recipe.json": "3fedf5e960e44605833cc469638c9deff1dfb5357f0967931d2d3315f5786b67",
+    "run.log": "fa534218587137aee72e70a854b4299a199e21548b9faeb0ba6d676284704484"
+  }
+}

@@ -1,0 +1,4 @@
+# Параметры генерации и экспорта STL в CadQuery.
+cad:
+  stl_tolerance_mm: 0.01
+  stl_angle_rad: 0.05

@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0016",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0016.png",
+    "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "original_bytes": 191923,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 191923,
+    "sent_sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "resized": false
+  },
+  "orientation": "Ось отверстия втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец показанного продольного разреза; +Z идёт вправо по разрезу. Торцы геометрически эквивалентны. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 3643,
+    "input_tokens_details": {
+      "cache_write_tokens": 3640,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3640
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 1176,
+    "output_tokens_details": {
+      "reasoning_tokens": 250
+    },
+    "total_tokens": 4819
+  },
+  "http_responses": 1,
+  "request_id": "req_6092dc2939724643b4d302a391bbf6fa",
+  "http_status": 200,
+  "response_id": "resp_00481ed1c8c252f8016b03479857cc87d2bcc4d9ddc0568f77",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 22.938570875005098,
+  "trace_id": "tr-adac34e25105e25240315e4e1d3d8ad2",
+  "files": {
+    "debug/request.json": "74fc7eac4233cb0e09f3b72de4c61557d40e0f1f2449570e3926cb4e5fc35356",
+    "debug/response.json": "f0b77d3f720859fddbfea0f0063f397bf5e82988867a94336686810840ea24ea",
+    "debug/stage.json": "875bee6facc7f8719965915258c79db45d080c9e87d9b042333000a6df4123d0",
+    "notes.md": "40b975a2ba35f1aa1f743a2845373adedc3085f51b49421defd9994f54b68607",
+    "run.log": "2606a1192c007316efe347734048e0c3ca950278ba968dfb10c1e2ccb6a194e1"
+  }
+}

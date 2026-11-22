@@ -1,0 +1,128 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Осевой разрез без обозначения",
+      "kind": "section",
+      "description": "Плоскость YZ: +Z вправо, +Y условно вверх; взгляд вдоль +X. Левый торец — база Z=0. Торцевой вид и таблицы отсутствуют."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия на левом торце разреза; X=0, Y=0, Z=0.",
+    "axis_z": "Ось отверстия; +Z вправо по разрезу вдоль толщины. +Y условно выбран вверх на листе; угловая ориентация вокруг Z свободна.",
+    "front_view_id": null,
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "annular_body",
+      "description": "Плоское кольцо прямоугольного осевого сечения.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "outer_cylindrical_surface",
+      "description": "Наружная цилиндрическая поверхность.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "through_bore",
+      "description": "Центральное сквозное цилиндрическое отверстие.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "end_faces",
+      "description": "Пара плоских торцов: левый базовый и правый со стороны +Z.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Наружный диаметр",
+      "raw": "⌀81±1",
+      "value": 81.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Диаметр отверстия",
+      "raw": "⌀64±1",
+      "value": 64.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Толщина вдоль Z",
+      "raw": "6*",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Соосны с Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f2",
+        "f3"
+      ],
+      "description": "Торцы перпендикулярны общей оси цилиндрических поверхностей.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f1",
+        "f4"
+      ],
+      "description": "Торцы геометрически эквивалентны; отсчёт вдоль +Z от левого торца.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "1. * Размер для справок.",
+      "view_id": "v1",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Допуск толщины не указан.",
+    "Угловой ориентир вокруг Z не задан; выбор +Y условный."
+  ]
+}

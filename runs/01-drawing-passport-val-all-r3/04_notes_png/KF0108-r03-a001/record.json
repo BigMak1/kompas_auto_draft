@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0108",
+  "repeat": 3,
+  "variant": "04_notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0108.png",
+    "sha256": "0374fcf418f9d9ca20b739897b23243f1001411d410f33d84490e1461f600fa8",
+    "original_bytes": 105523,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 105523,
+    "sent_sha256": "0374fcf418f9d9ca20b739897b23243f1001411d410f33d84490e1461f600fa8",
+    "resized": false
+  },
+  "orientation": "Ось наружного цилиндра совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый глухой торец продольного разреза; +Z идёт вправо по разрезу, к открытому торцу осевой полости. Внутренний шпоночный паз направлен к +Y; его середина лежит в плоскости YZ. Поперечное отверстие, показанное сверху продольного разреза, входит со стороны +Y.",
+  "seconds": 66.82250866701361,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 9770,
+    "output_tokens": 5275
+  },
+  "trace_id": "tr-da415a21030b76f6f06f6360eb431e0f",
+  "reading_path": "readings/KF0108-r03-notes-a001",
+  "reading_sha256": "04d6284926309b4b812a0c3b5cd4036d1d765d538389f139253327d4a696c0c0",
+  "reading_trace_id": "tr-c456fdf54e8d728e5d53e8e4fa6af6e9",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 6093,
+      "input_tokens_details": {
+        "cache_write_tokens": 6090,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 6090
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3298,
+      "output_tokens_details": {
+        "reasoning_tokens": 780
+      },
+      "total_tokens": 9391
+    },
+    "http_responses": 1,
+    "request_id": "req_75b950339e064eeebbebc10922c06cd5",
+    "http_status": 200,
+    "response_id": "resp_02559eb6b36ef57c016b03370a53b087d2a5bc436ddc0c4534",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 32.00820266699884,
+    "trace_id": "tr-da415a21030b76f6f06f6360eb431e0f"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 51,
+    "noop_steps": [],
+    "volume_mm3": 228666.24884386949,
+    "bounds_mm": [
+      [
+        -30.0,
+        -30.0,
+        0.0
+      ],
+      [
+        30.0,
+        30.0,
+        95.0
+      ]
+    ],
+    "triangles": 29492,
+    "files": {
+      "model.stl": "15d7d0769d1259ee40561d07102e2feec6c167e619d95f06fcb435747b47cfb9"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "47e4655269105b4a49a46d5c1db8bc51dfcd9202f3e09be0001f2058d90d9e82",
+    "debug/llm/response.json": "17bc5c0d0b737902d4c0900eb51a0967d50ebf045830b57d32d074739473d027",
+    "debug/llm/stage.json": "4cd4828dfb5c6ec8616223249676b6b09921e64ffbf7c1accd6de74bd4ddfc87",
+    "model.stl": "15d7d0769d1259ee40561d07102e2feec6c167e619d95f06fcb435747b47cfb9",
+    "notes.md": "6a6306a3d09a2f17cf3593e498ddb9927dbf2d116e38587963f8fa5ca437d0ba",
+    "recipe.json": "6ee52148f155f90e60e8f29948552b05276908dd8a9574f06b52d6a42c9776eb",
+    "run.log": "fc75a10cf51e4f3d5aa656c8076021d03354ace5202acdad6e3a6d9eb6fbe372"
+  }
+}

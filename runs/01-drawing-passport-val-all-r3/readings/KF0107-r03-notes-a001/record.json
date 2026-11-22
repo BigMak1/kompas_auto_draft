@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0107",
+  "repeat": 3,
+  "status": "success",
+  "input": {
+    "name": "KF0107.png",
+    "sha256": "f973b0f1c0c335abe7f0f0de9b4048d5696fa6681e60e5e6056109c94fa17f6c",
+    "original_bytes": 112635,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 112635,
+    "sent_sha256": "f973b0f1c0c335abe7f0f0de9b4048d5696fa6681e60e5e6056109c94fa17f6c",
+    "resized": false
+  },
+  "orientation": "Ось втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, со стороны внутренней левой резьбы; +Z идёт вправо по разрезу. Продольный внутренний шпоночный паз, показанный сверху торцевого сечения справа, направлен к +Y; его середина лежит в плоскости YZ.",
+  "usage": {
+    "input_tokens": 3661,
+    "input_tokens_details": {
+      "cache_write_tokens": 3658,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3658
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2833,
+    "output_tokens_details": {
+      "reasoning_tokens": 1034
+    },
+    "total_tokens": 6494
+  },
+  "http_responses": 1,
+  "request_id": "req_9634dd33d6f0478ea65de6ca8ccd7cda",
+  "http_status": 200,
+  "response_id": "resp_04f0d4ab5c3927ec016b03370e7a1087d2a3128991d57add48",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 45.62390204201802,
+  "trace_id": "tr-c8ce3f414301d0750a73cdb66e4d4f2f",
+  "files": {
+    "debug/request.json": "b8da9cb38b5ab73fbab7c3e349c106bf3c0fe1c09bb6b06ab4fe7fa21be5627c",
+    "debug/response.json": "a5b9414a289247564020da6650e218a0423dba291fb14a7eb5320e1d02cecb77",
+    "debug/stage.json": "671d7677a892f28e0de911781b6632f2a279a0c0dd790f979c3fc62cf9f8d3e5",
+    "notes.md": "df6eb1e47949cd6dba13393498b4f47e7276f02e623480c4ceef2cedda5ce5e6",
+    "run.log": "d7e6f2f921eb2a305e354c216eefbf1af1af855d34a76c9dbfbce573d9228f77"
+  }
+}

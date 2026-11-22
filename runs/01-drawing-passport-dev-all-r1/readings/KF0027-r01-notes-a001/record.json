@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0027",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0027.png",
+    "sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c",
+    "original_bytes": 275789,
+    "original_size": [
+      4962,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      2897
+    ],
+    "mode": "RGB",
+    "sent_bytes": 986087,
+    "sent_sha256": "7f755fd32ece4aef6a37e94d42feb40878572100a8287710f4404ce08b2f288b",
+    "resized": true
+  },
+  "orientation": "Ось большого центрального отверстия кольца совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец разреза слева на листе, со входами цековок; +Z идёт вправо по разрезу. Ось верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх. Сохрани стороны остальных отверстий относительно этого ориентира.",
+  "usage": {
+    "input_tokens": 3688,
+    "input_tokens_details": {
+      "cache_write_tokens": 3685,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3685
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 1946,
+    "output_tokens_details": {
+      "reasoning_tokens": 514
+    },
+    "total_tokens": 5634
+  },
+  "http_responses": 1,
+  "request_id": "req_191604e6547a4e2e92f6aab0501945ec",
+  "http_status": 200,
+  "response_id": "resp_0f070f3cac7d8e9a016b03462c84b487d29ee1e6fd20715f6f",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 34.92623741700663,
+  "trace_id": "tr-4ab8a347036fcb625358d2c137bbda0e",
+  "files": {
+    "debug/request.json": "dd45d61ca5ef873a45351e09909578e3cd31ab1db2e5cd75a64ecce7b130c5ef",
+    "debug/response.json": "0437af50051a8bccbc03fa23765d202027676e3ac3042ccedcb8cec834e63a81",
+    "debug/stage.json": "7a54e61d30586cc10f0ef399f4f8d01fa0df36d05d3b100b939595bf3559122a",
+    "notes.md": "0a466b3a6c12d281b08ce5ee75f835fdd347fb3fcc1b0be239f2f7bd3a9644b5",
+    "run.log": "dfb62462bfbb34a4c8b846d9f62a3a50e177a251c1f4e88541e2baced7083923"
+  }
+}
