@@ -1,0 +1,835 @@
+{
+  "steps": [
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 20.0
+      },
+      "z": 0.0,
+      "depth": 120.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 17.8013,
+        "width": 6.0,
+        "height": 17.1987
+      },
+      "z": 67.0871,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 14.589,
+        "width": 6.0,
+        "height": 20.411
+      },
+      "z": 69.2693,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.1381,
+        "width": 6.0,
+        "height": 22.8619
+      },
+      "z": 71.4515,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 10.2305,
+        "width": 6.0,
+        "height": 24.7695
+      },
+      "z": 73.6337,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 8.7133,
+        "width": 6.0,
+        "height": 26.2867
+      },
+      "z": 75.8159,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 7.5066,
+        "width": 6.0,
+        "height": 27.4934
+      },
+      "z": 77.9981,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 6.5733,
+        "width": 6.0,
+        "height": 28.4267
+      },
+      "z": 80.1803,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.8724,
+        "width": 6.0,
+        "height": 29.1276
+      },
+      "z": 82.3625,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.3839,
+        "width": 6.0,
+        "height": 29.6161
+      },
+      "z": 84.5447,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.0954,
+        "width": 6.0,
+        "height": 29.9046
+      },
+      "z": 86.7269,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.0,
+        "width": 6.0,
+        "height": 30.0
+      },
+      "z": 88.9091,
+      "depth": 2.1818,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.0954,
+        "width": 6.0,
+        "height": 29.9046
+      },
+      "z": 91.0909,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.3839,
+        "width": 6.0,
+        "height": 29.6161
+      },
+      "z": 93.2731,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 5.8724,
+        "width": 6.0,
+        "height": 29.1276
+      },
+      "z": 95.4553,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 6.5733,
+        "width": 6.0,
+        "height": 28.4267
+      },
+      "z": 97.6375,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 7.5066,
+        "width": 6.0,
+        "height": 27.4934
+      },
+      "z": 99.8197,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 8.7133,
+        "width": 6.0,
+        "height": 26.2867
+      },
+      "z": 102.0019,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 10.2305,
+        "width": 6.0,
+        "height": 24.7695
+      },
+      "z": 104.1841,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.1381,
+        "width": 6.0,
+        "height": 22.8619
+      },
+      "z": 106.3663,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 14.589,
+        "width": 6.0,
+        "height": 20.411
+      },
+      "z": 108.5485,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 17.8013,
+        "width": 6.0,
+        "height": 17.1987
+      },
+      "z": 110.7307,
+      "depth": 2.1822,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 18.9006,
+        "width": 6.0,
+        "height": 6.0994
+      },
+      "z": 18.5436,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 6.0994
+      },
+      "z": 18.5436,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 17.2945,
+        "width": 6.0,
+        "height": 7.7055
+      },
+      "z": 19.6347,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 7.7055
+      },
+      "z": 19.6347,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 16.0691,
+        "width": 6.0,
+        "height": 8.9309
+      },
+      "z": 20.7258,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 8.9309
+      },
+      "z": 20.7258,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 15.1152,
+        "width": 6.0,
+        "height": 9.8848
+      },
+      "z": 21.8169,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 9.8848
+      },
+      "z": 21.8169,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 14.3566,
+        "width": 6.0,
+        "height": 10.6434
+      },
+      "z": 22.908,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 10.6434
+      },
+      "z": 22.908,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 13.7533,
+        "width": 6.0,
+        "height": 11.2467
+      },
+      "z": 23.9991,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 11.2467
+      },
+      "z": 23.9991,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 13.2867,
+        "width": 6.0,
+        "height": 11.7133
+      },
+      "z": 25.0902,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 11.7133
+      },
+      "z": 25.0902,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.9362,
+        "width": 6.0,
+        "height": 12.0638
+      },
+      "z": 26.1813,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.0638
+      },
+      "z": 26.1813,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.692,
+        "width": 6.0,
+        "height": 12.308
+      },
+      "z": 27.2724,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.308
+      },
+      "z": 27.2724,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.5477,
+        "width": 6.0,
+        "height": 12.4523
+      },
+      "z": 28.3635,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.4523
+      },
+      "z": 28.3635,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.5,
+        "width": 6.0,
+        "height": 12.5
+      },
+      "z": 29.4546,
+      "depth": 1.0908,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.5
+      },
+      "z": 29.4546,
+      "depth": 1.0908,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.5477,
+        "width": 6.0,
+        "height": 12.4523
+      },
+      "z": 30.5454,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.4523
+      },
+      "z": 30.5454,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.692,
+        "width": 6.0,
+        "height": 12.308
+      },
+      "z": 31.6365,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.308
+      },
+      "z": 31.6365,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 12.9362,
+        "width": 6.0,
+        "height": 12.0638
+      },
+      "z": 32.7276,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 12.0638
+      },
+      "z": 32.7276,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 13.2867,
+        "width": 6.0,
+        "height": 11.7133
+      },
+      "z": 33.8187,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 11.7133
+      },
+      "z": 33.8187,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 13.7533,
+        "width": 6.0,
+        "height": 11.2467
+      },
+      "z": 34.9098,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 11.2467
+      },
+      "z": 34.9098,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 14.3566,
+        "width": 6.0,
+        "height": 10.6434
+      },
+      "z": 36.0009,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 10.6434
+      },
+      "z": 36.0009,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 15.1152,
+        "width": 6.0,
+        "height": 9.8848
+      },
+      "z": 37.092,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 9.8848
+      },
+      "z": 37.092,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 16.0691,
+        "width": 6.0,
+        "height": 8.9309
+      },
+      "z": 38.1831,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 8.9309
+      },
+      "z": 38.1831,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 17.2945,
+        "width": 6.0,
+        "height": 7.7055
+      },
+      "z": 39.2742,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 7.7055
+      },
+      "z": 39.2742,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": 18.9006,
+        "width": 6.0,
+        "height": 6.0994
+      },
+      "z": 40.3653,
+      "depth": 1.0911,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -3.0,
+        "y": -25.0,
+        "width": 6.0,
+        "height": 6.0994
+      },
+      "z": 40.3653,
+      "depth": 1.0911,
+      "direction": "+Z"
+    }
+  ]
+}

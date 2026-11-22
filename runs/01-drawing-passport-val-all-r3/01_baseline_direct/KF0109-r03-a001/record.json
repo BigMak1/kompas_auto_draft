@@ -1,0 +1,80 @@
+{
+  "pair_id": "KF0109",
+  "repeat": 3,
+  "variant": "01_baseline_direct",
+  "kind": "route",
+  "status": "failed",
+  "stage": "cad",
+  "input": {
+    "name": "KF0109.png",
+    "sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "original_bytes": 122717,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 122717,
+    "sent_sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "resized": false
+  },
+  "orientation": "Ось втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, со стороны меньшего конического отверстия и более узкого шпоночного паза. +Z идёт вправо по разрезу, к большему отверстию. Оба внутренних паза, показанные сверху торцевых сечений, направлены к +Y; их середины лежат в плоскости YZ.",
+  "seconds": 28.019988790998468,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4584,
+    "output_tokens": 2911
+  },
+  "trace_id": "tr-833bc3b996b5d0ea4f8f99b9b62ba9a8",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4584,
+      "input_tokens_details": {
+        "cache_write_tokens": 4581,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4581
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2911,
+      "output_tokens_details": {
+        "reasoning_tokens": 702
+      },
+      "total_tokens": 7495
+    },
+    "http_responses": 1,
+    "request_id": "req_edfa2ec9939443c6ade279789be62208",
+    "http_status": 200,
+    "response_id": "resp_0f494bd5aa8a7bfc016b0339ecdcc487d2a4a2cd7050479d3a",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 26.06596608401742,
+    "trace_id": "tr-833bc3b996b5d0ea4f8f99b9b62ba9a8"
+  },
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 2: требуется одно корректное объёмное тело",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/worker.py\", line 66, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 76, in build\n    shape, noop_steps = _build_shape_with_info(recipe)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 59, in _build_shape_with_info\n    raise ValueError(f\"Шаг {index}: требуется одно корректное объёмное тело\")\nValueError: Шаг 2: требуется одно корректное объёмное тело\n"
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/error.log": "22a52777fc569572167366b460db05e15b9a965f4adc6d3205aac26756e2742d",
+    "debug/llm/request.json": "32affd2d1e0b8b6ec877ae93965731d128a8f81d92d4d2f5617b76bc70e831f9",
+    "debug/llm/response.json": "d677d8755fb31979a2a9ebd17cadbfaf95d3abb0f6351ce7ffc9f5d0da617f57",
+    "debug/llm/stage.json": "ef8854b079449e8d384fa19c509e98d427bbd30ac561802ace9a8daa53f35906",
+    "recipe.json": "a6161fa63167d18a2fdf78628a51a0a8a6b9cf77443355347a40a896e5e3fe98",
+    "run.log": "43eecfb7f829a268e426736b3594b020b929c7e46c6f17884629d3877175d320"
+  }
+}

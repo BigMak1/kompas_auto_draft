@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0019",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0019.png",
+    "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "original_bytes": 170738,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 170738,
+    "sent_sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "resized": false
+  },
+  "orientation": "Ось отверстия шайбы совпадает с Z, её центр в XY — (0, 0). База Z=0 — торец со входом конической зенковки, слева на показанном разрезе. +Z идёт вправо по разрезу, к меньшему выходу отверстия. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 5193,
+    "input_tokens_details": {
+      "cache_write_tokens": 5190,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5190
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 1449,
+    "output_tokens_details": {
+      "reasoning_tokens": 494
+    },
+    "total_tokens": 6642
+  },
+  "http_responses": 1,
+  "request_id": "req_2e51e0add5b14b8aadd0c118d99dbd83",
+  "http_status": 200,
+  "response_id": "resp_02aebf7fd011c650016b03472aba6087d2aac65c1726fbcff8",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 20.72172795899678,
+  "trace_id": "tr-3aadd65e83eaa8a107512c8ec84620f0",
+  "files": {
+    "debug/request.json": "e2c7dd5d3f88690672e7f01bb42c16054aec42a2968939472b0d45a1b56141c8",
+    "debug/response.json": "94c9c5f8a88c2889744772f3099058e7b6d40b711479887ed2ff3b13487eb5d8",
+    "debug/stage.json": "e7f32773304cefe934041831fa72a7fd4f3ad4cf06261eb2912048c538b5f744",
+    "passport.json": "166d0b260d0ef5434d3f3c285f895430efa4c8eed6fdd5e1a1bce9289cbaf1c7",
+    "run.log": "1ca16bb489a81b65e6530b263072bc89b2e906ba8f19e06d257d3229dba32e0a"
+  }
+}

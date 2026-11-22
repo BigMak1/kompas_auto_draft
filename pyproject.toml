@@ -1,7 +1,7 @@
 [project]
 name = "kompas_auto_draft"
 version = "0.3.0"
-description = "PNG → один ответ LLM → CadQuery → STL; независимая оценка IoU и F-score"
+description = "AI-пайплайны генерации 3D CAD (PNG → рецепт → CadQuery → STL), трекинг MLflow 3 и офлайн-оценка IoU/F-score"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "openai-agents==0.24.0",
@@ -44,16 +44,13 @@ verbosity = -1
 
 [tool.poe.tasks]
 help = { cmd = "poe --help", help = "Показать команды проекта" }
-run = { cmd = "python -m src.agent run", envfile = { optional = [".env"] }, help = "Построить весь набор; одну деталь: poe run KF0027" }
-build = { cmd = "python -m src.agent build", help = "Построить STL из готового рецепта" }
-evaluate = { cmd = "python -m src.evaluate", help = "IoU, F-score и среднее по проверочным деталям" }
-lint = { cmd = "ruff check src tests", help = "Линт" }
+exp = { cmd = "python -m src.experiments", envfile = { optional = [".env"] }, help = "Исследования: list | show | check | run | evaluate | report | sync | purge | build" }
+exp-check = { cmd = "python -m src.experiments check", help = "Проверить YAML, промпты и манифест датасета без API" }
+build = { cmd = "python -m src.experiments build", help = "Детерминированная пересборка STL из готового рецепта без LLM" }
+tracking = { cmd = "python -m src.tracking", help = "Запустить локальный MLflow UI (http://127.0.0.1:5000)" }
+lint = { cmd = "ruff check src tests", help = "Линт Python" }
 format = { cmd = "ruff format src tests", help = "Форматирование Python" }
-format-check = { cmd = "ruff format --check src tests", help = "Проверить форматирование" }
-test = { cmd = "pytest -q", help = "Тесты" }
-data-check = { cmd = "python -m src.agent check", help = "Конфиг и контрольные суммы данных" }
-check = { sequence = ["lint", "format-check", "test", "data-check", "experiment-check"], help = "Все проверки проекта" }
+format-check = { cmd = "ruff format --check src tests", help = "Проверка форматирования" }
+test = { cmd = "pytest -q", help = "Офлайн-тесты" }
 hooks = { cmd = "pre-commit run --all-files", help = "Проверки pre-commit" }
-experiment = { cmd = "python -m src.experiments", envfile = { optional = [".env"] }, help = "Каталог: experiment list; запуск по номеру: experiment run 1" }
-tracking = { cmd = "python -m src.experiments.tracking", help = "MLflow; tracking publish — снимок, tracking restore — восстановление" }
-experiment-check = { cmd = "python -m src.experiments check", help = "Проверить конфиг и манифест датасета без API" }
+check = { sequence = ["lint", "format-check", "test", "exp-check"], help = "Все офлайн-проверки проекта" }

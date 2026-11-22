@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0029",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0029.png",
+    "sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "original_bytes": 228562,
+    "original_size": [
+      3515,
+      2487
+    ],
+    "sent_size": [
+      3515,
+      2487
+    ],
+    "mode": "RGB",
+    "sent_bytes": 228562,
+    "sent_sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "resized": false
+  },
+  "orientation": "Ось отверстия ступицы совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец ступицы на продольном разрезе слева, как указано в примечании на листе. +Z идёт вправо по разрезу. Верхний шпоночный паз на торцевом виде направлен к +Y; его центр лежит в плоскости YZ. Торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. База относится к ступице, а не к торцу зубчатого венца.",
+  "usage": {
+    "input_tokens": 3701,
+    "input_tokens_details": {
+      "cache_write_tokens": 3698,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3698
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 3077,
+    "output_tokens_details": {
+      "reasoning_tokens": 516
+    },
+    "total_tokens": 6778
+  },
+  "http_responses": 1,
+  "request_id": "req_7084ae02b73a4d0184dcd5eae0320601",
+  "http_status": 200,
+  "response_id": "resp_0167ee6f5a230fc6016b034676e98887d2b17f513364913b7f",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 46.24012641599984,
+  "trace_id": "tr-988cf739c8bef7bdd3178198bd8559a6",
+  "files": {
+    "debug/request.json": "1c57948a5fd657cbdbec63724116d0f4bee896971322809221e3707f2644095a",
+    "debug/response.json": "f0855577ca499088f8b84959c280ce97d17c328cea3bebdf1c5fc5efdad56a05",
+    "debug/stage.json": "c3dc9119df1de996ea28a6e28645b07d7b23949e568e4921c167e3d5e77f4759",
+    "notes.md": "2c5fd9951606858269f6de4caed3514cd6c3d8e2b39923a9047fe9f72aaf9b5c",
+    "run.log": "2b00fc786852fb8ca241903c24045a1377c1ad58825ad8ea8e644ee9c1f641d9"
+  }
+}

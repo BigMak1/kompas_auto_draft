@@ -1,0 +1,10 @@
+# Стратегия, роль в исследовании, гипотеза и промпты эксперимента 01_baseline_direct.
+pipeline: direct
+role: baseline
+label: 01 · Baseline (direct)
+description: PNG → рецепт → STL
+hypothesis: >
+  Контрольная точка (baseline из ДЗ1): однопроходная генерация CAD-рецепта
+  напрямую по PNG и подсказке ориентации без предварительного этапа чтения.
+prompts:
+  builder: prompts/cad_builder.md

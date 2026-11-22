@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0111",
+  "repeat": 3,
+  "status": "success",
+  "input": {
+    "name": "KF0111.png",
+    "sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "original_bytes": 109923,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 109923,
+    "sent_sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "resized": false
+  },
+  "orientation": "Ось наружного цилиндра вала совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида, рядом с парой меньших сегментных пазов. +Z идёт вправо по этому виду, к одиночному большому сегментному пазу. Большой паз направлен к +Y; его середина лежит в плоскости YZ. Два меньших паза находятся со сторон +Y и -Y, как показано на продольном виде и нижнем торцевом сечении.",
+  "usage": {
+    "input_tokens": 5234,
+    "input_tokens_details": {
+      "cache_write_tokens": 5231,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5231
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2565,
+    "output_tokens_details": {
+      "reasoning_tokens": 836
+    },
+    "total_tokens": 7799
+  },
+  "http_responses": 1,
+  "request_id": "req_668f93b864854b6f829f45a6a67074be",
+  "http_status": 200,
+  "response_id": "resp_049d98a3013829ea016b0336bff86887d28200516a4e730f76",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 40.268213540985016,
+  "trace_id": "tr-457e99d666180f311a69a3687141f3df",
+  "files": {
+    "debug/request.json": "ffe4aabf14c13bcfb7b96452627b392fb18b3c41af7da985019f9a1bdc616d1d",
+    "debug/response.json": "eae3bb7135598b7271010aa11338abbdec6717cc501dca4b596e9a304ba1b72a",
+    "debug/stage.json": "5904b18bc0c540dd4da3c4e676be70b8a8bedc0ab613c65d16aa32ff079710f2",
+    "passport.json": "f8c47e5b48fcf55538e2811f0bd2ea2de3000eb9d383a8b8ea64f1179047b818",
+    "run.log": "04d5b8ec037397eef191784094f427b0efa0d6df1df1f288b6d8ba4b68f60d73"
+  }
+}

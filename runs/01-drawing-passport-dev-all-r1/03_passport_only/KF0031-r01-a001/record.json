@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0031",
+  "repeat": 1,
+  "variant": "03_passport_only",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0031.png",
+    "sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "original_bytes": 91742,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 91742,
+    "sent_sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "resized": false
+  },
+  "orientation": "Ось наружных цилиндрических поверхностей совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец более широкой ступени на продольном разрезе слева, со входом цековки нижнего отверстия. +Z идёт вправо по разрезу, к более узкой ступени. Ось верхнего, большего резьбового отверстия на торцевом виде находится на положительной полуоси Y (X=0); меньшее отверстие — на отрицательной. Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "seconds": 43.981537584011676,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 9297,
+    "output_tokens": 3643
+  },
+  "trace_id": "tr-f3fda13199ca78421a5ed89130423bca",
+  "reading_path": "readings/KF0031-r01-passport-a001",
+  "reading_sha256": "0291f5ef8d4d31789e9533c49215efc80e54f8d8060db4584bf47ca26ce9b082",
+  "reading_trace_id": "tr-0c4f1fad18f44a16fc37fa63d6485352",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4050,
+      "input_tokens_details": {
+        "cache_write_tokens": 4047,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4047
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1118,
+      "output_tokens_details": {
+        "reasoning_tokens": 132
+      },
+      "total_tokens": 5168
+    },
+    "http_responses": 1,
+    "request_id": "req_7fd5c449e9d74884ae6526946d84e667",
+    "http_status": 200,
+    "response_id": "resp_0b7a7de8b5dfc344016b034755dd3887d28fca5248287df917",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 10.11322250001831,
+    "trace_id": "tr-f3fda13199ca78421a5ed89130423bca"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 15,
+    "noop_steps": [],
+    "volume_mm3": 580560.088188486,
+    "bounds_mm": [
+      [
+        -60.0,
+        -60.0,
+        0.0
+      ],
+      [
+        60.0,
+        60.0,
+        60.0
+      ]
+    ],
+    "triangles": 15124,
+    "files": {
+      "model.stl": "0419c6c43e1f0786c6e68c3701ce5d9e6fc0eb341d5232191333dc99c930700f"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "065943bfa49e1588dc04fc3a7c69f8d43b4ec0006e611da51ac99f80fba10900",
+    "debug/llm/response.json": "fce76e8e39305e02c968b54e17da60c3fbaeffa947c248b53ffef64c95283064",
+    "debug/llm/stage.json": "221c5038e4ae192cb17da101ea435b38200b594a3fc5a90246005f551fca61ac",
+    "model.stl": "0419c6c43e1f0786c6e68c3701ce5d9e6fc0eb341d5232191333dc99c930700f",
+    "passport.json": "4ac9ea4170b7f0c776d21a82faaef150a33e7c286662e37b01f38dcfa8fc0c40",
+    "recipe.json": "3e5d3b6f40b98ee561e129a16304bdfaec8aeb06392a4fced28ed64932e38080",
+    "run.log": "f46d862b740bf56ab07acb23f1f0fc4cc3876c31867f8909c1b6003e5ac4ceb4"
+  }
+}

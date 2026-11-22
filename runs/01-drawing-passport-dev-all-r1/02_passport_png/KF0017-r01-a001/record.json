@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0017",
+  "repeat": 1,
+  "variant": "02_passport_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0017.png",
+    "sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
+    "original_bytes": 182716,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 182716,
+    "sent_sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
+    "resized": false
+  },
+  "orientation": "Ось цилиндрической поверхности втулки совпадает с Z, её центр в XY — (0, 0), несмотря на прорезь. База Z=0 — левый торец продольного вида справа на листе; +Z идёт вправо по этому виду. Торцы геометрически эквивалентны. Радиальная прорезь, показанная сверху торцевого вида слева, направлена к +Y; её середина лежит в плоскости YZ.",
+  "seconds": 42.931620125018526,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 11299,
+    "output_tokens": 2239
+  },
+  "trace_id": "tr-0f3d2e8070a1a5e5ef4533fa66a6bb8e",
+  "reading_path": "readings/KF0017-r01-passport-a001",
+  "reading_sha256": "af28865f26cb083a91c773ffca37f869ac857149b4f9f90b5a0dbced3f51f88b",
+  "reading_trace_id": "tr-99a34b3812307b260c55726a0b35c12c",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 6087,
+      "input_tokens_details": {
+        "cache_write_tokens": 6084,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 6084
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 227,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 6314
+    },
+    "http_responses": 1,
+    "request_id": "req_51bb97de8c8b4abcb81a67b97a91d005",
+    "http_status": 200,
+    "response_id": "resp_0287440260c491c1016b0345f7b8d887d291fa3bece9abfa52",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 3.1065706250083167,
+    "trace_id": "tr-0f3d2e8070a1a5e5ef4533fa66a6bb8e"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 3,
+    "noop_steps": [],
+    "volume_mm3": 9365.273680285456,
+    "bounds_mm": [
+      [
+        -22.5,
+        -22.5,
+        0.0
+      ],
+      [
+        22.500000000000004,
+        21.93741096848045,
+        13.0
+      ]
+    ],
+    "triangles": 1844,
+    "files": {
+      "model.stl": "526a3bce9baf0a1c5975d1c8dce0a6ded7f943a8ad71ab8393e2fa3ca3d55ebf"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "e7338b3fbe280c4686c1ae34fa586cb910818f695c6f1457adadcdf0b0c7df57",
+    "debug/llm/response.json": "b05702aad6af99fe693f5762bc31dd3e3ecd229ab9faa7669cff5823c643a9ef",
+    "debug/llm/stage.json": "0ecd92a5368ece15b07c1c90e3112d90cb47e6998e486e6d0c70d1dca17b51ec",
+    "model.stl": "526a3bce9baf0a1c5975d1c8dce0a6ded7f943a8ad71ab8393e2fa3ca3d55ebf",
+    "passport.json": "534c010a0aca63b399c365d7a2ee457982be580ffdd525607403fbfc4b1d931e",
+    "recipe.json": "c80cda19d68a5a4780d1442a2781209b7f0885740bedd6b143cd7018a990dd6a",
+    "run.log": "e0b966c80bec311b62e7a9abead0e414e608a37c3d7fd7a4cfdb663b63e51e22"
+  }
+}

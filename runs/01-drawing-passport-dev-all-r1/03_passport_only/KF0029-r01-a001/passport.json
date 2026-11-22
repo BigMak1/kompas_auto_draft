@@ -1,0 +1,721 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез слева",
+      "kind": "section",
+      "description": "Ось Z горизонтальна, +Z вправо; база — крайний левый торец ступицы. Радиальное направление вверх соответствует +Y; положение секущей плоскости не обозначено."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид",
+      "kind": "view",
+      "description": "Взгляд от базы вдоль +Z; +X влево, +Y вверх. Верхний паз лежит в плоскости YZ."
+    },
+    {
+      "id": "v3",
+      "label": "Выносное изображение отверстия (1:1)",
+      "kind": "detail",
+      "description": "Отверстие и верхний шпоночный паз; ориентация соответствует торцевому виду."
+    },
+    {
+      "id": "v4",
+      "label": "Таблица параметров зацепления",
+      "kind": "table",
+      "description": "Параметры зубьев, контроль по шарикам и допуски."
+    },
+    {
+      "id": "v5",
+      "label": "Геометрические примечания под видами",
+      "kind": "other",
+      "description": "Осевые положения, спицы, окна и обработка кромок."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия ступицы на её крайнем левом торце в разрезе; XY=(0,0), Z=0. База не относится к торцу венца.",
+    "axis_z": "Совпадает с осью отверстия; +Z вправо на продольном разрезе. Осевые положения отсчитываются от базы вдоль +Z.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "hub",
+      "kind": "hub",
+      "description": "Цилиндрическая ступица с выступанием за оба торца венца.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "bore",
+      "kind": "through_bore",
+      "description": "Сквозное соосное отверстие; его цилиндрическая поверхность обозначена базой A.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "key",
+      "kind": "keyway",
+      "description": "Продольный паз отверстия со стороны +Y, симметричный плоскости YZ.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "rim",
+      "kind": "toothed_rim",
+      "description": "Наружный косозубый венец; направление линии зуба левое.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "web",
+      "kind": "web",
+      "description": "Средняя по оси перемычка между ступицей и ободом.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "spokes",
+      "kind": "spoke_group",
+      "description": "Равномерно расположенные спицы с прямыми боковыми участками.",
+      "view_ids": [
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "windows",
+      "kind": "window_group",
+      "description": "Окна между спицами; первое симметрично направлению +Y к пазу. Контур из концентрических дуг и прямых сторон.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "junctions",
+      "kind": "fillet_group",
+      "description": "Сопряжения перемычки со ступицей и ободом.",
+      "view_ids": [
+        "v1",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "window_corners",
+      "kind": "fillet_group",
+      "description": "Сопряжения прямых сторон окон с дугами в плоскости окна.",
+      "view_ids": [
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "window_edges",
+      "kind": "fillet_group",
+      "description": "Скругления обеих осевых кромок окон после вырезания.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "chamfers",
+      "kind": "chamfer_group",
+      "description": "Фаски ступицы, отверстия и торцов венца.",
+      "view_ids": [
+        "v1",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "check",
+      "kind": "gear_measurement",
+      "description": "Контроль венца по шарикам; шарики не являются частью детали.",
+      "view_ids": [
+        "v4"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Длина ступицы",
+      "raw": "55",
+      "value": 55.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "hub",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Диаметр ступицы",
+      "raw": "⌀70",
+      "value": 70.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "hub",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Ширина венца",
+      "raw": "30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Наружный диаметр венца",
+      "raw": "⌀380,643h11(-0,36)",
+      "value": 380.643,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Внутренний диаметр обода",
+      "raw": "⌀340",
+      "value": 340.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Диаметр отверстия",
+      "raw": "⌀30H7(+0,021)",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "bore",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Ширина шпоночного паза",
+      "raw": "8JS9(±0,018)",
+      "value": 8.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "key",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Расстояние от нижней образующей отверстия до дна верхнего паза",
+      "raw": "33,3 +0,2",
+      "value": 33.3,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "key",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Радиус углов паза",
+      "raw": "R0,25",
+      "value": 0.25,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "key",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Допуск симметричности паза относительно A",
+      "raw": "≡ | T/2 0,012 | A",
+      "value": 0.012,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "key",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Шероховатость паза Ra",
+      "raw": "Ra 3,2",
+      "value": null,
+      "unit": null,
+      "view_id": "v3",
+      "feature_id": "key",
+      "reading_status": "unresolved",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Шероховатость отверстия Ra",
+      "raw": "Ra 0,8",
+      "value": null,
+      "unit": null,
+      "view_id": "v3",
+      "feature_id": "bore",
+      "reading_status": "unresolved",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Модуль",
+      "raw": "Модуль m 2,5",
+      "value": 2.5,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Число зубьев",
+      "raw": "Число зубьев z 145",
+      "value": 145.0,
+      "unit": "count",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Угол наклона зубьев",
+      "raw": "Угол наклона зубьев β 15°12′04″",
+      "value": 15.2011111111,
+      "unit": "degree",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Коэффициент смещения",
+      "raw": "Коэффициент смещения x 0",
+      "value": 0.0,
+      "unit": "dimensionless",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Размер по шарикам",
+      "raw": "Размер по шарикам M 382,44 -0,612 -0,892",
+      "value": 382.44,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "check",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Диаметр контрольного шарика",
+      "raw": "Диаметр шарика D 4,5",
+      "value": 4.5,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "check",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Допуск радиального биения зубчатого венца",
+      "raw": "Допуск на радиальное биение зубчатого венца Fᵣ 0,063",
+      "value": 0.063,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Допуск торцового биения базовой поверхности",
+      "raw": "Допуск на торцовое биение базовой поверхности Fτ 0,15",
+      "value": 0.15,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": null,
+      "reading_status": "observed",
+      "binding_status": "unresolved"
+    },
+    {
+      "id": "d21",
+      "name": "Делительный диаметр",
+      "raw": "Делительный диаметр d 375,643",
+      "value": 375.643,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Начальная координата венца",
+      "raw": "Венец: Z=16...46",
+      "value": 16.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Конечная координата венца",
+      "raw": "Венец: Z=16...46",
+      "value": 46.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "rim",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Толщина перемычки",
+      "raw": "перемычка толщиной 10",
+      "value": 10.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "web",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Начальная координата перемычки",
+      "raw": "на Z=26...36",
+      "value": 26.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "web",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Конечная координата перемычки",
+      "raw": "на Z=26...36",
+      "value": 36.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "web",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Количество спиц",
+      "raw": "Спицы: 5",
+      "value": 5.0,
+      "unit": "count",
+      "view_id": "v5",
+      "feature_id": "spokes",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Угловой шаг спиц",
+      "raw": "через 72°",
+      "value": 72.0,
+      "unit": "degree",
+      "view_id": "v5",
+      "feature_id": "spokes",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Ширина прямых участков спиц",
+      "raw": "ширина прямых участков 40",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "spokes",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Радиус сопряжений перемычки",
+      "raw": "Сопряжения перемычки со ступицей и ободом R5.",
+      "value": 5.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "junctions",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d31",
+      "name": "Размер фасок",
+      "raw": "Фаски ступицы, отверстия и торцов венца: 1,6×45°.",
+      "value": 1.6,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "chamfers",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d32",
+      "name": "Угол фасок",
+      "raw": "1,6×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v5",
+      "feature_id": "chamfers",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d33",
+      "name": "Радиус внутренних дуг окон от оси",
+      "raw": "Окна: внутренние дуги R45",
+      "value": 45.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "windows",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d34",
+      "name": "Радиус наружных дуг окон от оси",
+      "raw": "наружные R160, от оси.",
+      "value": 160.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "windows",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d35",
+      "name": "Количество окон",
+      "raw": null,
+      "value": 5.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "windows",
+      "reading_status": "hypothesis",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d36",
+      "name": "Угловой шаг окон",
+      "raw": "Первое окно симметрично вертикали к пазу; остальные через 72°.",
+      "value": 72.0,
+      "unit": "degree",
+      "view_id": "v5",
+      "feature_id": "windows",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d37",
+      "name": "Радиус плоских сопряжений окон",
+      "raw": "Сопряжения прямых с дугами R5 в плоскости окна.",
+      "value": 5.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "window_corners",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d38",
+      "name": "Начальная координата вырезов до скруглений",
+      "raw": "Вырезы Z=26...36",
+      "value": 26.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "windows",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d39",
+      "name": "Конечная координата вырезов до скруглений",
+      "raw": "Вырезы Z=26...36",
+      "value": 36.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "windows",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d40",
+      "name": "Радиус скруглений осевых кромок окон",
+      "raw": "затем скругления обеих осевых кромок R5.",
+      "value": 5.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "window_edges",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "hub",
+        "bore",
+        "rim"
+      ],
+      "description": "Соосны основной оси Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "hub",
+        "web",
+        "rim",
+        "spokes"
+      ],
+      "description": "Спицы образуют перемычку, соединяющую ступицу с ободом.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "spokes",
+        "windows"
+      ],
+      "description": "Прямые стороны окон ограничены боковыми сторонами спиц.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "key",
+        "windows"
+      ],
+      "description": "Первое окно и паз имеют общую радиальную плоскость симметрии со стороны +Y.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "key",
+        "bore"
+      ],
+      "description": "Паз открыт в отверстие; допуск симметричности задан относительно базы A отверстия.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "junctions",
+        "web",
+        "hub",
+        "rim"
+      ],
+      "description": "Сопряжения расположены у обоих радиальных переходов перемычки.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "window_corners",
+        "windows"
+      ],
+      "description": "Сопряжения относятся к контуру окна в поперечной плоскости.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "window_edges",
+        "windows"
+      ],
+      "description": "Скруглены кромки с обеих осевых сторон вырезов.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "chamfers",
+        "hub",
+        "bore",
+        "rim"
+      ],
+      "description": "Группа фасок относится к указанным в примечании торцевым кромкам.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "check",
+        "rim"
+      ],
+      "description": "Контрольный размер по шарикам относится к зубьям венца.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Z=0 — левый торец ступицы; +Z направо на разрезе.",
+      "view_id": "v5",
+      "status": "observed"
+    },
+    {
+      "raw": "Нормальный исходный контур — ГОСТ 13755-2015",
+      "view_id": "v4",
+      "status": "observed"
+    },
+    {
+      "raw": "Степень точности по ГОСТ 1643-81 — 8-В",
+      "view_id": "v4",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "На листе не обозначена секущая плоскость продольного разреза.",
+    "Не определено, какая именно поверхность названа базовой в строке допуска торцового биения таблицы.",
+    "Числа шероховатости прочитаны; схема не предусматривает единицу мкм, поэтому номиналы Ra сохранены только в raw.",
+    "Угол профиля зубьев численно не указан; исходный контур задан ссылкой на стандарт."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0011",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0011.png",
+    "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec",
+    "original_bytes": 381228,
+    "original_size": [
+      4962,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      2897
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1856478,
+    "sent_sha256": "efe8927a2245e994914227fecd81bd4a81bad6330b199df80b1a5577b597e89f",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, расположенного слева на листе; +Z идёт вправо по этому разрезу. Верхний шпоночный паз торцевого вида направлен к +Y; центр паза лежит в плоскости YZ. Торцы геометрически эквивалентны.",
+  "usage": {
+    "input_tokens": 5206,
+    "input_tokens_details": {
+      "cache_write_tokens": 5203,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5203
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 3420,
+    "output_tokens_details": {
+      "reasoning_tokens": 493
+    },
+    "total_tokens": 8626
+  },
+  "http_responses": 1,
+  "request_id": "req_c07ae05a74794e9591c6700d90164d08",
+  "http_status": 200,
+  "response_id": "resp_0b80209c3fec72f6016b0346f9ba2087d2941bd1f5dd5e03da",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 38.243681207997724,
+  "trace_id": "tr-64f42bf9c4db3dc2b86ffb700d8c0071",
+  "files": {
+    "debug/request.json": "927bfebcb7d6ebf56f41599e5ebf5f730e7a7d0af00e4f9df7cbe144fd7de50e",
+    "debug/response.json": "be903e9eb6c02d7c2b4b972238a2f46568bd0c205402ad2dd787637a95a87c6e",
+    "debug/stage.json": "948f813444997209ac06609ea101261ebd6702b8d75a0674b062a813ebfae393",
+    "passport.json": "ecfef5add6c96b7ab60688ecb0fe5944618af93f8ccf0463f53b018e21014d6f",
+    "run.log": "9952c7a3c0971afbce6856fe44b9bf7443f836e6f8c4c375970c14f0f7fd6e67"
+  }
+}

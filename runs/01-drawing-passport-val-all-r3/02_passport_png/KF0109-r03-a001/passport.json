@@ -1,0 +1,517 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез",
+      "kind": "section",
+      "description": "База Z=0 слева, +Z вправо. Плоскость разреза относительно +Y не обозначена; пазы не показаны."
+    },
+    {
+      "id": "v2",
+      "label": "Левое торцевое сечение",
+      "kind": "section",
+      "description": "Со стороны Z=0, взгляд вдоль +Z; +Y вверх."
+    },
+    {
+      "id": "v3",
+      "label": "Правое торцевое сечение",
+      "kind": "section",
+      "description": "Со стороны правого торца, взгляд вдоль −Z; +Y вверх."
+    },
+    {
+      "id": "v4",
+      "label": "Размерные пояснения",
+      "kind": "other",
+      "description": "Текст под изображениями."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр левого торца продольного разреза; Z=0 со стороны меньшего отверстия и узкого паза; центр в XY — (0,0).",
+    "axis_z": "Ось втулки; +Z вправо по разрезу, к большему отверстию. Глубины слева отсчитываются от Z=0 вдоль +Z. Оба паза направлены к +Y, их середины в YZ.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "body",
+      "description": "Наружная цилиндрическая поверхность втулки.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "conical_bore",
+      "description": "Левая полость сужается вдоль +Z; номинальный входной диаметр задан теоретически на Z=0. База Б.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "cylindrical_bore",
+      "description": "Правая цилиндрическая полость, открытая на правом торце. База А.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "internal_annular_recess",
+      "description": "Центральная кольцевая расточка между полостями.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "internal_keyway",
+      "description": "Левый узкий паз, открыт на Z=0; дно со стороны +Y.",
+      "view_ids": [
+        "v2",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "internal_keyway",
+      "description": "Правый широкий паз, открыт на правом торце; дно со стороны +Y.",
+      "view_ids": [
+        "v3",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "chamfer_group",
+      "description": "Наружные торцевые фаски и фаска правого входа с общим обозначением.",
+      "view_ids": [
+        "v1",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f8",
+      "kind": "entrance_chamfer",
+      "description": "Левая входная фаска; глубина от Z=0 вдоль +Z.",
+      "view_ids": [
+        "v1",
+        "v4"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Наружный диаметр",
+      "raw": "⌀50",
+      "value": 50.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Общая длина",
+      "raw": "95",
+      "value": 95.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Глубина левой полости до расточки",
+      "raw": "40",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Длина расточки",
+      "raw": "12",
+      "value": 12.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Длина правой полости до торца",
+      "raw": "43",
+      "value": 43.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Диаметр расточки",
+      "raw": "⌀42",
+      "value": 42.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Теоретический входной диаметр левого конуса",
+      "raw": "⌀24,5H7 (+0,021)",
+      "value": 24.5,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Ширина левого паза",
+      "raw": "5JS9(±0,015)",
+      "value": 5.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "От противоположной образующей отверстия до дна левого паза",
+      "raw": "28,025 +0,1",
+      "value": 28.025,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Радиус углов левого паза",
+      "raw": "R0,25",
+      "value": 0.25,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Допуск симметричности левого паза относительно Б",
+      "raw": "≡ | T/2 0,012 | Б",
+      "value": 0.012,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Диаметр правого отверстия",
+      "raw": "⌀32H7 (+0,025)",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Ширина правого паза",
+      "raw": "10JS9(±0,018)",
+      "value": 10.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "От противоположной образующей отверстия до дна правого паза",
+      "raw": "35,3 +0,2",
+      "value": 35.3,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Радиус углов правого паза",
+      "raw": "R0,4",
+      "value": 0.4,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Допуск симметричности правого паза относительно А",
+      "raw": "≡ | T/2 0,016 | А",
+      "value": 0.016,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Катет общих фасок",
+      "raw": "Наружные фаски и правый вход: 1×45°.",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Угол общих фасок",
+      "raw": "1×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v4",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Диаметр конуса у расточки",
+      "raw": "D20,6 на глубине 40",
+      "value": 20.6,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Диаметр левой фаски на базовом торце",
+      "raw": "D26,5975 на торце",
+      "value": 26.5975,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Диаметр конца левой фаски",
+      "raw": "D24,4025 на глубине 1",
+      "value": 24.4025,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Осевая глубина левой фаски",
+      "raw": "на глубине 1",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Длина левого паза от базового торца",
+      "raw": "Пазы открыты на торцах: левый длиной 40, правый длиной 43.",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Длина правого паза от правого торца вдоль −Z",
+      "raw": "правый длиной 43",
+      "value": 43.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Координата Y дна левого паза",
+      "raw": "Дно левого паза: 15,775 от оси (28,025 – 24,5/2); R0,25.",
+      "value": 15.775,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Координата Y дна правого паза",
+      "raw": "Положение дна правого паза: 19,3 от оси; R0,4.",
+      "value": 19.3,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Ra левого паза, перевод мкм в мм",
+      "raw": "Ra 3,2",
+      "value": 0.0032,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Ra левой полости, перевод мкм в мм",
+      "raw": "Ra 0,8",
+      "value": 0.0008,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Ra правого паза, перевод мкм в мм",
+      "raw": "Ra 3,2",
+      "value": 0.0032,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Ra правой полости, перевод мкм в мм",
+      "raw": "Ra 0,8",
+      "value": 0.0008,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "description": "Поверхности соосны Z; полости образуют сквозной проход.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f4",
+        "f3"
+      ],
+      "description": "Вдоль +Z последовательно расположены левая полость, центральная расточка и правая полость; их длины составляют общую длину.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f5",
+        "f2",
+        "f4"
+      ],
+      "description": "Левый паз проходит от базового торца до центральной расточки.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f3",
+        "f4"
+      ],
+      "description": "Правый паз проходит от правого торца до центральной расточки.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f5",
+        "f6"
+      ],
+      "description": "Оба паза направлены к +Y, средние плоскости совпадают с YZ.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f8",
+        "f2"
+      ],
+      "description": "Левая фаска сопрягается с конусом на указанной глубине.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f7",
+        "f1",
+        "f3"
+      ],
+      "description": "Общее обозначение фасок относится к наружным торцевым кромкам и входу правого отверстия.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [],
+  "unresolved": [
+    "Плоскость продольного разреза и направление взгляда относительно +Y не обозначены.",
+    "Форма окончания пазов у центральной расточки отдельно не показана."
+  ]
+}

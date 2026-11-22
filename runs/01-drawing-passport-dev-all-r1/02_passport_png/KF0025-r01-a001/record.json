@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0025",
+  "repeat": 1,
+  "variant": "02_passport_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0025.png",
+    "sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "original_bytes": 230739,
+    "original_size": [
+      3727,
+      1761
+    ],
+    "sent_size": [
+      3727,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 230739,
+    "sent_sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "resized": false
+  },
+  "orientation": "Ось большого центрального отверстия колеса совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида слева на листе, со входами цековок крепёжных отверстий. +Z идёт вправо по этому виду. Ось самого верхнего крепёжного отверстия на круговом виде находится на положительной полуоси Y (X=0). Этот торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. Угловые положения остальных отверстий сохраняются относительно него.",
+  "seconds": 105.8584801669931,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 15137,
+    "output_tokens": 8211
+  },
+  "trace_id": "tr-17e38e5800e9120d55d9ce446efdcdeb",
+  "reading_path": "readings/KF0025-r01-passport-a001",
+  "reading_sha256": "4aa5e818bf08b8d10ff05980e628ab2f463cc58bb15e3461b73bb3f67b617fbd",
+  "reading_trace_id": "tr-52a6f5130ad3ee71b7ff61961688e353",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 9935,
+      "input_tokens_details": {
+        "cache_write_tokens": 9932,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 9932
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2963,
+      "output_tokens_details": {
+        "reasoning_tokens": 957
+      },
+      "total_tokens": 12898
+    },
+    "http_responses": 1,
+    "request_id": "req_43f756ee524b4a1080617c1a209ab182",
+    "http_status": 200,
+    "response_id": "resp_0476bb6afbbde394016b0346d1c72487d29dc2c434418e55a2",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 31.43238883302547,
+    "trace_id": "tr-17e38e5800e9120d55d9ce446efdcdeb"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 48,
+    "noop_steps": [],
+    "volume_mm3": 11683142.534105113,
+    "bounds_mm": [
+      [
+        -394.23,
+        -394.23,
+        0.0
+      ],
+      [
+        394.23,
+        394.23,
+        90.0
+      ]
+    ],
+    "triangles": 77512,
+    "files": {
+      "model.stl": "712c074f601c797ddd7b710a5cd35121e6dc8a47b0930c247d0b8f737bd252ae"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "3f314b0eb4f7f32e9d24600121307d9fb9e32a83cb28ec29f783f00ff1bdb064",
+    "debug/llm/response.json": "6cb753e2d79f13208b80668e2aacbbd0c5d620bf0f02b33922f53f9259788387",
+    "debug/llm/stage.json": "dba5835c1fa0cf55c665f8cfcaac794a0bedd2288f9a185c6d13abe506e662c5",
+    "model.stl": "712c074f601c797ddd7b710a5cd35121e6dc8a47b0930c247d0b8f737bd252ae",
+    "passport.json": "f0654c2998dbb1d602ee87a6441404084d5aeb0d7b823dcb8ff5e57fed9074e3",
+    "recipe.json": "aa2617cc553e51bfe681f5d0cc0a45609afc5037b31c2363ee2ed141f4fa4b90",
+    "run.log": "97c2467d970a0e101d445e611b5fd689fad41a390e5976c31f9d86f746fa70b5"
+  }
+}

@@ -1,0 +1,12 @@
+# Стратегия, роль в исследовании, гипотеза и промпты эксперимента 04_notes_png.
+pipeline: notes_png
+role: ablation
+ablation_of: 02_passport_png
+label: 04 · Заметки + PNG
+description: PNG → заметки; заметки + PNG → рецепт → STL
+hypothesis: >
+  Абляция 2 (отключение строгой JSON-схемы): заменяет структурированный паспорт
+  свободными текстовыми заметками при тех же требованиях к содержанию.
+prompts:
+  notes: prompts/drawing_notes.md
+  builder: prompts/cad_builder.md

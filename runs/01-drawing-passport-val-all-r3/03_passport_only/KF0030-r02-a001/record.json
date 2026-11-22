@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0030",
+  "repeat": 2,
+  "variant": "03_passport_only",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0030.png",
+    "sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "original_bytes": 135938,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 135938,
+    "sent_sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "resized": false
+  },
+  "orientation": "Ось фланца и центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец широкого фланца на продольном разрезе слева, со входами цековок, согласно примечанию на листе. +Z идёт вправо по разрезу, к выступающей втулочной части. Ось самого верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "seconds": 83.66085220800596,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 12757,
+    "output_tokens": 7841
+  },
+  "trace_id": "tr-94c787c25bf32840852947933791106a",
+  "reading_path": "readings/KF0030-r02-passport-a001",
+  "reading_sha256": "621fde7f1b3458cef8c90ff804ea87cdea1e5703dae5c26aa6e0dd8329c612ff",
+  "reading_trace_id": "tr-676c85710de907c851dd6097e06b2feb",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 7511,
+      "input_tokens_details": {
+        "cache_write_tokens": 7508,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 7508
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3041,
+      "output_tokens_details": {
+        "reasoning_tokens": 807
+      },
+      "total_tokens": 10552
+    },
+    "http_responses": 1,
+    "request_id": "req_507b6c5cee034127a75329d1b5631028",
+    "http_status": 200,
+    "response_id": "resp_0078a899494de3dc016b03395df2ac87d2ac88224f64457bb9",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 30.127324166998733,
+    "trace_id": "tr-94c787c25bf32840852947933791106a"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 52,
+    "noop_steps": [],
+    "volume_mm3": 141403.72038090523,
+    "bounds_mm": [
+      [
+        -60.0,
+        -60.0,
+        0.0
+      ],
+      [
+        60.0,
+        60.0,
+        32.0
+      ]
+    ],
+    "triangles": 53448,
+    "files": {
+      "model.stl": "770a00d3d0bc7b53d87881ae10d352b62b0116cb24f7efa41a682a981fff9843"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "b48792171b87a2295901332f947f549f61545330e80b642f45fa61f8cb114123",
+    "debug/llm/response.json": "7b474b82f46d827f492ae5354fc7ba21166f6587aef030e8686be0bc1f904c1a",
+    "debug/llm/stage.json": "91ef3c7e812d0c2776bc58ffcdd45f6715189b4c2db2daa8c27bb51daf9c6636",
+    "model.stl": "770a00d3d0bc7b53d87881ae10d352b62b0116cb24f7efa41a682a981fff9843",
+    "passport.json": "c131de54308e8853e59ce4b0b63e563f87fcf8c3bd793b61c894547be897f5be",
+    "recipe.json": "6ad03c3390ff09ec37fc77e068caae108c416f8606995a02a509958ccf3396d2",
+    "run.log": "004cc0b2988583a23bf94d26ce353d0f19714637f51e64601ce580aa0e3a980a"
+  }
+}

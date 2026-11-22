@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0109",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0109.png",
+    "sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "original_bytes": 122717,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 122717,
+    "sent_sha256": "6cf286d9d55a1368f8a5195f0d6d51466ed5b8d40d16c939e280ab86ac5a4639",
+    "resized": false
+  },
+  "orientation": "Ось втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного разреза, со стороны меньшего конического отверстия и более узкого шпоночного паза. +Z идёт вправо по разрезу, к большему отверстию. Оба внутренних паза, показанные сверху торцевых сечений, направлены к +Y; их середины лежат в плоскости YZ.",
+  "usage": {
+    "input_tokens": 3673,
+    "input_tokens_details": {
+      "cache_write_tokens": 3670,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3670
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2388,
+    "output_tokens_details": {
+      "reasoning_tokens": 516
+    },
+    "total_tokens": 6061
+  },
+  "http_responses": 1,
+  "request_id": "req_44bc5747fe5243d193c358210047bca7",
+  "http_status": 200,
+  "response_id": "resp_0bec51403afececa016b03385e59f487d2a3e9c61c545e2f64",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 52.76557020799373,
+  "trace_id": "tr-8c79031d2493da1e5e37c70ee1ead743",
+  "files": {
+    "debug/request.json": "c66d6e6672a30aea4f32281c359a5f00fbd897b48eef2be661eb53af11137d0e",
+    "debug/response.json": "78f9935a5f1350fc07c736d4860d923294a035c7469f06adc2504b51912e6195",
+    "debug/stage.json": "b02a746809a4d2b89cacd8a021ea2fa8349126f35fad80ba44a770226cf2c732",
+    "notes.md": "e927684fa0d530a45874ed3334fac4d96a21e026b71b65baa70e9dac409117c2",
+    "run.log": "3610232b43c4cc8de48502e9f3c588291c2e45e5b6f283c8601c27e96f6db9e4"
+  }
+}

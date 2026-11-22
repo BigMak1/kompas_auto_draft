@@ -1,0 +1,6 @@
+# Параметры независимой офлайн-оценки геометрии (IoU и F-score@τ).
+evaluation:
+  surface_samples: 8192
+  seed: 20261107
+  tau_relative: 0.01
+  intersection_roundoff_relative: 0.000001

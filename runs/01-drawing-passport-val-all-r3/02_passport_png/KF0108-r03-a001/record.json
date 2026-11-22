@@ -1,0 +1,84 @@
+{
+  "pair_id": "KF0108",
+  "repeat": 3,
+  "variant": "02_passport_png",
+  "kind": "route",
+  "status": "failed",
+  "stage": "cad",
+  "input": {
+    "name": "KF0108.png",
+    "sha256": "0374fcf418f9d9ca20b739897b23243f1001411d410f33d84490e1461f600fa8",
+    "original_bytes": 105523,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 105523,
+    "sent_sha256": "0374fcf418f9d9ca20b739897b23243f1001411d410f33d84490e1461f600fa8",
+    "resized": false
+  },
+  "orientation": "Ось наружного цилиндра совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый глухой торец продольного разреза; +Z идёт вправо по разрезу, к открытому торцу осевой полости. Внутренний шпоночный паз направлен к +Y; его середина лежит в плоскости YZ. Поперечное отверстие, показанное сверху продольного разреза, входит со стороны +Y.",
+  "seconds": 81.10641349997604,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 12811,
+    "output_tokens": 6510
+  },
+  "trace_id": "tr-0738d9d5ad5f4e948b4084617845d2de",
+  "reading_path": "readings/KF0108-r03-passport-a001",
+  "reading_sha256": "f9f2af8cc31b1e9bed12f819eb5d724b989ea21bedb30af100cf2d66c7c1fb59",
+  "reading_trace_id": "tr-41454db26c098d15556a33994342a207",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 7590,
+      "input_tokens_details": {
+        "cache_write_tokens": 7587,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 7587
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3419,
+      "output_tokens_details": {
+        "reasoning_tokens": 905
+      },
+      "total_tokens": 11009
+    },
+    "http_responses": 1,
+    "request_id": "req_2db6957337aa4b96a087f54e2861cadd",
+    "http_status": 200,
+    "response_id": "resp_05ce3227a067ceae016b0339383db887d2bb1a4988f7b7fdb5",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 35.68510137498379,
+    "trace_id": "tr-0738d9d5ad5f4e948b4084617845d2de"
+  },
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 2: требуется одно корректное объёмное тело",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/worker.py\", line 66, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 76, in build\n    shape, noop_steps = _build_shape_with_info(recipe)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 59, in _build_shape_with_info\n    raise ValueError(f\"Шаг {index}: требуется одно корректное объёмное тело\")\nValueError: Шаг 2: требуется одно корректное объёмное тело\n"
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/error.log": "fc2b440142002623ce35baac76d2228baa7afe2ce3bf189b56c824f17d92c80a",
+    "debug/llm/request.json": "ac723ae130d5c00b3535006ebfac93a8961181c2c47c3da17f18610475ed6a87",
+    "debug/llm/response.json": "f280e518d872ad13a7f08e27312b414aaedc417d3a40c019701fff94bd96b88b",
+    "debug/llm/stage.json": "3df3efc8796e20fd9e1294e2e112f702908e78bf86a7d5d4757164097a1f5cf6",
+    "passport.json": "b580921637372c84f23e0c2492b5314e9f0174dd081902e75d20d1a329853985",
+    "recipe.json": "963a522b984721c0222a0e2e3815dae8cae0ef96c1eac61a327274d2107fd05f",
+    "run.log": "75d1306c4987656b2ca35cb0c2b5a78ce202e8c569e8aa4039253b589e955e10"
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный вид",
+      "kind": "section",
+      "description": "Совмещённые вид и продольный полуразрез в плоскости YZ; +Z вправо, +Y вверх, взгляд вдоль +X со стороны -X. Левый торец — Z=0; большой паз справа."
+    },
+    {
+      "id": "v2",
+      "label": "Верхнее правое сечение",
+      "kind": "section",
+      "description": "Поперечное сечение большого паза, плоскость XY; +Y вверх. Направление взгляда вдоль Z не обозначено; условно принято вдоль -Z, +X вправо. Осевое положение соответствует середине большого паза."
+    },
+    {
+      "id": "v3",
+      "label": "Нижнее сечение",
+      "kind": "section",
+      "description": "Поперечное сечение пары малых пазов, плоскость XY; +Y вверх. Направление взгляда вдоль Z не обозначено; условно принято вдоль -Z, +X вправо. Осевое положение соответствует серединам малых пазов."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр левого торца продольного вида; Z=0, центр наружного цилиндра в XY — (0,0).",
+    "axis_z": "Ось наружного цилиндра; +Z от левого торца к правому, в сторону большого паза. +Y направлен к большому пазу; его середина лежит в YZ.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "cylinder",
+      "description": "Наружный цилиндр вала с плоскими торцами; его ось обозначена базой A.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "segment_keyway_group",
+      "description": "Одинаковые сегментные пазы со сторон +Y и -Y у левого торца; боковые стенки параллельны YZ, дно дуговое в продольном сечении; имеются донные скругления.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "segment_keyway",
+      "description": "Большой сегментный паз со стороны +Y у правого торца; симметричен относительно YZ, боковые стенки параллельны YZ, дно дуговое в продольном сечении; имеются донные скругления.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Длина вала",
+      "raw": "120",
+      "value": 120.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Диаметр наружного цилиндра",
+      "raw": "⌀40h7 (-0,025)",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Диаметр наружного цилиндра, повтор",
+      "raw": "⌀40h7 (-0,025)",
+      "value": 40.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Диаметр окружности продольного профиля малых пазов",
+      "raw": "⌀25",
+      "value": 25.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Положение середины малых пазов от Z=0",
+      "raw": "30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Диаметр окружности продольного профиля большого паза",
+      "raw": "⌀50",
+      "value": 50.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Расстояние от правого торца до середины большого паза",
+      "raw": "30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Ширина большого паза",
+      "raw": "6H9 (+0,03)",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Глубина большого паза от верхней образующей к оси, вдоль -Y",
+      "raw": "15 +0,3",
+      "value": 15.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Радиус донных скруглений большого паза",
+      "raw": "R0,25",
+      "value": 0.25,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Допуск симметричности большого паза относительно базы A",
+      "raw": "≡ | T/2 0,016 | A",
+      "value": 0.016,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Ширина малых пазов",
+      "raw": "6H9 (+0,03)",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Количество малых пазов",
+      "raw": "2 паза",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Глубина малых пазов от наружной образующей к оси",
+      "raw": "7,5 +0,3",
+      "value": 7.5,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Радиус донных скруглений малых пазов",
+      "raw": "R0,25",
+      "value": 0.25,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Допуск симметричности малых пазов относительно базы A",
+      "raw": "≡ | T/2 0,016 | A",
+      "value": 0.016,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "description": "Пазы выполнены в общем наружном цилиндре; база A — его ось, не торец Z=0.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Средние плоскости пазов совпадают с YZ; малые пазы расположены на противоположных сторонах, большой — со стороны +Y.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f1",
+        "f2"
+      ],
+      "description": "Осевой отсчёт положения малых пазов ведётся от левого торца вдоль +Z; глубины — от соответствующей наружной образующей к оси.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f1",
+        "f3"
+      ],
+      "description": "Осевой отсчёт положения большого паза ведётся от правого торца вдоль -Z.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Ra 3,2",
+      "view_id": "v2",
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 0,8",
+      "view_id": "v2",
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 3,2",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 0,8",
+      "view_id": "v3",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Направления взгляда поперечных сечений стрелками не заданы; принятый взгляд вдоль -Z условен.",
+    "Продольные длины раскрытия пазов отдельно не указаны; линейные размеры по изображению не определялись.",
+    "Фаски торцов и обработка выходов пазов отдельно не заданы."
+  ]
+}

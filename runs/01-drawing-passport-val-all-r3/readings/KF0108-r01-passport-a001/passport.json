@@ -1,0 +1,343 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез",
+      "kind": "section",
+      "description": "Плоскость YZ; взгляд вдоль +X. +Z вправо, +Y вверх; левый глухой торец — Z=0, справа открытый торец."
+    },
+    {
+      "id": "v2",
+      "label": "Поперечный профиль полости",
+      "kind": "view",
+      "description": "Показаны полость и шпоночный паз без наружного контура. Взгляд с открытого торца вдоль −Z; +Y вверх, +X вправо."
+    },
+    {
+      "id": "v3",
+      "label": "Размерные примечания",
+      "kind": "other",
+      "description": "Текст под продольным разрезом."
+    }
+  ],
+  "coordinates": {
+    "origin": "Пересечение оси наружного цилиндра с левым глухим торцом продольного разреза; центр в XY — (0, 0).",
+    "axis_z": "+Z вдоль оси наружного цилиндра вправо по продольному разрезу, к открытому торцу полости; глубины полости отсчитываются от открытого торца вдоль −Z.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "наружный цилиндр",
+      "description": "Цилиндрический корпус с глухим левым и открытым правым торцами.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "осевая цилиндрическая полость",
+      "description": "Глухая полость, открытая со стороны +Z; цилиндрическая поверхность обозначена базой A.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "коническое дно",
+      "description": "Конус на глухом конце осевой полости, вершина обращена к −Z.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "внутренний шпоночный паз",
+      "description": "Продольный паз со стороны +Y; средняя плоскость YZ.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "поперечное отверстие",
+      "description": "Радиальное отверстие входит с +Y и сообщается с осевой полостью.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "фаски",
+      "description": "Группа наружных торцевых фасок и фаска входа в осевую полость.",
+      "view_ids": [
+        "v1",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "скругления",
+      "description": "Скругления сопряжений боковых стенок шпоночного паза с профилем полости.",
+      "view_ids": [
+        "v2"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Наружный диаметр",
+      "raw": "⌀60",
+      "value": 60.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Общая длина",
+      "raw": "95",
+      "value": 95.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Расстояние от базы Z=0 до оси поперечного отверстия",
+      "raw": "52",
+      "value": 52.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Диаметр поперечного отверстия",
+      "raw": "⌀10",
+      "value": 10.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Глубина цилиндрической части полости от открытого торца",
+      "raw": "43",
+      "value": 43.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Диаметр полости",
+      "raw": "⌀32H7 (+0,025)",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Ширина шпоночного паза",
+      "raw": "10JS9(±0,018)",
+      "value": 10.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Размер от нижней образующей полости до дна паза",
+      "raw": "35,3 +0,2",
+      "value": 35.3,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Радиус скруглений",
+      "raw": "R0,4",
+      "value": 0.4,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Допуск симметричности паза относительно базы A",
+      "raw": "≡ | T/2 0,016 | A",
+      "value": 0.016,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Шероховатость поверхности полости Ra",
+      "raw": "Ra 0,8",
+      "value": 0.0008,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Шероховатость паза Ra",
+      "raw": "Ra 3,2",
+      "value": 0.0032,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "hypothesis"
+    },
+    {
+      "id": "d13",
+      "name": "Размер фасок",
+      "raw": "Наружные фаски и вход в полость: 1х45°.",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Угол фасок",
+      "raw": "1х45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Угол при вершине конического дна",
+      "raw": "Полость D32 глубиной 43; угол при вершине дна 120°.",
+      "value": 120.0,
+      "unit": "degree",
+      "view_id": "v3",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "description": "Наружный цилиндр, цилиндрическая полость и коническое дно соосны с Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Коническое дно непосредственно продолжает цилиндрическую полость со стороны −Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f4"
+      ],
+      "description": "Паз открыт в полость и доходит от открытого торца до границы цилиндрической части с конусом.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f5"
+      ],
+      "description": "Ось поперечного отверстия лежит в средней плоскости паза YZ и направлена вдоль Y.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3",
+        "f5"
+      ],
+      "description": "Ось поперечного отверстия находится в поперечной плоскости стыка цилиндрической полости с коническим дном.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f4",
+        "f7"
+      ],
+      "description": "Скругления относятся к переходам профиля полости в боковые стенки паза.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f4"
+      ],
+      "description": "База A задана цилиндрической поверхностью полости; допуск симметричности относится к средней плоскости паза.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Поперечное отверстие D10 до осевой полости; ось в плоскости паза.",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Внутренний паз на всю глубину цилиндрической полости (43).",
+      "view_id": "v3",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Привязка обозначения Ra 3,2 к поверхностям паза предполагается по расположению над размером ширины; отдельной выноски к поверхности нет.",
+    "Нижние отклонения размеров диаметра полости и высоты профиля отдельно числом не подписаны.",
+    "Отдельные обозначения видов и разреза отсутствуют; поперечный профиль интерпретирован как вид с открытого торца.",
+    "Точное оформление окончания паза у конического дна отдельным местным видом не раскрыто."
+  ]
+}

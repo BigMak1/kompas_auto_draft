@@ -1,0 +1,80 @@
+{
+  "pair_id": "KF0030",
+  "repeat": 1,
+  "variant": "01_baseline_direct",
+  "kind": "route",
+  "status": "failed",
+  "stage": "cad",
+  "input": {
+    "name": "KF0030.png",
+    "sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "original_bytes": 135938,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 135938,
+    "sent_sha256": "2314fecf9bc132dc29fd13a5694faa043a1ba1668bc95b0fff99b9d10ada8757",
+    "resized": false
+  },
+  "orientation": "Ось фланца и центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец широкого фланца на продольном разрезе слева, со входами цековок, согласно примечанию на листе. +Z идёт вправо по разрезу, к выступающей втулочной части. Ось самого верхнего отверстия с цековкой на торцевом виде находится на положительной полуоси Y (X=0). Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "seconds": 36.31731270899763,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4613,
+    "output_tokens": 3116
+  },
+  "trace_id": "tr-b683181450b3caa1ec641618e9c5dddb",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4613,
+      "input_tokens_details": {
+        "cache_write_tokens": 4610,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4610
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3116,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      },
+      "total_tokens": 7729
+    },
+    "http_responses": 1,
+    "request_id": "req_a14dc407fb36409ca315737b0308ef95",
+    "http_status": 200,
+    "response_id": "resp_0c23da89149f8e83016b0337bcee0087d2966fa242e9e7c2e5",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 34.36120424998808,
+    "trace_id": "tr-b683181450b3caa1ec641618e9c5dddb"
+  },
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 2: требуется одно корректное объёмное тело",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/worker.py\", line 66, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 76, in build\n    shape, noop_steps = _build_shape_with_info(recipe)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/cad/builder.py\", line 59, in _build_shape_with_info\n    raise ValueError(f\"Шаг {index}: требуется одно корректное объёмное тело\")\nValueError: Шаг 2: требуется одно корректное объёмное тело\n"
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/error.log": "fb9028a71d393878730399681e670d3e34ca382529b982c5eb44c8848d1d9682",
+    "debug/llm/request.json": "1310051f1ffcbc17e2b6616ed36480a19c61ba2ff586ef33b898652a114a4b99",
+    "debug/llm/response.json": "18f5b274a3aee829765ebc3f70c2ae019554ee32b16aecff71622796c815b764",
+    "debug/llm/stage.json": "21d8c3d51dc79575db3f2439fafe21dab3dcb55d10c3a146d2774b7d088973f6",
+    "recipe.json": "bbca3f822bb4aa7b07df8118cf52e32fe3bedbdb199ea98bf51c83a75e258c25",
+    "run.log": "a0bcb3459e8ad4f83e643a1233f9689093d41f4176ab2c77b2693c49ae2436a7"
+  }
+}

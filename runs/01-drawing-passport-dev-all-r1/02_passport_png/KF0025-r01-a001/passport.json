@@ -1,0 +1,655 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный вид слева",
+      "kind": "view",
+      "description": "Ось Z горизонтальна; слева база Z=0, справа противоположный торец, +Z вправо."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид",
+      "kind": "view",
+      "description": "Взгляд от Z=0 вдоль +Z; +X влево, +Y вверх; верхняя крепёжная ось на +Y."
+    },
+    {
+      "id": "v3",
+      "label": "А–А",
+      "kind": "section",
+      "description": "Разрез крепёжного отверстия; вход цековки сверху соответствует Z=0, глубина направлена вниз вдоль +Z."
+    },
+    {
+      "id": "v4",
+      "label": "Б–Б",
+      "kind": "section",
+      "description": "Повёрнутый разрез резьбового отверстия; верхний вход предположительно со стороны Z=0."
+    },
+    {
+      "id": "v5",
+      "label": "В–В",
+      "kind": "section",
+      "description": "Повёрнутый разрез ступенчатого резьбового отверстия; верхний вход предположительно со стороны Z=0."
+    },
+    {
+      "id": "v6",
+      "label": "Таблица зубчатого венца",
+      "kind": "table",
+      "description": "Параметры косозубого наружного венца."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр оси большого отверстия на левом торце продольного вида; база Z=0 со входами цековок.",
+    "axis_z": "+Z вправо на продольном виде; центр отверстия в XY — (0,0); на торцевом виде +X влево, +Y вверх.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "annular_body",
+      "description": "Кольцевое тело колеса с плоскими торцами.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "central_bore",
+      "description": "Центральное сквозное цилиндрическое отверстие.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "helical_gear",
+      "description": "Наружный косозубый венец; направление зуба правое.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v6"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "bolt_pattern",
+      "description": "Окружность осей крепёжных отверстий.",
+      "view_ids": [
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "counterbored_hole_group",
+      "description": "Сквозные крепёжные отверстия с цилиндрическими цековками от базы.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "threaded_hole_group",
+      "description": "Отверстия с мелкой резьбой и меньшим сквозным каналом.",
+      "view_ids": [
+        "v2",
+        "v4"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "stepped_threaded_hole_group",
+      "description": "Отверстия с соосными резьбами разных диаметров и входным расширением.",
+      "view_ids": [
+        "v2",
+        "v5"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f8",
+      "kind": "bore_chamfers",
+      "description": "Фаски центрального отверстия на обоих торцах.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f9",
+      "kind": "gear_edge_chamfers",
+      "description": "Фаски наружных кромок зубчатого венца на обоих торцах.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Толщина колеса",
+      "raw": "90",
+      "value": 90.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Наружный диаметр венца",
+      "raw": "⌀788,46h10(-0,32)",
+      "value": 788.46,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Диаметр центрального отверстия",
+      "raw": "⌀670",
+      "value": 670.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Диаметр окружности крепежа",
+      "raw": "⌀710⁺¹,⁴",
+      "value": 710.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Угловой шаг соседних показанных осей",
+      "raw": "30°",
+      "value": 30.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Угол от +Y к лучу разреза В–В в сторону −X",
+      "raw": "60°",
+      "value": 60.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Внешний угловой размер у верхней части вида",
+      "raw": "30°±14′",
+      "value": 30.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": null,
+      "reading_status": "observed",
+      "binding_status": "unresolved"
+    },
+    {
+      "id": "d8",
+      "name": "Внешний угловой размер справа сверху",
+      "raw": "90°±14′",
+      "value": 90.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": null,
+      "reading_status": "observed",
+      "binding_status": "unresolved"
+    },
+    {
+      "id": "d9",
+      "name": "Внешний угловой размер справа снизу",
+      "raw": "120°±14′",
+      "value": 120.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": null,
+      "reading_status": "observed",
+      "binding_status": "unresolved"
+    },
+    {
+      "id": "d10",
+      "name": "Количество отверстий А–А",
+      "raw": "8 отв.",
+      "value": 8.0,
+      "unit": "count",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Диаметр сквозного канала А–А",
+      "raw": "⌀22",
+      "value": 22.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Диаметр цековки А–А",
+      "raw": "⌀32",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Глубина цековки от Z=0 вдоль +Z",
+      "raw": "26",
+      "value": 26.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Количество отверстий Б–Б",
+      "raw": "2 отв.",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Резьба Б–Б",
+      "raw": "M30x1,5–7H",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Шаг резьбы Б–Б",
+      "raw": "M30x1,5–7H",
+      "value": 1.5,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Диаметр сквозного канала Б–Б",
+      "raw": "⌀20",
+      "value": 20.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Глубина резьбы от верхнего входа Б–Б",
+      "raw": "48",
+      "value": 48.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Глубина большего канала от верхнего входа Б–Б",
+      "raw": "50",
+      "value": 50.0,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Количество отверстий В–В",
+      "raw": "2 отв.",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Резьба со стороны верхнего входа В–В",
+      "raw": "M20–7H",
+      "value": 20.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Резьба со стороны нижнего входа В–В",
+      "raw": "M16–7H",
+      "value": 16.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Диаметр входного расширения В–В",
+      "raw": "⌀28",
+      "value": 28.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Глубина цилиндрической части расширения от верхнего торца В–В",
+      "raw": "9",
+      "value": 9.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Угол входного конуса В–В",
+      "raw": "120°",
+      "value": 120.0,
+      "unit": "degree",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Глубина большей резьбы от верхнего торца В–В",
+      "raw": "45",
+      "value": 45.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Глубина большего канала от верхнего торца В–В",
+      "raw": "48",
+      "value": 48.0,
+      "unit": "mm",
+      "view_id": "v5",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Размер фаски отверстия",
+      "raw": "2x45° с двух сторон (D674 на торцах)",
+      "value": 2.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Угол фаски отверстия",
+      "raw": "2x45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Диаметр отверстия на торцах по примечанию",
+      "raw": "D674 на торцах",
+      "value": 674.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d31",
+      "name": "Размер фаски венца",
+      "raw": "2x45° с двух сторон",
+      "value": 2.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d32",
+      "name": "Угол фаски венца",
+      "raw": "2x45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d33",
+      "name": "Модуль m",
+      "raw": "6",
+      "value": 6.0,
+      "unit": "mm",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d34",
+      "name": "Число зубьев z",
+      "raw": "125",
+      "value": 125.0,
+      "unit": "count",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d35",
+      "name": "Угол наклона зубьев β",
+      "raw": "15°",
+      "value": 15.0,
+      "unit": "degree",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d36",
+      "name": "Коэффициент смещения x",
+      "raw": "0",
+      "value": 0.0,
+      "unit": "dimensionless",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d37",
+      "name": "Длина общей нормали W",
+      "raw": "286,14⁻⁰,²⁵₋₀,₃₉",
+      "value": 286.14,
+      "unit": "mm",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d38",
+      "name": "Допуск радиального биения венца Fr",
+      "raw": "0,071",
+      "value": 0.071,
+      "unit": "mm",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d39",
+      "name": "Допуск торцового биения базовой поверхности Fт",
+      "raw": "0,093",
+      "value": 0.093,
+      "unit": "mm",
+      "view_id": "v6",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "hypothesis"
+    },
+    {
+      "id": "d40",
+      "name": "Делительный диаметр d",
+      "raw": "776,457",
+      "value": 776.457,
+      "unit": "mm",
+      "view_id": "v6",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "description": "Соосны основной оси Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f5",
+        "f6",
+        "f7"
+      ],
+      "description": "Оси крепёжных отверстий лежат на общей окружности и параллельны Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f5",
+        "f6",
+        "f7"
+      ],
+      "description": "На торцевом виде А–А проходит через крайнюю правую ось; В–В — через верхнюю правую наклонную ось; Б–Б — через нижнюю правую крутую наклонную ось.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f7"
+      ],
+      "description": "Верх разрезов принят за базовый торец; отсчёт показанных глубин вдоль +Z, меньшая резьба В–В входит с противоположного торца.",
+      "status": "hypothesis"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f8"
+      ],
+      "description": "Фаски сопрягают центральный цилиндр с обоими торцами.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f9"
+      ],
+      "description": "Фаски расположены на торцевых кромках венца.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Нормальный исходный контур — ГОСТ 13755–2015",
+      "view_id": "v6",
+      "status": "observed"
+    },
+    {
+      "raw": "Степень точности по ГОСТ 1643–81 — 7-В",
+      "view_id": "v6",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Не установлена принадлежность остальных торцевых отверстий к группам А–А, Б–Б и В–В; симметрия резьбовых пар не подтверждена.",
+    "Конечные лучи внешних угловых размеров с минутными допусками неоднозначны; не использованы для назначения положений групп.",
+    "Соответствие верхних входов Б–Б и В–В базе требует подтверждения по обозначениям поворота разрезов.",
+    "Не указаны глубина меньшей резьбы В–В и диаметры сверления под резьбы.",
+    "Не определена конкретная торцевая базовая поверхность для допуска Fт.",
+    "Не приведены размеры мелких переходных фасок и радиусов, видимых в резьбовых разрезах."
+  ]
+}

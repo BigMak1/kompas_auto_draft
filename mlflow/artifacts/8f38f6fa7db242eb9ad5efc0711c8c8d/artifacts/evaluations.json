@@ -1,0 +1,2385 @@
+{
+  "02_passport_png/KF0111-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9965322222673609,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "2c968de1d8f1509b108a4e81cbd81072cf56075d2ccedefdb192fcc3e59a79d1"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146356.43047354455,
+      "reference": 146011.69233387924,
+      "intersection": 145930.1542404071,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "b7cb56c9eda4f0f34dc1708365fca274c175dfa26794106e2d200f77c3484404"
+  },
+  "04_notes_png/KF0030-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9979203115267543,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "32484e81fc238d167c28a2adb1c432c41e868d878657db2332221ef0532de992"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141573.47458130505,
+      "reference": 141569.3547138542,
+      "intersection": 141424.04919086696,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "e07829aa2a72eba30f411bbf579bf836afe5008418e079526ac1bd9922c690be"
+  },
+  "01_baseline_direct/KF0107-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9249195296283236,
+    "f_score": 0.9687025068508253,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "de5990127f2454d22d761bc4a6e6fe61102029f5d97f396d411088670d229655"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 100301.475859437,
+      "reference": 97471.62841983202,
+      "intersection": 95029.53436107282,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "8d90e13715a6629a87564dff8c9bf2b66ce5d74eb5f8d9b8371c88e1a5c6d8b8"
+  },
+  "02_passport_png/KF0111-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9963977913036115,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "b031b5028dc3653f3470eddf3824615f6e17c1ad74300ae5ee65abee620cb2ba"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146353.93761895355,
+      "reference": 146011.69233387924,
+      "intersection": 145919.04940341067,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "08cafcd89b3311d175f64fd79f653624d1dd8dc17274b861a61dddb79d62c0a0"
+  },
+  "04_notes_png/KF0108-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978499699765004,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "15d7d0769d1259ee40561d07102e2feec6c167e619d95f06fcb435747b47cfb9"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.50680892725,
+      "reference": 228447.53222539256,
+      "intersection": 228299.0657863655,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "43a4d189efb5b77f73cdfe0b1e78cc73eb051852a8052665250984bda0847036"
+  },
+  "04_notes_png/KF0030-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978492988392562,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ea6db7e3ef92940785ef10ac253ab711fd780ebb54b95dbd799460e4a065d1d4"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141590.41724987727,
+      "reference": 141569.3547138542,
+      "intersection": 141427.4740730716,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "c16f5869f893fa402c2f192c90edf3a8288698f4970f1c1f949a969375027435"
+  },
+  "01_baseline_direct/KF0030-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9945710243164746,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "3f8453c0d51a6c9f15cea3459afb15a6b7ae8fd31774489f12190a8f314f0f75"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 142030.4234753066,
+      "reference": 141569.3547138542,
+      "intersection": 141413.92733115566,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6522a235c2730872055c69cfa8fcd3895d40dbae1af36d6ce80bdab05b912e8d"
+  },
+  "04_notes_png/KF0107-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9891263738971284,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "7586e74884d477aba952e31b8747fa8e3b63779f26798f73839d59e3ee04a7c3"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 97649.12264550706,
+      "reference": 97471.62841983202,
+      "intersection": 97027.05846447362,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "fa5e971ff0269e8c1d29ac76dc7aef40f135d1a002340238d57dd77a410924b9"
+  },
+  "01_baseline_direct/KF0109-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9965942502673151,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "1efb1b3749e0ce7778d5ea2f4b7a0a9717d4a65457aad36e9f37f98da13d8c60"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116579.84036623714,
+      "reference": 116504.26898062862,
+      "intersection": 116343.25961454825,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "83a75069c8cf59ec176d14b44a1b97ebc0a6690e596a28f05f4913b8852816db"
+  },
+  "04_notes_png/KF0109-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966617763239469,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "43314399b3b5b8b4e1420a81b249159620cc22aac2b23559672d1f69e5b62a48"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.7455040858,
+      "reference": 116504.26898062862,
+      "intersection": 116362.13529869598,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "252594264e605b0b8c8a2a788d86721fc5b8f4ec35944e55d4bc7772478c114c"
+  },
+  "03_passport_only/KF0107-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9880551392117612,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "e8c30328b4c5fef296b66b42633a26681be96d0f49c0fffd9bf81f95058b4881"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 97319.6373431084,
+      "reference": 97471.62841983202,
+      "intersection": 96810.44927503723,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "7660d237f0a239bbacea0b9349f91d4ca9d55d6722e7c728034e1b89f21d8655"
+  },
+  "02_passport_png/KF0109-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.996658561866754,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "fceb65092b328ca28ae6cabb8cb653c5a728102c1a665d19dcd3317f44204f4f"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.45720029023,
+      "reference": 116504.26898062862,
+      "intersection": 116361.80342704964,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "42ef66c4f4260eb45ea78192c7f3f76f2b74139b9264e7c4283e750980e63206"
+  },
+  "03_passport_only/KF0111-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9964789767362522,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ca56b7e234a322b57af4fc80035cde9c65c19007aac20818eb6b35bd0107f090"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146356.89234367685,
+      "reference": 146011.69233387924,
+      "intersection": 145926.47930888037,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "8f0fe780aa92e945d3a5fac5e863429f2b96b044d0fcbcff46c9c19fbee8466a"
+  },
+  "02_passport_png/KF0108-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "1229681a69b965e2784d4d427bbe0176b12b7c30326ea941c7f9e02d5a41c6a4"
+  },
+  "04_notes_png/KF0109-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966087403527313,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ce29b7dfcf39e58f528926db17183e0c03a0066bc0f045d9bd35c6583816b38e"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.03409766014,
+      "reference": 116504.26898062862,
+      "intersection": 116358.67891636821,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "49071d002c24f205d1fc0fc56c78a61131683ae6be3c52a1e95ebd836c1c27b4"
+  },
+  "01_baseline_direct/KF0111-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9969402854066934,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "c02120ee876c43205f2dc6abef2fd1b2e787cb22237e6e079261e32db52ef575"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146362.8933348095,
+      "reference": 146011.69233387924,
+      "intersection": 145963.30446748636,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6722b33aa4181256f7a218dfa237900176bb93e0d3747ca58bda21e223a91844"
+  },
+  "03_passport_only/KF0109-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966617763881267,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "56d54eaf26242cab9bfc8fcdebb9cbcfd7c1622209e2cc5d9973ceb573058115"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.74550408579,
+      "reference": 116504.26898062862,
+      "intersection": 116362.1353024488,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "915aaf88e5df0c6057b41658b2ed66d5fc595d2366fdcc4950cfd87d45776398"
+  },
+  "01_baseline_direct/KF0030-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "3166e4778669d3e29580199cfbc020c13bc93ed282fdc95d3a650d16d7d48466"
+  },
+  "02_passport_png/KF0107-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9863903533309328,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "f034c669f53f2c0aae02e3c37fc0dfb1ee4e1b50d2c69e65b5ba114a22619f9d"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 96673.16375772488,
+      "reference": 97471.62841983202,
+      "intersection": 96407.30978795512,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "c7a1e0e2b1bf54e971a8433fa822b03bf8e58320b072b78f8766c8fd60a523f6"
+  },
+  "04_notes_png/KF0111-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9964510210325169,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "a80d3461f596b45e995bf8625b8dec75748c0755d70be5544ed04a80ef770d33"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146356.20152661504,
+      "reference": 146011.69233387924,
+      "intersection": 145924.08392956565,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "a66560a18a2d8cb9826093a4dae40efdd9dc3486fa94a9bc7f605edb1f4157ee"
+  },
+  "03_passport_only/KF0111-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.996383275700809,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "c78abdd5cd66d5f482f417f1071089d26b9a95dac53e360788329a52e8ee10aa"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146354.71334152037,
+      "reference": 146011.69233387924,
+      "intersection": 145918.37175627777,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6e3846354ca7b71521721a314d8a6bf338fd0facc14849307942bc2d084879b8"
+  },
+  "02_passport_png/KF0107-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9865179397025785,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "244862197dde02d3633a47118f85eefd8d6fbe83f6f331f3c2f9b687f9407f47"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 96672.97083424109,
+      "reference": 97471.62841983202,
+      "intersection": 96413.49128172807,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "9b89b685e15640658af97f72a1c2696c87dbdba85c9bc3ad51ba5703e1368278"
+  },
+  "02_passport_png/KF0109-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966585623042331,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "2f5ebca70d3e192f11f89fdebb74dd667e5ec271762def43e0b7a185987b9953"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.45730043389,
+      "reference": 116504.26898062862,
+      "intersection": 116361.80350261868,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "5acd88462097993b0d183f59322b6f3d9788f9c78ec11d6c97d0200a1fcf3283"
+  },
+  "01_baseline_direct/KF0107-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9887738515735441,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ec235b084a4a6b1fd247a56c7b75db44f32d34eaa4c67c85adbd0adc449344cc"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 97543.1373385305,
+      "reference": 97471.62841983202,
+      "intersection": 96956.97723501471,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "5c952b84c04356e5b89c7d8d03fad4c83d483293df269dbb2064dd5016d98996"
+  },
+  "03_passport_only/KF0108-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9977528328613444,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "6847f8c60036da23cabb3c08b5780b2567cfe38dafad51a4abe451586981009a"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228591.67640531747,
+      "reference": 228447.53222539256,
+      "intersection": 228262.55462586938,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "ae72794f0567520f6eb96365edc0289a477ad652b38e29b415ddf3c8553cab3f"
+  },
+  "03_passport_only/KF0107-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9866183056555924,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "e781825d7d38725ed1735aa0f8d0028c3cd0fecfb8ad6e40211c0503d1d70e8e"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 96673.2281532054,
+      "reference": 97471.62841983202,
+      "intersection": 96418.55654834858,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "12ea7104d525bb13c1945fcfa6c9be42f5a2fa484c52a0b08630b88a9cabb734"
+  },
+  "04_notes_png/KF0109-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.996687984905528,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "d2554eeeefc549665c2b903662d9efce74323bcba5170248364dbf4d8bdc978e"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.77341653635,
+      "reference": 116504.26898062862,
+      "intersection": 116363.68172015884,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "49f4327b29c05bf9c3b54c4765f495673d3d96700b9127a7ff6d978c3392f5ea"
+  },
+  "01_baseline_direct/KF0030-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9958113337089262,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "8037b29d4c7d93b305cbfd9598aa89075bde17c4f5bd5a39a41f4a052889776c"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141253.37873764397,
+      "reference": 141569.3547138542,
+      "intersection": 141114.5826485297,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "1515e1336ffdbf6033c22aae8e4ef55e2742bb3936c14c1a6ebf9dbbeb5daf5f"
+  },
+  "01_baseline_direct/KF0108-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9976624164762077,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "a8d5b995f69219e579ecd5e11e020d990abe765a70d57044a2d48822eae7a95f"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.13538838676,
+      "reference": 228447.53222539256,
+      "intersection": 228277.39991338065,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "95d9cfa02b4c1e12a0e573af770fa07ffaf4e00cc66e67dcb40bce7ac10c0c7e"
+  },
+  "02_passport_png/KF0108-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.997725260415101,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "f2f0ae3f74beec883cd3840029751ddae8d699607ab8f7c3421e0fea34015d4a"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.6631202289,
+      "reference": 228447.53222539256,
+      "intersection": 228284.86139762696,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "7a634482b807b934ae779d3e46adf4f3775c36c005c1cc8309b48b58d80e10f2"
+  },
+  "04_notes_png/KF0108-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978485393294715,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "40fd5540542faa1371fc03278ad845481fed96900e7628e709a4e8cf55488d1c"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228643.24048586367,
+      "reference": 228447.53222539256,
+      "intersection": 228299.26839398328,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "a267762bcbe4f7e853e189de2182de0463b79073d2c5733beb2df43fb998450f"
+  },
+  "03_passport_only/KF0111-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9968696534976693,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "3ba718e6f826d98f1b4b8962daef14d96be80f6174adc9efbc840bdd1797e64d"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146346.6946364932,
+      "reference": 146011.69233387924,
+      "intersection": 145950.0390552822,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "c9fc27a1a92264a93202477c6a4d94857b918d9b91760bdacf0633ba62042f1d"
+  },
+  "02_passport_png/KF0107-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "d2de965da167a04858a97be2b706129e787e9449e1699071d980d334e39593a6"
+  },
+  "01_baseline_direct/KF0108-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.997849969223714,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "1c84c5207c099f39c62b776fab00d756c65b36b67b44608647af15df3ee98b08"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.50417239813,
+      "reference": 228447.53222539256,
+      "intersection": 228299.06438331158,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "43ad464a4918d23e9c805bfc2c0dd9c4c99995eef2aecb49870c2cca25d46c35"
+  },
+  "04_notes_png/KF0111-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9964518219282766,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "7e4a211607ff887b2c512bd298b4de2a358a79d39c241f7d7c0421cf528a0f5c"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146361.04627697225,
+      "reference": 146011.69233387924,
+      "intersection": 145926.5607469335,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "cd3fa879bd62d0d9455b9d5707c6839c39fcbc74123818f9531669f49851b8f2"
+  },
+  "04_notes_png/KF0108-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.99800354108674,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "8e43f49232daa78722f5f9003b064062e683ff7902bace708c59138ce9d28b2a"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228641.48944461122,
+      "reference": 228447.53222539256,
+      "intersection": 228316.14300864408,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "46b1307940aa8c06bc7a79473167b0eeca638c27f3cf21fc67ff449a21dd966e"
+  },
+  "03_passport_only/KF0108-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978506648591488,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "9bf6508950f7c9755269c6d330939158da772f8dd6734ff3db88eef011c93671"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.71180614058,
+      "reference": 228447.53222539256,
+      "intersection": 228299.24775165922,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6cf59b37432b8718c3528f79b63fc13ba7de144a053927ce8def06c82d275a8b"
+  },
+  "02_passport_png/KF0030-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978271307553169,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "6f1f3a515419a1733b7a1200050d8327e7cc311d6d2c1b2faf00955bc4db3374"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141572.89449948064,
+      "reference": 141569.3547138542,
+      "intersection": 141417.14955154006,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "362aba3e26a36531640d8b255a5ec4da9ac0dc43ec99def15f1cfbd6d713df81"
+  },
+  "02_passport_png/KF0030-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978268103053769,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "368b74157d82bdab493c7be76f9288a73b0be4050518b5e78e7086cf3566f6c3"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141572.15751770305,
+      "reference": 141569.3547138542,
+      "intersection": 141416.75872888614,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "10c0ae321ef526862f828b348adbb946959bcf3fffdb1a76c64a3b05ab609862"
+  },
+  "04_notes_png/KF0111-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9964510124524215,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "8e9afb8ce10cbb1bca570e7a106003e81a7ac5d636bf43d3333d2fb7676385a7"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146356.17586676026,
+      "reference": 146011.69233387924,
+      "intersection": 145924.07049307763,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "7a37e6dc74024bd2407a38449efce26611edb053235c7d4fe4de14e4998f7e69"
+  },
+  "02_passport_png/KF0108-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "792ac7c5c24032bfe1ab16c79526eb6ca10e43b21063cbdce824b2e9c71136e3"
+  },
+  "04_notes_png/KF0107-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9261440669459213,
+    "f_score": 0.968517750289443,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "eb526eb9ea49e95d9f186f4f2e9973f2767594011c4d52e7b00ef779727c5861"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 100325.13149934914,
+      "reference": 97471.62841983202,
+      "intersection": 95106.22741254156,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "f0c0c57874dca12bd0fcc8624847657287251aa213b7451ad38171ae68397eb3"
+  },
+  "03_passport_only/KF0030-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9962524561971432,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ac8facd3ae0d646248b9229bddda760395bab93dc0c83743e84dc7c9e717b439"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141355.2894128277,
+      "reference": 141569.3547138542,
+      "intersection": 141196.75632953786,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "81258c0f59ddb095e94fbefda35ad25381a7b09f3d0d218814ca6a79570cca03"
+  },
+  "03_passport_only/KF0030-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9964407706209296,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "770a00d3d0bc7b53d87881ae10d352b62b0116cb24f7efa41a682a981fff9843"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141389.06894775305,
+      "reference": 141569.3547138542,
+      "intersection": 141226.98447966648,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "75233154f4fc603f83a201e7a37fbdb94d4cf171075495746a339cb61dc3d42a"
+  },
+  "01_baseline_direct/KF0107-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "81b4787f0c3088d52903674283b40c3a5f4c87d9e748bf6ee35981ef3b9e398b"
+  },
+  "01_baseline_direct/KF0109-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966617763878671,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ec86fda994f417eccb905962e81cae831c38585b7ec49fb21655e2cb9dc2d41b"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.74550408579,
+      "reference": 116504.26898062862,
+      "intersection": 116362.13530243363,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "0ce042b6b8721e7ced072adbcbc5c2c187da5b2f06ec1aff06a6f03e7412747b"
+  },
+  "01_baseline_direct/KF0108-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9975575765993718,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "9b0ab31de8276bb68604289cf29bdf4e158ac13ad9dd8da805fba4da95f77883"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228640.67790437592,
+      "reference": 228447.53222539256,
+      "intersection": 228264.6630719098,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6c666a05ba671dc8ee59026e401ad330cb10c0bf1732b11a7c2c71a259415d69"
+  },
+  "01_baseline_direct/KF0111-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9965339595781267,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "caa66481b28fb5271209f3716db43edb9b53fdbd119f1c0df91b2090c9a67051"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146354.2965999658,
+      "reference": 146011.69233387924,
+      "intersection": 145929.2165808104,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "e96ce3e23efbd4a24672d576c7919f3c1cf6c161462f9a8fb3a655c8c0916107"
+  },
+  "01_baseline_direct/KF0111-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9963999360345269,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "8c289a4d63f1c18735272586b411dcfb0f93371dc3f7ecff699c4d428e38b7cc"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146352.94994357822,
+      "reference": 146011.69233387924,
+      "intersection": 145918.71378369842,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "9dcee0737de1c20b200f5082508c8dc26d321872be22d7f509e958a1f18968e6"
+  },
+  "04_notes_png/KF0030-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9967063164852757,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "78f4c7205a8348eb2d65309f53e8e27fe5a57fb3efb4d0999e610242baebb091"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141436.66350538182,
+      "reference": 141569.3547138542,
+      "intersection": 141269.5916437943,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "6825804431d1fc52eb97dbf43133e6c569c86f923c828ad8adce17a40380cc76"
+  },
+  "03_passport_only/KF0107-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9234204476654034,
+    "f_score": 0.967616368976058,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "2e2f63c0ce7e45cd3865dafad1d74e26c0f0443c33c48c519b1a4f72ad5862d4"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 99544.7079014394,
+      "reference": 97471.62841983202,
+      "intersection": 94586.13882576044,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "b58193f390cf73dad58939978b56d75c45b8391b616b6465bd213baf72f8076a"
+  },
+  "03_passport_only/KF0030-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9965637111940843,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "d4e3b18a36cd9785c96dc6b2a3a9bba11c878b29b8b0428e25b5020e43539b89"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141386.5144321745,
+      "reference": 141569.3547138542,
+      "intersection": 141234.4366870558,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "04730f0e3135205813a8efc389e356816811c447ed63e4b1de7d43eaff634b8e"
+  },
+  "03_passport_only/KF0109-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966540079443699,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "ff1131420370828432c952d2d602beca2e1c103a12fb31626a9c06928f536ddc"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116610.55017645202,
+      "reference": 116504.26898062862,
+      "intersection": 116362.0827142349,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "cd6b452d4cfd03ba9db262ed64ba698812b4aa604d915d5279c7c77a84435e70"
+  },
+  "03_passport_only/KF0109-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9966617763881267,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "56d54eaf26242cab9bfc8fcdebb9cbcfd7c1622209e2cc5d9973ceb573058115"
+    },
+    "tau_mm": 1.1840594805209577,
+    "volumes_mm3": {
+      "prediction": 116609.74550408579,
+      "reference": 116504.26898062862,
+      "intersection": 116362.1353024488,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "b769f120be3623d3724b3b55376815c4e7abb1c92e24efc47765ecfa12ac29bf"
+  },
+  "02_passport_png/KF0109-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "4c124949aa19032fb5591d852b974812b54573d1e6d787f30aa18b9887696453"
+  },
+  "02_passport_png/KF0111-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9963442611601079,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0111.stl",
+      "sha256": "6e5bb4a762f0073dcc9d8461c6e760d4c56daa651d12126210368b52b104a0f1"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "6052820f87250ef88895e5b1b91df435a5aa2e270a71cf85e6272a7a6fa1dd2f"
+    },
+    "tau_mm": 1.326567232545132,
+    "volumes_mm3": {
+      "prediction": 146349.83167203693,
+      "reference": 146011.69233387924,
+      "intersection": 145913.07335842107,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "d21ed0fb810fa6199c97c7f73db895d66ec581c98cb31b1bb0d4f44334bdcb58"
+  },
+  "01_baseline_direct/KF0109-r03-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "generation_failed",
+    "iou": 0.0,
+    "f_score": 0.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0109.stl",
+      "sha256": "43c4626aeed6ccf24902e09e99fc490e106f3bad8ce6a97d4df2ab5e9605e9b3"
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "1c1625405e34be806eec3106de85b22c817bb7089a2b451d37c507a45d0c295a"
+  },
+  "03_passport_only/KF0108-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9978083481323892,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0108.stl",
+      "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "0cefcb59a41c886127c92dc22a83e6be8f6b651ebdea296275b5a2ce45fc6c59"
+    },
+    "tau_mm": 1.2736269258475381,
+    "volumes_mm3": {
+      "prediction": 228642.49311902325,
+      "reference": 228447.53222539256,
+      "intersection": 228294.29237447542,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "bf3de2fd87a4a78858472cfe9931945cb9db78d5a6472c66a1bb1b901eac8ba0"
+  },
+  "02_passport_png/KF0030-r01-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9976891941116149,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0030.stl",
+      "sha256": "1e15d1ec34f941f95f5184945a36ef053528635bd7e724930a0c3cad243bab0b"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "5349f5939d1cd7170f373693a43bf57434b6482339fd869e01e4f5a6519dad31"
+    },
+    "tau_mm": 1.7267029152769158,
+    "volumes_mm3": {
+      "prediction": 141540.3651751551,
+      "reference": 141569.3547138542,
+      "intersection": 141391.1178544671,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "f580135432ebec353a48fef4331dd8ebdbc10932fce8a075f193d849d74ef035"
+  },
+  "04_notes_png/KF0107-r02-a001": {
+    "protocol": "mesh-fixed-pose-v1",
+    "status": "ok",
+    "iou": 0.9891750217525149,
+    "f_score": 1.0,
+    "parameters": {
+      "surface_samples": 8192,
+      "seed": 20261107,
+      "tau_relative": 0.01,
+      "intersection_roundoff_relative": 1e-06,
+      "units": "mm",
+      "alignment": "identity",
+      "distance": "point_to_triangle",
+      "intersection": "manifold"
+    },
+    "versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "trimesh": "4.12.2",
+      "rtree": "1.4.1",
+      "manifold3d": "3.5.4"
+    },
+    "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+    "reference": {
+      "name": "KF0107.stl",
+      "sha256": "eabb76b17ff69160143d545ccfe6188b231f81dc418786a27740d97590017210"
+    },
+    "prediction": {
+      "name": "model.stl",
+      "sha256": "836c50aa48041e9b51d14f410eff035b8acb83568da665ebc8e284d344938fce"
+    },
+    "tau_mm": 1.4337999491987439,
+    "volumes_mm3": {
+      "prediction": 97714.0476617769,
+      "reference": 97471.62841983202,
+      "intersection": 97061.74332196404,
+      "intersection_roundoff_correction": 0.0
+    },
+    "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+    "record_sha256": "37cef5c45805bfda5621f51b9c8916546c32261950ad43c447091d52b9ee2b19"
+  }
+}

@@ -1,0 +1,383 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v_end",
+      "label": "Торцевой вид справа на листе",
+      "kind": "view",
+      "description": "Взгляд от базы вдоль +Z; +X влево, +Y вверх."
+    },
+    {
+      "id": "v_section",
+      "label": "Разрез слева на листе",
+      "kind": "section",
+      "description": "Продольный разрез: +Z вправо, +Y вверх; левый торец — база Z=0, правый — противоположный."
+    }
+  ],
+  "coordinates": {
+    "origin": "Пересечение оси центрального отверстия с левым торцом разреза, со входами цековок; Z=0, X=Y=0.",
+    "axis_z": "Ось центрального отверстия; +Z от базового торца к противоположному, вправо на разрезе. +Y направлен к верхнему отверстию с цековкой; на торцевом виде +X влево.",
+    "front_view_id": "v_end",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f_ring",
+      "kind": "annular_body",
+      "description": "Кольцо с цилиндрической наружной поверхностью.",
+      "view_ids": [
+        "v_end",
+        "v_section"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_bore",
+      "kind": "through_bore",
+      "description": "Центральное сквозное отверстие; обозначено базой A.",
+      "view_ids": [
+        "v_end",
+        "v_section"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_front",
+      "kind": "planar_face",
+      "description": "Базовый торец со входами цековок.",
+      "view_ids": [
+        "v_section",
+        "v_end"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_back",
+      "kind": "planar_face",
+      "description": "Противоположный торец; задана перпендикулярность к базе A.",
+      "view_ids": [
+        "v_section"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_bolt",
+      "kind": "through_hole_group",
+      "description": "Сквозные отверстия под цековками: на +Y, в секторе +X,+Y, на +X и в секторе −X,−Y.",
+      "view_ids": [
+        "v_end",
+        "v_section"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_cb",
+      "kind": "counterbore_group",
+      "description": "Цековки со стороны базового торца; глубина отсчитывается вдоль +Z.",
+      "view_ids": [
+        "v_end",
+        "v_section"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_fit",
+      "kind": "fitted_hole_group",
+      "description": "Отверстия при сборке в секторах −X,+Y и +X,−Y; цековки не показаны.",
+      "view_ids": [
+        "v_end"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_pitch",
+      "kind": "pitch_circle",
+      "description": "Общая окружность центров периферийных отверстий.",
+      "view_ids": [
+        "v_end"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f_chamfer",
+      "kind": "chamfer_group",
+      "description": "Фаски кромок кольца.",
+      "view_ids": [
+        "v_section"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d_outer",
+      "name": "Наружный диаметр",
+      "raw": "⌀105",
+      "value": 105.0,
+      "unit": "mm",
+      "view_id": "v_end",
+      "feature_id": "f_ring",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_bore",
+      "name": "Диаметр центрального отверстия",
+      "raw": "⌀65H7 (+0,03)",
+      "value": 65.0,
+      "unit": "mm",
+      "view_id": "v_end",
+      "feature_id": "f_bore",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_thickness",
+      "name": "Толщина кольца",
+      "raw": "12",
+      "value": 12.0,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_ring",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_pitch",
+      "name": "Диаметр окружности центров",
+      "raw": "⌀85",
+      "value": 85.0,
+      "unit": "mm",
+      "view_id": "v_end",
+      "feature_id": "f_pitch",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_bolt",
+      "name": "Диаметр отверстий под цековками",
+      "raw": "⌀8,4\n4 отв.",
+      "value": 8.4,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_bolt",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_bolt_count",
+      "name": "Количество отверстий под цековками",
+      "raw": "4 отв.",
+      "value": 4.0,
+      "unit": "count",
+      "view_id": "v_section",
+      "feature_id": "f_bolt",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_cb",
+      "name": "Диаметр цековок",
+      "raw": "⌀14",
+      "value": 14.0,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_cb",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_cb_depth",
+      "name": "Глубина цековок от Z=0",
+      "raw": "8",
+      "value": 8.0,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_cb",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_fit",
+      "name": "Диаметр отверстий при сборке",
+      "raw": "2 отв. ⌀8H7 (+0,015)\nпри сборке",
+      "value": 8.0,
+      "unit": "mm",
+      "view_id": "v_end",
+      "feature_id": "f_fit",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_fit_count",
+      "name": "Количество отверстий при сборке",
+      "raw": "2 отв.",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v_end",
+      "feature_id": "f_fit",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_angle_left",
+      "name": "Угол от +Y к отверстию с цековкой в секторе +X,+Y",
+      "raw": "45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v_end",
+      "feature_id": "f_bolt",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_angle_right",
+      "name": "Угол от +Y к отверстию при сборке в секторе −X,+Y",
+      "raw": "45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v_end",
+      "feature_id": "f_fit",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_chamfer_size",
+      "name": "Размер фасок",
+      "raw": "0,5×45°\n4 фаски",
+      "value": 0.5,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_chamfer",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_chamfer_angle",
+      "name": "Угол фасок",
+      "raw": "0,5×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v_section",
+      "feature_id": "f_chamfer",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_chamfer_count",
+      "name": "Количество фасок",
+      "raw": "4 фаски",
+      "value": 4.0,
+      "unit": "count",
+      "view_id": "v_section",
+      "feature_id": "f_chamfer",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d_perp",
+      "name": "Допуск перпендикулярности противоположного торца к базе A",
+      "raw": "⊥ | 0,025 | A",
+      "value": 0.025,
+      "unit": "mm",
+      "view_id": "v_section",
+      "feature_id": "f_back",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f_ring",
+        "f_bore",
+        "f_pitch"
+      ],
+      "description": "Наружная поверхность, центральное отверстие и окружность центров соосны Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_front",
+        "f_back",
+        "f_ring"
+      ],
+      "description": "Торцы ограничивают осевую толщину кольца.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_bolt",
+        "f_cb"
+      ],
+      "description": "Каждая цековка соосна соответствующему сквозному отверстию.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_bolt",
+        "f_fit",
+        "f_pitch"
+      ],
+      "description": "Центры обеих групп расположены на общей окружности.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_bolt",
+        "f_fit"
+      ],
+      "description": "Нижнее правое отверстие с цековкой диаметрально противоположно верхнему левому; нижнее левое отверстие при сборке — верхнему правому.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_bore",
+        "f_back"
+      ],
+      "description": "База A задана центральным отверстием; к ней отнесён допуск противоположного торца.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f_chamfer",
+        "f_ring",
+        "f_bore"
+      ],
+      "description": "Фаски предположительно относятся к наружным и внутренним круговым кромкам обоих торцов.",
+      "status": "hypothesis"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "Общие допуски по ГОСТ 30893.2 - mK.",
+      "view_id": null,
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 6,3 (√)",
+      "view_id": null,
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 1,6",
+      "view_id": "v_section",
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 0,80",
+      "view_id": "v_section",
+      "status": "observed"
+    },
+    {
+      "raw": "Ra 0,80",
+      "view_id": "v_end",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Разрез не имеет буквенного обозначения и линии сечения; плоскость X=0 и взгляд вдоль +X следуют из сопоставления проекций, но явно не подписаны.",
+    "Глубина отверстий при сборке отдельно не указана; их сквозное исполнение предполагается.",
+    "Распределение фасок по конкретным кромкам не подписано индивидуально."
+  ]
+}

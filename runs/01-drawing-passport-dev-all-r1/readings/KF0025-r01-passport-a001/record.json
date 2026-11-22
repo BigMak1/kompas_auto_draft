@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0025",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0025.png",
+    "sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "original_bytes": 230739,
+    "original_size": [
+      3727,
+      1761
+    ],
+    "sent_size": [
+      3727,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 230739,
+    "sent_sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "resized": false
+  },
+  "orientation": "Ось большого центрального отверстия колеса совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида слева на листе, со входами цековок крепёжных отверстий. +Z идёт вправо по этому виду. Ось самого верхнего крепёжного отверстия на круговом виде находится на положительной полуоси Y (X=0). Этот торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. Угловые положения остальных отверстий сохраняются относительно него.",
+  "usage": {
+    "input_tokens": 5202,
+    "input_tokens_details": {
+      "cache_write_tokens": 5199,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5199
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 5248,
+    "output_tokens_details": {
+      "reasoning_tokens": 1673
+    },
+    "total_tokens": 10450
+  },
+  "http_responses": 1,
+  "request_id": "req_e383ed7250ca447ea48e14f44304e11a",
+  "http_status": 200,
+  "response_id": "resp_0b75d090d4ad3c9c016b034614485c87d2a25561825bfcb080",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 70.73423054200248,
+  "trace_id": "tr-52a6f5130ad3ee71b7ff61961688e353",
+  "files": {
+    "debug/request.json": "3f6c91f584d3726064d364f5d1bef394e0ed140c514fd40833740cabf234e6b5",
+    "debug/response.json": "8483c6474d05316c9afdb0fb833468e12aa8c7621de03fce400bc9fd359af29e",
+    "debug/stage.json": "e40fd92e8371c5e4c410fc5f085f7d4eda831acdfcb7fbf69a7854a0a548c3c5",
+    "passport.json": "f0654c2998dbb1d602ee87a6441404084d5aeb0d7b823dcb8ff5e57fed9074e3",
+    "run.log": "afada96d9e6a84abfe5df75285e9c47e82cd7ae8b9c028c953fbfa7c230a6d9d"
+  }
+}

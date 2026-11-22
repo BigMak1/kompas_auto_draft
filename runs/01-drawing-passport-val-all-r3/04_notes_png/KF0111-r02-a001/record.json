@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0111",
+  "repeat": 2,
+  "variant": "04_notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0111.png",
+    "sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "original_bytes": 109923,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 109923,
+    "sent_sha256": "63e8aff0345337bed1e46036f33cee4b9a77ce07ac54118568669cc389b946c1",
+    "resized": false
+  },
+  "orientation": "Ось наружного цилиндра вала совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида, рядом с парой меньших сегментных пазов. +Z идёт вправо по этому виду, к одиночному большому сегментному пазу. Большой паз направлен к +Y; его середина лежит в плоскости YZ. Два меньших паза находятся со сторон +Y и -Y, как показано на продольном виде и нижнем торцевом сечении.",
+  "seconds": 76.85332220900455,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 9909,
+    "output_tokens": 6113
+  },
+  "trace_id": "tr-f61ce04f5cdc1e28c29efdb3384b44bd",
+  "reading_path": "readings/KF0111-r02-notes-a001",
+  "reading_sha256": "96fe26408c5b8eb0c2fb06c7cb1635686c316bfb2f25f60f737427c62298d10c",
+  "reading_trace_id": "tr-5153bbb7d244c06f59be480a89c0df51",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 6219,
+      "input_tokens_details": {
+        "cache_write_tokens": 6216,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 6216
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 4196,
+      "output_tokens_details": {
+        "reasoning_tokens": 1048
+      },
+      "total_tokens": 10415
+    },
+    "http_responses": 1,
+    "request_id": "req_156d7a77f5f84b4784b3cda48b431011",
+    "http_status": 200,
+    "response_id": "resp_04f122dfb3969dd3016b03394084c887d29ab02d59b1448ed7",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 42.82244154199725,
+    "trace_id": "tr-f61ce04f5cdc1e28c29efdb3384b44bd"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 64,
+    "noop_steps": [],
+    "volume_mm3": 146371.0101306366,
+    "bounds_mm": [
+      [
+        -20.0,
+        -20.0,
+        0.0
+      ],
+      [
+        20.0,
+        20.0,
+        120.0
+      ]
+    ],
+    "triangles": 1676,
+    "files": {
+      "model.stl": "8e9afb8ce10cbb1bca570e7a106003e81a7ac5d636bf43d3333d2fb7676385a7"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "790e7e06b78cbba340fcbd87e3349dcd576bf9fdeba356961a4af68110fcefcb",
+    "debug/llm/response.json": "5bae8c030c1f0f17ad56184103e6a42d2a20f43b2e143948d6a28593d0927482",
+    "debug/llm/stage.json": "f565933993d90cd4d34846f900c705197d7be35a1d5f173ee9f199e924e64675",
+    "model.stl": "8e9afb8ce10cbb1bca570e7a106003e81a7ac5d636bf43d3333d2fb7676385a7",
+    "notes.md": "b5eae97bba7287f963811c372b20687b87717d8db58deebb27fd30ea144a4f51",
+    "recipe.json": "47505b5c4afdeb8dcce149bf173fd3d4e63d49d83a4f0f90f2e64a98c61a09d7",
+    "run.log": "a41dcdd656621098e6f4c3e6e1d90d314ad430422a4017a104ce0f909317daa9"
+  }
+}

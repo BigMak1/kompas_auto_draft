@@ -1,5 +1,6 @@
-"""Точка входа для python -m src.experiments."""
+"""Точка входа CLI `python -m src.experiments`."""
 
 from src.experiments.main import main
 
-raise SystemExit(main())
+if __name__ == "__main__":
+    raise SystemExit(main())

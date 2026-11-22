@@ -1,0 +1,99 @@
+{
+  "pair_id": "KF0019",
+  "repeat": 1,
+  "variant": "04_notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0019.png",
+    "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "original_bytes": 170738,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 170738,
+    "sent_sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366",
+    "resized": false
+  },
+  "orientation": "Ось отверстия шайбы совпадает с Z, её центр в XY — (0, 0). База Z=0 — торец со входом конической зенковки, слева на показанном разрезе. +Z идёт вправо по разрезу, к меньшему выходу отверстия. Углового ориентира нет: поворот вокруг Z свободен.",
+  "seconds": 34.38626500099781,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 9041,
+    "output_tokens": 2886
+  },
+  "trace_id": "tr-527c2fef99767e6b2caef771a34e4168",
+  "reading_path": "readings/KF0019-r01-notes-a001",
+  "reading_sha256": "2a938bb63d334db99c4d168406db61bebdf2474aad5f61efd05998249033176a",
+  "reading_trace_id": "tr-dcb449e031be9bfc33f96b3132b14a5b",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 5392,
+      "input_tokens_details": {
+        "cache_write_tokens": 5389,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 5389
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2050,
+      "output_tokens_details": {
+        "reasoning_tokens": 175
+      },
+      "total_tokens": 7442
+    },
+    "http_responses": 1,
+    "request_id": "req_900d96300a08476781805f3a9b4ade3f",
+    "http_status": 200,
+    "response_id": "resp_066b1d26e2160b37016b03467ccff487d2bdaf0872e83f75bf",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 16.84054770800867,
+    "trace_id": "tr-527c2fef99767e6b2caef771a34e4168"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 47,
+    "noop_steps": [],
+    "volume_mm3": 4718.143985426986,
+    "bounds_mm": [
+      [
+        -20.0,
+        -20.0,
+        0.0
+      ],
+      [
+        20.0,
+        20.0,
+        4.0
+      ]
+    ],
+    "triangles": 47376,
+    "files": {
+      "model.stl": "066621fb2945d7000d33200ecae476bd8aa6407487aa1786fe7d33f983e15d2d"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "bb778ed34fa35e29208bfb11327eaf4895ec22d93db34f6033978fddcf1f78fa",
+    "debug/llm/response.json": "db961ec5c4f2e984517e9922ba754e9339ef71a6459269cb9ac57b2d14ef04a2",
+    "debug/llm/stage.json": "b8ead70533337c411944af686cbc381880ce88d8cc1068ca31999a38bd90d496",
+    "model.stl": "066621fb2945d7000d33200ecae476bd8aa6407487aa1786fe7d33f983e15d2d",
+    "notes.md": "36b4ea19320e86b9b931f749635693c3ba9d6798bbb384d91d6ca72f2ec6f831",
+    "recipe.json": "f28fc5aa974761749b05468f20ac90455cbc9b6ddc38c78f8a166eba64b6f4ff",
+    "run.log": "4845a84da5d78fb093bba7da9e9e8d5bf23dfcd17b98810d2ec1ffed6e1817ed"
+  }
+}

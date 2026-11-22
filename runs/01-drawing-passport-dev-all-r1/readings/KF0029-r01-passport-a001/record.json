@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0029",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0029.png",
+    "sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "original_bytes": 228562,
+    "original_size": [
+      3515,
+      2487
+    ],
+    "sent_size": [
+      3515,
+      2487
+    ],
+    "mode": "RGB",
+    "sent_bytes": 228562,
+    "sent_sha256": "2afb03a9813dfa02bfba45a0c80203cb00c8a068a37e5cca7b0d74691cfb7b80",
+    "resized": false
+  },
+  "orientation": "Ось отверстия ступицы совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый крайний торец ступицы на продольном разрезе слева, как указано в примечании на листе. +Z идёт вправо по разрезу. Верхний шпоночный паз на торцевом виде направлен к +Y; его центр лежит в плоскости YZ. Торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. База относится к ступице, а не к торцу зубчатого венца.",
+  "usage": {
+    "input_tokens": 5245,
+    "input_tokens_details": {
+      "cache_write_tokens": 5242,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5242
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 4901,
+    "output_tokens_details": {
+      "reasoning_tokens": 1034
+    },
+    "total_tokens": 10146
+  },
+  "http_responses": 1,
+  "request_id": "req_34bbdf4ebf08453fb4b74d4be47985d0",
+  "http_status": 200,
+  "response_id": "resp_0b9231f0cdc9e469016b034689df7c87d297f6574cd507a123",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 50.96864245799952,
+  "trace_id": "tr-de77b76fac9185bcc87001a8289e17c5",
+  "files": {
+    "debug/request.json": "5c64e5980e5d154f54c7d29fb332626da90f09758919bf58f527c7a1c6b2b3f0",
+    "debug/response.json": "26fe6dfd4ba62b19473871177b0554579a0c298f19830533678d66e5ca04e43c",
+    "debug/stage.json": "43a706e01363a461f200a7cf09de7ac5f61f943176da82c888b0e701d99e4f5f",
+    "passport.json": "83d07b046c1c3456f2a5a38e553e0dc6563bebbd1a3c821d942a462dadc7e676",
+    "run.log": "6d0a8167c15ab68c956d404ae496337b661337e8a14bb265d771617fab5820c7"
+  }
+}

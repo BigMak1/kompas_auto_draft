@@ -1,0 +1,95 @@
+{
+  "pair_id": "KF0025",
+  "repeat": 1,
+  "variant": "01_baseline_direct",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0025.png",
+    "sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "original_bytes": 230739,
+    "original_size": [
+      3727,
+      1761
+    ],
+    "sent_size": [
+      3727,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 230739,
+    "sent_sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "resized": false
+  },
+  "orientation": "Ось большого центрального отверстия колеса совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида слева на листе, со входами цековок крепёжных отверстий. +Z идёт вправо по этому виду. Ось самого верхнего крепёжного отверстия на круговом виде находится на положительной полуоси Y (X=0). Этот торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. Угловые положения остальных отверстий сохраняются относительно него.",
+  "seconds": 50.67481991701061,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4569,
+    "output_tokens": 3335
+  },
+  "trace_id": "tr-8b9c314a21c6820315bc4a13b87834f6",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4569,
+      "input_tokens_details": {
+        "cache_write_tokens": 4566,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4566
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3335,
+      "output_tokens_details": {
+        "reasoning_tokens": 1544
+      },
+      "total_tokens": 7904
+    },
+    "http_responses": 1,
+    "request_id": "req_be2a7e3f51934f97937c8b0662984568",
+    "http_status": 200,
+    "response_id": "resp_0b4c4472740b2b7c016b034690c6ec87d2a9799dc0e24d10e7",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 48.01132291700924,
+    "trace_id": "tr-8b9c314a21c6820315bc4a13b87834f6"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 28,
+    "noop_steps": [],
+    "volume_mm3": 11702125.892656878,
+    "bounds_mm": [
+      [
+        -394.23,
+        -394.23,
+        0.0
+      ],
+      [
+        394.23,
+        394.23,
+        90.0
+      ]
+    ],
+    "triangles": 31056,
+    "files": {
+      "model.stl": "519cfdaba4d4f0c1e70fed23120fda8e7abd724364f3432644228ebe3212c323"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "e43193ae5cc398199da77a9fc51e657d35b399d2cdb6b4706e4a0662d91e534f",
+    "debug/llm/response.json": "fdf2a24288d6f33cf3f08f45d39dfe08dc8ce13ceb4ea29d43361547551d0ed7",
+    "debug/llm/stage.json": "3d15576bad1a3a52602b4c1abd34e02ba075221753716328194a0060e360999e",
+    "model.stl": "519cfdaba4d4f0c1e70fed23120fda8e7abd724364f3432644228ebe3212c323",
+    "recipe.json": "331f8bf44682e9bcd326973f5509273694b3911f18ce14ee132606f079903b6a",
+    "run.log": "e929fe1761d4f45df90776e68a36cd95a21098d0809dab5eb69b220d1b22670d"
+  }
+}

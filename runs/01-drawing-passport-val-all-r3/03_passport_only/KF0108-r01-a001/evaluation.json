@@ -1,0 +1,41 @@
+{
+  "protocol": "mesh-fixed-pose-v1",
+  "status": "ok",
+  "iou": 0.9977528328613444,
+  "f_score": 1.0,
+  "parameters": {
+    "surface_samples": 8192,
+    "seed": 20261107,
+    "tau_relative": 0.01,
+    "intersection_roundoff_relative": 1e-06,
+    "units": "mm",
+    "alignment": "identity",
+    "distance": "point_to_triangle",
+    "intersection": "manifold"
+  },
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "trimesh": "4.12.2",
+    "rtree": "1.4.1",
+    "manifold3d": "3.5.4"
+  },
+  "evaluator_sha256": "eb67d551f0c72ac45548a747c11d24ab78c483cc39c8cca5f4396fcc8a7514e2",
+  "reference": {
+    "name": "KF0108.stl",
+    "sha256": "2f17e2c37fccae5ef2be072bbd2d9316a3b918efc09be62dcb54aaf069554b64"
+  },
+  "prediction": {
+    "name": "model.stl",
+    "sha256": "6847f8c60036da23cabb3c08b5780b2567cfe38dafad51a4abe451586981009a"
+  },
+  "tau_mm": 1.2736269258475381,
+  "volumes_mm3": {
+    "prediction": 228591.67640531747,
+    "reference": 228447.53222539256,
+    "intersection": 228262.55462586938,
+    "intersection_roundoff_correction": 0.0
+  },
+  "study_fingerprint": "16b0a1c10e628ab1154df53aae75712944b8d453e2043e3d99be09ac3d4909df",
+  "record_sha256": "ae72794f0567520f6eb96365edc0289a477ad652b38e29b415ddf3c8553cab3f"
+}

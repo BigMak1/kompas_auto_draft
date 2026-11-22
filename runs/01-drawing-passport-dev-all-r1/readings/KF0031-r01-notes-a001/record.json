@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0031",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0031.png",
+    "sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "original_bytes": 91742,
+    "original_size": [
+      2487,
+      1761
+    ],
+    "sent_size": [
+      2487,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 91742,
+    "sent_sha256": "2275efb5b4c8228b61a4060f2d3c099ea18907a201447aa77e840f35e48ca46c",
+    "resized": false
+  },
+  "orientation": "Ось наружных цилиндрических поверхностей совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец более широкой ступени на продольном разрезе слева, со входом цековки нижнего отверстия. +Z идёт вправо по разрезу, к более узкой ступени. Ось верхнего, большего резьбового отверстия на торцевом виде находится на положительной полуоси Y (X=0); меньшее отверстие — на отрицательной. Этот вид показан от базы вдоль +Z: +X влево, +Y вверх.",
+  "usage": {
+    "input_tokens": 3703,
+    "input_tokens_details": {
+      "cache_write_tokens": 3700,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3700
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 1673,
+    "output_tokens_details": {
+      "reasoning_tokens": 368
+    },
+    "total_tokens": 5376
+  },
+  "http_responses": 1,
+  "request_id": "req_625ca2bb332b49f8923b82ebbeb53b8d",
+  "http_status": 200,
+  "response_id": "resp_017695ac54273a03016b0345fcdf1887d2aea48949b0dc28aa",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 28.896483915974386,
+  "trace_id": "tr-4ddd8364e146948b1fcd9cdd8c4aec47",
+  "files": {
+    "debug/request.json": "cc1a20140e2d9ecad311c146eb264cc1b780d515b021bb8cede42d66ff42e4de",
+    "debug/response.json": "e77b9b313eca7c6a87d3a3f8e4390c2b57106378e8d54d7f6128dfe40ad6a6b2",
+    "debug/stage.json": "d41de89acceef36bed46fd84359a03dc72a47fce92cab89b4d3916eb66c39bce",
+    "notes.md": "b94aa96e1c525b83d3b2098146ef0c8f67573cbcbae94a0e1bb7f987c7180a78",
+    "run.log": "2567894276c7705f44b1d6c87391a8ae84eef80404793924fc2fa6aa23ae0b1f"
+  }
+}

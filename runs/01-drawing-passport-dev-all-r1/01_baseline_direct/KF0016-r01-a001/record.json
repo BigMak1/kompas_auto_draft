@@ -1,0 +1,95 @@
+{
+  "pair_id": "KF0016",
+  "repeat": 1,
+  "variant": "01_baseline_direct",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0016.png",
+    "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "original_bytes": 191923,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 191923,
+    "sent_sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "resized": false
+  },
+  "orientation": "Ось отверстия втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец показанного продольного разреза; +Z идёт вправо по разрезу. Торцы геометрически эквивалентны. Углового ориентира нет: поворот вокруг Z свободен.",
+  "seconds": 14.434678792022169,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4554,
+    "output_tokens": 957
+  },
+  "trace_id": "tr-8e257f9dc2724e440544145236ecc446",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4554,
+      "input_tokens_details": {
+        "cache_write_tokens": 4551,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4551
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 957,
+      "output_tokens_details": {
+        "reasoning_tokens": 244
+      },
+      "total_tokens": 5511
+    },
+    "http_responses": 1,
+    "request_id": "req_9bb2c3f473c94fb58ad5d4b682f49a0d",
+    "http_status": 200,
+    "response_id": "resp_0bd4c76dae794701016b034668992487d282baab84ecb51603",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 11.992700707982294,
+    "trace_id": "tr-8e257f9dc2724e440544145236ecc446"
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 18,
+    "noop_steps": [],
+    "volume_mm3": 19361.90550469254,
+    "bounds_mm": [
+      [
+        -32.5,
+        -32.5,
+        0.0
+      ],
+      [
+        32.5,
+        32.5,
+        19.0
+      ]
+    ],
+    "triangles": 18144,
+    "files": {
+      "model.stl": "193f1cf1b3b60f04b82d84ef11019d6bf94fa0babc9ae93918152ee8bd8802f9"
+    }
+  },
+  "files": {
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/llm/request.json": "c9ef55db05bab4f7b0edd147429038c1a26c1ac59a4e6af67123c6b394438699",
+    "debug/llm/response.json": "2bca6f0b411981fa88cd9003670e809b22b516584459533d17b8f8bf30e44404",
+    "debug/llm/stage.json": "a0c9e2930487887537ab51f6bf25ff3ba5ea4d8424c83b48065ea2a0c9a4ee4e",
+    "model.stl": "193f1cf1b3b60f04b82d84ef11019d6bf94fa0babc9ae93918152ee8bd8802f9",
+    "recipe.json": "aa5fcf5ef4d4469d3d0fd911253e85c440fb26445bae5c05bba2b93a844fcbd7",
+    "run.log": "985bb4b83239b8ee0f3d3196770eb6b24d5c7c092b0a611cb14f4a9340065940"
+  }
+}

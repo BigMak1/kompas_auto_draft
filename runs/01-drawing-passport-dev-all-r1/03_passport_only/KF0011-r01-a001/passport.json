@@ -1,0 +1,541 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез слева",
+      "kind": "section",
+      "description": "Ось Z горизонтальна: слева база Z=0, вправо +Z; верх соответствует +Y, плоскость разреза YZ."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид",
+      "kind": "view",
+      "description": "Ось Z перпендикулярна листу; паз сверху, к +Y. Для координат принят взгляд с положительного торца вдоль −Z, +X вправо; выбор стороны взгляда условный ввиду эквивалентности торцов."
+    },
+    {
+      "id": "v3",
+      "label": "Таблица параметров зубчатого венца",
+      "kind": "table",
+      "description": "Параметры зацепления и точности."
+    },
+    {
+      "id": "v4",
+      "label": "Поле технических требований",
+      "kind": "other",
+      "description": "Примечания и общее обозначение шероховатости."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия на левом торце продольного разреза; Z=0. Противоположный торец расположен со стороны +Z.",
+    "axis_z": "Совпадает с осью центрального отверстия; +Z вправо на v1. +Y направлен к верхнему пазу v2; центр паза в плоскости YZ.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "body",
+      "description": "Кольцевое тело шестерни с геометрически эквивалентными торцами.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "external_gear",
+      "description": "Наружный зубчатый венец, изображённый условно без отдельных зубьев.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "through_bore",
+      "description": "Центральное сквозное цилиндрическое отверстие; база A.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "keyway",
+      "description": "Продольный внутренний шпоночный паз со стороны +Y.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "chamfer_group",
+      "description": "Фаски наружных торцевых кромок.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "chamfer_group",
+      "description": "Фаски отверстия на обоих торцах.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "fillet_group",
+      "description": "Скругления углов дна шпоночного паза.",
+      "view_ids": [
+        "v2"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Осевая длина",
+      "raw": "33h14",
+      "value": 33.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Наружный диаметр",
+      "raw": "⌀70,1h12",
+      "value": 70.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Диаметр отверстия",
+      "raw": "⌀32H8 (+0,039)",
+      "value": 32.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Ширина паза",
+      "raw": "10H9 (+0,036)",
+      "value": 10.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Расстояние от нижней образующей отверстия до дна паза по Y",
+      "raw": "35,3H12 (+0,25)",
+      "value": 35.3,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Размер наружной фаски",
+      "raw": "2×45°",
+      "value": 2.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Угол наружной фаски",
+      "raw": "2×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Количество наружных фасок",
+      "raw": "2 фаски",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Размер фаски отверстия",
+      "raw": "1×45°",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Угол фаски отверстия",
+      "raw": "1×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Количество фасок отверстия",
+      "raw": "2 фаски",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Радиус скругления паза",
+      "raw": "R0,4*",
+      "value": 0.4,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Количество скруглений",
+      "raw": "2 радиуса",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Шероховатость отверстия Ra",
+      "raw": "Ra 2,5",
+      "value": 0.0025,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Шероховатость паза Ra",
+      "raw": "Ra 2,5",
+      "value": 0.0025,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Шероховатость поверхности впадин венца Ra",
+      "raw": "Ra 2,5",
+      "value": 0.0025,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "hypothesis"
+    },
+    {
+      "id": "d17",
+      "name": "Допуск полного радиального биения наружной поверхности относительно A",
+      "raw": "↗↗ | 0,1 | A",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Модуль m",
+      "raw": "4",
+      "value": 4.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Число зубьев z",
+      "raw": "15",
+      "value": 15.0,
+      "unit": "count",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Коэффициент смещения x",
+      "raw": "0,267",
+      "value": 0.267,
+      "unit": "dimensionless",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Степень точности",
+      "raw": "9-В",
+      "value": 9.0,
+      "unit": "dimensionless",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Длина общей нормали W",
+      "raw": "31,092 −0,11/−0,29",
+      "value": 31.092,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Допуск колебания длины общей нормали F_vW",
+      "raw": "0",
+      "value": 0.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Допуск колебания измерительного межосевого расстояния за оборот F_i″",
+      "raw": "0,112",
+      "value": 0.112,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Допуск колебания измерительного межосевого расстояния на одном зубе f_i″",
+      "raw": "0,045",
+      "value": 0.045,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Допуск радиального биения зубчатого венца F_r″",
+      "raw": "0,08",
+      "value": 0.08,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Отклонение основного шага f_pt″",
+      "raw": "±0,036",
+      "value": 0.036,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Делительный диаметр d",
+      "raw": "60",
+      "value": 60.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Допуск погрешности направления зуба F_β",
+      "raw": "0,028",
+      "value": 0.028,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Радиус развернутости эвольвенты в начале рабочего участка профиля ρ",
+      "raw": "2,346",
+      "value": 2.346,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d31",
+      "name": "Общая шероховатость Ra",
+      "raw": "6,3 (√)",
+      "value": 0.0063,
+      "unit": "mm",
+      "view_id": "v4",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "description": "Тело, венец и отверстие соосны оси Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f4"
+      ],
+      "description": "Паз открыт в отверстие; его боковые стенки симметричны относительно YZ.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f1",
+        "f4"
+      ],
+      "description": "Паз проходит между обоими торцами вдоль Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f4",
+        "f7"
+      ],
+      "description": "Скругления соединяют боковые стенки паза с его дном со стороны +Y.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f1",
+        "f5"
+      ],
+      "description": "Наружные фаски расположены на торцах Z=0 и со стороны +Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f6"
+      ],
+      "description": "Входные фаски отверстия расположены на обоих торцах.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3"
+      ],
+      "description": "Биение наружной поверхности нормировано относительно оси отверстия, обозначенной базой A.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "3. * Размер обеспеч. инстр.",
+      "view_id": "v4",
+      "status": "observed"
+    },
+    {
+      "raw": "Исходный контур — ГОСТ 13755-81",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Степень точности по ГОСТ 1643-81",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Контролировать при отсутствии обкатки с измерительной шестерней",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Допуск на погрешность профиля зуба f_f″ —",
+      "view_id": "v3",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Сторона наблюдения торцевого вида не обозначена; принятый взгляд вдоль −Z условен, торцы по условию эквивалентны.",
+    "Параметры исходного контура, заданного ссылкой на стандарт, на листе не раскрыты; угол профиля, диаметр впадин и форма перехода у основания зуба отдельно не указаны.",
+    "Угловое положение зубьев относительно шпоночного паза не задано.",
+    "Принадлежность нижнего указания шероховатости на продольном разрезе поверхности впадин венца предположительна."
+  ]
+}

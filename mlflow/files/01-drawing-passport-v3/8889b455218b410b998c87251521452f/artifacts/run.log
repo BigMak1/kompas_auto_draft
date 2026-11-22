@@ -1,3 +1,0 @@
-21:58:33  МАРШРУТ    passport_png / KF0012-r01
-21:58:33  ОШИБКА     Этап: ответ LLM / проверка схемы. ModelBehaviorError: Responses stream ended with terminal event `response.incomplete`. status=incomplete; incomplete_details=IncompleteDetails(reason='max_output_tokens').; HTTP: 200; ID запроса: req_0d358fcddb294f1db70dd96ad8be34b2; Незавершённый ответ: {'reason': 'max_output_tokens'}
-21:58:33  ДИАГНОСТИКА artifacts/hw2-passport-v3-kf0012-dev/passport_png/KF0012-r01-a001/error.log

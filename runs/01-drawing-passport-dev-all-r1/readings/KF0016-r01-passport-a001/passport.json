@@ -1,0 +1,191 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез",
+      "kind": "section",
+      "description": "Единственное изображение детали: осевой разрез в плоскости YZ. +Z вправо, +Y условно вверх; взгляд вдоль +X. Слева база Z=0, справа противоположный торец. Отдельных видов и геометрических таблиц нет."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия на левом торце разреза; XY=(0,0), Z=0.",
+    "axis_z": "Ось отверстия; +Z вправо по разрезу. Осевой отсчёт от левого торца. Направление +Y условно выбрано вверх на разрезе; поворот вокруг Z свободен.",
+    "front_view_id": "v1",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "cylindrical_body",
+      "description": "Кольцевая цилиндрическая втулка с постоянным наружным диаметром.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "through_bore",
+      "description": "Центральное сквозное цилиндрическое отверстие.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "end_face",
+      "description": "Левый плоский кольцевой торец при Z=0; обозначен базой A.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "end_face",
+      "description": "Правый плоский кольцевой торец со стороны +Z.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "chamfer_group",
+      "description": "Фаски на входных кромках отверстия с обоих торцов.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Наружный диаметр, справочный",
+      "raw": "⌀65*",
+      "value": 65.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Диаметр отверстия",
+      "raw": "⌀54H12 (+0,3)",
+      "value": 54.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Длина втулки между торцами",
+      "raw": "19b11 (−0,16; −0,29)",
+      "value": 19.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Размер фасок",
+      "raw": "1×45°",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Угол фасок",
+      "raw": "1×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Количество фасок",
+      "raw": "2 фаски",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Допуск параллельности правого торца относительно базы A",
+      "raw": "∥ | 0,1 | A",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f1",
+        "f2"
+      ],
+      "description": "Наружная цилиндрическая поверхность и отверстие соосны оси Z.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "description": "Отверстие открыто на обоих торцах.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f4"
+      ],
+      "description": "Торцы геометрически эквивалентны по заданной ориентации; левый служит базой параллельности правого.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f5",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "description": "Фаски соединяют цилиндрическую поверхность отверстия с торцами.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "*Размер для справок.",
+      "view_id": "v1",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Отдельные допуски соосности и перпендикулярности торцов к оси не указаны.",
+    "Абсолютная угловая ориентация вокруг Z не задана и для этой геометрии не требуется."
+  ]
+}

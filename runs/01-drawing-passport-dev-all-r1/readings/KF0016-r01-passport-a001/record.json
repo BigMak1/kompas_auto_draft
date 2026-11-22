@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0016",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0016.png",
+    "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "original_bytes": 191923,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 191923,
+    "sent_sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c",
+    "resized": false
+  },
+  "orientation": "Ось отверстия втулки совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец показанного продольного разреза; +Z идёт вправо по разрезу. Торцы геометрически эквивалентны. Углового ориентира нет: поворот вокруг Z свободен.",
+  "usage": {
+    "input_tokens": 5187,
+    "input_tokens_details": {
+      "cache_write_tokens": 5184,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5184
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 1982,
+    "output_tokens_details": {
+      "reasoning_tokens": 936
+    },
+    "total_tokens": 7169
+  },
+  "http_responses": 1,
+  "request_id": "req_31063b5acec14ec8869a7dde0496f515",
+  "http_status": 200,
+  "response_id": "resp_0a49d442a02238ad016b034628432c87d28485981dfd0d5498",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 31.310579582990613,
+  "trace_id": "tr-ee8d143038bc82954f63c7114219061d",
+  "files": {
+    "debug/request.json": "f0dfdd0bedb312c6dfb42eef0e88d1810ec921dc8393c303a1d005bd4dd2523d",
+    "debug/response.json": "3ea115cb2fa2f770550749acde79e553de65bae47596ab8489654c5ff33b833c",
+    "debug/stage.json": "805616c87d299d477469a3c49dde5e470be7ebe293163125d19d2e32d100308d",
+    "passport.json": "ca16ee77bca202878f30a566c3246307c080c5682a12b07ffcc602f604cfff81",
+    "run.log": "1ce98c4916481c70014032a33290e9530baf342f7ba92eaacb78180900e50d09"
+  }
+}

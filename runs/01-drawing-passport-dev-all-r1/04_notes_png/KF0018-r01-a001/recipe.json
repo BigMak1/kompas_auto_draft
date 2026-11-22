@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 40.5
+      },
+      "z": 0.0,
+      "depth": 6.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 32.0
+      },
+      "z": 0.0,
+      "depth": 6.0,
+      "direction": "+Z"
+    }
+  ]
+}

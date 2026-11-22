@@ -1,263 +1,294 @@
-"""Офлайн-регрессии версий, локального MLflow и переноса опубликованного снимка."""
+"""Офлайн-тесты MLflow 3.18: Parent/Child runs, concurrent Agents SDK tracing, feedback и переносимость."""
 
-import copy
+import asyncio
 import json
 import shutil
 import sqlite3
 from pathlib import Path
 
+import httpx2 as httpx
 import pytest
-from filelock import FileLock, Timeout
-from pydantic import ValidationError
-from test_experiment import PASSPORT, Model, run
-from test_experiment import sandbox as sandbox  # общие маленькие PNG/STL и подставленный ответ
+from mlflow.entities import ViewType
+from openai import AsyncOpenAI, DefaultAsyncHttpxClient
 
-from src.agent.schemas.passport import Passport
-from src.agent.stages import diagnose_output
-from src.config import ROOT
-from src.experiments.config import ExperimentConfig, PromptVersions
-from src.experiments.prompts import legacy_texts, register_texts, resolve_prompts
-from src.experiments.storage import publish, restore, runtime_database, study_lock, verify_snapshot
-from src.experiments.store import freeze, read_record, verify_study
-from src.experiments.tracking import local_tracking, prepare_tracking, sync_all, uri
-from src.utils import read_json, sha256, write_json
-
-
-def registered(sandbox: tuple[Path, ExperimentConfig]) -> tuple[Path, ExperimentConfig]:
-    from mlflow import MlflowClient
-
-    root, config = sandbox
-    with local_tracking(root):
-        client = MlflowClient(tracking_uri=uri(root), registry_uri=uri(root))
-        refs = register_texts(client, legacy_texts(config.model_dump()), "Офлайн-пример")
-        assert refs == register_texts(client, legacy_texts(config.model_dump()), "Без дублей")
-    return root, config.model_copy(update={"prompts": PromptVersions(**refs)})
-
-
-def test_actual_saved_response_explains_both_errors_without_repair() -> None:
-    path = ROOT / "tests/fixtures/passport-response-v1.json"
-    checksum = sha256(path)
-    response = read_json(path)
-    output = json.loads(response["output"][-1]["content"][0]["text"])
-    # Только тестовая копия проверяется новой схемой; исходный ответ не меняется.
-    output.update(schema_version="drawing-passport-2", general_notes=[])
-    adapted = copy.deepcopy(response)
-    adapted["output"][-1]["content"][0]["text"] = json.dumps(output)
-    error = diagnose_output(adapted, Passport)
-    assert error["code"] == "schema_validation"
-    fields = {tuple(v["loc"]): v["msg"] for v in error["validation"]}
-    assert "dimensionless" in fields[("dimensions", 34, "unit")]
-    assert "general_notes" in fields[("dimensions", 45, "feature_id")]
-    output["dimensions"][34]["unit"] = "dimensionless"
-    general = output["dimensions"].pop(45)
-    output["general_notes"] = [{"raw": general["raw"], "view_id": general["view_id"], "status": "observed"}]
-    Passport.model_validate(output)
-    assert sha256(path) == checksum
-
-
-@pytest.mark.parametrize(
-    "change,field",
-    [
-        ({"unit": None}, "unit"),
-        ({"unit": "kg"}, "unit"),
-        ({"reading_status": "unresolved"}, "value"),
-        ({"feature_id": None}, "feature_id"),
-        ({"binding_status": "unresolved"}, "feature_id"),
-    ],
+from src.core.config import ExperimentConfig
+from src.core.utils import read_json
+from src.experiments.runner import run_matrix
+from src.experiments.store import purge_study_files
+from src.llm import client as llm_client
+from src.tracking.mlflow import (
+    backfill_trace_sessions,
+    database_path,
+    local_tracking,
+    normalize_portable_paths,
+    purge_study_from_mlflow,
+    tracking_uri,
 )
-def test_passport_field_errors(change: dict, field: str) -> None:
-    value = copy.deepcopy(PASSPORT)
-    value["dimensions"][0].update(change)
-    with pytest.raises(ValidationError) as caught:
-        Passport.model_validate(value)
-    assert any(e["loc"] == ("dimensions", 0, field) for e in caught.value.errors())
+from tests.conftest import PASSPORT, RECIPE, fake_cad_builder
 
 
-def test_general_note_reference_is_checked() -> None:
-    value = {**PASSPORT, "general_notes": [{"raw": "H14, h14", "view_id": "absent", "status": "observed"}]}
-    with pytest.raises(ValidationError) as caught:
-        Passport.model_validate(value)
-    assert caught.value.errors()[0]["loc"] == ("general_notes", 0, "view_id")
-    assert caught.value.errors()[0]["type"] == "passport_reference"
+def test_mlflow_parent_child_concurrent_tracing_feedback_and_portability(
+    sandbox: tuple[Path, ExperimentConfig], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    secret = "sk-proj-offline-tracing-secret"
+    monkeypatch.setenv("OPENAI_API_KEY", secret)
 
+    def respond(req: httpx.Request) -> httpx.Response:
+        body = json.loads(req.content)
+        is_passport = "drawing-passport-2" in body.get("instructions", "")
+        is_notes = "обычные текстовые заметки" in body.get("instructions", "")
+        text = (
+            "Заметки для построения"
+            if is_notes
+            else json.dumps(PASSPORT if is_passport else RECIPE, ensure_ascii=False)
+        )
+        return httpx.Response(
+            200,
+            json={
+                "id": "resp_trace",
+                "object": "response",
+                "created_at": 0,
+                "model": "offline",
+                "status": "completed",
+                "tools": [],
+                "output": [
+                    {
+                        "id": "msg_trace",
+                        "role": "assistant",
+                        "type": "message",
+                        "status": "completed",
+                        "content": [{"type": "output_text", "text": text, "annotations": []}],
+                    }
+                ],
+                "usage": {"input_tokens": 120, "output_tokens": 45, "total_tokens": 165},
+            },
+        )
 
-def test_active_study_is_skipped_but_real_sync_failure_is_logged(sandbox, monkeypatch, capsys) -> None:
-    from src.experiments import tracking
-
-    root, _ = sandbox
-    run(sandbox, Model())
-    with FileLock(study_lock(root, "unit")):
-        assert sync_all(root)
-    assert "серия выполняется" in capsys.readouterr().out
-    assert not (root / "logs/tracking/sync-error.log").exists()
-
-    def broken(*args):
-        raise ValueError("Настоящая ошибка")
-
-    monkeypatch.setattr(tracking, "sync_study", broken)
-    assert not sync_all(root)
-    assert "Настоящая ошибка" in (root / "logs/tracking/sync-error.log").read_text()
-
-
-@pytest.mark.parametrize("delete_experiments", [True, False], ids=["experiment-and-catalog", "snapshot-only"])
-def test_run_reuses_archived_mlflow_ids_but_background_sync_skips_them(sandbox, delete_experiments) -> None:
-    from mlflow.entities import ViewType
-
-    from mlflow import MlflowClient
-
-    root, config = registered(sandbox)
-    directory, _ = freeze(
-        root, "unit", resolve_prompts(root, config), read_json(root / config.manifest), "dev", None, 1
+    monkeypatch.setattr(llm_client, "AsyncOpenAI", AsyncOpenAI)
+    monkeypatch.setattr(
+        llm_client,
+        "DefaultAsyncHttpxClient",
+        lambda **kw: DefaultAsyncHttpxClient(transport=httpx.MockTransport(respond), **kw),
     )
-    prepared = prepare_tracking(root, directory)
-    client = MlflowClient(tracking_uri=uri(root), registry_uri=uri(root))
-    snapshot_id = prepared["dataset_run_id"]
-    catalog_id = client.get_run(snapshot_id).info.experiment_id
-    experiment_id = prepared["experiment_id"]
-    other = client.create_experiment("Несвязанное исследование")
-    client.delete_experiment(other)
-    if delete_experiments:
-        client.delete_experiment(experiment_id)
-        client.delete_experiment(catalog_id)
-    else:
-        client.delete_run(snapshot_id)
 
-    assert sync_all(root)
-    assert not (root / "logs/tracking/sync-error.log").exists()
-    assert client.get_run(snapshot_id).info.lifecycle_stage == "deleted"
-    if delete_experiments:
-        assert client.get_experiment(experiment_id).lifecycle_stage == "deleted"
-        assert client.get_experiment(catalog_id).lifecycle_stage == "deleted"
-
-    model = Model()
-    run((root, config), model, tracking=True)
-    assert len(model.calls) == 6
-    assert {r.info.run_id for r in client.search_runs([catalog_id], run_view_type=ViewType.ALL)} == {
-        snapshot_id
-    }
-    assert client.get_run(snapshot_id).info.lifecycle_stage == "active"
-    assert client.get_experiment(other).lifecycle_stage == "deleted"
-    assert {m.model_id for m in client.search_logged_models([experiment_id])} == {prepared["model_id"]}
-    runs = client.search_runs([experiment_id])
-    assert len(runs) == 6 and all(r.data.tags.get("dataset_snapshot") == snapshot_id for r in runs)
-    assert all(r.data.tags["outcome"] == "success" for r in runs)
-
-
-def test_pinned_prompts_are_snapshotted_and_linked(sandbox) -> None:
-    from mlflow import MlflowClient
-
-    root, config = registered(sandbox)
-    directory = run((root, config), Model(), tracking=True)
-    study = verify_study(directory)
-    assert study["config"]["prompt_snapshot"]["builder"]["text"] == config.agent.prompt
-    with local_tracking(root):
-        client = MlflowClient(tracking_uri=uri(root), registry_uri=uri(root))
-        experiment = client.get_experiment_by_name(config.name + " · " + config.title)
-        model = client.search_logged_models([experiment.experiment_id])[0]
-        assert model.name == config.agent_version
-        assert "mlflow.linkedPrompts" in model.tags
-        traces = client.search_traces(locations=[experiment.experiment_id])
-        assert len(traces) == 6 and all(t.info.tags.get("mlflow.linkedPrompts") for t in traces)
-        assert not (root / "logs/unit/tracing-error.log").exists()
-        client.register_prompt("cad-builder", "Новая версия для будущего исследования")
-        resolved = resolve_prompts(root, config)
-        assert resolved.agent.prompt == config.agent.prompt  # новый номер не заменяет закреплённый
-        client.delete_prompt_version("cad-builder", "1")
-        model = Model()
-        with pytest.raises(Exception, match="not found"):
-            run((root, config), model, name="missing")
-        assert model.calls == []
-    with pytest.raises(ValidationError):
-        PromptVersions(**{**config.prompts.model_dump(), "builder": "prompts:/cad-builder@latest"})
-
-
-def test_versions_refuse_changed_content_before_request(sandbox) -> None:
-    root, config = registered(sandbox)
-    run((root, config), Model(), tracking=True)
-    model = Model()
-    changed = config.model_copy(update={"cad": config.cad.model_copy(update={"stl_tolerance_mm": 0.1})})
-    with pytest.raises(ValueError, match="agent_version"):
-        run((root, changed), model, name="changed-agent", tracking=True)
-    assert not model.calls
-    manifest = read_json(root / config.manifest)
-    manifest["items"][0]["orientation"] += " Уточнение."
-    write_json(root / config.manifest, manifest)
-    with pytest.raises(ValueError, match="dataset_version"):
-        run((root, config), model, name="changed-data", tracking=True)
-    assert not model.calls
-
-
-def test_publish_clone_prompts_files_traces_and_working_history(sandbox, monkeypatch) -> None:
-    from mlflow.genai.datasets import search_datasets
-
-    from mlflow import MlflowClient
-
-    root, config = registered(sandbox)
-    directory = run((root, config), Model(), tracking=True)
-    before = {p.relative_to(directory): sha256(p) for p in directory.rglob("*") if p.is_file()}
-    with FileLock(study_lock(root, "unit")), pytest.raises(Timeout):
-        publish(root)
-    snapshot = publish(root)
-    assert "tracking.db" in snapshot["files"]
-    assert all(sha256(directory / path) == value for path, value in before.items())
-    clone = root.with_name(root.name + "-copy")
-    shutil.copytree(root / "mlflow", clone / "mlflow", ignore=shutil.ignore_patterns(".runtime"))
-    # Исходный путь физически исчезает: случайные абсолютные ссылки не смогут сработать.
-    hidden = root.with_name(root.name + "-hidden")
-    root.rename(hidden)
+    root, cfg = sandbox
+    orig_cwd = Path.cwd()
+    monkeypatch.chdir(root)
     try:
-        monkeypatch.chdir(clone)
-        verify_snapshot(clone)
-        with local_tracking(clone):
-            client = MlflowClient(tracking_uri=uri(clone), registry_uri=uri(clone))
-            assert client.load_prompt(config.prompts.builder).template == config.agent.prompt
-            experiment = client.get_experiment_by_name(config.name + " · " + config.title)
-            assert len(client.search_runs([experiment.experiment_id])) == 6
-            traces = client.search_traces(locations=[experiment.experiment_id])
-            assert len(traces) == 6
-            assert all(client.get_trace(t.info.trace_id).data.spans for t in traces)
-            for dataset in search_datasets(experiment_ids=[experiment.experiment_id]):
-                row = dataset.to_df().to_dict(orient="records")[0]
-                for side, key in (("inputs", "png"), ("expectations", "stl")):
-                    _, run_id, path = row[side][key].split("/", 2)
-                    downloaded = Path(client.download_artifacts(run_id, path))
-                    assert sha256(downloaded) == row[side][key + "_sha256"]
-            # Независимая рабочая история не теряется при новом снимке.
-            local_run = client.create_run(experiment.experiment_id, tags={"mlflow.runName": "local-only"})
-        with sqlite3.connect(clone / "mlflow/tracking.db") as connection:
-            connection.execute("update experiments set name='Published update' where experiment_id=0")
-        snapshot["files"]["tracking.db"] = sha256(clone / "mlflow/tracking.db")
-        write_json(clone / "mlflow/snapshot.json", snapshot)
-        with pytest.raises(ValueError, match="Рабочая история сохранена"):
-            runtime_database(clone)
-        with sqlite3.connect(clone / "mlflow/.runtime/tracking.db") as connection:
-            assert (
-                connection.execute(
-                    "select count(*) from runs where run_uuid=?", (local_run.info.run_id,)
-                ).fetchone()[0]
-                == 1
+        directory = asyncio.run(
+            run_matrix(
+                root,
+                cfg,
+                "mlflow-e2e",
+                "val",
+                None,
+                repeats=1,
+                concurrency=4,
+                tracking=True,
+                auto_evaluate=True,
+                builder=fake_cad_builder,
             )
-        restore(clone)
-        assert list((clone / ".local-archive").glob("mlflow-runtime-*/tracking.db"))
-        # Изменение любого файла опубликованного набора обнаруживается.
-        png = next((clone / "mlflow/files").rglob("DEV1.png"))
-        png.write_bytes(b"tampered")
-        with pytest.raises(ValueError, match="изменён"):
-            verify_snapshot(clone)
+        )
+        assert not (root / "logs/mlflow-e2e/tracking-error.log").exists()
+        assert not list(root.glob("mlflow/*.db-wal"))
+        assert not list(root.glob("mlflow/*.db-shm"))
+
+        # Проверяем, что в tracking.db нет абсолютных путей к root.
+        with sqlite3.connect(database_path(root)) as conn:
+            exp_locs = conn.execute(
+                "SELECT experiment_id, artifact_location FROM experiments WHERE experiment_id != 0"
+            ).fetchall()
+            run_uris = conn.execute("SELECT artifact_uri FROM runs").fetchall()
+            trace_locs = conn.execute(
+                "SELECT value FROM trace_tags WHERE key='mlflow.artifactLocation'"
+            ).fetchall()
+            assert all(loc == "mlflow/artifacts" for _, loc in exp_locs)
+            assert all(uri_val.startswith("mlflow/artifacts/") for (uri_val,) in run_uris)
+            assert all(not val.startswith("/") for (val,) in trace_locs)
+
+        # Переносим sandbox в новое место (старый путь физически исчезает).
+        monkeypatch.chdir(orig_cwd)
+        relocated = root.with_name(root.name + "-moved")
+        shutil.move(str(root), str(relocated))
+    except BaseException:
+        monkeypatch.chdir(orig_cwd)
+        raise
+    try:
+        monkeypatch.chdir(relocated)
+        normalize_portable_paths(relocated)
+        with local_tracking(relocated):
+            from mlflow.tracking import MlflowClient
+
+            client = MlflowClient(tracking_uri=tracking_uri(relocated), registry_uri=tracking_uri(relocated))
+            exp = client.get_experiment_by_name(f"{cfg.name} · {cfg.title}")
+            assert exp is not None
+            active_exps = client.search_experiments(view_type=ViewType.ACTIVE_ONLY)
+            assert [e.experiment_id for e in active_exps] == [exp.experiment_id]
+
+            # 1 Parent Run + 4 Child Runs = 5 runs всего.
+            runs = client.search_runs([exp.experiment_id])
+            assert len(runs) == 5
+            parent = next(r for r in runs if r.data.tags.get("mlflow_role") == "study")
+            children = [r for r in runs if r.data.tags.get("mlflow_role") == "variant"]
+            assert len(children) == 4
+            assert all(c.data.tags.get("mlflow.parentRunId") == parent.info.run_id for c in children)
+            ordered_children = client.search_runs(
+                [exp.experiment_id],
+                filter_string="tags.mlflow_role = 'variant'",
+                order_by=["attributes.start_time DESC"],
+            )
+            assert [r.data.tags["mlflow.runName"] for r in ordered_children] == [
+                "01_baseline_direct",
+                "02_passport_png",
+                "03_passport_only",
+                "04_notes_png",
+            ]
+            assert all(c.data.metrics["iou_mean"] == pytest.approx(1.0) for c in children)
+            assert all(c.data.metrics["f_score_mean"] == pytest.approx(1.0) for c in children)
+
+            # На Child Runs есть eval_results.json и prompts/*.md; на Parent Run есть report.md и графики.
+            parent_arts = {a.path for a in client.list_artifacts(parent.info.run_id)}
+            assert {"report.md", "runs.csv", "summary.json", "charts", "geometry"} <= parent_arts
+            report_local = Path(client.download_artifacts(parent.info.run_id, "report.md"))
+            assert "Таблица экспериментов" in report_local.read_text(encoding="utf-8")
+
+            for child in children:
+                child_arts = {a.path for a in client.list_artifacts(child.info.run_id)}
+                assert "eval_results.json" in child_arts
+                assert "prompts" in child_arts
+                eval_tbl = read_json(Path(client.download_artifacts(child.info.run_id, "eval_results.json")))
+                assert len(eval_tbl["data"]) == 1
+
+            # Проверяем трассы (4 trial-трассы на child runs + 2 shared reading-трассы на parent run = 6).
+            traces = client.search_traces(locations=[exp.experiment_id])
+            assert len(traces) == 6
+            child_ids = {c.info.run_id for c in children}
+            trial_traces = [t for t in traces if t.info.trace_metadata.get("mlflow.sourceRun") in child_ids]
+            reading_traces = [
+                t for t in traces if t.info.trace_metadata.get("mlflow.sourceRun") == parent.info.run_id
+            ]
+            assert len(trial_traces) == 4 and len(reading_traces) == 2
+
+            # На каждой trial-трассе есть assessments (iou, f_score, valid), промпт, session и нет утечки.
+            for tr in traces:
+                assert tr.info.trace_metadata.get("mlflow.trace.session") == "mlflow-e2e/VAL1-r01"
+            session_traces = client.search_traces(
+                locations=[exp.experiment_id],
+                filter_string="metadata.`mlflow.trace.session` = 'mlflow-e2e/VAL1-r01'",
+            )
+            assert len(session_traces) == 6
+            for tr in trial_traces:
+                names = {a.name for a in tr.info.assessments}
+                assert {"iou", "f_score", "valid"} <= names
+                assert tr.info.tags.get("mlflow.linkedPrompts")
+                span_names = {s.name for s in tr.data.spans}
+                assert "recipe_generation" in span_names and "cad_build" in span_names
+                serialized = json.dumps([s.to_dict() for s in tr.data.spans], ensure_ascii=False)
+                assert secret not in serialized and "data:image/png;base64," not in serialized
+
+            # Проверяем промпты в Registry.
+            for p_name in ("cad-builder", "drawing-passport", "drawing-notes"):
+                versions = client.search_prompt_versions(p_name)
+                assert len(versions) == 1
+
+            # Проверяем, что повторная синхронизация не плодит дубликаты промптов и оценок.
+            from src.experiments.report import observations
+            from src.experiments.store import verify_study
+            from src.tracking.mlflow import sync_study_results
+
+            moved_dir = relocated / "runs" / directory.name
+            study = verify_study(moved_dir)
+            rows = observations(relocated, moved_dir, study)
+            summary = read_json(relocated / "results" / directory.name / "summary.json")
+            sync_study_results(
+                relocated, moved_dir, study, rows, summary, relocated / "results" / directory.name
+            )
+            assert len(client.search_prompt_versions("cad-builder")) == 1
+            assert len(client.get_trace(trial_traces[0].info.trace_id).info.assessments) == 3
+
+        # Проверяем реальный WSGI-сервер MLflow UI после переноса директории.
+        from mlflow.server import app, handlers
+
+        monkeypatch.setattr(handlers, "_tracking_store", None)
+        monkeypatch.setattr(handlers, "_model_registry_store", None)
+        handlers.initialize_backend_stores(
+            backend_store_uri=tracking_uri(relocated),
+            registry_store_uri=tracking_uri(relocated),
+            default_artifact_root="mlflow/artifacts",
+        )
+        web = app.test_client()
+        resp_exp = web.get("/ajax-api/2.0/mlflow/experiments/search?max_results=10")
+        assert resp_exp.status_code == 200
+        resp_report = web.get(f"/get-artifact?path=report.md&run_id={parent.info.run_id}")
+        assert resp_report.status_code == 200
+        assert "Таблица экспериментов" in resp_report.data.decode("utf-8")
+        resp_trace = web.get(f"/ajax-api/3.0/mlflow/traces/{trial_traces[0].info.trace_id}")
+        assert resp_trace.status_code == 200
     finally:
-        monkeypatch.chdir(ROOT)
-        hidden.rename(root)
+        monkeypatch.chdir(orig_cwd)
+        shutil.rmtree(relocated, ignore_errors=True)
 
 
-def test_debug_hashes_are_checked_and_cad_intermediates_removed(sandbox) -> None:
-    from src.experiments.runner import build_recipe
+def test_purge_study_removes_only_target_study_and_keeps_default_hidden(
+    sandbox: tuple[Path, ExperimentConfig], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root, cfg = sandbox
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-proj-offline-purge-secret")
+    from tests.conftest import FakePipelineModel
 
-    directory = run(sandbox, Model(), builder=build_recipe)
-    trial = directory / "direct/DEV1-r01-a001"
-    assert not list((trial / "debug").rglob("model.stl"))
-    assert not list((trial / "debug").rglob("build-input.json"))
-    record = read_record(trial)
-    assert any(name.startswith("debug/") for name in record["files"])
-    (trial / "debug/cad/cad.log").write_text("Подмена")
-    with pytest.raises(ValueError, match="Артефакт изменён"):
-        read_record(trial)
+    model = FakePipelineModel()
+    orig_cwd = Path.cwd()
+    monkeypatch.chdir(root)
+    try:
+        for study_name in ("study-old", "study-keep"):
+            asyncio.run(
+                run_matrix(
+                    root,
+                    cfg,
+                    study_name,
+                    "val",
+                    None,
+                    repeats=1,
+                    concurrency=4,
+                    tracking=True,
+                    auto_evaluate=True,
+                    requester=model,
+                    builder=fake_cad_builder,
+                )
+            )
+        stats = purge_study_from_mlflow(root, "study-old")
+        removed = purge_study_files(root, "study-old")
+        assert stats["runs"] == 5 and stats["traces"] == 6
+        assert "runs/study-old" in removed and "results/study-old" in removed
+        assert not (root / "runs/study-old").exists()
+        assert not (root / "results/study-old").exists()
+        assert not (root / "logs/study-old").exists()
+        assert not (root / "logs/.locks/study-old.lock").exists()
+        assert (root / "runs/study-keep").is_dir() and (root / "results/study-keep").is_dir()
+
+        with sqlite3.connect(database_path(root)) as conn:
+            assert conn.execute("SELECT COUNT(*) FROM runs").fetchone()[0] == 5
+            assert conn.execute("SELECT COUNT(*) FROM trace_info").fetchone()[0] == 6
+            assert conn.execute("SELECT COUNT(*) FROM entity_associations").fetchone()[0] == 6
+            assert (
+                conn.execute("SELECT lifecycle_stage FROM experiments WHERE experiment_id = 0").fetchone()[0]
+                == "deleted"
+            )
+            conn.execute("UPDATE trace_info SET session_id = NULL")
+            conn.commit()
+
+        assert backfill_trace_sessions(root) == 6
+        with local_tracking(root):
+            from mlflow.tracking import MlflowClient
+
+            client = MlflowClient(tracking_uri=tracking_uri(root), registry_uri=tracking_uri(root))
+            assert "0" not in [
+                e.experiment_id for e in client.search_experiments(view_type=ViewType.ACTIVE_ONLY)
+            ]
+            found = client.search_traces(
+                locations=[client.get_experiment_by_name(f"{cfg.name} · {cfg.title}").experiment_id],
+                filter_string="metadata.`mlflow.trace.session` = 'study-keep/VAL1-r01'",
+            )
+            assert len(found) == 6
+    finally:
+        monkeypatch.chdir(orig_cwd)

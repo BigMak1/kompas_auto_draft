@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0025",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0025.png",
+    "sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "original_bytes": 230739,
+    "original_size": [
+      3727,
+      1761
+    ],
+    "sent_size": [
+      3727,
+      1761
+    ],
+    "mode": "RGB",
+    "sent_bytes": 230739,
+    "sent_sha256": "0061ce08e143e2bc125101fa88188c801dba41b90f7dd9bbc09052060b7af957",
+    "resized": false
+  },
+  "orientation": "Ось большого центрального отверстия колеса совпадает с Z, её центр в XY — (0, 0). База Z=0 — левый торец продольного вида слева на листе, со входами цековок крепёжных отверстий. +Z идёт вправо по этому виду. Ось самого верхнего крепёжного отверстия на круговом виде находится на положительной полуоси Y (X=0). Этот торцевой вид показан от базы вдоль +Z: +X влево, +Y вверх. Угловые положения остальных отверстий сохраняются относительно него.",
+  "usage": {
+    "input_tokens": 3658,
+    "input_tokens_details": {
+      "cache_write_tokens": 3655,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3655
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 3604,
+    "output_tokens_details": {
+      "reasoning_tokens": 1397
+    },
+    "total_tokens": 7262
+  },
+  "http_responses": 1,
+  "request_id": "req_0e3eae88d15b4cc4bfe2622b37f2fa05",
+  "http_status": 200,
+  "response_id": "resp_09a062d887269b82016b0346c37d9c87d2b0c8a41299519f66",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 70.43991545800236,
+  "trace_id": "tr-d5320e9476dc1643fd7283642968c367",
+  "files": {
+    "debug/request.json": "e110cc403449fc2c3ad716a240bf7e9b88c01b4fc77fefa706b5bdbaaf761de3",
+    "debug/response.json": "c040af6dd03a898fde0b278d72a01266b69db7c8ef797e8647a2bb0192f4650b",
+    "debug/stage.json": "7725638deeb0667af0e808560bcb5c89ac8e807585e023eb13669672a33d3b69",
+    "notes.md": "8b976f07ed4656e097170591b9c0c699698c769d8b4b19ce7d6146a330b753db",
+    "run.log": "717a473a4be310d4e45f3ce7095f5c0d3d07caab1330e92f74763cb1d75141de"
+  }
+}

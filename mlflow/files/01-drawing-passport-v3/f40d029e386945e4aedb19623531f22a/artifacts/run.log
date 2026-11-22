@@ -1,3 +1,0 @@
-21:55:38  ЧТЕНИЕ     KF0012-r01-passport: passport, лимит 8192 токенов
-21:57:26  ОШИБКА     Этап: ответ LLM / проверка схемы. ModelBehaviorError: Responses stream ended with terminal event `response.incomplete`. status=incomplete; incomplete_details=IncompleteDetails(reason='max_output_tokens').; HTTP: 200; ID запроса: req_0d358fcddb294f1db70dd96ad8be34b2; Незавершённый ответ: {'reason': 'max_output_tokens'}
-21:57:26  ДИАГНОСТИКА artifacts/hw2-passport-v3-kf0012-dev/readings/KF0012-r01-passport-a001/error.log

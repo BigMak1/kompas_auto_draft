@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0017",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0017.png",
+    "sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
+    "original_bytes": 182716,
+    "original_size": [
+      2481,
+      3509
+    ],
+    "sent_size": [
+      2481,
+      3509
+    ],
+    "mode": "RGB",
+    "sent_bytes": 182716,
+    "sent_sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548",
+    "resized": false
+  },
+  "orientation": "Ось цилиндрической поверхности втулки совпадает с Z, её центр в XY — (0, 0), несмотря на прорезь. База Z=0 — левый торец продольного вида справа на листе; +Z идёт вправо по этому виду. Торцы геометрически эквивалентны. Радиальная прорезь, показанная сверху торцевого вида слева, направлена к +Y; её середина лежит в плоскости YZ.",
+  "usage": {
+    "input_tokens": 5212,
+    "input_tokens_details": {
+      "cache_write_tokens": 5209,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5209
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 2012,
+    "output_tokens_details": {
+      "reasoning_tokens": 939
+    },
+    "total_tokens": 7224
+  },
+  "http_responses": 1,
+  "request_id": "req_ec1be859d9f44dfcbe5027ff7be0b5e4",
+  "http_status": 200,
+  "response_id": "resp_04bc9933bc943d24016b0345d35f0487d293e62857bcc8208e",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 37.72996395800146,
+  "trace_id": "tr-99a34b3812307b260c55726a0b35c12c",
+  "files": {
+    "debug/request.json": "27f4b990781a9800d7e66a02a446f92f88a5d49e898257ddf7663ead37410bcf",
+    "debug/response.json": "f43f48447362b5f9b771a14c2d953546076125b63a2c8e5035ab88fe980d49a6",
+    "debug/stage.json": "3de18e1d6e373c2899e8058cc7c44209784dbca36e310683bbef5d850a6cc508",
+    "passport.json": "534c010a0aca63b399c365d7a2ee457982be580ffdd525607403fbfc4b1d931e",
+    "run.log": "db28b0b96881ee0966f94aa062da1932fb091662b14f24200427a99e525a9795"
+  }
+}
