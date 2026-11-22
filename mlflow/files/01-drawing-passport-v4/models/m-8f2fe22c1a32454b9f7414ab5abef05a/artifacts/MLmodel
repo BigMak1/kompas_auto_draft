@@ -1,0 +1,15 @@
+artifact_path: file:///Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/artifacts/mlflow/files/models/m-8f2fe22c1a32454b9f7414ab5abef05a/artifacts
+flavors: {}
+is_signature_from_type_hint: false
+metadata:
+  mlflow.model.isExternal: true
+mlflow_version: 3.18.0
+model_id: m-8f2fe22c1a32454b9f7414ab5abef05a
+model_uuid: m-8f2fe22c1a32454b9f7414ab5abef05a
+prompts: null
+signature:
+  inputs: '[{"type": "boolean", "required": true}]'
+  outputs: '[{"type": "boolean", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-16 19:53:09.778499'

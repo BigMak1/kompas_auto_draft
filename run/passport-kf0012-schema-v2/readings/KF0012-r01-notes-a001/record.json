@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "usage": {
+    "input_tokens": 3683,
+    "input_tokens_details": {
+      "cache_write_tokens": 3680,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3680
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 4441,
+    "output_tokens_details": {
+      "reasoning_tokens": 2042
+    },
+    "total_tokens": 8124
+  },
+  "http_responses": 1,
+  "request_id": "req_bf853ec9643d4509b6d9a13dab32a4d8",
+  "http_status": 200,
+  "response_id": "resp_0a6f41f965f75823016b02e7497cc887d290d75bbf532267a2",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 77.15534925000975,
+  "trace_id": "tr-9868161ea12a76d2d51b3a450cd96afc",
+  "files": {
+    "debug/request.json": "5c426050d5396086f76dc244776c8cdc1e004ca80cd8d136c7ab98d3e41f0625",
+    "debug/response.json": "0efdfc8b12399a0bda7d08e21051cfa4a3b1092a5600f7786f72a65b8013feef",
+    "debug/stage.json": "7059225f5869780ecb4538a8063bc0217f41e3dcfb911ac0cc320cd4c6bac98c",
+    "notes.md": "dcc6ea40840e4854c69b4a81b3180045591ca070d190c685d77ca4c7afcb4a34",
+    "run.log": "99aff834009ec04db38f03db8bfc0169a9b97b8214dce973b14df24b9c2c328c"
+  }
+}

@@ -1,0 +1,745 @@
+{
+  "schema_version": "drawing-passport-2",
+  "views": [
+    {
+      "id": "v1",
+      "label": "Продольный разрез слева",
+      "kind": "section",
+      "description": "Осевой разрез в плоскости YZ: +Z влево, +Y вверх; база Z=0 на крайнем правом торце короткой ступицы. Взгляд вдоль -X."
+    },
+    {
+      "id": "v2",
+      "label": "Торцевой вид справа",
+      "kind": "view",
+      "description": "Вид со стороны длинной ступицы вдоль -Z; +X вправо, +Y вверх. Снизу изображение оборвано."
+    },
+    {
+      "id": "v3",
+      "label": "Таблица параметров зацепления",
+      "kind": "table",
+      "description": "Параметры зубчатого венца и нормы контроля."
+    }
+  ],
+  "coordinates": {
+    "origin": "Центр отверстия на крайнем торце короткой ступицы; Z=0 — правый край разреза v1.",
+    "axis_z": "+Z вдоль центрального отверстия, влево на v1 к длинной ступице. На v2 ось направлена к наблюдателю; верхний шпоночный паз лежит в плоскости YZ со стороны +Y.",
+    "front_view_id": "v2",
+    "status": "observed"
+  },
+  "features": [
+    {
+      "id": "f1",
+      "kind": "body",
+      "description": "Колесо с центральным сквозным отверстием.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f2",
+      "kind": "gear_rim",
+      "description": "Наружный зубчатый венец; оба торца расположены при положительном Z.",
+      "view_ids": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f3",
+      "kind": "web",
+      "description": "Кольцевой диск между ступицей и венцом, с двусторонними углублениями.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f4",
+      "kind": "tapered_hub",
+      "description": "Длинный выступ ступицы со стороны +Z; наружная поверхность расширяется к диску.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f5",
+      "kind": "tapered_hub",
+      "description": "Короткий выступ ступицы со стороны Z=0; наружная поверхность расширяется к диску.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f6",
+      "kind": "through_bore",
+      "description": "Центральное цилиндрическое отверстие; база A.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f7",
+      "kind": "keyway",
+      "description": "Продольный внутренний шпоночный паз со стороны +Y, симметричный относительно YZ.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f8",
+      "kind": "hole_pattern",
+      "description": "Группа осевых сквозных отверстий в диске на общей делительной окружности.",
+      "view_ids": [
+        "v1",
+        "v2"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f9",
+      "kind": "fillet_group",
+      "description": "Скругления переходов диска к венцу и ступице с обеих сторон.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f10",
+      "kind": "chamfer_group",
+      "description": "Фаски наружных торцевых кромок венца.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "f11",
+      "kind": "chamfer_group",
+      "description": "Входные фаски центрального отверстия с обоих торцов.",
+      "view_ids": [
+        "v1"
+      ],
+      "status": "observed"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "d1",
+      "name": "Общая осевая длина",
+      "raw": "54,5b12(-0,19; -0,49)",
+      "value": 54.5,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f1",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d2",
+      "name": "Наружный диаметр венца",
+      "raw": "⌀245,9h12",
+      "value": 245.9,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d3",
+      "name": "Ширина венца",
+      "raw": "28",
+      "value": 28.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d4",
+      "name": "Внутренний диаметр венца",
+      "raw": "⌀207\n2 места",
+      "value": 207.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d5",
+      "name": "Количество поверхностей внутреннего диаметра венца",
+      "raw": "2 места",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d6",
+      "name": "Отступ торца венца от базы Z=0",
+      "raw": "4,5",
+      "value": 4.5,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d7",
+      "name": "Толщина диска",
+      "raw": "14",
+      "value": 14.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d8",
+      "name": "Глубина углублений от торцов венца",
+      "raw": "7\n2 места",
+      "value": 7.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d9",
+      "name": "Количество углублений",
+      "raw": "2 места",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f3",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d10",
+      "name": "Диаметр длинной ступицы на крайнем торце +Z",
+      "raw": "⌀83H8(+0,054)",
+      "value": 83.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d11",
+      "name": "Больший диаметр длинной ступицы",
+      "raw": "⌀87",
+      "value": 87.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d12",
+      "name": "Диаметр короткой ступицы на Z=0",
+      "raw": "⌀84",
+      "value": 84.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d13",
+      "name": "Больший диаметр короткой ступицы",
+      "raw": "⌀85,3",
+      "value": 85.3,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d14",
+      "name": "Диаметр центрального отверстия",
+      "raw": "⌀54H8(+0,046)",
+      "value": 54.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f6",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d15",
+      "name": "Ширина шпоночного паза",
+      "raw": "16H9(+0,043)",
+      "value": 16.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d16",
+      "name": "Расстояние от нижней образующей отверстия до дна паза по +Y",
+      "raw": "58,3H12(+0,3)",
+      "value": 58.3,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d17",
+      "name": "Радиусы шпоночного паза",
+      "raw": "R0,4*\n2 радиуса",
+      "value": 0.4,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d18",
+      "name": "Количество радиусов паза",
+      "raw": "2 радиуса",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v2",
+      "feature_id": "f7",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d19",
+      "name": "Диаметр отверстий диска",
+      "raw": "6 отв. ⌀30",
+      "value": 30.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d20",
+      "name": "Количество отверстий диска",
+      "raw": "6 отв. ⌀30",
+      "value": 6.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d21",
+      "name": "Диаметр окружности центров отверстий",
+      "raw": "⌀146",
+      "value": 146.0,
+      "unit": "mm",
+      "view_id": "v2",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d22",
+      "name": "Угловой шаг отверстий",
+      "raw": "60°±1°",
+      "value": 60.0,
+      "unit": "degree",
+      "view_id": "v2",
+      "feature_id": "f8",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d23",
+      "name": "Радиус переходных скруглений",
+      "raw": "R7*\n4 радиуса",
+      "value": 7.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d24",
+      "name": "Количество переходных скруглений",
+      "raw": "4 радиуса",
+      "value": 4.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f9",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d25",
+      "name": "Размер фасок венца",
+      "raw": "1×45°\n2 фаски",
+      "value": 1.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d26",
+      "name": "Угол фасок венца",
+      "raw": "1×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d27",
+      "name": "Количество фасок венца",
+      "raw": "2 фаски",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f10",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d28",
+      "name": "Размер фасок отверстия",
+      "raw": "2×45°\n2 фаски",
+      "value": 2.0,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f11",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d29",
+      "name": "Угол фасок отверстия",
+      "raw": "2×45°",
+      "value": 45.0,
+      "unit": "degree",
+      "view_id": "v1",
+      "feature_id": "f11",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d30",
+      "name": "Количество фасок отверстия",
+      "raw": "2 фаски",
+      "value": 2.0,
+      "unit": "count",
+      "view_id": "v1",
+      "feature_id": "f11",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d31",
+      "name": "Полное торцевое биение длинной ступицы относительно A",
+      "raw": "↗↗ | 0,1 | A",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f4",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d32",
+      "name": "Полное торцевое биение короткой ступицы относительно A",
+      "raw": "↗↗ | 0,1 | A",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": "f5",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d33",
+      "name": "Полное биение, нижняя рамка справа",
+      "raw": "↗↗ | 0,1 | A",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v1",
+      "feature_id": null,
+      "reading_status": "observed",
+      "binding_status": "unresolved"
+    },
+    {
+      "id": "d34",
+      "name": "Модуль m",
+      "raw": "4",
+      "value": 4.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d35",
+      "name": "Число зубьев z",
+      "raw": "60",
+      "value": 60.0,
+      "unit": "count",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d36",
+      "name": "Коэффициент смещения x",
+      "raw": "-0,267",
+      "value": -0.267,
+      "unit": "dimensionless",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d37",
+      "name": "Длина общей нормали W",
+      "raw": "79,386(-0,16; -0,36)",
+      "value": 79.386,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d38",
+      "name": "Допуск на колебание длины общей нормали",
+      "raw": "0",
+      "value": 0.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d39",
+      "name": "Допуск колебания измерительного межосевого расстояния за оборот колеса",
+      "raw": "0,112",
+      "value": 0.112,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d40",
+      "name": "Допуск колебания измерительного межосевого расстояния на одном зубе",
+      "raw": "0,05",
+      "value": 0.05,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d41",
+      "name": "Допуск радиального биения зубчатого венца",
+      "raw": "0,1",
+      "value": 0.1,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d42",
+      "name": "Отклонение основного шага",
+      "raw": "±0,036",
+      "value": 0.036,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d43",
+      "name": "Делительный диаметр d",
+      "raw": "240",
+      "value": 240.0,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d44",
+      "name": "Допуск погрешности направления зуба",
+      "raw": "0,028",
+      "value": 0.028,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    },
+    {
+      "id": "d45",
+      "name": "Радиус развернутости эвольвенты в начале рабочего участка профиля",
+      "raw": "30,445",
+      "value": 30.445,
+      "unit": "mm",
+      "view_id": "v3",
+      "feature_id": "f2",
+      "reading_status": "observed",
+      "binding_status": "observed"
+    }
+  ],
+  "relations": [
+    {
+      "feature_ids": [
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "description": "Общая ось Z; диск соединяет ступицу с венцом.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3",
+        "f5"
+      ],
+      "description": "Отсчёт положения венца ведётся от Z=0 к +Z; глубины боковых углублений — от соответствующих торцов венца внутрь.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f7"
+      ],
+      "description": "Паз открыт в центральное отверстие и проходит вдоль оси между торцами ступицы.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f3",
+        "f8"
+      ],
+      "description": "Отверстия проходят через диск параллельно Z; верхнее отверстие расположено на луче +Y.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f9"
+      ],
+      "description": "Скругления сопрягают поверхности диска со ступицей и внутренней поверхностью венца.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f4",
+        "f5"
+      ],
+      "description": "База A задана центральным отверстием; торцевые биения отсчитываются относительно его оси.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f2",
+        "f10"
+      ],
+      "description": "Фаски расположены на обоих наружных торцевых рёбрах венца.",
+      "status": "observed"
+    },
+    {
+      "feature_ids": [
+        "f6",
+        "f11"
+      ],
+      "description": "Фаски расположены на входах отверстия со стороны Z=0 и со стороны +Z.",
+      "status": "observed"
+    }
+  ],
+  "general_notes": [
+    {
+      "raw": "3. * Размеры обеспеч. инстр.",
+      "view_id": null,
+      "status": "observed"
+    },
+    {
+      "raw": "4. Неуказанные предельные отклонения размеров H14, h14, ±IT14/2.",
+      "view_id": null,
+      "status": "observed"
+    },
+    {
+      "raw": "Исходный контур — ГОСТ 13755-81",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Степень точности по ГОСТ 1643-81 — 9-В",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Контролировать при отсутствии обкатки с измерительной шестерней",
+      "view_id": "v3",
+      "status": "observed"
+    },
+    {
+      "raw": "Допуск на погрешность профиля зуба —",
+      "view_id": "v3",
+      "status": "observed"
+    }
+  ],
+  "unresolved": [
+    "Не установлена поверхность, к которой относится нижняя правая рамка полного биения.",
+    "Отдельные зубья на видах не показаны; параметры профиля заданы таблицей и ссылкой на исходный контур."
+  ]
+}

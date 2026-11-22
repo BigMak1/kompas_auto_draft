@@ -1,0 +1,58 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "usage": {
+    "input_tokens": 5227,
+    "input_tokens_details": {
+      "cache_write_tokens": 5224,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 5224
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 6984,
+    "output_tokens_details": {
+      "reasoning_tokens": 3039
+    },
+    "total_tokens": 12211
+  },
+  "http_responses": 1,
+  "request_id": "req_c51ae2e9c70d472cbe1927b497f9a1d8",
+  "http_status": 200,
+  "response_id": "resp_02fe8e9e1425292a016b02e7fd121887d29f1f16510b5b4d8e",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 99.45241337499465,
+  "trace_id": "tr-75951c5cba70d2095e330ed895fe0f96",
+  "files": {
+    "debug/request.json": "97ae07d2389d122ecc4ffff2a8982ac38e0603f4ce035beb664118a22c00d0b2",
+    "debug/response.json": "44baad83040905b8a1ee77e8cfca3feeb14e757a9d62b4b248adf79dcdf5a5cd",
+    "debug/stage.json": "2c98a8c424fe49eb64978aec5f95086220487a4da931e738133c468855e56a60",
+    "passport.json": "da467193136817914f22f1d2bcdedf7d8739044e9ca1090e23b3d286add872ec",
+    "run.log": "f4f3346e304b4a9baf68a754d5b1a477b5ea88c79ab1ffbde99d2706690a83bc"
+  }
+}

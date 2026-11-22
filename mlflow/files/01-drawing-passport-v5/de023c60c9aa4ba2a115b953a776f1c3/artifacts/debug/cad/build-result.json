@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 13 не изменяет материал в указанном направлении",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/build_worker.py\", line 16, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 58, in build\n    shape = build_shape(recipe)\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 49, in build_shape\n    raise ValueError(f\"Шаг {index} не изменяет материал в указанном направлении\")\nValueError: Шаг 13 не изменяет материал в указанном направлении\n"
+  }
+}

@@ -16,7 +16,19 @@ import numpy as np
 import trimesh
 
 from src.config import ROOT, EvaluationSettings, load_config
-from src.utils import Run, atomic, error_details, log, log_error, read_json, select_runs, sha256, write_json
+from src.utils import (
+    Run,
+    atomic,
+    error_details,
+    log,
+    log_error,
+    read_json,
+    require_orientation,
+    require_single_sheet,
+    select_runs,
+    sha256,
+    write_json,
+)
 
 
 def f_score(forward: np.ndarray, backward: np.ndarray, tau: float) -> float:
@@ -92,7 +104,12 @@ def compare(prediction: trimesh.Trimesh, reference: trimesh.Trimesh, settings: E
 
 
 def evaluate(
-    model_path: Path, reference_path: Path, settings: EvaluationSettings, generation: dict | None = None
+    model_path: Path,
+    reference_path: Path,
+    settings: EvaluationSettings,
+    generation: dict | None = None,
+    *,
+    expected_reference_sha256: str | None = None,
 ) -> dict:
     record = {
         "protocol": "mesh-fixed-pose-v1",
@@ -116,7 +133,10 @@ def evaluate(
     try:
         reference_hash = sha256(reference_path)
         manifest_path = reference_path.parent.parent / "manifest.json"
-        if reference_path.parent.name == "target" and manifest_path.is_file():
+        if expected_reference_sha256 is not None:
+            if reference_hash != expected_reference_sha256:
+                raise ValueError("SHA256 эталона не совпал со снимком эксперимента")
+        elif reference_path.parent.name == "target" and manifest_path.is_file():
             manifest = read_json(manifest_path)
             targets = [
                 item["target_mesh"]
@@ -124,9 +144,9 @@ def evaluate(
                 if item["target_mesh"]["path"] == "target/" + reference_path.name
             ]
             if len(targets) != 1:
-                raise ValueError("Эталон должен встречаться в описи ровно один раз")
+                raise ValueError("Эталон должен встречаться в манифесте датасета ровно один раз")
             if reference_hash != targets[0]["sha256"]:
-                raise ValueError("SHA256 эталона не совпал с описью")
+                raise ValueError("SHA256 эталона не совпал с манифестом датасета")
         record["reference"] = {"name": reference_path.name, "sha256": reference_hash}
         reference = load_mesh(reference_path)
         if not reference.is_volume:
@@ -161,10 +181,12 @@ def check_data(data: Path) -> None:
     manifest = read_json(data / "manifest.json")
     names = [item["pair_id"] for item in manifest["items"]]
     if not names or len(names) != len(set(names)):
-        raise ValueError("Опись должна содержать непустой список деталей без повторов")
+        raise ValueError("Манифест датасета должен содержать непустой список деталей без повторов")
     if manifest["coordinates"]["units"] != "mm":
         raise ValueError("Единицы эталонов должны быть mm")
     for item in manifest["items"]:
+        require_single_sheet(item)
+        require_orientation(item)
         for key, folder, extension in [("input_png", "input", "png"), ("target_mesh", "target", "stl")]:
             record = item[key]
             if record["path"] != f"{folder}/{item['pair_id']}.{extension}":
@@ -207,7 +229,7 @@ def cached_result(run: Run, settings: EvaluationSettings) -> dict | None:
 def write_report(root: Path, run_name: str, settings: EvaluationSettings) -> dict:
     items = read_json(root / "data/manifest.json")["items"]
     if len({item["pair_id"] for item in items}) != len(items):
-        raise ValueError("Деталь повторяется в описи")
+        raise ValueError("Деталь повторяется в манифесте датасета")
     scores = {
         item["pair_id"]: cached_result(Run(item["pair_id"], run_name, root), settings) for item in items
     }
@@ -287,7 +309,7 @@ def main() -> int:
         stage = "оценка и сохранение метрик"
         return evaluate_selected(args.selector, config.evaluation, run_name=config.name)
     except Exception as error:  # noqa: BLE001 — сохраняем ошибки команды оценки.
-        log_error(error_details(error, stage), ROOT / "artifacts/evaluation-command-error.log")
+        log_error(error_details(error, stage), ROOT / "logs/commands/evaluation-error.log")
         return 1
 
 

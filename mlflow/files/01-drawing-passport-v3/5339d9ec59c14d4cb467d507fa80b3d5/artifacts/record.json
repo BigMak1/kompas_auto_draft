@@ -1,0 +1,91 @@
+{
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "variant": "notes_png",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "seconds": 196.72066066600382,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 11275,
+    "output_tokens": 9438
+  },
+  "reading_path": "readings/KF0012-r01-notes-a001",
+  "reading_sha256": "2747329b6b59bc8fee6c1138abb59aec0a2650d7959aaa3bbd00cfce0eeb3e98",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 7732,
+      "input_tokens_details": {
+        "cache_write_tokens": 7729,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 7729
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2679,
+      "output_tokens_details": {
+        "reasoning_tokens": 1374
+      },
+      "total_tokens": 10411
+    },
+    "http_responses": 1,
+    "request_id": "req_0fcbe4b62aff422c84f173d65c2370d6",
+    "http_status": 200,
+    "response_id": "resp_01d89be3d1e5efd2016afb5176090c87d29961fa377cd9256e",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 47.572903000000224
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 31,
+    "volume_mm3": 913902.639217389,
+    "bounds_mm": [
+      [
+        -122.95,
+        -122.95,
+        0.0
+      ],
+      [
+        122.95,
+        122.95,
+        54.5
+      ]
+    ],
+    "triangles": 32312,
+    "files": {
+      "model.stl": "c696d8b0b475ebcb2f6e960709752a3f7f2fa93f19990bc7cfe2f908ffb273db"
+    }
+  },
+  "files": {
+    "model.stl": "c696d8b0b475ebcb2f6e960709752a3f7f2fa93f19990bc7cfe2f908ffb273db",
+    "notes.md": "7fd14b8cd5595cc45e5f10b16d0a923510d221e52fef2a0d10235c0df8b05be8",
+    "recipe.json": "367e64cd70352564fc9f396f4a39d668c17630dda681809631f56739ca0b6f42",
+    "run.log": "17990f3a4e0a850ac8e38e4674df4e7bbe018ada0cb18365c49bd5e3a1b36e8b"
+  }
+}

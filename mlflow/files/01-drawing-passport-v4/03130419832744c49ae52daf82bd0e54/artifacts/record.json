@@ -1,0 +1,88 @@
+{
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "variant": "direct",
+  "kind": "route",
+  "status": "success",
+  "stage": "cad",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "seconds": 146.73057204099314,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 4085,
+    "output_tokens": 7172
+  },
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 4085,
+      "input_tokens_details": {
+        "cache_write_tokens": 4082,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4082
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 7172,
+      "output_tokens_details": {
+        "reasoning_tokens": 5538
+      },
+      "total_tokens": 11257
+    },
+    "http_responses": 1,
+    "request_id": "req_1036cc13730343b891d1d889ccb1d63f",
+    "http_status": 200,
+    "response_id": "resp_0452618394a4812b016afb598e28c487d298c613ce40a59bc3",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 143.82322891599324
+  },
+  "cad": {
+    "solid_valid": true,
+    "body_count": 1,
+    "operations": 1,
+    "volume_mm3": 686848.8438000001,
+    "bounds_mm": [
+      [
+        -122.91,
+        -20.78,
+        4.5
+      ],
+      [
+        122.91,
+        122.91,
+        32.5
+      ]
+    ],
+    "triangles": 508,
+    "files": {
+      "model.stl": "4fa509b52282798e4427fc5e80b70d2fba746052f3ba10ae64c70d4977b4b955"
+    }
+  },
+  "files": {
+    "model.stl": "4fa509b52282798e4427fc5e80b70d2fba746052f3ba10ae64c70d4977b4b955",
+    "recipe.json": "7fa14df041ec1a8966d580232eec78e4352d186e1f61ac5a9830ebe2384a9f74",
+    "run.log": "39d7c9f3456beafa3fdb64258137b3c1a8635e1f0f82bf21d6e257afaae8c926"
+  }
+}

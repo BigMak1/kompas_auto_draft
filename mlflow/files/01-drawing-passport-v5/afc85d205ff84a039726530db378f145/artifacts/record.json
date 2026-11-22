@@ -1,0 +1,84 @@
+{
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "variant": "passport_only",
+  "kind": "route",
+  "status": "failed",
+  "stage": "cad",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "seconds": 175.78175091699813,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 12332,
+    "output_tokens": 14208
+  },
+  "reading_path": "readings/KF0012-r01-passport-a001",
+  "reading_sha256": "487b59fb4420f8aa411b16b6209b3dc7ac778d50c973b67589970b669e19df36",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 7105,
+      "input_tokens_details": {
+        "cache_write_tokens": 7102,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 7102
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 7224,
+      "output_tokens_details": {
+        "reasoning_tokens": 3105
+      },
+      "total_tokens": 14329
+    },
+    "http_responses": 1,
+    "request_id": "req_8fc5f790653945708f669ed18fb4ae24",
+    "http_status": 200,
+    "response_id": "resp_02a095f38101eb31016b02e860032487d2ae6d07ca898c5e0f",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 73.31854566599941,
+    "trace_id": "tr-169c397d596ee7874a4097a4b1c3938a"
+  },
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 29 не изменяет материал в указанном направлении",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/build_worker.py\", line 16, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 58, in build\n    shape = build_shape(recipe)\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 49, in build_shape\n    raise ValueError(f\"Шаг {index} не изменяет материал в указанном направлении\")\nValueError: Шаг 29 не изменяет материал в указанном направлении\n"
+  },
+  "files": {
+    "debug/cad/build-input.json": "096e33a6296cbf4dad8b872c008d01ff7551613097987f5efcaf041db8074bb1",
+    "debug/cad/build-result.json": "ea8d04d1026d6ae96c2a6991616989d9de763a633e417914d2d2377406dfc990",
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/error.log": "96b4a46693ce7b946f40818e929d74c2d8396ef17dda40e639a4b34be460d9b7",
+    "debug/llm/request.json": "7bee0988033491021fa48563d141f93894b5fa8804fc7ed159ab587435f97366",
+    "debug/llm/response.json": "eb97e42f1e1891d15ca6b124bf80a464d943546044ba284137146da3e860317e",
+    "debug/llm/stage.json": "d1a94504ef5a47cde3a50034a565f5f1a8e910cae0e6282f17cb6cb3524b67a1",
+    "passport.json": "da467193136817914f22f1d2bcdedf7d8739044e9ca1090e23b3d286add872ec",
+    "recipe.json": "55070695ae0996f099b55a108ac77a6019363fc9692c5b52a7c45f73f13c3f24",
+    "run.log": "502a9a284dcdcabeaed56aba5032975704f1d245b091d245e536375a79345f8b"
+  }
+}

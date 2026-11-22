@@ -1,6 +1,10 @@
 # Локальный архив прежних этапов и настройки инструментов
 .local-archive/
-artifacts/
+mlflow/.runtime/
+mlflow/.publishing.db
+mlflow/*.db-wal
+mlflow/*.db-shm
+logs/
 .ai/
 .claude
 mcp/

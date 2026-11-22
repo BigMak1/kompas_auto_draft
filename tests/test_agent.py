@@ -17,7 +17,7 @@ from PIL import Image
 from pydantic import ValidationError
 
 from src.agent import agent, cad
-from src.agent.schema import Recipe
+from src.agent.schemas.recipe import Recipe
 from src.config import Config, load_config
 from src.utils import Run, read_json, sha256, write_json
 
@@ -43,18 +43,24 @@ def no_external_calls(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 class OfflineModel(Model):
-    def __init__(self, text: str = json.dumps(RECIPE), error: Exception | None = None) -> None:
+    def __init__(
+        self, text: str = json.dumps(RECIPE), error: Exception | None = None, orientation: str | None = None
+    ) -> None:
         self.text = text
         self.error = error
         self.calls = 0
+        self.orientation = orientation
 
     async def get_response(self, **kwargs: object) -> ModelResponse:
         self.calls += 1
         assert self.calls == 1, "Повторный запрос запрещён"
         assert not kwargs["tools"]
         content = kwargs["input"][0]["content"]
-        assert len(content) == 1 and content[0]["type"] == "input_image"
-        assert content[0]["image_url"].startswith("data:image/png;base64,")
+        assert len(content) == (1 if self.orientation is None else 2)
+        if self.orientation is not None:
+            assert content[0] == {"type": "input_text", "text": self.orientation}
+        assert content[-1]["type"] == "input_image"
+        assert content[-1]["image_url"].startswith("data:image/png;base64,")
         if self.error:
             raise self.error
         return ModelResponse(
@@ -117,13 +123,19 @@ def test_config_and_agent_surface() -> None:
 
 
 @pytest.mark.parametrize("outcome", ["success", "invalid_json", "cad_failure", "api_failure"])
+@pytest.mark.parametrize("orientation", [None, "База со стороны короткой ступицы, паз к +Y."])
 def test_one_response_and_separate_artifacts(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture, outcome: str
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+    outcome: str,
+    orientation: str | None,
 ) -> None:
     config = load_config()
     model = OfflineModel(
         "{" if outcome == "invalid_json" else json.dumps(RECIPE),
         ConnectionError("Соединение прервано") if outcome == "api_failure" else None,
+        orientation,
     )
     install_model(monkeypatch, model, config)
     builds = []
@@ -145,7 +157,8 @@ def test_one_response_and_separate_artifacts(
     write_json(run.artifacts / "evaluation.json", {"iou": 1, "f_score": 1})
     run.report.parent.mkdir(parents=True)
     run.report.write_text("old scores")
-    record = asyncio.run(agent.generate(source, run, config))
+    record = asyncio.run(agent.generate(source, run, config, orientation=orientation))
+    assert record["orientation"] == orientation
     assert model.calls == 1
     assert len(builds) == (1 if outcome in ("success", "cad_failure") else 0)
     assert record["cad_builds"] == len(builds)
@@ -171,7 +184,11 @@ def test_one_response_and_separate_artifacts(
     assert "ПРОГОН" in terminal and '"responses"' not in terminal
     assert "\x1b" not in run.logfile.read_text()
     if outcome == "success":
-        assert sorted(p.name for p in run.directory.iterdir()) == ["model.stl", "recipe.json", "run.log"]
+        assert sorted(p.name for p in run.directory.iterdir() if p.is_file()) == [
+            "model.stl",
+            "recipe.json",
+            "run.log",
+        ]
     if outcome == "invalid_json":
         assert record["responses"][0]["output"][0]["content"][0]["text"] == "{"
         assert record["stage"] == "recipe"
@@ -259,7 +276,11 @@ def test_replay_can_overwrite_its_own_recipe(tmp_path: Path) -> None:
     assert trimesh.load_mesh(run.directory / "model.stl").is_volume
     assert "old log" not in run.logfile.read_text()
     assert not (run.artifacts / "evaluation.json").exists() and not run.report.exists()
-    assert sorted(p.name for p in run.directory.iterdir()) == ["model.stl", "recipe.json", "run.log"]
+    assert sorted(p.name for p in run.directory.iterdir() if p.is_file()) == [
+        "model.stl",
+        "recipe.json",
+        "run.log",
+    ]
 
 
 @pytest.mark.parametrize("interrupt", [False, True])

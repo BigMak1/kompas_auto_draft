@@ -1,0 +1,84 @@
+{
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "variant": "notes_png",
+  "kind": "route",
+  "status": "failed",
+  "stage": "cad",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "seconds": 180.953250999999,
+  "cad_builds": 1,
+  "usage": {
+    "input_tokens": 10161,
+    "output_tokens": 10900
+  },
+  "reading_path": "readings/KF0012-r01-notes-a001",
+  "reading_sha256": "702bddf91385f68d779175bdfed78fe81b62dc0bdf69c03aaee4c0dfd16ea185",
+  "llm_started": true,
+  "llm": {
+    "status": "success",
+    "usage": {
+      "input_tokens": 6478,
+      "input_tokens_details": {
+        "cache_write_tokens": 6475,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 6475
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 6459,
+      "output_tokens_details": {
+        "reasoning_tokens": 3968
+      },
+      "total_tokens": 12937
+    },
+    "http_responses": 1,
+    "request_id": "req_52100b58f53f41058541a805b1e2b661",
+    "http_status": 200,
+    "response_id": "resp_0490adf41383e7ac016b02e795287087d2b6bb51cf6c97fd96",
+    "response_status": "completed",
+    "returned_model": "gpt-6.1-sol",
+    "api_error": null,
+    "incomplete_details": null,
+    "seconds": 100.72935691699968,
+    "trace_id": "tr-e370d7ae806416c1bec672b810c701c0"
+  },
+  "failure_kind": "generation",
+  "error": {
+    "stage": "построение CAD",
+    "type": "ValueError",
+    "message": "Шаг 13 не изменяет материал в указанном направлении",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/build_worker.py\", line 16, in main\n    result = build(\n             ^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 58, in build\n    shape = build_shape(recipe)\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py\", line 49, in build_shape\n    raise ValueError(f\"Шаг {index} не изменяет материал в указанном направлении\")\nValueError: Шаг 13 не изменяет материал в указанном направлении\n"
+  },
+  "files": {
+    "debug/cad/build-input.json": "826fd02dd222a649f5fd23f7528c71d0923d991043006dae5ff1c0208ccd976d",
+    "debug/cad/build-result.json": "4a4f0bb715f0ef13cb9e48bb08099ed060f353f278956292c93d5cfdaad809a2",
+    "debug/cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "debug/error.log": "d8344b6567aa72545b961ae20120265df42508222fc6a2c1e1b6d2e97e11fe1c",
+    "debug/llm/request.json": "0950b9800920b82929c2e2329e45fc269238f8b75659cd448f1634428e9076b6",
+    "debug/llm/response.json": "f204d895df42260ec1f5dfd318320a547ff88e2e7777b98a4520f43915d603a9",
+    "debug/llm/stage.json": "75382a3c01c3ddb4bab4da8b14c382d23f85f69363d00df21cff18e19fc2f2a0",
+    "notes.md": "dcc6ea40840e4854c69b4a81b3180045591ca070d190c685d77ca4c7afcb4a34",
+    "recipe.json": "97a4bb4ed757a6b26e9f8e0d2839337953bc3d2466c45aff7f0912eca8dc7ca1",
+    "run.log": "3606f1ff5deb29ad9f1f1554c36cadb2fd1e929daadbc669ba2960e203214292"
+  }
+}

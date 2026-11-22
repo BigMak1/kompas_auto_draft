@@ -1,0 +1,49 @@
+{
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "variant": "passport_only",
+  "kind": "route",
+  "status": "failed",
+  "stage": "reading",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "seconds": 79.28130816700286,
+  "cad_builds": 0,
+  "usage": {
+    "input_tokens": 4421,
+    "output_tokens": 5331
+  },
+  "reading_path": "readings/KF0012-r01-passport-a001",
+  "reading_sha256": "32dfcb3fdfe950d4b6a017825e7312c963eed3b8534bd7137c492b9d33ae7d1f",
+  "failure_kind": "generation",
+  "error": {
+    "stage": "ответ LLM / проверка схемы",
+    "type": "ModelBehaviorError",
+    "message": "Invalid JSON when parsing model output",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/stages.py\", line 81, in request\n    result = await asyncio.wait_for(\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/tasks.py\", line 520, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/.venv/lib/python3.12/site-packages/agents/run.py\", line 383, in run\n    _raise_data_redacted_error(redacted_error)\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/.venv/lib/python3.12/site-packages/agents/exceptions.py\", line 316, in _raise_data_redacted_error\n    raise error from None\nagents.exceptions.ModelBehaviorError: Invalid JSON when parsing model output\n",
+    "request_id": "req_4574333cc2ba435e914feb8a8cbce5ff",
+    "status_code": 200
+  },
+  "error_source": "readings/KF0012-r01-passport-a001",
+  "failure_reason": null,
+  "files": {
+    "run.log": "a2c3d82266bdcf781e24451b6e715eb40e1f462dd56aeca40c0175ae7b4e0ce9"
+  }
+}

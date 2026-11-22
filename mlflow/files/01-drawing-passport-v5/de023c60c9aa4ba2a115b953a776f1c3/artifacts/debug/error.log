@@ -1,0 +1,16 @@
+2026-11-22 16:02:52,031  ОШИБКА     KF0012 · Заметки + PNG · повтор 1/1
+Этап: построение CAD
+ValueError: Шаг 13 не изменяет материал в указанном направлении
+
+
+Traceback (most recent call last):
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/build_worker.py", line 16, in main
+    result = build(
+             ^^^^^^
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py", line 58, in build
+    shape = build_shape(recipe)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/cad.py", line 49, in build_shape
+    raise ValueError(f"Шаг {index} не изменяет материал в указанном направлении")
+ValueError: Шаг 13 не изменяет материал в указанном направлении
+

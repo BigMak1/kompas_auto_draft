@@ -33,6 +33,8 @@ def dataset(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         items.append(
             {
                 "pair_id": part,
+                "sheet_count": 1,
+                "orientation": f"Ось Z, паз к +Y. Подсказка {part}.",
                 "input_png": {"path": f"input/{source.name}", "sha256": sha256(source)},
             }
         )
@@ -41,6 +43,16 @@ def dataset(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     Image.new("RGB", (8, 8), "white").save(tmp_path / "data/input/extra.png")
     monkeypatch.setattr(main, "ROOT", tmp_path)
     return tmp_path
+
+
+def test_two_sheets_stop_baseline_before_api(dataset: Path) -> None:
+    path = dataset / "data/manifest.json"
+    manifest = read_json(path)
+    manifest["items"][0]["sheet_count"] = 2
+    write_json(path, manifest)
+    assert main.main(["run"]) == 1
+    assert "ровно один лист" in (dataset / "logs/commands/agent-error.log").read_text()
+    assert not (dataset / "run").exists()
 
 
 def test_no_command_shows_help_without_config(
@@ -61,13 +73,14 @@ def test_run_without_drawing_processes_every_case_once(
     calls = []
     running = False
 
-    async def generate(source: Path, run: Run, config: Config) -> dict:
+    async def generate(source: Path, run: Run, config: Config, *, orientation: str | None = None) -> dict:
         nonlocal running
         assert not running
         running = True
         await asyncio.sleep(0)
         calls.append((source, run))
         assert run.directory == dataset / "run/baseline" / run.pair_id
+        assert orientation == f"Ось Z, паз к +Y. Подсказка {run.pair_id}."
         running = False
         return {"status": "failed" if failed and run.pair_id == "KF0017" else "success"}
 
@@ -83,14 +96,39 @@ def test_run_single_drawing(dataset: Path, monkeypatch: pytest.MonkeyPatch, cust
     calls = []
     source = dataset / "data/input/drawing_1.png"
 
-    async def generate(source: Path, run: Run, config: Config) -> dict:
+    async def generate(source: Path, run: Run, config: Config, *, orientation: str | None = None) -> dict:
         calls.append((source, run))
+        assert orientation == "Ось Z, паз к +Y. Подсказка KF0017."
         return {"status": "success"}
 
     monkeypatch.setattr(agent, "generate", generate)
     assert main.main(["run", str(source) if custom_png else "kf0017"]) == 0
     assert len(calls) == 1 and calls[0][0] == source
     assert calls[0][1].pair_id == ("DRAWING_1" if custom_png else "KF0017")
+
+
+def test_custom_png_keeps_generic_orientation(dataset: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    source = dataset / "custom.png"
+    Image.new("RGB", (8, 8), "white").save(source)
+    calls = []
+
+    async def generate(source: Path, run: Run, config: Config, *, orientation: str | None = None) -> dict:
+        calls.append(source)
+        assert orientation is None
+        return {"status": "success"}
+
+    monkeypatch.setattr(agent, "generate", generate)
+    assert main.main(["run", str(source)]) == 0 and calls == [source]
+
+
+def test_missing_orientation_stops_baseline(dataset: Path) -> None:
+    path = dataset / "data/manifest.json"
+    manifest = read_json(path)
+    del manifest["items"][-1]["orientation"]
+    write_json(path, manifest)
+    assert main.main(["run"]) == 1
+    assert "ориентация" in (dataset / "logs/commands/agent-error.log").read_text()
+    assert not (dataset / "run").exists()
 
 
 def test_changed_input_stops_batch_before_first_generation(
@@ -103,7 +141,7 @@ def test_changed_input_stops_batch_before_first_generation(
     (dataset / "data/input/drawing_1.png").write_bytes(b"changed")
     assert main.main(["run"]) == 1
     assert "SHA256 не совпал" in " ".join(capsys.readouterr().out.split())
-    diagnostic = (dataset / "artifacts/command-error.log").read_text()
+    diagnostic = (dataset / "logs/commands/agent-error.log").read_text()
     assert "проверка входных файлов" in diagnostic and "SHA256 не совпал" in diagnostic
     assert not (dataset / "run").exists()
 
@@ -137,4 +175,4 @@ def test_batch_without_key_preserves_previous_models(dataset: Path, monkeypatch:
         previous.append(model)
     assert main.main(["run"]) == 1
     assert all(model.read_bytes() == b"previous" for model in previous)
-    assert "OPENAI_API_KEY" in (dataset / "artifacts/command-error.log").read_text()
+    assert "OPENAI_API_KEY" in (dataset / "logs/commands/agent-error.log").read_text()

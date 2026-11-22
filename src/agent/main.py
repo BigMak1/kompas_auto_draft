@@ -6,36 +6,58 @@ from pathlib import Path
 
 from src.agent import agent
 from src.config import ROOT, Config, load_config
-from src.utils import Run, error_details, log, log_error, read_json, sha256
+from src.utils import (
+    Run,
+    error_details,
+    log,
+    log_error,
+    read_json,
+    require_orientation,
+    require_single_sheet,
+    sha256,
+)
 
 
-def select_drawings(drawing: str | None, config: Config) -> list[tuple[Path, Run]]:
-    """Без аргумента берём весь набор из описи; PNG можно передать отдельно."""
-    if drawing is not None and Path(drawing).suffix.lower() == ".png":
-        source = Path(drawing)
-        return [(source, Run(source.stem.upper(), config.name, ROOT))]
-    items = read_json(ROOT / "data/manifest.json")["items"]
+def select_drawings(drawing: str | None, config: Config) -> list[tuple[Path, Run, str | None]]:
+    """Без аргумента берём весь набор из манифеста датасета; PNG можно передать отдельно."""
+    source = Path(drawing) if drawing is not None and Path(drawing).suffix.lower() == ".png" else None
+    manifest = ROOT / "data/manifest.json"
+    items = read_json(manifest)["items"] if manifest.is_file() else []
+    if source is not None:
+        # Путь к опубликованному PNG получает ту же подсказку, что и выбор по ID.
+        items = [
+            item
+            for item in items
+            if (ROOT / "data" / item["input_png"]["path"]).resolve() == source.resolve()
+        ]
+        if not items:
+            return [(source, Run(source.stem.upper(), config.name, ROOT), None)]
     names = [item["pair_id"] for item in items]
     if not names or len(names) != len(set(names)):
-        raise ValueError("Опись должна содержать непустой список деталей без повторов")
-    if drawing is not None:
+        raise ValueError("Манифест датасета должен содержать непустой список деталей без повторов")
+    if drawing is not None and source is None:
         items = [item for item in items if item["pair_id"] == drawing.upper()]
         if not items:
-            raise ValueError(f"Деталь {drawing} отсутствует в описи. Для своего чертежа укажите путь к PNG")
+            raise ValueError(
+                f"Деталь {drawing} отсутствует в манифесте датасета. Для своего чертежа укажите путь к PNG"
+            )
     selected = []
     for item in items:
-        source = ROOT / "data" / item["input_png"]["path"]
-        if sha256(source) != item["input_png"]["sha256"]:
-            raise ValueError(f"SHA256 не совпал: {source.name}")
-        selected.append((source, Run(item["pair_id"], config.name, ROOT)))
+        require_single_sheet(item)
+        orientation = require_orientation(item)
+        path = ROOT / "data" / item["input_png"]["path"]
+        if sha256(path) != item["input_png"]["sha256"]:
+            raise ValueError(f"SHA256 не совпал: {path.name}")
+        pair_id = source.stem.upper() if source is not None else item["pair_id"]
+        selected.append((path, Run(pair_id, config.name, ROOT), orientation))
     return selected
 
 
-async def run_drawings(selected: list[tuple[Path, Run]], config: Config) -> int:
+async def run_drawings(selected: list[tuple[Path, Run, str | None]], config: Config) -> int:
     successful = 0
-    for index, (source, run) in enumerate(selected, 1):
+    for index, (source, run, orientation) in enumerate(selected, 1):
         log("НАБОР", f"{index}/{len(selected)} · {run.pair_id}")
-        record = await agent.generate(source, run, config)
+        record = await agent.generate(source, run, config, orientation=orientation)
         successful += record["status"] == "success"
     failed = len(selected) - successful
     log("ИТОГ", f"Построено {successful}/{len(selected)}. Неудачных запусков: {failed}.")
@@ -90,7 +112,7 @@ def main(argv: list[str] | None = None) -> int:
         record = agent.replay(args.recipe, Run(args.part.upper(), config.name, ROOT), config)
         return 0 if record["status"] == "success" else 1
     except Exception as error:  # noqa: BLE001 — ошибка команды тоже должна остаться на диске.
-        log_error(error_details(error, stage), ROOT / "artifacts/command-error.log")
+        log_error(error_details(error, stage), ROOT / "logs/commands/agent-error.log")
         return 1
 
 

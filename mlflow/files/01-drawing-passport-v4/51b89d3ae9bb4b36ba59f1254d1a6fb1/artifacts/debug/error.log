@@ -1,0 +1,22 @@
+2026-11-16 23:07:15,634  ОШИБКА     KF0012 · Заметки + PNG · повтор 1/1
+Этап: reading
+CancelledError: Без сообщения
+
+
+Traceback (most recent call last):
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/experiments/runner.py", line 235, in route
+    source, extracted = await reading(
+                        ^^^^^^^^^^^^^^
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/experiments/runner.py", line 143, in reading
+    response = await waiting(
+               ^^^^^^^^^^^^^^
+  File "/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/experiments/logging.py", line 153, in waiting
+    done, _ = await asyncio.wait({task}, timeout=interval)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mkonovalov/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 464, in wait
+    return await _wait(fs, timeout, return_when, loop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mkonovalov/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 550, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+

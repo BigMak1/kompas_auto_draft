@@ -187,11 +187,14 @@ def test_dataset_hashes_and_geometry() -> None:
     assert all(item["split"] == "val" for item in items)
     names = {item["pair_id"] for item in items}
     assert {"KF0011", "KF0012", "KF0018"} <= names
-    assert {p.stem for p in (ROOT / "data/input").glob("*.png")} == names
-    assert {p.stem for p in (ROOT / "data/target").glob("*.stl")} == names
-    for item in items:
-        if item["pair_id"] in {"KF0011", "KF0012", "KF0018"}:
-            assert item["pair_validation"] == "Есть известные различия" and item["limitations"]
+    # Совместимая команда baseline берёт десять исправленных dev, эксперименты — ещё пять val.
+    all_names = names | {
+        item["pair_id"] for item in read_json(ROOT / "data/manifest-experiments.json")["items"]
+    }
+    assert {p.stem for p in (ROOT / "data/input").glob("*.png")} == all_names
+    assert {p.stem for p in (ROOT / "data/target").glob("*.stl")} == all_names
+    assert all(item["sheet_count"] == 1 for item in items)
+    assert next(item for item in items if item["pair_id"] == "KF0012")["limitations"]
     evaluation.check_data(ROOT / "data")
 
 
@@ -212,6 +215,25 @@ def prepared_data(tmp_path: Path) -> Path:
 def test_prepared_data_works_without_historical_sources(prepared_data: Path) -> None:
     assert {path.name for path in prepared_data.iterdir()} == {"input", "target", "manifest.json"}
     evaluation.check_data(prepared_data)
+
+
+def test_prepared_data_requires_orientation(prepared_data: Path) -> None:
+    path = prepared_data / "manifest.json"
+    manifest = read_json(path)
+    del manifest["items"][0]["orientation"]
+    write_json(path, manifest)
+    with pytest.raises(ValueError, match="ориентация"):
+        evaluation.check_data(prepared_data)
+
+
+@pytest.mark.parametrize("sheet_count", [None, 2, True])
+def test_prepared_data_requires_one_confirmed_sheet(prepared_data: Path, sheet_count: object) -> None:
+    path = prepared_data / "manifest.json"
+    manifest = read_json(path)
+    manifest["items"][0]["sheet_count"] = sheet_count
+    write_json(path, manifest)
+    with pytest.raises(ValueError, match="ровно один лист"):
+        evaluation.check_data(prepared_data)
 
 
 @pytest.mark.parametrize("relative", ["input/KF0017.png", "target/KF0017.stl"])

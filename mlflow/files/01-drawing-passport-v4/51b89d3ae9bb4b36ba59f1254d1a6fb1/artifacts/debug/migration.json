@@ -1,0 +1,9 @@
+{
+  "source": "artifacts/passport-kf0012-tracing-01/notes_png/KF0012-r01-a001",
+  "files": {
+    "error.log": "6f37c5c63c7f228f58a9567d78c68ab3c70765c902d2c73726b6d1e0e69f7632",
+    "llm/response.json": "702f0d7a54df4868d8886ba803608e27be7cea501a28c7fb40e867c2da20d12e",
+    "llm/stage.json": "7fa50bd1b8443dc27b64dbb87dc34c066813082894d7a643d6eb406827d19a26",
+    "cad/cad.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -9,7 +9,7 @@ import trimesh
 from OCP.Bnd import Bnd_Box
 from OCP.BRepBndLib import BRepBndLib
 
-from src.agent.schema import Circle, Recipe, Rectangle
+from src.agent.schemas.recipe import Circle, Recipe, Rectangle
 from src.config import CadSettings
 from src.utils import sha256
 

@@ -1,0 +1,8 @@
+{
+  "source": "artifacts/passport-kf0012-tracing-01/readings/KF0012-r01-passport-a001",
+  "files": {
+    "error.log": "f73c59e3923c8c8b84a5281b28a063bf6eac7000c67256e4f87e3c36808b3f84",
+    "response.json": "e90cce3921d8c9f437f64ce0529d1d4ce33a76df0aa9290efa6634f1abbffd8e",
+    "stage.json": "aee9b0403e5dc0cb4d2ce722ddaa076fe9ebde23b847441e4510e5bbaf46b247"
+  }
+}

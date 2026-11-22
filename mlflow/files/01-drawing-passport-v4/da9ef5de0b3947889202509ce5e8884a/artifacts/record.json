@@ -1,0 +1,64 @@
+{
+  "kind": "reading",
+  "stage": "passport",
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "status": "failed",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "usage": {
+    "input_tokens": 4421,
+    "input_tokens_details": {
+      "cache_write_tokens": 4418,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 4418
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 5568,
+    "output_tokens_details": {
+      "reasoning_tokens": 1414
+    },
+    "total_tokens": 9989
+  },
+  "http_responses": 1,
+  "request_id": "req_a6fdcc83214b44929b32145cf37cce7d",
+  "http_status": 200,
+  "response_id": "resp_05f30f5b54114bd4016afb632a041087d28f3acf17898caa7d",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "failure_kind": "generation",
+  "error": {
+    "stage": "ответ LLM / проверка схемы",
+    "type": "ModelBehaviorError",
+    "message": "Invalid JSON when parsing model output",
+    "causes": [],
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/src/agent/stages.py\", line 82, in request\n    result = await asyncio.wait_for(\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mkonovalov/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/tasks.py\", line 520, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/.venv/lib/python3.12/site-packages/agents/run.py\", line 383, in run\n    _raise_data_redacted_error(redacted_error)\n  File \"/Users/mkonovalov/Documents/VS_code_projects/ITMO/ASCON/kompas_auto_draft/.venv/lib/python3.12/site-packages/agents/exceptions.py\", line 316, in _raise_data_redacted_error\n    raise error from None\nagents.exceptions.ModelBehaviorError: Invalid JSON when parsing model output\n",
+    "request_id": "req_a6fdcc83214b44929b32145cf37cce7d",
+    "status_code": 200
+  },
+  "seconds": 85.69819995800208,
+  "trace_id": "tr-2df5b9e5da3a7c1a338e2b8b2a4a3291",
+  "files": {
+    "run.log": "40ad5d6b26cba8680f27b973abf057c910962c21e8ee2c5a9dc2dd416151c2e9"
+  }
+}

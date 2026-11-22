@@ -1,4 +1,4 @@
-"""Один ответ модели и одно построение; журнал для человека, подробности — в artifacts."""
+"""Один ответ модели и одно построение; журнал для человека, подробности — в debug рядом с прогоном."""
 
 import asyncio
 import base64
@@ -20,7 +20,8 @@ from openai.types.shared import Reasoning
 from PIL import Image
 from pydantic import TypeAdapter, ValidationError
 
-from src.agent.schema import Recipe
+from src.agent.schemas.recipe import Recipe
+from src.agent.stages import messages
 from src.config import ROOT, AgentSettings, Config
 from src.utils import Run, atomic, error_details, log_error, redact, sha256, write_json
 
@@ -234,17 +235,18 @@ def finish(run: Run, record: dict, started: float) -> None:
     run.log("ФАЙЛЫ", str(run.directory.relative_to(run.root)))
 
 
-async def generate(source: Path, run: Run, config: Config) -> dict:
+async def generate(source: Path, run: Run, config: Config, *, orientation: str | None = None) -> dict:
     if not os.environ.get("OPENAI_API_KEY"):
         raise ValueError("Задайте OPENAI_API_KEY в .env или окружении")
     image, image_info = prepare_image(source, config.agent.image_max_side)
     record = begin(run, "single_shot_generation", config)
-    record.update(input=image_info, stage="llm")
+    record.update(input=image_info, orientation=orientation, stage="llm")
     write_json(run.artifacts / "run.json", record)
     settings = config.agent
     before = "×".join(map(str, image_info["original_size"]))
     after = "×".join(map(str, image_info["sent_size"]))
     run.log("PNG", f"{before} → {after} пикс.; отправляется {image_info['sent_bytes'] / 1024:.0f} КиБ.")
+    run.log("ОРИЕНТАЦИЯ", "Из манифеста датасета." if orientation else "Общее правило для своего PNG.")
     run.log("LLM", f"{settings.model}, рассуждения {settings.reasoning_effort}. Отправляю один запрос.")
     started = time.monotonic()
     journal = Journal(run, record)
@@ -258,18 +260,7 @@ async def generate(source: Path, run: Run, config: Config) -> dict:
             async with asyncio.timeout(settings.timeout_seconds):
                 result = await Runner.run(
                     make_agent(settings, OpenAIResponsesModel(model=settings.model, openai_client=client)),
-                    input=[
-                        {
-                            "role": "user",
-                            "content": [
-                                {
-                                    "type": "input_image",
-                                    "image_url": image,
-                                    "detail": settings.image_detail,
-                                }
-                            ],
-                        }
-                    ],
+                    input=messages(image, orientation, settings.image_detail),
                     max_turns=1,
                     hooks=journal,
                     run_config=RunConfig(tracing_disabled=True),

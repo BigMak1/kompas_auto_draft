@@ -1,0 +1,55 @@
+{
+  "kind": "reading",
+  "stage": "notes",
+  "pair_id": "KF0012",
+  "repeat": 1,
+  "status": "success",
+  "input": {
+    "name": "KF0012.png",
+    "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e",
+    "original_bytes": 582881,
+    "original_size": [
+      7442,
+      3509
+    ],
+    "sent_size": [
+      4096,
+      1931
+    ],
+    "mode": "RGB",
+    "sent_bytes": 1663951,
+    "sent_sha256": "454a0712eed86c3be0b66c53dc303d3f7a5698541859ba33939523ba2fc14e02",
+    "resized": true
+  },
+  "orientation": "Ось центрального отверстия совпадает с Z, её центр в XY — (0, 0). База Z=0 — крайний торец со стороны короткого выступа ступицы: это правый край продольного разреза слева на листе. +Z идёт влево по разрезу, к длинному выступу ступицы. Зубчатый венец расположен выше Z=0, а не лежит на XY. Верхний шпоночный паз торцевого вида направлен к +Y, его центр лежит в плоскости YZ. Торцевой вид справа показан со стороны длинного выступа: взгляд вдоль -Z, +X вправо, +Y вверх на этом виде.",
+  "usage": {
+    "input_tokens": 3683,
+    "input_tokens_details": {
+      "cache_write_tokens": 3680,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 3680
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 3398,
+    "output_tokens_details": {
+      "reasoning_tokens": 1034
+    },
+    "total_tokens": 7081
+  },
+  "http_responses": 1,
+  "request_id": "req_d1458dd38ad146dd9d02d8e2110d770e",
+  "http_status": 200,
+  "response_id": "resp_09200f20afc18560016afb62a7fc4087d2b6de036f77d31044",
+  "response_status": "completed",
+  "returned_model": "gpt-6.1-sol",
+  "api_error": null,
+  "incomplete_details": null,
+  "seconds": 76.6270887080027,
+  "trace_id": "tr-3c8e31a954c9a25ae824354a1f31ad66",
+  "files": {
+    "notes.md": "d94fe9d4e7cfd325a05f9699e1a89e9330681c0c9174e4ac85bbcdb6c1eb482c",
+    "run.log": "444ebe736c21d200645c4e6fb86b4456599b22a5ef46fb012e514c45e8f03765"
+  }
+}

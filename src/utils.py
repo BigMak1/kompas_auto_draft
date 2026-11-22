@@ -165,7 +165,7 @@ class Run:
 
     @property
     def artifacts(self) -> Path:
-        return self.root / "artifacts" / self.name
+        return self.directory / "debug"
 
     @property
     def logfile(self) -> Path:
@@ -188,6 +188,21 @@ class Run:
 
     def log(self, stage: str, message: str) -> None:
         log(stage, message, self.logfile)
+
+
+def require_single_sheet(item: dict) -> None:
+    """Текущий протокол принимает только проверенные однолистовые чертежи."""
+    count = item.get("sheet_count")
+    if type(count) is not int or count != 1:
+        raise ValueError(f"{item['pair_id']}: в манифесте должен быть подтверждён ровно один лист")
+
+
+def require_orientation(item: dict) -> str:
+    """В контекст модели разрешена только ручная подсказка, не вся карточка эталона."""
+    orientation = item.get("orientation")
+    if not isinstance(orientation, str) or not orientation.strip():
+        raise ValueError(f"{item['pair_id']}: в манифесте должна быть задана ориентация детали")
+    return orientation
 
 
 def select_runs(selector: str | None, root: Path = ROOT, run_name: str = "baseline") -> list[Run]:

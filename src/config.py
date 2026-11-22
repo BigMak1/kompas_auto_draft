@@ -1,4 +1,4 @@
-"""Параметры эксперимента из единственного YAML-файла."""
+"""Общие настройки агента, CAD и оценки; загрузка конфигурации baseline ДЗ1."""
 
 from pathlib import Path
 from typing import Literal
