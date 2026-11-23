@@ -1,0 +1,41 @@
+{
+  "steps": [
+    {
+      "action": "add",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 22.5
+      },
+      "z": 0.0,
+      "depth": 13.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "circle",
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 16.0
+      },
+      "z": 0.0,
+      "depth": 13.0,
+      "direction": "+Z"
+    },
+    {
+      "action": "cut",
+      "profile": {
+        "kind": "rectangle",
+        "x": -5.0,
+        "y": 0.0,
+        "width": 10.0,
+        "height": 23.0
+      },
+      "z": 0.0,
+      "depth": 13.0,
+      "direction": "+Z"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "dataset_id": "cad-validation-10",
+  "source": "Учебные примеры КОМПАС-3D v25 Study; корпус kompas-e2e-27 из репозитория kompas-drawings (27 пар).",
+  "selection": "10 пар отобраны по разнообразию форм и сложности, без использования метрик генератора. Все относятся к val; отдельной dev-выборки и независимого test пока нет.",
+  "coordinates": {
+    "units": "mm",
+    "origin": "Центр основной окружности — (0, 0) в XY; задний торец — Z=0.",
+    "axes": "X вправо, Y вверх на круговом виде чертежа; толщина вдоль +Z.",
+    "evaluation": "Без автоматического совмещения, поворота и изменения масштаба."
+  },
+  "review_scope": "Проверялись ключевые размеры и исполнение, не все поверхности и допуски. Известные различия сохранены; эталоны не исправлялись под PNG. Подробные измерения и история подготовки находятся в локальном архиве.",
+  "items": [
+    {
+      "pair_id": "KF0010",
+      "name": "Вал с фланцем",
+      "family": "reducer_shaft_0101",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0101.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0101.00.M3D",
+      "input_png": {
+        "path": "input/KF0010.png",
+        "sha256": "7b701473d23ddef418a4bce0291d4b9937a60d3af9415e1b2fa41c5be1c87eb8"
+      },
+      "target_mesh": {
+        "path": "target/KF0010.stl",
+        "sha256": "c0d0b70756d4fd9126aa4d98f1720e681ed039cd5df7e43463397f99ac51b0ee"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Ступени, канавки, шпоночный паз, центровые и фланцевые отверстия; фаски и скругления выходят за текущую схему рецепта."
+      ]
+    },
+    {
+      "pair_id": "KF0011",
+      "name": "Шестерня",
+      "family": "reducer_gear_0102",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0102.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0102.00.M3D",
+      "input_png": {
+        "path": "input/KF0011.png",
+        "sha256": "741c820092465fe0b25db2693c8992a6d7c821b43ff5594f10f960e6f3b14aec"
+      },
+      "target_mesh": {
+        "path": "target/KF0011.stl",
+        "sha256": "623898b8602b132bd8a80eacdebb0a77ae6941efd6ee281981ead1506f32f9aa"
+      },
+      "pair_validation": "Есть известные различия",
+      "limitations": [
+        "Отверстие Ø32 на чертеже против Ø30,6 в модели; расхождение исходной пары учитывается при разборе метрик."
+      ]
+    },
+    {
+      "pair_id": "KF0012",
+      "name": "Зубчатое колесо",
+      "family": "reducer_gear_0103",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0103.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0103.00.M3D",
+      "input_png": {
+        "path": "input/KF0012.png",
+        "sha256": "74fcc70549feb135b37f42fd87413617f94284dfbd7087675b76ed95d261697e"
+      },
+      "target_mesh": {
+        "path": "target/KF0012.stl",
+        "sha256": "f0265492eac131700e0edcb49d7c250247859c76bb107bcf953fdd41ebe88e8f"
+      },
+      "pair_validation": "Есть известные различия",
+      "limitations": [
+        "Отверстие Ø54H8 (+0,046) на чертеже против Ø55 в модели (дуга R27,5). Наружный диаметр Ø245h12 на листе против габарита 245,864 мм у модели. Расхождения исходной пары сохранены, эталон не исправлялся под PNG.",
+        "60 зубьев, модуль 4, шпоночный паз и шесть отверстий Ø30 на окружности Ø146. Фаски, радиусы и зубчатый профиль воспроизводятся текущим рецептом лишь приближённо."
+      ]
+    },
+    {
+      "pair_id": "KF0013",
+      "name": "Корпус редуктора",
+      "family": "reducer_housing_0104",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0104.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0104.00.M3D",
+      "input_png": {
+        "path": "input/KF0013.png",
+        "sha256": "8ef1f21a1458ffe85cc5c765a49e45c689487375931281d903005a223e0662e3"
+      },
+      "target_mesh": {
+        "path": "target/KF0013.stl",
+        "sha256": "896bfc983118b064b2d84a842065eea2f6f3fbe401784adb88bb14462c43ff40"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Литой корпус с рёбрами, уклонами и резьбой. Проверены главная ось, основные отверстия и глубина; полной проверки всех литейных поверхностей нет."
+      ]
+    },
+    {
+      "pair_id": "KF0014",
+      "name": "Круглая крышка",
+      "family": "reducer_cover_0105",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0105.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0105.00.M3D",
+      "input_png": {
+        "path": "input/KF0014.png",
+        "sha256": "15558367315c35417a10f526b19586b34a0ecc78ee4bf33a5c8c895159bcc8b1"
+      },
+      "target_mesh": {
+        "path": "target/KF0014.stl",
+        "sha256": "aece3dfad399280ba41834a36d16187b3d5134787bbe193f039dcbca4af46957"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Восемь крепёжных отверстий и фигурный край. Литейные уклоны, радиусы и фаски входят в эталон, но не в текущий рецепт."
+      ]
+    },
+    {
+      "pair_id": "KF0016",
+      "name": "Втулка",
+      "family": "reducer_bushing_0107",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0107.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0107.00.M3D",
+      "input_png": {
+        "path": "input/KF0016.png",
+        "sha256": "342e98cc547182ce7da59481a868068b088d95aca0295b11e794cb2d20cf823c"
+      },
+      "target_mesh": {
+        "path": "target/KF0016.stl",
+        "sha256": "6bb403bfcf7664addb92e05b62446a1c9a76ae8de9b66ccaaee91dd9e79667f1"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Две фаски 1 × 45° входят в эталон; диаметр 65 указан как справочный."
+      ]
+    },
+    {
+      "pair_id": "KF0017",
+      "name": "Прорезная втулка",
+      "family": "slotted_bushing_0108",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0108.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0108.00.M3D",
+      "input_png": {
+        "path": "input/KF0017.png",
+        "sha256": "f7d88edf20daf3d5aa52fb2903bc04a04a9d7c5f2cf5065f9ec9767708acd548"
+      },
+      "target_mesh": {
+        "path": "target/KF0017.stl",
+        "sha256": "557b9a34b3cd6a331fa1d3f18d57f38925d08b139bb565de671bed43620320df"
+      },
+      "pair_validation": "Пройдена сохранённая проверка пары",
+      "limitations": []
+    },
+    {
+      "pair_id": "KF0018",
+      "name": "Сальник",
+      "family": "reducer_seal_0110",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0110.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0110.00.M3D",
+      "input_png": {
+        "path": "input/KF0018.png",
+        "sha256": "d678f0379485fb1f6ef1dd163d48349a2482cab3c9d3958abe375fffc61dcb3c"
+      },
+      "target_mesh": {
+        "path": "target/KF0018.stl",
+        "sha256": "4a7a5656fef5b1d905d1b3bed6fe68430e929589633f2fc720cb06eebb17e7b4"
+      },
+      "pair_validation": "Есть известные различия",
+      "limitations": [
+        "На листе плоское кольцо со справочной толщиной 6* мм; в модели конические торцы и осевой габарит 7,10644 мм. Это различие геометрии исходной пары, а не вывод о производственном браке по справочному размеру.",
+        "Диаметры модели Ø65 и Ø82 находятся на верхних границах заданных на листе Ø64±1 и Ø81±1. Они отличаются от номиналов, но не выходят за явно указанные интервалы. Допуски не применяются как зона нечувствительности IoU/F-score."
+      ]
+    },
+    {
+      "pair_id": "KF0019",
+      "name": "Шайба с зенковкой",
+      "family": "reducer_washer_0111",
+      "split": "val",
+      "original_cdw": "Samples/Reducer/078.505.0.0111.00.CDW",
+      "original_m3d": "Samples/Reducer/078.505.0.0111.00.M3D",
+      "input_png": {
+        "path": "input/KF0019.png",
+        "sha256": "8627477e12be99fc75999f482818968c6b748a188a2b051e5f0b9f614a123366"
+      },
+      "target_mesh": {
+        "path": "target/KF0019.stl",
+        "sha256": "20c1d096298e192c97f7f7a9a0ccee6c274b64ec1f62f83c67c5c9d7d447b8c2"
+      },
+      "pair_validation": "Проверены ключевые размеры",
+      "limitations": [
+        "Зенковка 90° не представляется точно цилиндрическими вырезами текущего рецепта."
+      ]
+    },
+    {
+      "pair_id": "KF0027",
+      "name": "Кольцо с отверстиями",
+      "family": "mounting_ring_2k52",
+      "split": "val",
+      "original_cdw": "Samples/Shaft/2D/Вырезы по круговому массиву/2К52.50.001 Кольцо.cdw",
+      "original_m3d": "Samples/Shaft/3D/Вырезы по круговому массиву/2К52.50.001 Кольцо.m3d",
+      "input_png": {
+        "path": "input/KF0027.png",
+        "sha256": "cb581d2861b662c946c5bbde6e43fa9d74deffaf6eafc55b1e6526090b84946c"
+      },
+      "target_mesh": {
+        "path": "target/KF0027.stl",
+        "sha256": "9264f9dc8ea24382d2e9fe67ce4b30eb97bb497dcd2e413de198da413a29f4d6"
+      },
+      "pair_validation": "Пройдена сохранённая проверка пары",
+      "limitations": []
+    }
+  ]
+}

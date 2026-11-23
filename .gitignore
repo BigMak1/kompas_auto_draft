@@ -1,4 +1,6 @@
-# Локальные настройки и поставки инструментов
+# Локальный архив прежних этапов и настройки инструментов
+.local-archive/
+artifacts/
 .ai/
 .claude
 mcp/
@@ -6,22 +8,25 @@ mcp/
 .mcp.json
 vendor/
 AGENTS.md
+.env
+.env.*
+!.env.example
 
 # KOMPAS: временные файлы-блокировки открытых документов
 ~$*
 
 # Python
 .venv/
-.venv-eval/
 __pycache__/
 *.py[cod]
 .ruff_cache/
 .pytest_cache/
+.hw01-work/
+.ipynb_checkpoints/
 
-# Локальные прогоны, наборы из общего проекта и производные модели
+# Локальные прогоны и данные прежних этапов
 runs/
-/kompas_data/e2e-*/
-/kompas_data/**/*_копия_*.m3d
+kompas_data/
 
 # macOS
 .DS_Store
